@@ -1,14 +1,8 @@
 
 
-  
 
 
 
-
-  
-
-
-  
 
 
 <!doctype html>
@@ -22,9 +16,10 @@
   
   
   
-    <meta name="description" content="蔚泪卿">
+    <meta name="description" content="windowsnetstat -ano|findstr 8080  #查看端口服务taskill /pid 10956 -F
+ubantu  常用命令find -name xxx        #默认表示当前目录下查找带filename的文件find / -name xxx      #在根目录里面搜索文件名为filename的文件find /etc -name s   #在/etc目录里面...">
   
-  <title>归档: 6/2018: 2018 [ 建强 ]</title>
+  <title>note [ 建强 ]</title>
   
   
     <link rel="shortcut icon" href="/favicon.ico">
@@ -70,7 +65,7 @@
           </li>
         
           
-            <li class="active">
+            <li>
           
             <a href="/archives">分类</a>
             
@@ -91,7 +86,7 @@
           </li>
         
           
-            <li>
+            <li class="active">
           
             <a href="/note">note</a>
             
@@ -123,105 +118,37 @@
     <div id="content-inner">
       
       
-  <article>
+  <article id="page">
     
+    
+      <h1 class="">note</h1>
+      
+      <p>windows<br>netstat -ano|findstr 8080  #查看端口服务<br>taskill /pid 10956 -F</p>
+<p>ubantu  常用命令<br>find -name xxx        #默认表示当前目录下查找带filename的文件<br>find / -name xxx      #在根目录里面搜索文件名为filename的文件<br>find /etc -name <em>s</em>   #在/etc目录里面搜索带有s的文件<br>find /etc -name <em>S    #在/etc目录里面搜索以S结尾的文件<br>find /etc -name s</em>    #在/etc目录里面搜索以s开头的文件 </p>
+<p>tree -L 1   # 只查看当前第一级的目录和文件<br>tree -L 2   # 只查看当前第二级的目录和文件<br>tree -L N   # 只查看当前第N级的目录和文件</p>
+<p>tree -L &gt; /var/test.txt   #导出文件目录</p>
+<p>uname -a           显示电脑以及操作系统的相关信息<br>cat /proc/version  说明正在运行的内核版本<br>cat /etc/issue     显示发行版本信息 </p>
+<p>netstat命令各个参数说明如下：<br>　　-t : 指明显示TCP端口<br>　　-u : 指明显示UDP端口<br>　　-l : 仅显示监听套接字(所谓套接字就是使应用程序能够读写与收发通讯协议(protocol)与资料的程序)<br>　　-p : 显示进程标识符和程序名称，每一个套接字/端口都属于一个程序。<br>　　-n : 不进行DNS轮询，显示IP(可以加速操作)<br>即可显示当前服务器上所有端口及进程服务，于grep结合可查看某个具体端口及服务情况··<br>netstat -ntlp             //查看当前所有tcp端口<br>netstat -ntulp |grep 80   //查看所有80端口使用情况<br>netstat -an | grep 3306   //查看所有3306端口使用情况</p>
+<p>ps -ef |grep mysqld           #查看一个服务有几个端口,比如要查看mysqld<br>netstat -pnt |grep :3306 |wc  #查看某一端口的连接数量,比如3306端口</p>
+<p>kill -9 进程号   #杀掉端口<br>kill -9 $(netstat -nlp | grep :8080 | awk ‘{print $7}’ | awk -F”/“ ‘{ print $1 }’)   #根据指定的端口关闭服务</p>
+<p>apt-get install xxx 安装xxx  。如果带有参数，那么-d 表示仅下载 ，-f 表示强制安装<br>apt-get remove xxx 卸载xxx<br>apt-get update 更新软件信息数据库<br>apt-get upgrade 进行系统升级<br>apt-cache search 搜索软件包 </p>
 
-  <div id="recent-posts">
-    <h1>归档
     
-      <span class="posts-count">
-      共
-      2
-      
-        文章
-      
-      </span>
-    
-    </h1>
-    
-    
-      
-      
-        
-      
-      
-    
-      
-      
-      
-    
-    
-    
-      
-      
-        
-        <h3 class="archive-year-title">2018
-        
-          <span class="posts-count">
-          共
-          2
-          
-            文章
-          
-          </span>
-        
-        </h3>
-      
-      <div class="post-title-item">
-  
-  <a href="/2018/06/29/image-me/">
-  
-    image-me
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">6-29</span>
-    
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-      
-      
-      <div class="post-title-item">
-  
-  <a href="/2018/06/29/index/">
-  
-    个人标签
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">6-29</span>
-    
-    <span id = "post-title-categories">分类
-    
-    
-      
-      
-      <a href="/categories/Blog/">Blog</a>
-    
-    </span>
-    
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-  </div>
-
-
   </article>
+
+  
+<nav id="pagination">
+  
+
+  
+
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
 
       
       

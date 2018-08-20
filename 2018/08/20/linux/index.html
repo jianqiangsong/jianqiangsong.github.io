@@ -1,14 +1,8 @@
 
 
-  
 
 
 
-
-  
-
-
-  
 
 
 <!doctype html>
@@ -22,9 +16,20 @@
   
   
   
-    <meta name="description" content="蔚泪卿">
+    <meta name="description" content="netstat -ano|findstr 8080  #查看端口服务
+
+
+taskill /pid 10956 -F
+
+–ubantu  常用命令
+
+find -name xxx        #默认表示当前目录下查找带filename的文件
+find / -name xxx      #在根目录里面搜索文件名为filename的文件
+
+
+find /etc -name s   #在/etc...">
   
-  <title>归档: 6/2018: 2018 [ 建强 ]</title>
+  <title>linux操作命令 [ 建强 ]</title>
   
   
     <link rel="shortcut icon" href="/favicon.ico">
@@ -45,6 +50,15 @@
 <body>
 <div class="side-navigate hide-area">
   
+  
+    <div class="item next">
+      <a href="/2018/07/06/linkWebsite/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        linkWebsite
+      </div>
+    </div>
   
 </div>
 <div id="outer-container" class="hide-area">
@@ -70,7 +84,7 @@
           </li>
         
           
-            <li class="active">
+            <li>
           
             <a href="/archives">分类</a>
             
@@ -123,105 +137,143 @@
     <div id="content-inner">
       
       
-  <article>
-    
-
-  <div id="recent-posts">
-    <h1>归档
-    
-      <span class="posts-count">
-      共
-      2
+  <article id="post">
+    <h1>linux操作命令</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">撰写于 2018-08-20</span>
       
-        文章
+        <span id = "post-title-updated">修改于 2018-08-20</span>
+      
+      
+      
+      <span id = "post-title-tags">
+      标签
+      
+      
+        
+        
+        <a href="/tags/linux/">linux</a>
       
       </span>
-    
-    </h1>
-    
-    
       
-      
-        
-      
-      
+    </p>
     
-      
-      
-      
-    
-    
-    
-      
-      
-        
-        <h3 class="archive-year-title">2018
-        
-          <span class="posts-count">
-          共
-          2
-          
-            文章
-          
-          </span>
-        
-        </h3>
-      
-      <div class="post-title-item">
-  
-  <a href="/2018/06/29/image-me/">
-  
-    image-me
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">6-29</span>
-    
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-      
-      
-      <div class="post-title-item">
-  
-  <a href="/2018/06/29/index/">
-  
-    个人标签
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">6-29</span>
-    
-    <span id = "post-title-categories">分类
-    
-    
-      
-      
-      <a href="/categories/Blog/">Blog</a>
-    
-    </span>
-    
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-    
-  </div>
-
+    <blockquote>
+<p>netstat -ano|findstr 8080  #查看端口服务</p>
+</blockquote>
+<blockquote>
+<p>taskill /pid 10956 -F</p>
+</blockquote>
+<p>–<br><strong>ubantu  常用命令</strong></p>
+<blockquote>
+<p>find -name xxx        #默认表示当前目录下查找带filename的文件</p>
+<p>find / -name xxx      #在根目录里面搜索文件名为filename的文件</p>
+</blockquote>
+<blockquote>
+<p>find /etc -name <em>s</em>   #在/etc目录里面搜索带有s的文件</p>
+</blockquote>
+<blockquote>
+<p>find /etc -name *S    #在/etc目录里面搜索以S结尾的文件</p>
+</blockquote>
+<blockquote>
+<p>find /etc -name s*    #在/etc目录里面搜索以s开头的文件 </p>
+</blockquote>
+<blockquote>
+<p>tree -L 1   # 只查看当前第一级的目录和文件</p>
+</blockquote>
+<blockquote>
+<p>tree -L 2   # 只查看当前第二级的目录和文件</p>
+</blockquote>
+<blockquote>
+<p>tree -L N   # 只查看当前第N级的目录和文件</p>
+</blockquote>
+<blockquote>
+<p>tree -L &gt; /var/test.txt   #导出文件目录</p>
+</blockquote>
+<blockquote>
+<p>uname -a           显示电脑以及操作系统的相关信息 </p>
+</blockquote>
+<blockquote>
+<p>cat /proc/version  说明正在运行的内核版本 </p>
+</blockquote>
+<blockquote>
+<p>cat /etc/issue     显示发行版本信息 </p>
+</blockquote>
+<blockquote>
+<p>netstat命令各个参数说明如下：<br>　　-t : 指明显示TCP端口</p>
+</blockquote>
+<blockquote>
+<p>　　-u : 指明显示UDP端口</p>
+</blockquote>
+<blockquote>
+<p>　　-l : 仅显示监听套接字(所谓套接字就是使应用程序能够读写与收发通讯协议(protocol)与资料的程序)</p>
+</blockquote>
+<blockquote>
+<p>　　-p : 显示进程标识符和程序名称，每一个套接字/端口都属于一个程序。</p>
+</blockquote>
+<blockquote>
+<p>　　-n : 不进行DNS轮询，显示IP(可以加速操作)</p>
+</blockquote>
+<p><strong>即可显示当前服务器上所有端口及进程服务，于grep结合可查看某个具体端口及服务情况··</strong></p>
+<blockquote>
+<p>netstat -ntlp             //查看当前所有tcp端口</p>
+</blockquote>
+<blockquote>
+<p>netstat -ntulp |grep 80   //查看所有80端口使用情况</p>
+</blockquote>
+<blockquote>
+<p>netstat -an | grep 3306   //查看所有3306端口使用情况</p>
+</blockquote>
+<blockquote>
+<p>ps -ef |grep mysqld           #查看一个服务有几个端口,比如要查看mysqld<br>netstat -pnt |grep :3306 |wc  #查看某一端口的连接数量,比如3306端口</p>
+</blockquote>
+<blockquote>
+<p>kill -9 进程号   #杀掉端口</p>
+</blockquote>
+<blockquote>
+<p>kill -9 $(netstat -nlp | grep :8080 | awk ‘{print $7}’ | awk -F”/“ ‘{ print $1 }’)   #根据指定的端口关闭服务</p>
+</blockquote>
+<blockquote>
+<p>apt-get install xxx 安装xxx  。如果带有参数，那么-d 表示仅下载 ，-f 表示强制安装  </p>
+</blockquote>
+<blockquote>
+<p>apt-get remove xxx 卸载xxx  </p>
+</blockquote>
+<blockquote>
+<p>apt-get update 更新软件信息数据库  </p>
+</blockquote>
+<blockquote>
+<p>apt-get upgrade 进行系统升级  </p>
+</blockquote>
+<blockquote>
+<p>apt-cache search 搜索软件包 </p>
+</blockquote>
 
   </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">显示目录</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">隐藏目录</button>
+  <div class="random-toc">
+    <h2>目录</h2>
+    
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+
+  
+
+  
+    <a href="/2018/07/06/linkWebsite/" class="next">下一篇 linkWebsite &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
 
       
       
@@ -320,6 +372,8 @@ var unsplashConfig = {"gravity":"north"};
 var turnoffBackgroundImage = false;
 
 
+
+  turnoffBackgroundImage = true;
 
 
 var backgroundColor = "34495E";
