@@ -16,9 +16,16 @@
   
   
   
-    <meta name="description" content="生命在于折腾。">
+    <meta name="description" content="查看当前分支下的修改文件状态
+git status  
+修改文件后查看修改地方
+git diff  1.txt
+查看最近提交的记录
+git log     git log –pretty=oneline  (美化显示)   git reflog  (显示修改的版本号)
+回退到上一个版本
+git reset  –hard HEAD^  |  git reset  –hard 版本号    gi...">
   
-  <title>个人标签 [ 建强 ]</title>
+  <title>git教程笔记 [ 建强 ]</title>
   
   
     <link rel="shortcut icon" href="/favicon.ico">
@@ -39,15 +46,15 @@
 <body>
 <div class="side-navigate hide-area">
   
-    <div class="item prev">
-      <a href="/2018/06/29/image-me/">
+  
+    <div class="item next">
+      <a href="/2018/08/21/git/">
         <div class="item-icon"></div>
       </a>
       <div class="item-title">
-        image-me
+        git钩子函数
       </div>
     </div>
-  
   
 </div>
 <div id="outer-container" class="hide-area">
@@ -113,47 +120,69 @@
       
       
   <article id="post">
-    <h1>个人标签</h1>
+    <h1>git教程笔记</h1>
     <p class="page-title-sub">
-      <span id = "post-title-date">Created at 2018-06-29</span>
+      <span id = "post-title-date">Created at 2018-08-21</span>
       
-        <span id = "post-title-updated">Updated at 2018-06-29</span>
+        <span id = "post-title-updated">Updated at 2018-08-21</span>
       
       
-      <span id = "post-title-categories">Category
+      
+      <span id = "post-title-tags">
+      Tag
       
       
         
         
-        <a href="/categories/Blog/">Blog</a>
+        <a href="/tags/git/">git</a>
       
       </span>
       
-      
     </p>
     
-    <h3 id="盛夏"><a href="#盛夏" class="headerlink" title="盛夏"></a>盛夏</h3><hr>
-<h6 id="by-2018年6月29日15-36-11-gemini"><a href="#by-2018年6月29日15-36-11-gemini" class="headerlink" title="by 2018年6月29日15:36:11  gemini"></a>by 2018年6月29日15:36:11  gemini</h6><h2 id="建强"><a href="#建强" class="headerlink" title="建强"></a><strong>建强</strong></h2><p><img src="http://image.wufazhuce.com/Ft21X4fpJLboxmDtNsQj-DMcP_Sz" alt=""></p>
-<p><img src="http://image.wufazhuce.com/FpCqYzpbJ3_XHoZ4d6bwPu7qwOka" alt=""></p>
-
+    <p><strong>查看当前分支下的修改文件状态</strong></p>
+<pre><code>git status  
+</code></pre><p><strong>修改文件后查看修改地方</strong></p>
+<pre><code>git diff  1.txt
+</code></pre><p><strong>查看最近提交的记录</strong></p>
+<pre><code>git log     git log –pretty=oneline  (美化显示)   git reflog  (显示修改的版本号)
+</code></pre><p><strong>回退到上一个版本</strong></p>
+<pre><code>git reset  –hard HEAD^  |  git reset  –hard 版本号    git reset  –hard 6fcfc89
+</code></pre><p><strong>撤销修改 git checkout  — file 可以丢弃工作区的修改，未添加到暂存区的  没有add会撤销</strong></p>
+<pre><code>git checkout –readme.txt
+</code></pre><p><strong>删除后没有提交commit 恢复文件</strong></p>
+<pre><code>git checkout  --b.txt
+</code></pre><p><strong>添加远程仓库地址</strong></p>
+<pre><code>git remote add origin https://github.com/testgit.git
+</code></pre><p><strong>推送到仓库主分支</strong></p>
+<pre><code>git push origin master
+</code></pre><p>创建dev分支，然后切换到dev分支上</p>
+<pre><code>git checkout -b dev      命令加上 –b参数表示创建并切换  
+</code></pre><p>查看分支</p>
+<pre><code>git branch查看分支，会列出所有的分支，当前分支前面会添加一个星号
+</code></pre><p>主分支上 git merge命令用于合并指定分支到当前分支上</p>
+<pre><code>git checkout master    git merge dev
+</code></pre><p>移除分支：git branch –d name</p>
+<pre><code>git branch –d name
+</code></pre>
   </article>
   <div class="random-toc-area">
   <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
   <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
   <div class="random-toc">
     <h2>Table of Content</h2>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#盛夏"><span class="toc-text">盛夏</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#by-2018年6月29日15-36-11-gemini"><span class="toc-text">by 2018年6月29日15:36:11  gemini</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建强"><span class="toc-text">建强</span></a>
+    
   </div>
 </div>
 
   
 <nav id="pagination">
   
-    <a href="/2018/06/29/image-me/" class="prev">&larr; Prev post image-me</a>
-  
 
   
 
+  
+    <a href="/2018/08/21/git/" class="next">Next post git钩子函数 &rarr;</a>
   
 </nav>
 
