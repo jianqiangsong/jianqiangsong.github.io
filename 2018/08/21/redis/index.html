@@ -1,0 +1,948 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="Gemini">
+  
+  
+  
+  
+    <meta name="description" content="ZSET(stored set)
+和 set 一样是字符串的集合，不同的是每个元素都会关联一个 double 类型的 score 。实现使用的是 skip list 和 hash table ， skip list 的实现使用的是双线链表。 Score 的主要作用是排序，因此 sorted set 主要用作索引。
+zAdd
+Description
+Adds the specified mem...">
+  
+  <title>redis [ 建强 ]</title>
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+<link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  
+  <script>XlchKey="gemini";</script>
+</head>
+
+<body>
+<div class="side-navigate hide-area">
+  
+    <div class="item prev">
+      <a href="/2018/08/21/git/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        git钩子函数
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/2018/08/20/yiistudy/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        yiistudy
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="http://oa4s5g4ty.bkt.clouddn.com/76BB844050D495A5B6550649F46F9BEA.png"/>
+          <div id="homelink">建强</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">主页</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">分类</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">标签</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">关于我</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  <article id="post">
+    <h1>redis</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">撰写于 2018-08-21</span>
+      
+        <span id = "post-title-updated">修改于 2018-08-21</span>
+      
+      
+      
+      <span id = "post-title-tags">
+      标签
+      
+      
+        
+        
+        <a href="/tags/redis-php/">redis php</a>
+      
+      </span>
+      
+    </p>
+    
+    <pre><code>ZSET(stored set)
+</code></pre><p>和 set 一样是字符串的集合，不同的是每个元素都会关联一个 double 类型的 score 。实现使用的是 skip list 和 hash table ， skip list 的实现使用的是双线链表。 Score 的主要作用是排序，因此 sorted set 主要用作索引。</p>
+<p>zAdd</p>
+<p>Description</p>
+<p>Adds the specified member with a given score to the sorted set stored at key.</p>
+<p>增加一个或多个元素，如果该元素已经存在，更新它的socre值<br>虽然有序集合有序，但它也是集合，不能重复元素，添加重复元素只会<br>更新原有元素的score值</p>
+<p>Parameters</p>
+<p>key<br>score : double<br>value: string</p>
+<p>Return value</p>
+<p>Long 1 if the element is added. 0 otherwise.<br>Example</p>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 1, ‘val1’); </p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 0, ‘val0’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 5, ‘val5’);</p>
+</blockquote>
+<pre><code>$redis-&gt;zRange(&apos;key&apos;, 0, -1);   // array(val0, val1, val5)
+</code></pre><p>　　</p>
+<p>zRange<br>Description</p>
+<p>Returns a range of elements from the ordered set stored at the specified key, with values in the range [start, end]. start and stop are interpreted as zero-based indices: 0 the first element, 1 the second … -1 the last element, -2 the penultimate …</p>
+<p>取得特定范围内的排序元素,0代表第一个元素,1代表第二个以此类推。-1代表最后一个,-2代表倒数第二个…</p>
+<p>Parameters</p>
+<p>key<br>start: long<br>end: long<br>withscores: bool = false</p>
+<p>Return value</p>
+<p>Array containing the values in specified range.</p>
+<p>Example</p>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key1’, 0, ‘val0’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key1’, 2, ‘val2’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key1’, 10, ‘val10’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zRange(‘key1’, 0, -1); /<em> array(‘val0’, ‘val2’, ‘val10’) </em>/</p>
+</blockquote>
+<pre><code>$redis-&gt;zRange(&apos;key1&apos;, 0, -1, true); /* array(&apos;val0&apos; =&gt; 0, &apos;val2&apos; =&gt; 2, &apos;val10&apos; =&gt; 10) */
+</code></pre><p>　　</p>
+<p>zDelete, zRem<br>Description</p>
+<p>Deletes a specified member from the ordered set.</p>
+<p>从有序集合中删除指定的成员。</p>
+<p>Parameters</p>
+<p>key<br>member</p>
+<p>Return value</p>
+<p>LONG 1 on success, 0 on failure.</p>
+<p>Example</p>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 0, ‘val0’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 2, ‘val2’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 10, ‘val10’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zDelete(‘key’, ‘val2’);</p>
+</blockquote>
+<pre><code>$redis-&gt;zRange(&apos;key&apos;, 0, -1); /* array(&apos;val0&apos;, &apos;val10&apos;) */
+</code></pre><p>　　</p>
+<p>zRevRange<br>Description</p>
+<p>Returns the elements of the sorted set stored at the specified key in the range [start, end] in reverse order. start and stop are interpretated as zero-based indices: 0 the first element, 1 the second … -1 the last element, -2 the penultimate …</p>
+<p>返回key对应的有序集合中指定区间的所有元素。这些元素按照score从高到低的顺序进行排列。对于具有相同的score的元素而言，将会按照递减的字典顺序进行排列。该命令与ZRANGE类似，只是该命令中元素的排列顺序与前者不同。</p>
+<p>Parameters</p>
+<p>key<br>start: long<br>end: long<br>withscores: bool = false</p>
+<p>Return value</p>
+<p>Array containing the values in specified range.</p>
+<p>Example</p>
+<ol>
+<li>$redis-&gt;zAdd(‘key’, 0, ‘val0’);</li>
+<li>$redis-&gt;zAdd(‘key’, 2, ‘val2’);</li>
+<li>$redis-&gt;zAdd(‘key’, 10, ‘val10’);<br> $redis-&gt;zRevRange(‘key’, 0, -1); /<em> array(‘val10’, ‘val2’, ‘val0’) </em>/</li>
+</ol>
+<p>// with scores<br>    $redis-&gt;zRevRange(‘key’, 0, -1, true); /<em> array(‘val10’ =&gt; 10, ‘val2’ =&gt; 2, ‘val0’ =&gt; 0) </em>/
+　　</p>
+<p>zRangeByScore, zRevRangeByScore<br>Description</p>
+<p>Returns the elements of the sorted set stored at the specified key which have scores in the range [start,end]. Adding a parenthesis before start or end excludes it from the range. +inf and -inf are also valid limits. zRevRangeByScore returns the same items in reverse order, when the start and end parameters are swapped.</p>
+<p>返回key对应的有序集合中score介于min和max之间的所有元素（包哈score等于min或者max的元素）。元素按照score从低到高的顺序排列。如果元素具有相同的score，那么会按照字典顺序排列。<br>可选的选项LIMIT可以用来获取一定范围内的匹配元素。如果偏移值较大，有序集合需要在获得将要返回的元素之前进行遍历，因此会增加O(N)的时间复杂度。可选的选项WITHSCORES可以使得在返回元素的同时返回元素的score，该选项自从Redis 2.0版本后可用。</p>
+<p>Parameters</p>
+<p>key<br>start: string<br>end: string<br>options: array</p>
+<p>Two options are available: withscores =&gt; TRUE, and limit =&gt; array($offset, $count)</p>
+<p>Return value</p>
+<p>Array containing the values in specified range.</p>
+<p>Example</p>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 0, ‘val0’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 2, ‘val2’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 10, ‘val10’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zRangeByScore(‘key’, 0, 3); /<em> array(‘val0’, ‘val2’) </em>/</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zRangeByScore(‘key’, 0, 3, array(‘withscores’ =&gt; TRUE); /<em> array(‘val0’ =&gt; 0, ‘val2’ =&gt; 2) </em>/</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zRangeByScore(‘key’, 0, 3, array(‘limit’ =&gt; array(1, 1)); /<em> array(‘val2’ =&gt; 2) </em>/</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zRangeByScore(‘key’, 0, 3, array(‘limit’ =&gt; array(1, 1)); /<em> array(‘val2’) </em>/</p>
+</blockquote>
+<pre><code>$redis-&gt;zRangeByScore(&apos;key&apos;, 0, 3, array(&apos;withscores&apos; =&gt; TRUE, &apos;limit&apos; =&gt; array(1, 1)); /* array(&apos;val2&apos; =&gt; 2) */
+</code></pre><p>　　</p>
+<p>zCount<br>Description</p>
+<p>Returns the number of elements of the sorted set stored at the specified key which have scores in the range [start,end]. Adding a parenthesis before start or end excludes it from the range. +inf and -inf are also valid limits.</p>
+<p>返回key对应的有序集合中介于min和max间的元素的个数。</p>
+<p>Parameters</p>
+<p>key<br>start: string<br>end: string</p>
+<p>Return value</p>
+<p>LONG the size of a corresponding zRangeByScore.</p>
+<p>Example</p>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 0, ‘val0’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 2, ‘val2’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 10, ‘val10’);</p>
+</blockquote>
+<pre><code>$redis-&gt;zCount(&apos;key&apos;, 0, 3); /* 2, corresponding to array(&apos;val0&apos;, &apos;val2&apos;) */
+</code></pre><p>　　</p>
+<p>zRemRangeByScore, zDeleteRangeByScore<br>Description</p>
+<p>Deletes the elements of the sorted set stored at the specified key which have scores in the range [start,end].</p>
+<p>移除key对应的有序集合中scroe位于min和max（包含端点）之间的所哟元素。从2.1.6版本后开始，区间端点min和max可以被排除在外，这和ZRANGEBYSCORE的语法一样。</p>
+<p>Parameters</p>
+<p>key<br>start: double or “+inf” or “-inf” string<br>end: double or “+inf” or “-inf” string</p>
+<p>Return value</p>
+<p>LONG The number of values deleted from the sorted set</p>
+<p>Example</p>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 0, ‘val0’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 2, ‘val2’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 10, ‘val10’);</p>
+</blockquote>
+<pre><code>$redis-&gt;zRemRangeByScore(&apos;key&apos;, 0, 3); /* 2 */
+</code></pre><p>　　</p>
+<p>zRemRangeByRank, zDeleteRangeByRank<br>Description</p>
+<p>Deletes the elements of the sorted set stored at the specified key which have rank in the range [start,end].</p>
+<p>移除key对应的有序集合中rank值介于start和stop之间的所有元素。start和stop均是从0开始的，并且两者均可以是负值。当索引值为负值时，表明偏移值从有序集合中score值最高的元素开始。例如：-1表示具有最高score的元素，而-2表示具有次高score的元素，以此类推。</p>
+<p>Parameters</p>
+<p>key<br>start: LONG<br>end: LONG</p>
+<p>Return value</p>
+<p>LONG The number of values deleted from the sorted set</p>
+<p>Example</p>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 1, ‘one’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 2, ‘two’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 3, ‘three’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zRemRangeByRank(‘key’, 0, 1); /<em> 2 </em>/</p>
+</blockquote>
+<pre><code>$redis-&gt;zRange(&apos;key&apos;, 0, -1, array(&apos;withscores&apos; =&gt; TRUE)); /* array(&apos;three&apos; =&gt; 3) */
+</code></pre><p>　　</p>
+<p>zSize, zCard<br>Description</p>
+<p>Returns the cardinality of an ordered set.</p>
+<p>返回存储在key对应的有序集合中的元素的个数。</p>
+<p>Parameters</p>
+<p>key</p>
+<p>Return value</p>
+<p>Long, the set’s cardinality</p>
+<p>Example</p>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 0, ‘val0’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 2, ‘val2’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 10, ‘val10’);</p>
+</blockquote>
+<pre><code>$redis-&gt;zSize(&apos;key&apos;); /* 3 */
+</code></pre><p>　　</p>
+<p>zScore<br>Description</p>
+<p>Returns the score of a given member in the specified sorted set.</p>
+<p>返回key对应的有序集合中member的score值。如果member在有序集合中不存在，那么将会返回nil。</p>
+<p>Parameters</p>
+<p>key<br>member</p>
+<p>Return value</p>
+<p>Double</p>
+<p>Example</p>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 2.5, ‘val2’);</p>
+</blockquote>
+<pre><code>$redis-&gt;zScore(&apos;key&apos;, &apos;val2&apos;); /* 2.5 */
+</code></pre><p>　　</p>
+<p>zRank, zRevRank<br>Description</p>
+<p>Returns the rank of a given member in the specified sorted set, starting at 0 for the item with the smallest score. zRevRank starts at 0 for the item with the largest score.</p>
+<p>返回key对应的有序集合中member元素的索引值，元素按照score从低到高进行排列。rank值（或index）是从0开始的，这意味着具有最低score值的元素的rank值为0。使用ZREVRANK可以获得从高到低排列的元素的rank（或index）。</p>
+<p>Parameters</p>
+<p>key<br>member</p>
+<p>Return value</p>
+<p>Long, the item’s score.</p>
+<p>Example</p>
+<blockquote>
+<p>$redis-&gt;delete(‘z’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 1, ‘one’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘key’, 2, ‘two’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zRank(‘key’, ‘one’); /<em> 0 </em>/</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zRank(‘key’, ‘two’); /<em> 1 </em>/</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zRevRank(‘key’, ‘one’); /<em> 1 </em>/</p>
+</blockquote>
+<pre><code>$redis-&gt;zRevRank(&apos;key&apos;, &apos;two&apos;); /* 0 */
+</code></pre><p>　　</p>
+<p>zIncrBy<br>Description</p>
+<p>Increments the score of a member from a sorted set by a given amount.</p>
+<p>将key对应的有序集合中member元素的scroe加上increment。如果指定的member不存在，那么将会添加该元素，并且其score的初始值为increment。如果key不存在，那么将会创建一个新的有序列表，其中包含member这一唯一的元素。如果key对应的值不是有序列表，那么将会发生错误。指定的score的值应该是能够转换为数字值的字符串，并且接收双精度浮点数。同时，你也可用提供一个负值，这样将减少score的值。</p>
+<p>Parameters</p>
+<p>key<br>value: (double) value that will be added to the member’s score<br>member</p>
+<p>Return value</p>
+<p>DOUBLE the new value</p>
+<p>Examples</p>
+<ol>
+<li>$redis-&gt;delete(‘key’);</li>
+<li>$redis-&gt;zIncrBy(‘key’, 2.5, ‘member1’); /<em> key or member1 didn’t exist, so member1’s score is to 0 before the 3.increment </em>/</li>
+<li>/<em> and now has the value 2.5  </em>/<br>  $redis-&gt;zIncrBy(‘key’, 1, ‘member1’); /<em> 3.5 </em>/
+　　</li>
+</ol>
+<p>zUnion<br>Description</p>
+<p>Creates an union of sorted sets given in second argument. The result of the union will be stored in the sorted set defined by the first argument. The third optionnel argument defines weights to apply to the sorted sets in input. In this case, the weights will be multiplied by the score of each element in the sorted set before applying the aggregation. The forth argument defines the AGGREGATEoption which specify how the results of the union are aggregated.</p>
+<p>对keys对应的numkeys个有序集合计算合集，并将结果存储在destination中。在传递输入keys之前必须提供输入keys的个数和其它可选参数。在默认情况下，元素的结果score是包含该元素的所有有序集合中score的和。如果使用WEIGHTS选项，你可以对每一个有序集合指定一个操作因子。这意味着每一个有序集合中的每个元素的score在传递给聚合函数之前均会被乘以该因子。当WEIGHTS没有指定时，操作因子默认为1。<br>使用AGGREGATE选项，你可以指定交集中的结果如何被聚合。该选项默认值为SUM，在这种情况下，一个元素的所有score值均会被相加。当选项被设置为MIN或MAX时，结果集合中将会包含一个元素的最大或者最小的score值。如果destination已经存在，那么它将会被重写。</p>
+<p>Parameters</p>
+<p>keyOutput<br>arrayZSetKeys<br>arrayWeights<br>aggregateFunction Either “SUM”, “MIN”, or “MAX”: defines the behaviour to use on duplicate entries during the zUnion.</p>
+<p>Return value</p>
+<p>LONG The number of values in the new sorted set.</p>
+<p>Example</p>
+<blockquote>
+<p>$redis-&gt;delete(‘k1’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;delete(‘k2’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;delete(‘k3’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;delete(‘ko1’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;delete(‘ko2’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;delete(‘ko3’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘k1’, 0, ‘val0’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘k1’, 1, ‘val1’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘k2’, 2, ‘val2’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘k2’, 3, ‘val3’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zUnion(‘ko1’, array(‘k1’, ‘k2’)); /<em> 4, ‘ko1’ =&gt; array(‘val0’, ‘val1’, ‘val2’, ‘val3’) </em>/</p>
+</blockquote>
+<blockquote>
+<p>/<em> Weighted zUnion </em>/</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zUnion(‘ko2’, array(‘k1’, ‘k2’), array(1, 1)); /<em> 4, ‘ko1’ =&gt; array(‘val0’, ‘val1’, ‘val2’, ‘val3’) </em>/</p>
+</blockquote>
+<pre><code>$redis-&gt;zUnion(&apos;ko3&apos;, array(&apos;k1&apos;, &apos;k2&apos;), array(5, 1)); /* 4, &apos;ko1&apos; =&gt; array(&apos;val0&apos;, &apos;val2&apos;, &apos;val3&apos;, &apos;val1&apos;) */
+</code></pre><p>　　</p>
+<p>zInter<br>Description</p>
+<p>Creates an intersection of sorted sets given in second argument. The result of the union will be stored in the sorted set defined by the first argument. The third optionnel argument defines weights to apply to the sorted sets in input. In this case, the weights will be multiplied by the score of each element in the sorted set before applying the aggregation. The forth argument defines the AGGREGATEoption which specify how the results of the union are aggregated.</p>
+<p>计算numkeys个由keys指定的有序集合的交集，并且将结果存储在destination中。在该命令中，在你传递输入keys之前，必须提供输入keys的个数和其它可选的参数。<br>在默认情况下，一个元素的结果score是具有该元素的所有有序集合的score的和。关于WEIGHTS和AGGREGATE选项，可以参看ZUNIONSTORE命令。如果目标已经存在，那么它将会被重写。</p>
+<p>Parameters</p>
+<p>keyOutput<br>arrayZSetKeys<br>arrayWeights<br>aggregateFunction Either “SUM”, “MIN”, or “MAX”: defines the behaviour to use on duplicate entries during the zInter.</p>
+<p>Return value</p>
+<p>LONG The number of values in the new sorted set.</p>
+<p>Example</p>
+<blockquote>
+<p>$redis-&gt;delete(‘k1’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;delete(‘k2’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;delete(‘k3’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;delete(‘ko1’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;delete(‘ko2’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;delete(‘ko3’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;delete(‘ko4’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘k1’, 0, ‘val0’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘k1’, 1, ‘val1’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘k1’, 3, ‘val3’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘k2’, 2, ‘val1’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zAdd(‘k2’, 3, ‘val3’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zInter(‘ko1’, array(‘k1’, ‘k2’));               /<em> 2, ‘ko1’ =&gt; array(‘val1’, ‘val3’) </em>/</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;zInter(‘ko2’, array(‘k1’, ‘k2’), array(1, 1));  /<em> 2, ‘ko2’ =&gt; array(‘val1’, ‘val3’) </em>/</p>
+</blockquote>
+<p>/<em> Weighted zInter </em>/</p>
+<blockquote>
+<p>$redis-&gt;zInter(‘ko3’, array(‘k1’, ‘k2’), array(1, 5), ‘min’); /<em> 2, ‘ko3’ =&gt; array(‘val1’, ‘val3’) </em>/</p>
+</blockquote>
+<pre><code>$redis-&gt;zInter(&apos;ko4&apos;, array(&apos;k1&apos;, &apos;k2&apos;), array(1, 5), &apos;max&apos;); /* 2, &apos;ko4&apos; =&gt; array(&apos;val3&apos;, &apos;val1&apos;) */
+</code></pre><p>　　</p>
+<p>hSet<br>Description</p>
+<p>Adds a value to the hash stored at key. If this value is already in the hash, FALSE is returned.</p>
+<p>添加一个VALUE到HASH中。如果VALUE已经存在于HASH中，则返回FALSE。</p>
+<p>Parameters</p>
+<p>key<br>hashKey<br>value</p>
+<p>Return value</p>
+<p>LONG 1 if value didn’t exist and was added successfully, 0 if the value was already present and was replaced, FALSE if there was an error.</p>
+<p>Example</p>
+<blockquote>
+<p>$redis-&gt;delete(‘h’)</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘key1’, ‘hello’); /<em> 1, ‘key1’ =&gt; ‘hello’ in the hash at “h” </em>/</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hGet(‘h’, ‘key1’); /<em> returns “hello” </em>/</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘key1’, ‘plop’); /<em> 0, value was replaced. </em>/</p>
+</blockquote>
+<pre><code>$redis-&gt;hGet(&apos;h&apos;, &apos;key1&apos;); /* returns &quot;plop&quot; */
+</code></pre><p>　　</p>
+<p>hSetNx<br>Description<br>Adds a value to the hash stored at key only if this field isn’t already in the hash.</p>
+<p>添加一个VALUE到HASH STORE中，如果FIELD不存在。</p>
+<p>Return value</p>
+<p>BOOL TRUE if the field was set, FALSE if it was already present.</p>
+<p>Example</p>
+<blockquote>
+<p>$redis-&gt;delete(‘h’)</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSetNx(‘h’, ‘key1’, ‘hello’); /<em> TRUE, ‘key1’ =&gt; ‘hello’ in the hash at “h” </em>/</p>
+</blockquote>
+<pre><code>$redis-&gt;hSetNx(&apos;h&apos;, &apos;key1&apos;, &apos;world&apos;); /* FALSE, &apos;key1&apos; =&gt; &apos;hello&apos; in the hash at &quot;h&quot;. No change since the field wasn&apos;t replaced. */
+    　　
+</code></pre><p>hGet<br>Description</p>
+<p>Gets a value from the hash stored at key. If the hash table doesn’t exist, or the key doesn’t exist, FALSE is returned.</p>
+<p>取得HASH中的VALUE，如何HASH不存在，或者KEY不存在返回FLASE。</p>
+<p>Parameters</p>
+<p>key<br>hashKey</p>
+<p>Return value</p>
+<p>STRING The value, if the command executed successfully BOOL FALSE in case of failure</p>
+<p>hLen<br>Description</p>
+<p>Returns the length of a hash, in number of items</p>
+<p>取得HASH表的长度。</p>
+<p>Parameters</p>
+<p>key</p>
+<p>Return value</p>
+<p>LONG the number of items in a hash, FALSE if the key doesn’t exist or isn’t a hash.</p>
+<p>Example</p>
+<blockquote>
+<p>$redis-&gt;delete(‘h’)</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘key1’, ‘hello’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘key2’, ‘plop’);</p>
+</blockquote>
+<pre><code>$redis-&gt;hLen(&apos;h&apos;); /* returns 2 */
+</code></pre><p>　　<br>hDel<br>Description</p>
+<p>Removes a value from the hash stored at key. If the hash table doesn’t exist, or the key doesn’t exist, FALSE is returned.</p>
+<p>删除指定的元素。</p>
+<p>Parameters</p>
+<p>key<br>hashKey</p>
+<p>Return value</p>
+<p>BOOL TRUE in case of success, FALSE in case of failure</p>
+<p>hKeys<br>Description</p>
+<p>Returns the keys in a hash, as an array of strings.</p>
+<p>取得HASH表中的KEYS，以数组形式返回。</p>
+<p>Parameters</p>
+<p>Key: key</p>
+<p>Return value</p>
+<p>An array of elements, the keys of the hash. This works like PHP’s array_keys().</p>
+<p>Example</p>
+<blockquote>
+<p>$redis-&gt;delete(‘h’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘a’, ‘x’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘b’, ‘y’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘c’, ‘z’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘d’, ‘t’);</p>
+</blockquote>
+<blockquote>
+<p>var_dump($redis-&gt;hKeys(‘h’));
+        　　</p>
+</blockquote>
+<pre><code>Output:
+
+array(4) {
+  [0]=&gt;
+  string(1) &quot;a&quot;
+  [1]=&gt;
+  string(1) &quot;b&quot;
+  [2]=&gt;
+  string(1) &quot;c&quot;
+  [3]=&gt;
+  string(1) &quot;d&quot;
+}
+</code></pre><p>　　</p>
+<p>The order is random and corresponds to redis’ own internal representation of the set structure.</p>
+<p>hVals<br>Description</p>
+<p>Returns the values in a hash, as an array of strings.</p>
+<p>取得HASH表中所有的VALUE，以数组形式返回。</p>
+<p>Parameters</p>
+<p>Key: key</p>
+<p>Return value</p>
+<p>An array of elements, the values of the hash. This works like PHP’s array_values().</p>
+<p>Example</p>
+<blockquote>
+<p>$redis-&gt;delete(‘h’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘a’, ‘x’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘b’, ‘y’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘c’, ‘z’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘d’, ‘t’);</p>
+</blockquote>
+<blockquote>
+<p>var_dump($redis-&gt;hVals(‘h’));
+    　　</p>
+</blockquote>
+<pre><code>Output:
+
+
+array(4) {
+  [0]=&gt;
+  string(1) &quot;x&quot;
+  [1]=&gt;
+  string(1) &quot;y&quot;
+  [2]=&gt;
+  string(1) &quot;z&quot;
+  [3]=&gt;
+  string(1) &quot;t&quot;
+}
+　　
+</code></pre><p>The order is random and corresponds to redis’ own internal representation of the set structure.</p>
+<p>hGetAll<br>Description</p>
+<p>Returns the whole hash, as an array of strings indexed by strings.</p>
+<p>取得整个HASH表的信息，返回一个以KEY为索引VALUE为内容的数组。</p>
+<p>Parameters</p>
+<p>Key: key</p>
+<p>Return value</p>
+<p>An array of elements, the contents of the hash.</p>
+<p>Example</p>
+<blockquote>
+<p>$redis-&gt;delete(‘h’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘a’, ‘x’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘b’, ‘y’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘c’, ‘z’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘d’, ‘t’);</p>
+</blockquote>
+<blockquote>
+<p>var_dump($redis-&gt;hGetAll(‘h’));
+    　　</p>
+</blockquote>
+<pre><code>Output:
+
+array(4) {
+  [&quot;a&quot;]=&gt;
+  string(1) &quot;x&quot;
+  [&quot;b&quot;]=&gt;
+  string(1) &quot;y&quot;
+  [&quot;c&quot;]=&gt;
+  string(1) &quot;z&quot;
+  [&quot;d&quot;]=&gt;
+  string(1) &quot;t&quot;
+}
+　　
+</code></pre><p>The order is random and corresponds to redis’ own internal representation of the set structure.</p>
+<p>hExists<br>Description</p>
+<p>Verify if the specified member exists in a key.</p>
+<p>验证HASH表中是否存在指定的KEY-VALUE</p>
+<p>Parameters</p>
+<p>key<br>memberKey</p>
+<p>Return value</p>
+<p>BOOL: If the member exists in the hash table, return TRUE, otherwise return FALSE.</p>
+<p>Examples</p>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘a’, ‘x’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hExists(‘h’, ‘a’); /<em>  TRUE </em>/</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hExists(‘h’, ‘NonExistingKey’); /<em> FALSE </em>/
+　　</p>
+</blockquote>
+<p>hIncrBy<br>Description</p>
+<p>Increments the value of a member from a hash by a given amount.</p>
+<p>根据HASH表的KEY，为KEY对应的VALUE自增参数VALUE。</p>
+<p>Parameters</p>
+<p>key<br>member<br>value: (integer) value that will be added to the member’s value</p>
+<p>Return value</p>
+<p>LONG the new value</p>
+<p>Examples</p>
+<blockquote>
+<p>$redis-&gt;delete(‘h’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hIncrBy(‘h’, ‘x’, 2); /<em> returns 2: h[x] = 2 now. </em>/</p>
+</blockquote>
+<pre><code>$redis-&gt;hIncrBy(&apos;h&apos;, &apos;x&apos;, 1); /* h[x] ← 2 + 1. Returns 3 */
+</code></pre><p>　　</p>
+<p>hIncrByFloat<br>Description</p>
+<p>Increments the value of a hash member by the provided float value</p>
+<p>根据HASH表的KEY，为KEY对应的VALUE自增参数VALUE。浮点型Parameters</p>
+<p>key<br>member<br>value: (float) value that will be added to the member’s value</p>
+<p>Return value</p>
+<p>FLOAT the new value</p>
+<p>Examples</p>
+<blockquote>
+<p>$redis-&gt;delete(‘h’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hIncrByFloat(‘h’,’x’, 1.5); /<em> returns 1.5: h[x] = 1.5 now </em>/</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hIncrByFLoat(‘h’, ‘x’, 1.5); /<em> returns 3.0: h[x] = 3.0 now </em>/</p>
+</blockquote>
+<pre><code>$redis-&gt;hIncrByFloat(&apos;h&apos;, &apos;x&apos;, -3.0); /* returns 0.0: h[x] = 0.0 now */
+</code></pre><p>　　</p>
+<p>hMset<br>Description</p>
+<p>Fills in a whole hash. Non-string values are converted to string, using the standard (string) cast. NULL values are stored as empty strings.</p>
+<p>批量填充HASH表。不是字符串类型的VALUE，自动转换成字符串类型。使用标准的值。NULL值将被储存为一个空的字符串。</p>
+<p>Parameters</p>
+<p>key<br>members: key → value array</p>
+<p>Return value</p>
+<p>BOOL</p>
+<p>Examples</p>
+<blockquote>
+<p>$redis-&gt;delete(‘user:1’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hMset(‘user:1’, array(‘name’ =&gt; ‘Joe’, ‘salary’ =&gt; 2000));</p>
+</blockquote>
+<pre><code>$redis-&gt;hIncrBy(&apos;user:1&apos;, &apos;salary&apos;, 100); // Joe earns 100 more now.
+</code></pre><p>　　</p>
+<p>hMGet<br>Description</p>
+<p>Retrieve the values associated to the specified fields in the hash.</p>
+<p>批量取得HASH表中的VALUE。</p>
+<p>Parameters</p>
+<p>key<br>memberKeys Array</p>
+<p>Return value</p>
+<p>Array An array of elements, the values of the specified fields in the hash, with the hash keys as array keys.</p>
+<p>Examples</p>
+<blockquote>
+<p>$redis-&gt;delete(‘h’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘field1’, ‘value1’);</p>
+</blockquote>
+<blockquote>
+<p>$redis-&gt;hSet(‘h’, ‘field2’, ‘value2’);</p>
+</blockquote>
+<pre><code>$redis-&gt;hmGet(&apos;h&apos;, array(&apos;field1&apos;, &apos;field2&apos;)); /* returns array(&apos;field1&apos; =&gt; &apos;value1&apos;, &apos;field2&apos; =&gt; &apos;value2&apos;) */
+</code></pre>
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">显示目录</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">隐藏目录</button>
+  <div class="random-toc">
+    <h2>目录</h2>
+    
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/2018/08/21/git/" class="prev">&larr; 上一篇 git钩子函数</a>
+  
+
+  
+
+  
+    <a href="/2018/08/20/yiistudy/" class="next">下一篇 yiistudy &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
+      
+    </div>
+  </div>
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+           <span style="color:red;font:bold;font-size:8px">蔚泪卿<span>- Gemini 
+      <a href="#"> ~_~  love </a> <a href="#"></a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://oa4s5g4ty.bkt.clouddn.com/76BB844050D495A5B6550649F46F9BEA.png">
+    <p id="description">蔚泪卿</p>
+    <ul class="social-icon">
+  
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+    <script src="https://lib.baomitu.com/jquery-mousewheel/3.1.9/jquery.mousewheel.min.js"></script>
+  
+    <script src="https://static.badapple.top/BadApplePlayer/js/scrollbar.js"></script>
+  
+    <script src="https://static.badapple.top/BadApplePlayer/Player.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["slideLeft2","slideRight2","flash2"],"timer":true,"delay":3000,"shuffle":true,"count":28};
+var unsplashConfig = {"gravity":"north"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+  turnoffBackgroundImage = true;
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+</script>
+</body>
+</html>
+
