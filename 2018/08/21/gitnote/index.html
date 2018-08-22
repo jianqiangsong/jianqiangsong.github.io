@@ -122,14 +122,14 @@ git reset  –hard HEAD^  |  git reset  –hard 版本号    gi...">
   <article id="post">
     <h1>git教程笔记</h1>
     <p class="page-title-sub">
-      <span id = "post-title-date">Created at 2018-08-21</span>
+      <span id = "post-title-date">撰写于 2018-08-21</span>
       
-        <span id = "post-title-updated">Updated at 2018-08-21</span>
+        <span id = "post-title-updated">修改于 2018-08-22</span>
       
       
       
       <span id = "post-title-tags">
-      Tag
+      标签
       
       
         
@@ -164,13 +164,42 @@ git reset  –hard HEAD^  |  git reset  –hard 版本号    gi...">
 <pre><code>git checkout master    git merge dev
 </code></pre><p>移除分支：git branch –d name</p>
 <pre><code>git branch –d name
-</code></pre>
+</code></pre><p>git修改远程仓库地址     </p>
+<pre><code>git remote origin set-url [url]
+</code></pre><p>two</p>
+<pre><code>git remote rm origin   
+git remote add origin [url]
+</code></pre><p>查看远程仓库信息 </p>
+<pre><code>git remote -v   
+</code></pre><p>命令 git remote show [remote-name] 查看某个远程仓库的详细信息,比如要看所克隆的origin 仓库</p>
+<pre><code>git remote show origin  
+</code></pre><ol>
+<li>git init</li>
+<li>git add README.md</li>
+<li>git add .</li>
+<li>git commit -m “first commit”</li>
+<li>git remote add origin <a href="https://github.com/userName/repoName.git" target="_blank" rel="noopener">https://github.com/userName/repoName.git</a></li>
+<li>git push –force origin master</li>
+<li>git push origin master –force   强制推送数据到服务器</li>
+</ol>
+<p>获取主分支</p>
+<ol start="0">
+<li>git fetch origin master</li>
+<li>git rebase tmp   // 修复回退之前版本 git rebase –abort</li>
+<li>git push origin HEAD:master</li>
+<li>git branch -D tmp</li>
+</ol>
+<p>1.x 版本<br><img src="https://images2017.cnblogs.com/blog/709594/201708/709594-20170831012943593-883223078.jpg" alt=""></p>
+<hr>
+<p>2.x 版本</p>
+<p><img src="https://images2017.cnblogs.com/blog/709594/201708/709594-20170831013019483-2138515257.jpg" alt=""> </p>
+
   </article>
   <div class="random-toc-area">
-  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
-  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">显示目录</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">隐藏目录</button>
   <div class="random-toc">
-    <h2>Table of Content</h2>
+    <h2>目录</h2>
     
   </div>
 </div>
@@ -182,7 +211,7 @@ git reset  –hard HEAD^  |  git reset  –hard 版本号    gi...">
   
 
   
-    <a href="/2018/08/21/git/" class="next">Next post git钩子函数 &rarr;</a>
+    <a href="/2018/08/21/git/" class="next">下一篇 git钩子函数 &rarr;</a>
   
 </nav>
 
