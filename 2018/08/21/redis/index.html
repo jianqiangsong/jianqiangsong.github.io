@@ -16,11 +16,14 @@
   
   
   
-    <meta name="description" content="ZSET(stored set)
-和 set 一样是字符串的集合，不同的是每个元素都会关联一个 double 类型的 score 。实现使用的是 skip list 和 hash table ， skip list 的实现使用的是双线链表。 Score 的主要作用是排序，因此 sorted set 主要用作索引。
-zAdd
-Description
-Adds the specified mem...">
+    <meta name="description" content="demo  批量获取符合要求key值并且
+
+$redisObj = new RedisCluster();
+$redis=$redisObj-&gt;getInstance();   
+$keys=$redis-&gt;keys(‘sess_’.’*’);
+$result = $redis-&gt;mget($keys);
+$res=array_filter($result);
+p($res...">
   
   <title>redis [ 建强 ]</title>
   
@@ -130,7 +133,7 @@ Adds the specified mem...">
     <p class="page-title-sub">
       <span id = "post-title-date">Created at 2018-08-21</span>
       
-        <span id = "post-title-updated">Updated at 2018-08-21</span>
+        <span id = "post-title-updated">Updated at 2018-08-29</span>
       
       
       
@@ -146,7 +149,16 @@ Adds the specified mem...">
       
     </p>
     
-    <pre><code>ZSET(stored set)
+    <pre><code>demo  批量获取符合要求key值并且
+</code></pre><ol>
+<li>$redisObj = new RedisCluster();</li>
+<li>$redis=$redisObj-&gt;getInstance();   </li>
+<li>$keys=$redis-&gt;keys(‘sess_’.’*’);</li>
+<li>$result = $redis-&gt;mget($keys);</li>
+<li>$res=array_filter($result);</li>
+<li>p($res);</li>
+</ol>
+<pre><code>ZSET(stored set)
 </code></pre><p>和 set 一样是字符串的集合，不同的是每个元素都会关联一个 double 类型的 score 。实现使用的是 skip list 和 hash table ， skip list 的实现使用的是双线链表。 Score 的主要作用是排序，因此 sorted set 主要用作索引。</p>
 <p>zAdd</p>
 <p>Description</p>
