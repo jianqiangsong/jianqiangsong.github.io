@@ -16,14 +16,14 @@
   
   
   
-    <meta name="description" content="demo  批量获取符合要求key值并且
+    <meta name="description" content="demo  批量获取符合要求key值
 
 $redisObj = new RedisCluster();
 $redis=$redisObj-&gt;getInstance();   
 $keys=$redis-&gt;keys(‘sess_’.’*’);
 $result = $redis-&gt;mget($keys);
 $res=array_filter($result);
-p($res...">
+p($res);...">
   
   <title>redis [ 建强 ]</title>
   
@@ -149,7 +149,7 @@ p($res...">
       
     </p>
     
-    <pre><code>demo  批量获取符合要求key值并且
+    <pre><code>demo  批量获取符合要求key值
 </code></pre><ol>
 <li>$redisObj = new RedisCluster();</li>
 <li>$redis=$redisObj-&gt;getInstance();   </li>
