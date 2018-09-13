@@ -20,7 +20,7 @@
   
     <meta name="description" content="蔚泪卿">
   
-  <title>Tag: git [ 建强 ]</title>
+  <title>标签: git [ 建强 ]</title>
   
   
     <link rel="shortcut icon" href="/favicon.ico">
@@ -129,9 +129,9 @@
       
       <div class="post-title-item">
   
-  <a href="/2018/08/21/git/">
+  <a href="/2018/08/21/gitnote/">
   
-    git钩子函数
+    git教程笔记
   
   </a>
   <p class="page-title-sub">
@@ -139,7 +139,7 @@
     
     
     <span id = "post-title-tags">
-    Tag
+    标签
     
     
       
@@ -156,10 +156,6 @@
   </p>
   
 </div>
-      
-    
-      
-      
       
     
       
@@ -171,9 +167,9 @@
       
       <div class="post-title-item">
   
-  <a href="/2018/08/21/gitnote/">
+  <a href="/2018/08/21/git/">
   
-    git教程笔记
+    git钩子函数
   
   </a>
   <p class="page-title-sub">
@@ -181,7 +177,7 @@
     
     
     <span id = "post-title-tags">
-    Tag
+    标签
     
     
       
@@ -198,6 +194,10 @@
   </p>
   
 </div>
+      
+    
+      
+      
       
     
       
@@ -373,6 +373,17 @@ $(".video-container iframe").each(function(i){
   $(this).parent().html(plyrContainer);
 });
 plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+
+//默认给线上的为https协议  判断本地的测试环境和线上的区别
+!function(){
+	var protocol = window.location.protocol;
+	var domain   = document.domain;
+	if(domain=='localhost') return true;
+	if (protocol == "http:")
+	{
+	   window.location.href = window.location.href.replace("http","https");
+    }
+	}();
 </script>
 </body>
 </html>

@@ -131,14 +131,14 @@ p($res);...">
   <article id="post">
     <h1>redis</h1>
     <p class="page-title-sub">
-      <span id = "post-title-date">Created at 2018-08-21</span>
+      <span id = "post-title-date">撰写于 2018-08-21</span>
       
-        <span id = "post-title-updated">Updated at 2018-08-29</span>
+        <span id = "post-title-updated">修改于 2018-08-29</span>
       
       
       
       <span id = "post-title-tags">
-      Tag
+      标签
       
       
         
@@ -789,10 +789,10 @@ array(4) {
 </code></pre>
   </article>
   <div class="random-toc-area">
-  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
-  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">显示目录</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">隐藏目录</button>
   <div class="random-toc">
-    <h2>Table of Content</h2>
+    <h2>目录</h2>
     
   </div>
 </div>
@@ -800,13 +800,13 @@ array(4) {
   
 <nav id="pagination">
   
-    <a href="/2018/08/21/git/" class="prev">&larr; Prev post git钩子函数</a>
+    <a href="/2018/08/21/git/" class="prev">&larr; 上一篇 git钩子函数</a>
   
 
   
 
   
-    <a href="/2018/08/20/yiistudy/" class="next">Next post yiistudy &rarr;</a>
+    <a href="/2018/08/20/yiistudy/" class="next">下一篇 yiistudy &rarr;</a>
   
 </nav>
 
@@ -954,6 +954,17 @@ $(".video-container iframe").each(function(i){
   $(this).parent().html(plyrContainer);
 });
 plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+
+//默认给线上的为https协议  判断本地的测试环境和线上的区别
+!function(){
+	var protocol = window.location.protocol;
+	var domain   = document.domain;
+	if(domain=='localhost') return true;
+	if (protocol == "http:")
+	{
+	   window.location.href = window.location.href.replace("http","https");
+    }
+	}();
 </script>
 </body>
 </html>

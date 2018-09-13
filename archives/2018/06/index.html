@@ -24,7 +24,7 @@
   
     <meta name="description" content="蔚泪卿">
   
-  <title>Archives: 6/2018: 2018 [ 建强 ]</title>
+  <title>归档: 6/2018: 2018 [ 建强 ]</title>
   
   
     <link rel="shortcut icon" href="/favicon.ico">
@@ -113,13 +113,13 @@
     
 
   <div id="recent-posts">
-    <h1>Archives
+    <h1>归档
     
       <span class="posts-count">
-      Total
+      共
       2
       
-        posts
+        文章
       
       </span>
     
@@ -144,10 +144,10 @@
         <h3 class="archive-year-title">2018
         
           <span class="posts-count">
-          Total
+          共
           2
           
-            posts
+            文章
           
           </span>
         
@@ -185,7 +185,7 @@
   <p class="page-title-sub">
     <span id = "post-title-date">6-29</span>
     
-    <span id = "post-title-categories">Category
+    <span id = "post-title-categories">分类
     
     
       
@@ -346,6 +346,17 @@ $(".video-container iframe").each(function(i){
   $(this).parent().html(plyrContainer);
 });
 plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+
+//默认给线上的为https协议  判断本地的测试环境和线上的区别
+!function(){
+	var protocol = window.location.protocol;
+	var domain   = document.domain;
+	if(domain=='localhost') return true;
+	if (protocol == "http:")
+	{
+	   window.location.href = window.location.href.replace("http","https");
+    }
+	}();
 </script>
 </body>
 </html>

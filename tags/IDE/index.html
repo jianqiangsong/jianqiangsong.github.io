@@ -20,7 +20,7 @@
   
     <meta name="description" content="蔚泪卿">
   
-  <title>Tag: IDE [ 建强 ]</title>
+  <title>标签: IDE [ 建强 ]</title>
   
   
     <link rel="shortcut icon" href="/favicon.ico">
@@ -111,12 +111,6 @@
       
       
         
-      
-      
-    
-      
-      
-        
           
         
       
@@ -133,7 +127,7 @@
     
     
     <span id = "post-title-tags">
-    Tag
+    标签
     
     
       
@@ -160,11 +154,17 @@
     
       
       
+        
+      
       
     
       
       
         
+      
+      
+    
+      
       
       
     
@@ -341,6 +341,17 @@ $(".video-container iframe").each(function(i){
   $(this).parent().html(plyrContainer);
 });
 plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+
+//默认给线上的为https协议  判断本地的测试环境和线上的区别
+!function(){
+	var protocol = window.location.protocol;
+	var domain   = document.domain;
+	if(domain=='localhost') return true;
+	if (protocol == "http:")
+	{
+	   window.location.href = window.location.href.replace("http","https");
+    }
+	}();
 </script>
 </body>
 </html>
