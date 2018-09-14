@@ -2,8 +2,6 @@
 
 
 
-  
-
 
 
 
@@ -18,9 +16,11 @@
   
   
   
-    <meta name="description" content="蔚泪卿">
+    <meta name="description" content="php 开发常用函数
+正则查找循环数组符合条件的元素
+1234567$pattern = '/^[0-9]/';  $subject = array('weuy','r3ui','76as83','s','0ck9');$arr = preg_grep($pattern,$subject);parse_str("id=23&amp;name=John%20Adams", $myArray);...">
   
-  <title>Category: Blog [ 建强 ]</title>
+  <title>php_array [ 建强 ]</title>
   
   
     <link rel="shortcut icon" href="/favicon.ico">
@@ -41,6 +41,15 @@
 <body>
 <div class="side-navigate hide-area">
   
+  
+    <div class="item next">
+      <a href="/2018/09/14/win10/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        win10 常用快捷键大全
+      </div>
+    </div>
   
 </div>
 <div id="outer-container" class="hide-area">
@@ -105,110 +114,56 @@
     <div id="content-inner">
       
       
-  <article id="page">
-    
+  <article id="post">
+    <h1>php_array</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">Created at 2018-09-14</span>
       
-        <h1 class="center-title">
-          Category
-          
-        </h1>
-      
-    
-    <ul class="category-list">
-      
-        <li class="category-list-item">
-        
-          <a class="active" href="/categories/Blog/">Blog</a>
-        
-          <span class="category-list-count">1</span>
-        </li>
-      
-    </ul>
-    
+        <span id = "post-title-updated">Updated at 2018-09-14</span>
       
       
       
-    
-      
-      
-      
-    
+      <span id = "post-title-tags">
+      Tag
       
       
         
-          
         
+        <a href="/tags/php/">php</a>
       
+      </span>
       
-      <div class="post-title-item">
-  
-  <a href="/2018/06/29/index/">
-  
-    个人标签
-  
-  </a>
-  <p class="page-title-sub">
-    <span id = "post-title-date">6-29</span>
+    </p>
     
-    <span id = "post-title-categories">Category
-    
-    
-      
-      
-      <a href="/categories/Blog/">Blog</a>
-    
-    </span>
-    
-    
-    
-      <br>
-      
-      
-    
-  </p>
-  
-</div>
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
-      
-      
-      
-    
+    <pre><code>php 开发常用函数
+</code></pre><p>正则查找循环数组符合条件的元素</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$pattern = <span class="string">'/^[0-9]/'</span>;  </span><br><span class="line">$subject = <span class="keyword">array</span>(<span class="string">'weuy'</span>,<span class="string">'r3ui'</span>,<span class="string">'76as83'</span>,<span class="string">'s'</span>,<span class="string">'0ck9'</span>);</span><br><span class="line">$arr = preg_grep($pattern,$subject);</span><br><span class="line"></span><br><span class="line">parse_str(<span class="string">"id=23&amp;name=John%20Adams"</span>, $myArray);  <span class="comment">//变量解析成数组</span></span><br><span class="line">number_format(<span class="number">10000000000</span>,<span class="number">3</span>);                    <span class="comment">//10,000,000,000.000 输出格式化</span></span><br></pre></td></tr></table></figure>
+
   </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    
+  </div>
+</div>
 
   
+<nav id="pagination">
+  
+
+  
+
+  
+    <a href="/2018/09/14/win10/" class="next">Next post win10 常用快捷键大全 &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
 
       
       
@@ -307,6 +262,8 @@ var unsplashConfig = {"gravity":"north"};
 var turnoffBackgroundImage = false;
 
 
+
+  turnoffBackgroundImage = true;
 
 
 var backgroundColor = "34495E";
