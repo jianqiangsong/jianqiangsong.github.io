@@ -1,0 +1,474 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html lang="">
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <meta name="author" content="Gemini">
+  
+  
+  
+  
+    <meta name="description" content="thinkphp 5.1.31 版本 説明 ：
+
+执行模块目录及文件生成的时候  ：  php think  build –config builds.php  读取的时根目录下的build.php 这个文件框架默认给的 build.php  这个文件名重名了 导致类重名影响  修改这个文件名即可  
+
+命令行生成文件 控制器   php think make:controller  api...">
+  
+  <title>笔记 [ 建强 ]</title>
+  
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+  <link rel="stylesheet" href="/css/random.css">
+<link rel="stylesheet" href="/css/vegas.min.css">
+<link rel="stylesheet" href="/css/highlight-railscasts.css">
+<link rel="stylesheet" href="/css/jquery.fancybox.css">
+<link rel="stylesheet" href="/css/iconfont/iconfont.css">
+<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css">
+<link rel="stylesheet" href="/css/plyr.css">
+<link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/4.2.0/css/font-awesome.min.css">
+  
+  <script>XlchKey="gemini";</script>
+</head>
+
+<body>
+<div class="side-navigate hide-area">
+  
+    <div class="item prev">
+      <a href="/2018/09/03/eclipse/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        eclipse
+      </div>
+    </div>
+  
+  
+    <div class="item next">
+      <a href="/2018/08/24/tcpip/">
+        <div class="item-icon"></div>
+      </a>
+      <div class="item-title">
+        tcpip
+      </div>
+    </div>
+  
+</div>
+<div id="outer-container" class="hide-area">
+<div id="container">
+  <div id="menu-outer" class="slide-down">
+    <div id="menu-inner">
+      <div id="brand">
+        
+        <a onClick="openUserCard()">
+          <img id="avatar" src="http://jianqiang123.top/img/va.png"/>
+          <div id="homelink">建强</div>
+        </a>
+      </div>
+      <div id="menu-list">
+        <ul>
+        
+        
+          
+            <li>
+          
+            <a href="/index.html">主页</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/archives">分类</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/tags">标签</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="/about">关于我</a>
+            
+          </li>
+        
+          
+            <li>
+          
+            <a href="https://github.com/">Github</a>
+            
+          </li>
+        
+        </ul>
+      </div>
+      <div id="show-menu">
+        <button>Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+      
+  <article id="post">
+    <h1>笔记</h1>
+    <p class="page-title-sub">
+      <span id = "post-title-date">Created at 2018-09-03</span>
+      
+        <span id = "post-title-updated">Updated at 2019-03-11</span>
+      
+      
+      
+      <span id = "post-title-tags">
+      Tag
+      
+      
+        
+        
+        <a href="/tags/IDE/">IDE</a>
+      
+      </span>
+      
+    </p>
+    
+    <p>thinkphp 5.1.31 版本 説明 ：</p>
+<ol>
+<li><p>执行模块目录及文件生成的时候  ：  php think  build –config builds.php  读取的时根目录下的build.php 这个文件<br>框架默认给的 build.php  这个文件名重名了 导致类重名影响  修改这个文件名即可  </p>
+</li>
+<li><p>命令行生成文件 控制器   php think make:controller  api/test</p>
+</li>
+</ol>
+<p>##@window 下 cmd 窗口用管理员打开执行命令</p>
+<p>window 测试安装mongodb服务  扩展php.pecl官方提供扩展<br>mongod –config E:\mongodb-win32-x86_64-2008plus-ssl-4.0.5\mongodb.conf –install –serviceName MongoDB</p>
+<p>通过配置文件的形式 启动mongodb<br>注意注册服务名称 serviceName MongoDB<br>安装后在资源管理器中可以看到该服务</p>
+<ul>
+<li>MongoDB后台启动 ： net start MongoDB</li>
+<li><p>MongoDB停止服务 ： net stop  MongoDB</p>
+</li>
+<li><p>mongodb exception in initAndListen: 12596 old lock file, terminating解决方法</p>
+</li>
+<li><p>exception in initAndListen: 12596 old lock file, terminating</p>
+</li>
+<li><p>解决命令      mongod.exe –repair</p>
+</li>
+</ul>
+<p> window memcached 启动服务  如果是php7版本 github寻找PHP扩展dll<br>进入.exe 文件执行目录</p>
+<ul>
+<li>memcached.exe -d install  安装window服务 </li>
+<li>memcached.exe -d strat -m 512   启动配置大小为512m内存大小</li>
+<li>memcached.exe -d stop 停止memcached 服务</li>
+</ul>
+<ol start="2">
+<li>在进入redis的安装目录   php pecl 官网寻找redis扩展</li>
+<li>输入：redis-server –service-install redis.windows.conf –loglevel verbose ( 安装redis服务 )</li>
+<li>输入：redis-server –service-start ( 启动服务 )</li>
+<li>输入：redis-server –service-stop （停止服务）</li>
+</ol>
+<p> redis-cluster 集群模式报错  知识点汇总 ：</p>
+<p> 在redis3.0之前 redis服务不支持集群模式,只能通过客户端分片<br> redis事物支持不完整  不支持回滚<br> redis3.0  可以集群 特点一致性hash crc32算法  </p>
+<p>redis-cluster<br>-</p>
+<ol>
+<li>redis官网推出，可线性扩展到1000个节点</li>
+<li>无中心架构</li>
+<li>一致性哈希思想</li>
+<li>客户端直连redis服务，免去了proxy代理的损耗</li>
+</ol>
+<p> Redis适用场景<br>-</p>
+<ul>
+<li>KV存储</li>
+<li>缓存（ttl LRU…）</li>
+<li>Lru是redis达到maxmemory之后，可选的key删除策略。</li>
+<li>消息中间件</li>
+<li>分布式锁</li>
+<li>……</li>
+</ul>
+<p>ubnatu 16.04  配置说明<br> 虚拟机安装 配置</p>
+<p>创建虚拟机模式必须选择桥接模式 安装虚拟机 </p>
+<p>  首先保证vm软件必须有网络编辑中添加桥接网络  并且修改选项为  controller模式<br>  另外在以太网右键查看是否存在安装的属性模块  biridge模块的网络是否开启了</p>
+<p>  重新启动虚拟机进行<br>  /etc/network/interface 的静态ip编辑<br>  然后进行  /etc/resovl.conf DNS的解析编辑  </p>
+<p> 最后重启网卡 进行虚拟机与宿主机ping 然后进行ping外网</p>
+<p>由于xshell远程连接ubuntu是通过ssh协议的，所以，需要给ubuntu安装ssh服务器。<br>ubuntu安装ssh服务器<br>sudo apt-get install openssh-server<br>sudo service ssh restart</p>
+<p>hhvm 的安装  <a href="https://blog.csdn.net/u014222645/article/details/25822563" title="hhvm 的文章" target="_blank" rel="noopener">https://blog.csdn.net/u014222645/article/details/25822563</a></p>
+<p>64位虚拟机 安装依赖gcc 等 </p>
+<p>github地址仓库拉去源码包 进行安装</p>
+<p><a href="https://www.cnblogs.com/zongfa/p/7808807.html" target="_blank" rel="noopener">https://www.cnblogs.com/zongfa/p/7808807.html</a> </p>
+<p><a href="https://blog.csdn.net/u013177568/article/details/62432622" title="memcached 安装的地址 " target="_blank" rel="noopener">https://blog.csdn.net/u013177568/article/details/62432622 </a></p>
+<p><a href="https://www.cnblogs.com/guaiyouyisi/p/8074439.html" title="phpredis" target="_blank" rel="noopener">https://www.cnblogs.com/guaiyouyisi/p/8074439.html</a></p>
+<p>#ubnatu 16.04  安装redis-server服务端   </p>
+<pre><code>sudo apt-get install  redis-server  
+</code></pre><p>安装完成会自动启动服务</p>
+<pre><code>ps -aux|grep redis |或者  netstat -nlt|grep 6379
+</code></pre><p>通过redis-cli 进入客户端</p>
+<p>redis的配置文件 </p>
+<pre><code>sudo vi /etc/redis/redis.conf
+</code></pre><p>让Redis服务器被远程访问<br>默认情况下，Redis服务器不允许远程访问，只允许本机访问，所以我们需要设置打开远程访问的功能。<br>用vi打开Redis服务器的配置文件redis.conf</p>
+<pre><code>sudo vi /etc/redis/redis.conf
+注释bind
+#bind 127.0.0.1
+</code></pre><p>重启redis 服务</p>
+<pre><code>sudo /etc/init.d/redis-server restart
+</code></pre><p>#ubnatu 16.04 安装php-redis 操作客户端扩展 </p>
+<p>下载phpredis扩展文件，如果服务器没有安装git服务，下载之前，首先安装一下git服务，这里不做描述，自行百度</p>
+<ol>
+<li>git clone <a href="https://github.com/phpredis/phpredis.git" target="_blank" rel="noopener">https://github.com/phpredis/phpredis.git</a></li>
+<li>移动文件<br>  mv phpredis(此处是你clone下的文件) /etc/phpredis</li>
+<li><p>安装<br>   cd /etc/phpredis</p>
+</li>
+<li><p>如果phpize命令没有响应，可能是没有安装php-dev。我目前安装的是php7.0，键入命令<br>sudo apt-get install php7.0-dev</p>
+</li>
+<li>然后再phpize编译依次键入命令<br>phpize</li>
+<li>./configure</li>
+<li>make</li>
+<li>make install</li>
+<li>修改配置文件</li>
+<li>vim /etc/php/7.0/apache2/php.ini</li>
+<li>/php_shmop（查找字符串）</li>
+<li>extension=/etc/phpredis/modules/redis.so</li>
+</ol>
+<p>#ubnatu 16.04 安装memcached服务</p>
+<p>全局安装服务 </p>
+<pre><code>sudo apt-get install memcached 
+</code></pre><p>启动服务：</p>
+<pre><code>memcached -d -m 128 -p 11111 -u root 
+</code></pre><ul>
+<li>-p 监听的端口 </li>
+<li>-l 连接的IP地址, 默认是本机 </li>
+<li>-d start 启动memcached服务 </li>
+<li>-d restart 重起memcached服务 </li>
+<li>-d stop|shutdown 关闭正在运行的memcached服务 </li>
+<li>-d install 安装memcached服务 </li>
+<li>-d uninstall 卸载memcached服务 </li>
+<li>-u 以的身份运行 (仅在以root运行的时候有效) </li>
+<li>-m 最大内存使用，单位MB。默认64MB </li>
+<li>-M 内存耗尽时返回错误，而不是删除项 </li>
+<li>-c 最大同时连接数，默认是1024 </li>
+<li>-f 块大小增长因子，默认是1.25-n 最小分配空间，key+value+flags默认是48 </li>
+<li>-h 显示帮助  </li>
+</ul>
+<p>附：<a href="https://blog.csdn.net/u013177568/article/details/62432622" title="memcached 服务安装" target="_blank" rel="noopener">https://blog.csdn.net/u013177568/article/details/62432622 </a></p>
+<p>#ubuntu16.04安装PHP7.0的laravel必须扩展   </p>
+<p><a href="https://blog.csdn.net/rainth/article/details/79537247" title="ubnatu  php7.0的扩展 " target="_blank" rel="noopener">https://blog.csdn.net/rainth/article/details/79537247</a></p>
+<p>#Ubuntu 下安装 PHP7 扩展 Memcached</p>
+<h1 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h1><pre><code>sudo apt-get install memcached
+
+sudo apt-get install libmemcached11 libmemcached-dev libmemcachedutil2 
+</code></pre><p>#安装 memcached 扩展</p>
+<h1 id="查看-php7-0-的软件包"><a href="#查看-php7-0-的软件包" class="headerlink" title="查看 php7.-0 的软件包"></a>查看 php7.-0 的软件包</h1><ol>
+<li>apt-cache search -n php7.0</li>
+<li>下载 memcached 到本地仓库，并切换到 php7 版本</li>
+<li>git clone <a href="https://github.com/php-memcached-dev/php-memcached.git" target="_blank" rel="noopener">https://github.com/php-memcached-dev/php-memcached.git</a></li>
+<li>cd php-memcached/</li>
+<li>git checkout php7</li>
+<li>执行配置文件，注意：这一步可能会出错，原因可能是缺少 memcached 依赖，　安装上面安装便可</li>
+<li>./configure –disable-memcached-sasl </li>
+<li>编译安装</li>
+<li>make &amp;&amp; sudo make install</li>
+<li>查看 memcached 插件是否被添加</li>
+<li>/etc/php/7.0/mods-available/memcached.ini</li>
+<li>重启 php</li>
+<li><p>sudo systemctl restart php7.0-fpm</p>
+<p>执行 phpinfo.php 查看 memcached 是否被添加</p>
+</li>
+</ol>
+<h3 id="附属-https-www-jianshu-com-p-8a2a60732c18"><a href="#附属-https-www-jianshu-com-p-8a2a60732c18" class="headerlink" title="附属 https://www.jianshu.com/p/8a2a60732c18"></a>附属 <a href="https://www.jianshu.com/p/8a2a60732c18" title="memcached 扩展安装" target="_blank" rel="noopener">https://www.jianshu.com/p/8a2a60732c18</a></h3>
+  </article>
+  <div class="random-toc-area">
+  <button class="btn-hide-toc btn-hide-toc-show" style="display: none" onclick="TOCToggle()">Show TOC</button>
+  <button class="btn-hide-toc btn-hide-toc-hide" onclick="TOCToggle()">Hide TOC</button>
+  <div class="random-toc">
+    <h2>Table of Content</h2>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装依赖"><span class="toc-text">安装依赖</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#查看-php7-0-的软件包"><span class="toc-text">查看 php7.-0 的软件包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#附属-https-www-jianshu-com-p-8a2a60732c18"><span class="toc-text">附属 https://www.jianshu.com/p/8a2a60732c18</span></a></li></ol></li></ol></li></ol>
+  </div>
+</div>
+
+  
+<nav id="pagination">
+  
+    <a href="/2018/09/03/eclipse/" class="prev">&larr; Prev post eclipse</a>
+  
+
+  
+
+  
+    <a href="/2018/08/24/tcpip/" class="next">Next post tcpip &rarr;</a>
+  
+</nav>
+
+  <!-- JiaThis Button BEGIN -->
+
+<!-- JiaThis Button END -->
+
+
+      
+      
+    </div>
+  </div>
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+           <span style="color:red;font:bold;font-size:8px">蔚泪卿<span>- Gemini 
+      <a href="#"> ~_~  love </a> <a href="#"></a>
+      <br>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<div id="user-card">
+  <div class="center-field">
+    <img class="avatar" src="http://jianqiang123.top/img/va.png">
+    <p id="description">蔚泪卿</p>
+    <ul class="social-icon">
+  
+  
+</ul>
+  </div>
+</div>
+
+
+<div id="btn-view">Hide</div>
+
+<script>
+// is trigger analytics / tongji script
+var isIgnoreHost = false;
+
+if(window && window.location && window.location.host) {
+  isIgnoreHost = ["localhost","127.0.0.1"].some(function(address){
+    return 0 === window.location.host.indexOf(address);
+  });
+}
+
+var isTriggerAnalytics = !( true && isIgnoreHost );
+
+</script>
+
+
+
+
+  
+  
+    <script src="/js/jquery-2.2.3.min.js"></script>
+  
+    <script src="/js/vegas.min.js"></script>
+  
+    <script src="/js/random.js"></script>
+  
+    <script src="/js/highlight.pack.js"></script>
+  
+    <script src="/js/jquery.mousewheel.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox.pack.js"></script>
+  
+    <script src="/js/jquery.fancybox-thumbs.js"></script>
+  
+    <script src="/js/plyr.js"></script>
+  
+    <script src="https://lib.baomitu.com/jquery-mousewheel/3.1.9/jquery.mousewheel.min.js"></script>
+  
+    <script src="https://static.badapple.top/BadApplePlayer/js/scrollbar.js"></script>
+  
+    <script src="https://static.badapple.top/BadApplePlayer/Player.js"></script>
+  
+
+<script>
+
+  // fancybox
+  var backgroundImages = [];
+  
+  $('#post').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('fancybox-thumb')) return;
+      var alt = this.alt || this.title;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'post' + i);
+    });
+  });
+  $(".fancybox").fancybox();
+
+var vegasConfig = {"preload­Image":true,"transition":["slideLeft2","slideRight2","flash2"],"timer":true,"delay":3000,"shuffle":true,"count":28};
+var unsplashConfig = {"gravity":"north"};
+// is show background images
+var turnoffBackgroundImage = false;
+
+
+
+  turnoffBackgroundImage = true;
+
+
+var backgroundColor = "34495E";
+
+$(".fancybox-thumb").fancybox({
+  prevEffect: 'none',
+  nextEffect: 'none',
+  helpers: {
+    title: {
+      type: 'outside'
+    },
+    thumbs: {
+      width: 50,
+      height: 50
+    }
+  }
+});
+
+// show video with plyr
+$(".video-container iframe").each(function(i){
+  var url = $(this).attr('src');
+  var id = url.split('/').pop();
+  var plyrContainer = document.createElement('div');
+  plyrContainer.className = 'plyr';
+  var plyrElement = document.createElement('div');
+  plyrElement.dataset.videoId = id;
+  switch(true) {
+    case url.search('youtube.com') >= 0:
+      plyrElement.dataset.type = 'youtube';
+      break;
+    case url.search('vimeo.com') >= 0:
+      plyrElement.dataset.type = 'vimeo';
+      break;
+    default:
+      return;
+  };
+  plyrContainer.appendChild(plyrElement);
+  $(this).parent().html(plyrContainer);
+});
+plyr.setup('.plyr', {iconUrl: '/css/sprite.svg'});
+
+ //线上bug
+!function(){
+	var protocol = window.location.protocol;
+	var domain   = document.domain;
+	if(domain=='localhost')
+	{
+	   return true;
+	}
+	//如果是线上环境
+	if (protocol == "http:")
+	{
+	   window.location.href = window.location.href.replace("http","https");
+    }
+	}();
+</script>
+</body>
+</html>
+
