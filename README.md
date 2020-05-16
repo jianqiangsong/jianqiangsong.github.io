@@ -1,2 +1,0 @@
-# jianqiangsong.github.io
-blog
