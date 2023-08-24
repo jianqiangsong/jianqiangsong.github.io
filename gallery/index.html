@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>gallery | Gemini`s wiki</title>
+    
+    
+        <meta name="keywords" content="知识库" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta property="og:type" content="website">
+<meta property="og:title" content="gallery">
+<meta property="og:url" content="http://example.com/gallery/index.html">
+<meta property="og:site_name" content="Gemini&#96;s wiki">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-05T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-08-17T09:14:57.351Z">
+<meta property="article:author" content="Gemini">
+<meta property="article:tag" content="知识库">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Gemini`s wiki" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Gemini`s wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+                    <a class="main-nav-link" href="/gallery">相册</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                    <td><a class="main-nav-link" href="/gallery">相册</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            docker
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/">docker笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            git
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/git/">git笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            golang
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/go/">go语言</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            windows wsl
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/wsl/">wsl2使用</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/linux/">linux常用基础命令</a></li>  <li class="file"><a href="/2023/07/18/linux-1/">linux笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mongodb
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            常用
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mongodb/">mongodb笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mysql
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mysql/">mysql</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            openai
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            大语言模型
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/08/16/openai/">openai 图片使用demo</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            php
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            hyperf
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/hyperf/">hyperf</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            phpstrom
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/ps/">工具</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            yii
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/19/yii/">yii 请求头</a></li>  <li class="file"><a href="/2023/07/28/yii2/">yii2</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/20/link/">外链文章</a></li>  <li class="file"><a href="/2023/07/21/ioc/">ioc</a></li>  <li class="file"><a href="/2023/08/08/%E5%87%BD%E6%95%B0/">函数</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/php/">php</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/python/">python笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            redis
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/redis/">redis笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            前端
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            hexo
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/08/16/hexo/">博客构建同步仓库</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            vue
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%89%8D%E7%AB%AF/">vue笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            生活
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            记录
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E8%A3%85%E4%BF%AE/">装修</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2023/08/24/test/pass/">备忘录</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            面试
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            总结
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E9%9D%A2%E8%AF%95/">面试总结</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            项目
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">项目笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><!-- 增加相册显示的特效样式 -->
+<style>
+    .photo {
+        padding: 0 40px!important;
+        display: inline-block;
+        position: relative;
+        transition: all .6s;
+    }
+    .biaotiss {
+        padding: 8px 10px;
+        color: #4c4c4e;
+        text-align: center;
+        font-weight: 400;
+        font-size: 18px;
+    }
+    .img-item {
+        padding: .2rem;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 1px 2px 2px 0 #aaa;
+        transition: all .4s cubic-bezier(.63,.15,.03,1.12);
+        margin-bottom: 20px;
+    }
+    .photo:nth-child(odd) {
+        transform: rotateZ(-5deg);
+    }
+    .photo:nth-child(even) {
+        transform: rotateZ(5deg);
+    }
+    .text_des{
+        position: absolute;
+        width: 92%;
+        height: 100%;
+        top: 0;
+        color: #000;
+        overflow: hidden;
+    }
+    .text_des h3{
+        margin: 5px 0 8px 0px;
+        right: 40px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+        position: absolute;
+        top: 10%;
+        font-style: italic;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        /*transform: translateX(200px);  */
+    }
+    .text_des p{
+        left: 15px;
+        position: absolute;
+        top: 50%;
+        /*    transform: translateX(-200px);
+            transition-delay: 0.2s;    */
+    }
+    .my-gallery .photo img {
+        border-radius: 10px;
+        height: 240px;
+    }
+    .card .card-content {
+        padding: 24px 24px 24px 24px;
+    }
+    .miaoshus {
+        padding: 20px;
+        border: 1px dashed #e6e6e6;
+        color: #969696;
+        position: relative;
+        display: inline-block;
+        width: 95%;
+        background: #fbfbfb50;
+        border-radius: 10px;
+        font-size: 16px;
+        margin: 12px auto;
+    }
+    body.dark .miaoshus {
+        background: 0 0;
+        border: 1px dashed #888;
+    }
+    .img-item {
+        transition: all 0.4s ease-out;
+    }
+    .img-item a img{
+        opacity: 1;
+        transition: all 0.4s ease-out;
+    }
+    .img-item a:hover img{
+        opacity: 0.8;
+    }
+    .biaotiss {
+        font-family: MV Boli;
+    }
+    .miaoshus .title {
+        font-family: MV Boli;
+    }
+    /*大屏幕下(桌面类)的样式*/
+    @media only screen and (min-width: 993px) {
+        .text_des h3{
+            transform: translateX(200px);
+        }
+        .text_des p{
+            transform: translateX(-200px);
+            transition-delay: 0.2s;
+        }
+        .animate-text {
+            opacity: 0;
+            transition: all 0.6s ease-in-out;
+        }
+    }
+    /*小屏幕下(桌面类)的样式*/
+    @media only screen and (max-width: 500px) {
+        .my-gallery .photo img {
+            height: 186px;
+        }
+    }
+
+</style>
+<main class="content">
+    <div class="container chip-container">
+        <div class="card">
+            <div class="card-content">
+                <div class="tag-title center-align">
+                    <div class="miaoshus">
+                        <div class="title center-align">“ 光影流年 ”</div>
+                        “ 这里有光影流年，还有两朵穿衣裳的云，相拥在明天的河岸。”
+                    </div>
+                </div>
+                <div class="my-gallery">
+                    <div class="row">
+                        
+                            
+                            
+                                
+                                
+                                    <div class="photo col s12 m6 l4">
+                                        <div class="img-item">
+                                            <a href="./个人照片">
+                                                <img src="/loading.svg" data-src="/images/originals/0/0040E83F-1CEB-4E4C-A11E-98BE000B965C.jpeg" class="responsive-img" alt="img"+0 />
+                                                <div class="biaotiss">“ 个人照片 ”<br>“ 2017-10 ”</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                
+                            
+                                
+                                
+                                    <div class="photo col s12 m6 l4">
+                                        <div class="img-item">
+                                            <a href="./生活">
+                                                <img src="/loading.svg" data-src="/images/originals/0/0040E83F-1CEB-4E4C-A11E-98BE000B965C.jpeg" class="responsive-img" alt="img"+1 />
+                                                <div class="biaotiss">“ 生活 ”<br>“ 2018-10 ”</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                
+                            
+                                
+                                
+                                    <div class="photo col s12 m6 l4">
+                                        <div class="img-item">
+                                            <a href="./生活记录">
+                                                <img src="/loading.svg" data-src="/images/originals/0/0040E83F-1CEB-4E4C-A11E-98BE000B965C.jpeg" class="responsive-img" alt="img"+2 />
+                                                <div class="biaotiss">“ 生活记录 ”<br>“ 2018-10 ”</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                
+                            
+                                
+                                
+                                    <div class="photo col s12 m6 l4">
+                                        <div class="img-item">
+                                            <a href="./记录">
+                                                <img src="/loading.svg" data-src="/images/originals/0/0040E83F-1CEB-4E4C-A11E-98BE000B965C.jpeg" class="responsive-img" alt="img"+3 />
+                                                <div class="biaotiss">“ 记录 ”<br>“ 2018-10 ”</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                
+                            
+                                
+                                
+                                    <div class="photo col s12 m6 l4">
+                                        <div class="img-item">
+                                            <a href="./随笔">
+                                                <img src="/loading.svg" data-src="/images/originals/0/0040E83F-1CEB-4E4C-A11E-98BE000B965C.jpeg" class="responsive-img" alt="img"+4 />
+                                                <div class="biaotiss">“ 随笔 ”<br>“ 2018-10 ”</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                
+                            
+                                
+                                
+                                    <div class="photo col s12 m6 l4">
+                                        <div class="img-item">
+                                            <a href="./广州">
+                                                <img src="/loading.svg" data-src="/images/originals/0/0040E83F-1CEB-4E4C-A11E-98BE000B965C.jpeg" class="responsive-img" alt="img"+5 />
+                                                <div class="biaotiss">“ 广州 ”<br>“ 2018-10 ”</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                
+                            
+                                
+                                
+                                    <div class="photo col s12 m6 l4">
+                                        <div class="img-item">
+                                            <a href="./广州2">
+                                                <img src="/loading.svg" data-src="/images/originals/0/0040E83F-1CEB-4E4C-A11E-98BE000B965C.jpeg" class="responsive-img" alt="img"+6 />
+                                                <div class="biaotiss">“ 广州2 ”<br>“ 2018-10 ”</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                
+                            
+                                
+                                
+                                    <div class="photo col s12 m6 l4">
+                                        <div class="img-item">
+                                            <a href="./广州3">
+                                                <img src="/loading.svg" data-src="/images/originals/0/0040E83F-1CEB-4E4C-A11E-98BE000B965C.jpeg" class="responsive-img" alt="img"+7 />
+                                                <div class="biaotiss">“ 广州3 ”<br>“ 2018-10 ”</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                
+                            
+                                
+                                
+                                    <div class="photo col s12 m6 l4">
+                                        <div class="img-item">
+                                            <a href="./广州4">
+                                                <img src="/loading.svg" data-src="/images/originals/0/0040E83F-1CEB-4E4C-A11E-98BE000B965C.jpeg" class="responsive-img" alt="img"+8 />
+                                                <div class="biaotiss">“ 广州4 ”<br>“ 2018-10 ”</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                
+                            
+                                
+                                
+                                    <div class="photo col s12 m6 l4">
+                                        <div class="img-item">
+                                            <a href="./广州5">
+                                                <img src="/loading.svg" data-src="/images/originals/0/0040E83F-1CEB-4E4C-A11E-98BE000B965C.jpeg" class="responsive-img" alt="img"+9 />
+                                                <div class="biaotiss">“ 广州5 ”<br>“ 2018-10 ”</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                
+                            
+                                
+                                
+                                    <div class="photo col s12 m6 l4">
+                                        <div class="img-item">
+                                            <a href="./广州2">
+                                                <img src="/loading.svg" data-src="/images/originals/0/0040E83F-1CEB-4E4C-A11E-98BE000B965C.jpeg" class="responsive-img" alt="img"+10 />
+                                                <div class="biaotiss">“ 广州6 ”<br>“ 2018-10 ”</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                
+                            
+                                
+                                
+                                    <div class="photo col s12 m6 l4">
+                                        <div class="img-item">
+                                            <a href="./广州7">
+                                                <img src="/loading.svg" data-src="/images/originals/0/0040E83F-1CEB-4E4C-A11E-98BE000B965C.jpeg" class="responsive-img" alt="img"+11 />
+                                                <div class="biaotiss">“ 广州7 ”<br>“ 2018-10 ”</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                
+                            
+                                
+                                
+                                    <div class="photo col s12 m6 l4">
+                                        <div class="img-item">
+                                            <a href="./广州2">
+                                                <img src="/loading.svg" data-src="/images/originals/0/0040E83F-1CEB-4E4C-A11E-98BE000B965C.jpeg" class="responsive-img" alt="img"+12 />
+                                                <div class="biaotiss">“ 广州8 ”<br>“ 2018-10 ”</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                
+                            
+                                
+                                
+                                    <div class="photo col s12 m6 l4">
+                                        <div class="img-item">
+                                            <a href="./广州9">
+                                                <img src="/loading.svg" data-src="/images/originals/0/0040E83F-1CEB-4E4C-A11E-98BE000B965C.jpeg" class="responsive-img" alt="img"+13 />
+                                                <div class="biaotiss">“ 广州9 ”<br>“ 2018-10 ”</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                
+                            
+                                
+                                
+                                    <div class="photo col s12 m6 l4">
+                                        <div class="img-item">
+                                            <a href="./广州10">
+                                                <img src="/loading.svg" data-src="/images/originals/0/0040E83F-1CEB-4E4C-A11E-98BE000B965C.jpeg" class="responsive-img" alt="img"+14 />
+                                                <div class="biaotiss">“ 广州10 ”<br>“ 2018-10 ”</div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                
+                            
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            start()
+            $(window).on('scroll', function(){
+                start();
+            })
+            function start(){
+                //.not('[data-isLoaded]')选中已加载的图片不需要重新加载
+                $('.container img').not('[data-isLoaded]').each(function(){
+                    var $node = $(this)
+                    if( isShow($node) ){
+                        loadImg($node);
+                    }
+                });
+            }
+            //判断一个元素是不是出现在窗口(视野)
+            function isShow($node){
+                return $node.offset().top <= $(window).height() + $(window).scrollTop();
+            }
+            //加载图片
+            function loadImg($img){
+                //.attr(值)
+                //.attr(属性名称,值)
+                $img.attr('src', $img.attr('data-src')); //把data-src的值 赋值给src
+                $img.attr('data-isLoaded', 1);//已加载的图片做标记
+            }
+        </script>
+</main>
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Gemini &copy; 2023 
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
