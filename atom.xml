@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-08-24T01:26:59.944Z</updated>
+  <updated>2023-08-30T02:06:30.176Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>yii3</title>
+    <link href="http://example.com/2023/08/28/yii/yii3/"/>
+    <id>http://example.com/2023/08/28/yii/yii3/</id>
+    <published>2023-08-28T08:00:04.000Z</published>
+    <updated>2023-08-30T02:06:30.176Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    <category term="php" scheme="http://example.com/categories/php/"/>
+    
+    <category term="yii" scheme="http://example.com/categories/php/yii/"/>
+    
+    
+    <category term="php" scheme="http://example.com/tags/php/"/>
+    
+    <category term="yii" scheme="http://example.com/tags/yii/"/>
+    
+  </entry>
   
   <entry>
     <title>备忘录</title>
@@ -42,8 +70,8 @@
   
   <entry>
     <title>博客构建同步仓库</title>
-    <link href="http://example.com/2023/08/16/hexo/"/>
-    <id>http://example.com/2023/08/16/hexo/</id>
+    <link href="http://example.com/2023/08/16/%E5%B7%A5%E5%85%B7/hexo/"/>
+    <id>http://example.com/2023/08/16/%E5%B7%A5%E5%85%B7/hexo/</id>
     <published>2023-08-16T00:53:39.000Z</published>
     <updated>2023-08-16T00:58:23.819Z</updated>
     
@@ -68,8 +96,8 @@
   
   <entry>
     <title>openai 图片使用demo</title>
-    <link href="http://example.com/2023/08/16/openai/"/>
-    <id>http://example.com/2023/08/16/openai/</id>
+    <link href="http://example.com/2023/08/16/%E5%B7%A5%E5%85%B7/openai/"/>
+    <id>http://example.com/2023/08/16/%E5%B7%A5%E5%85%B7/openai/</id>
     <published>2023-08-16T00:44:03.000Z</published>
     <updated>2023-08-16T00:58:51.837Z</updated>
     
@@ -94,8 +122,8 @@
   
   <entry>
     <title>函数</title>
-    <link href="http://example.com/2023/08/08/%E5%87%BD%E6%95%B0/"/>
-    <id>http://example.com/2023/08/08/%E5%87%BD%E6%95%B0/</id>
+    <link href="http://example.com/2023/08/08/php/%E5%87%BD%E6%95%B0/"/>
+    <id>http://example.com/2023/08/08/php/%E5%87%BD%E6%95%B0/</id>
     <published>2023-08-08T01:37:23.000Z</published>
     <updated>2023-08-08T02:08:19.833Z</updated>
     
@@ -122,12 +150,12 @@
   
   <entry>
     <title>yii2</title>
-    <link href="http://example.com/2023/07/28/yii2/"/>
-    <id>http://example.com/2023/07/28/yii2/</id>
+    <link href="http://example.com/2023/07/28/yii/yii2/"/>
+    <id>http://example.com/2023/07/28/yii/yii2/</id>
     <published>2023-07-28T08:00:04.000Z</published>
-    <updated>2023-07-28T08:02:31.393Z</updated>
+    <updated>2023-08-30T01:49:10.326Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>yii2 干货知识集合</p><p><code>https://github.com/forecho/awesome-yii2</code></p><p><a href="https://github.com/forecho/awesome-yii2">链接地址</a></p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>yii2 干货知识集合</p><p><code>https://github.com/forecho/awesome-yii2</code></p><p><a href="https://github.com/forecho/awesome-yii2">链接地址</a></p><p>件一共有15个与加密解密（&amp;编码）相关的公共方法</p></p><ol><li>encryptByPassword</li><li>encryptByKey</li><li>decryptByPassword</li><li>decryptByKey</li><li>hkdf</li><li>pbkdf2</li><li>hashData</li><li>validateData</li><li>generateRandomKey</li><li>generateRandomString</li><li>generatePasswordHash</li><li>validatePassword</li><li>compareString</li><li>maskToken</li><li>unmaskToken</li></ol><p>我想有一些你一定没见过，没关系，我们一一去了解。</p><h2>generateRandomString</h2><p>之所以先说<strong>generateRandomString</strong>是因为它最常用，起码我是这样。</p><pre><code class="php">public function generateRandomString($length = 32)&#123;...&#125;</code></pre><p>生成一个随机的字符串，参数$length代表这个字符串的长度，默认32位。值得说明的是这个字符串的取值为范围是[A-Za-z0-9_-]。</p><h2>generatePasswordHash &amp; validatePassword</h2><p>generatePasswordHash &amp; validatePassword经常被用来加密用户密码以及对密码是否正确的验证，自从MD5可能被碰撞后，我们用yii2开发应用的时候，generatePasswordHash函数对密码进行加密就成为首选了，它调用了crypt函数。</p><p>一般用法如下</p><pre><code class="php">// 使用generatePasswordHash为用户的密码加密，$hash存储到库中$hash = Yii::$app-&gt;getSecurity()-&gt;generatePasswordHash($password);<p>&#x2F;&#x2F; 使用validatePassword对密码进行验证<br>if(Yii::$app-&gt;getSecurity()-&gt;validatePassword($password, $hash))&#123;<br>&#x2F;&#x2F; 密码正确<br>&#125;else&#123;<br>&#x2F;&#x2F; 密码错误<br>&#125;</code></pre></p><h2>generateRandomKey</h2><p>和<strong>generateRandomString</strong>类似，生成一个随机的串，参数为长度，默认为32位，区别在于<strong>generateRandomKey</strong>生成的不是ASCII。</p><p>简单的说 <strong>generateRandomString</strong> 约等于 base64_encode(<strong>generateRandomKey</strong>)。</p><h2>encryptByPassword &amp; decryptByPassword</h2><p>编码和解码函数，使用一个秘钥对数据进行编码，然后通过此秘钥在对编码后的数据进行解码。</p><p>例子</p><pre><code class="php">$dat = Yii::$app-&gt;security-&gt;encryptByPassword("hello","3166886");echo Yii::$app-&gt;security-&gt;encryptByPassword($dat,"3166886");// hello</code></pre><p><strong>要注意，通过上面得到的编码后的数据不是ASCII，可以通过base64_encode和base64_decode在外层包装下。</strong></p><h2>encryptByKey &amp;  decryptByKey</h2><p>同样是一组编码和解码函数，比通过密码的方式要快。函数声明为</p><pre><code class="php">public function encryptByKey($data, $inputKey, $info = null)&#123;&#125;<p>public function decryptByKey($data, $inputKey, $info &#x3D; null)&#123;&#125;</code></pre></p><p>encryptByKey &amp;  decryptByKey 存在着第三个参数，比如我们可以传递会员的ID等，这样此信息将和$inputKey一起作为加密解密的钥匙。</p><h2>hkdf</h2><p><strong>使用标准的 HKDF 算法从给定的输入键中导出一个键。</strong>在PHP7+使用的是hash_hkdf方法，小于PHP7使用hash_hmac方法。</p><h2>pbkdf2</h2><p>使用标准的 PBKDF2 算法从给定的密码导出一个密钥。该方法可以用来进行密码加密，不过yii2有更好的密码加密方案 <strong>generatePasswordHash</strong>。</p><h2>hashData和validateData</h2><p>有的时候为了防止内容被篡改，我们需要对数据进行一些标记，hashData和validateData就是完成这个任务的组合。</p><p><strong>hashData</strong> 用来对原始数据进行<strong>加数据前缀</strong>，比如如下代码</p><pre><code class="php">$result = Yii::$app-&gt;security-&gt;hashData("hello",'123456',false);// ac28d602c767424d0c809edebf73828bed5ce99ce1556f4df8e223faeec60eddhello</code></pre><p>你看到了在hello的前面多了一组字符，这组字符会随着原始数据的不同而变化。这样我们就对数据进行了特殊的防止篡改标记，接下来是validateData上场了。</p><p>注意：hashData的第三个参数代表生成的哈希值是否为原始二进制格式. 如果为<code>false</code>, 则会生成小写十六进制数字.</p><p><strong>validateData</strong> 对已经加了数据前缀的数据进行检测，如下代码</p><pre><code class="php">$result = Yii::$app-&gt;security-&gt;validateData("ac28d602c767424d0c809edebf73828bed5ce99ce1556f4df8e223faeec60eddhello",'123456',false);// hello</code></pre><p>如果返回了原始的字符串则表示验证通过，否则会返回假。</p><p>validateData 函数的第三个参数应该与使用  <strong>hashData()</strong> 生成数据时的值相同. 它指示数据中的散列值是否是二进制格式. 如果为<code>false</code>, 则表示散列值仅由小写十六进制数字组成. 将生成十六进制数字.</p><h2>compareString</h2><p>可防止时序攻击的字符串比较，用法非常简单。</p><pre><code class="php">Yii::$app-&gt;security-&gt;compareString("abc",'abc');</code></pre><p>结果为真则相等，否则不相等。</p><p>那么什么是时序攻击那？我来举一个简单的例子。</p><pre><code class="php">if($code == Yii::$app-&gt;request-&gt;get('code'))&#123;<p>&#125;</code></pre></p><p>上面的比较逻辑，两个字符串是从第一位开始逐一进行比较的，发现不同就立即返回 false，那么通过计算返回的速度就知道了大概是哪一位开始不同的，这样就实现了电影中经常出现的按位破解密码的场景。</p><p>而使用 compareString 比较两个字符串，无论字符串是否相等，函数的时间消耗是恒定的，这样可以有效的防止时序攻击。</p><h2>maskToken &amp;&amp; unmaskToken</h2><p>maskToken用于掩盖真实token且不可以压缩，同一个token最后生成了不同的随机令牌，在yii2的csrf功能上就使用了maskToken，原理并不复杂，我们看下源码。</p><pre><code class="php">public function maskToken($token)&#123;    $mask = $this-&gt;generateRandomKey(StringHelper::byteLength($token));    return StringHelper::base64UrlEncode($mask . ($mask ^ $token));&#125;</code></pre><p>而unmaskToken目的也很明确，用于得到被maskToken掩盖的token。</p><p>接下来我们看一个例子代码</p><pre><code class="php">$token = Yii::$app-&gt;security-&gt;maskToken("123456");echo Yii::$app-&gt;security-&gt;unmaskToken($token);// 结果为 123456</code></pre><p>最后我们总结下</p><ul><li>加密/解密: encryptByKey()、decryptByKey()、 encryptByPassword() 和 decryptByPassword()；</li><li>使用标准算法的密钥推导: pbkdf2() 和 hkdf();</li><li>防止数据篡改: hashData() 和 validateData();</li><li>密码验证: generatePasswordHash() 和 validatePassword()</li>]]></content>
     
     
       
@@ -150,8 +178,8 @@
   
   <entry>
     <title>ioc</title>
-    <link href="http://example.com/2023/07/21/ioc/"/>
-    <id>http://example.com/2023/07/21/ioc/</id>
+    <link href="http://example.com/2023/07/21/php/ioc/"/>
+    <id>http://example.com/2023/07/21/php/ioc/</id>
     <published>2023-07-21T01:29:46.000Z</published>
     <updated>2023-07-21T01:34:43.237Z</updated>
     
@@ -178,12 +206,12 @@
   
   <entry>
     <title>外链文章</title>
-    <link href="http://example.com/2023/07/20/link/"/>
-    <id>http://example.com/2023/07/20/link/</id>
+    <link href="http://example.com/2023/07/20/%E5%B7%A5%E5%85%B7/link/"/>
+    <id>http://example.com/2023/07/20/%E5%B7%A5%E5%85%B7/link/</id>
     <published>2023-07-20T08:31:45.000Z</published>
-    <updated>2023-07-24T10:02:53.357Z</updated>
+    <updated>2023-08-29T09:59:15.024Z</updated>
     
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><code>第三方外链</code></p><p><a href="http://easy-tips.tigerb.cn/">easy-tips</a></p>]]></content>
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><code>第三方外链</code></p><p><a href="http://easy-tips.tigerb.cn/">easy-tips</a></p><p><a href="https://github.com/samdark">yii2</a></p>]]></content>
     
     
       
@@ -204,8 +232,8 @@
   
   <entry>
     <title>yii 请求头</title>
-    <link href="http://example.com/2023/07/19/yii/"/>
-    <id>http://example.com/2023/07/19/yii/</id>
+    <link href="http://example.com/2023/07/19/yii/yii/"/>
+    <id>http://example.com/2023/07/19/yii/yii/</id>
     <published>2023-07-19T05:58:15.000Z</published>
     <updated>2023-07-19T06:06:08.165Z</updated>
     
@@ -232,8 +260,8 @@
   
   <entry>
     <title>装修</title>
-    <link href="http://example.com/2023/07/18/%E8%A3%85%E4%BF%AE/"/>
-    <id>http://example.com/2023/07/18/%E8%A3%85%E4%BF%AE/</id>
+    <link href="http://example.com/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE/"/>
+    <id>http://example.com/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE/</id>
     <published>2023-07-18T07:49:03.000Z</published>
     <updated>2023-07-18T07:50:52.537Z</updated>
     
@@ -258,8 +286,8 @@
   
   <entry>
     <title>go语言</title>
-    <link href="http://example.com/2023/07/18/go/"/>
-    <id>http://example.com/2023/07/18/go/</id>
+    <link href="http://example.com/2023/07/18/golang/go/"/>
+    <id>http://example.com/2023/07/18/golang/go/</id>
     <published>2023-07-18T06:32:25.000Z</published>
     <updated>2023-07-20T06:04:32.450Z</updated>
     
@@ -284,8 +312,8 @@
   
   <entry>
     <title>项目笔记</title>
-    <link href="http://example.com/2023/07/18/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/"/>
-    <id>http://example.com/2023/07/18/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/</id>
+    <link href="http://example.com/2023/07/18/%E6%97%A5%E5%B8%B8%E9%A1%B9%E7%9B%AE%E5%A4%87%E6%B3%A8/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/"/>
+    <id>http://example.com/2023/07/18/%E6%97%A5%E5%B8%B8%E9%A1%B9%E7%9B%AE%E5%A4%87%E6%B3%A8/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/</id>
     <published>2023-07-18T06:26:21.000Z</published>
     <updated>2023-07-18T06:27:44.272Z</updated>
     
@@ -308,8 +336,8 @@
   
   <entry>
     <title>工具</title>
-    <link href="http://example.com/2023/07/18/ps/"/>
-    <id>http://example.com/2023/07/18/ps/</id>
+    <link href="http://example.com/2023/07/18/%E5%B7%A5%E5%85%B7/ps/"/>
+    <id>http://example.com/2023/07/18/%E5%B7%A5%E5%85%B7/ps/</id>
     <published>2023-07-18T06:14:55.000Z</published>
     <updated>2023-07-18T07:52:52.946Z</updated>
     
@@ -334,8 +362,8 @@
   
   <entry>
     <title>hyperf</title>
-    <link href="http://example.com/2023/07/18/hyperf/"/>
-    <id>http://example.com/2023/07/18/hyperf/</id>
+    <link href="http://example.com/2023/07/18/php/hyperf/"/>
+    <id>http://example.com/2023/07/18/php/hyperf/</id>
     <published>2023-07-18T06:13:00.000Z</published>
     <updated>2023-07-18T06:30:26.122Z</updated>
     
@@ -362,8 +390,8 @@
   
   <entry>
     <title>wsl2使用</title>
-    <link href="http://example.com/2023/07/18/wsl/"/>
-    <id>http://example.com/2023/07/18/wsl/</id>
+    <link href="http://example.com/2023/07/18/%E5%B7%A5%E5%85%B7/wsl/"/>
+    <id>http://example.com/2023/07/18/%E5%B7%A5%E5%85%B7/wsl/</id>
     <published>2023-07-18T06:05:57.000Z</published>
     <updated>2023-07-18T06:08:22.163Z</updated>
     
@@ -390,8 +418,8 @@
   
   <entry>
     <title>vue笔记</title>
-    <link href="http://example.com/2023/07/18/%E5%89%8D%E7%AB%AF/"/>
-    <id>http://example.com/2023/07/18/%E5%89%8D%E7%AB%AF/</id>
+    <link href="http://example.com/2023/07/18/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF/"/>
+    <id>http://example.com/2023/07/18/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF/</id>
     <published>2023-07-18T01:10:56.000Z</published>
     <updated>2023-07-18T01:11:49.220Z</updated>
     
@@ -414,8 +442,8 @@
   
   <entry>
     <title>面试总结</title>
-    <link href="http://example.com/2023/07/18/%E9%9D%A2%E8%AF%95/"/>
-    <id>http://example.com/2023/07/18/%E9%9D%A2%E8%AF%95/</id>
+    <link href="http://example.com/2023/07/18/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95/"/>
+    <id>http://example.com/2023/07/18/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95/</id>
     <published>2023-07-18T01:10:02.000Z</published>
     <updated>2023-07-18T01:10:28.173Z</updated>
     
@@ -440,8 +468,8 @@
   
   <entry>
     <title>git笔记</title>
-    <link href="http://example.com/2023/07/18/git/"/>
-    <id>http://example.com/2023/07/18/git/</id>
+    <link href="http://example.com/2023/07/18/%E5%B7%A5%E5%85%B7/git/"/>
+    <id>http://example.com/2023/07/18/%E5%B7%A5%E5%85%B7/git/</id>
     <published>2023-07-18T01:07:28.000Z</published>
     <updated>2023-08-04T09:48:54.517Z</updated>
     
@@ -466,8 +494,8 @@
   
   <entry>
     <title>python笔记</title>
-    <link href="http://example.com/2023/07/18/python/"/>
-    <id>http://example.com/2023/07/18/python/</id>
+    <link href="http://example.com/2023/07/18/python/python/"/>
+    <id>http://example.com/2023/07/18/python/python/</id>
     <published>2023-07-18T01:07:18.000Z</published>
     <updated>2023-07-18T07:41:38.882Z</updated>
     
@@ -490,8 +518,8 @@
   
   <entry>
     <title>docker笔记</title>
-    <link href="http://example.com/2023/07/18/docker/"/>
-    <id>http://example.com/2023/07/18/docker/</id>
+    <link href="http://example.com/2023/07/18/docker/docker/"/>
+    <id>http://example.com/2023/07/18/docker/docker/</id>
     <published>2023-07-18T01:07:08.000Z</published>
     <updated>2023-07-18T06:11:19.521Z</updated>
     
@@ -511,32 +539,6 @@
     
     
     <category term="docker" scheme="http://example.com/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>redis笔记</title>
-    <link href="http://example.com/2023/07/18/redis/"/>
-    <id>http://example.com/2023/07/18/redis/</id>
-    <published>2023-07-18T01:07:04.000Z</published>
-    <updated>2023-07-18T01:08:59.849Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla</summary>
-      
-    
-    
-    
-    <category term="redis" scheme="http://example.com/categories/redis/"/>
-    
-    <category term="笔记" scheme="http://example.com/categories/redis/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="redis" scheme="http://example.com/tags/redis/"/>
     
   </entry>
   

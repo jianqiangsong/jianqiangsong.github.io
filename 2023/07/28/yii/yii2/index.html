@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>yii2 | Gemini`s wiki</title>
+    
+    
+        <meta name="keywords" content="php,yii" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="yii2 干货知识集合 https:&#x2F;&#x2F;github.com&#x2F;forecho&#x2F;awesome-yii2 链接地址 件一共有15个与加密解密（&amp;编码）相关的公共方法  encryptByPassword encryptByKey decryptByPassword decryptByKey hkdf pbkdf2 hashData validateData generateRandomKey">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yii2">
+<meta property="og:url" content="http://example.com/2023/07/28/yii/yii2/index.html">
+<meta property="og:site_name" content="Gemini&#96;s wiki">
+<meta property="og:description" content="yii2 干货知识集合 https:&#x2F;&#x2F;github.com&#x2F;forecho&#x2F;awesome-yii2 链接地址 件一共有15个与加密解密（&amp;编码）相关的公共方法  encryptByPassword encryptByKey decryptByPassword decryptByKey hkdf pbkdf2 hashData validateData generateRandomKey">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-28T08:00:04.000Z">
+<meta property="article:modified_time" content="2023-08-30T01:49:10.326Z">
+<meta property="article:author" content="Gemini">
+<meta property="article:tag" content="php">
+<meta property="article:tag" content="yii">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Gemini`s wiki" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Gemini`s wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+                    <a class="main-nav-link" href="/gallery">相册</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                    <td><a class="main-nav-link" href="/gallery">相册</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            docker
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/docker/">docker笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            git
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/git/">git笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            golang
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/golang/go/">go语言</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            windows wsl
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/wsl/">wsl2使用</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/linux/">linux常用基础命令</a></li>  <li class="file"><a href="/2023/07/18/docker/linux-1/">linux笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mongodb
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            常用
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mongo/mongodb/">mongodb笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mysql
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mysql/mysql/">mysql</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            openai
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            大语言模型
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/08/16/%E5%B7%A5%E5%85%B7/openai/">openai 图片使用demo</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            php
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            hyperf
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/php/hyperf/">hyperf</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            phpstrom
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/ps/">工具</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            yii
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/19/yii/yii/">yii 请求头</a></li>  <li class="file active"><a href="/2023/07/28/yii/yii2/">yii2</a></li>  <li class="file"><a href="/2023/08/28/yii/yii3/">yii3</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/20/%E5%B7%A5%E5%85%B7/link/">外链文章</a></li>  <li class="file"><a href="/2023/07/21/php/ioc/">ioc</a></li>  <li class="file"><a href="/2023/08/08/php/%E5%87%BD%E6%95%B0/">函数</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/yii/php/">php</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/python/python/">python笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            redis
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/redis/redis/">redis笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            前端
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            hexo
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/08/16/%E5%B7%A5%E5%85%B7/hexo/">博客构建同步仓库</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            vue
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF/">vue笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            生活
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            记录
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE/">装修</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2023/08/24/test/pass/">备忘录</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            面试
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            总结
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95/">面试总结</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            项目
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E6%97%A5%E5%B8%B8%E9%A1%B9%E7%9B%AE%E5%A4%87%E6%B3%A8/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">项目笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-yii/yii2" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/php/">php</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/php/yii/">yii</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/php/" rel="tag">php</a>, <a class="tag-link-link" href="/tags/yii/" rel="tag">yii</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2023/07/28/yii/yii2/">
+            <time datetime="2023-07-28T08:00:04.000Z" itemprop="datePublished">2023-07-28</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            yii2
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">generateRandomString</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">generatePasswordHash &amp; validatePassword</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">generateRandomKey</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">encryptByPassword &amp; decryptByPassword</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">encryptByKey &amp;  decryptByKey</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">6.</span> <span class="toc-text">hkdf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">7.</span> <span class="toc-text">pbkdf2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">8.</span> <span class="toc-text">hashData和validateData</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">9.</span> <span class="toc-text">compareString</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">10.</span> <span class="toc-text">maskToken &amp;&amp; unmaskToken</span></a></li></ol>
+                </div>
+            
+        
+        
+            <p>yii2 干货知识集合</p>
+<p><code>https://github.com/forecho/awesome-yii2</code></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/forecho/awesome-yii2">链接地址</a></p>
+<p>件一共有15个与加密解密（&amp;编码）相关的公共方法</p></p>
+<ol>
+<li>encryptByPassword</li>
+<li>encryptByKey</li>
+<li>decryptByPassword</li>
+<li>decryptByKey</li>
+<li>hkdf</li>
+<li>pbkdf2</li>
+<li>hashData</li>
+<li>validateData</li>
+<li>generateRandomKey</li>
+<li>generateRandomString</li>
+<li>generatePasswordHash</li>
+<li>validatePassword</li>
+<li>compareString</li>
+<li>maskToken</li>
+<li>unmaskToken</li>
+</ol>
+<p>我想有一些你一定没见过，没关系，我们一一去了解。</p>
+<h2>generateRandomString</h2>
+<p>之所以先说<strong>generateRandomString</strong>是因为它最常用，起码我是这样。</p>
+<pre><code class="php">public function generateRandomString($length = 32)&#123;...&#125;</code></pre>
+<p>生成一个随机的字符串，参数$length代表这个字符串的长度，默认32位。值得说明的是这个字符串的取值为范围是[A-Za-z0-9_-]。</p>
+<h2>generatePasswordHash &amp; validatePassword</h2>
+<p>generatePasswordHash &amp; validatePassword经常被用来加密用户密码以及对密码是否正确的验证，自从MD5可能被碰撞后，我们用yii2开发应用的时候，generatePasswordHash函数对密码进行加密就成为首选了，它调用了crypt函数。</p>
+<p>一般用法如下</p>
+<pre><code class="php">// 使用generatePasswordHash为用户的密码加密，$hash存储到库中
+$hash = Yii::$app-&gt;getSecurity()-&gt;generatePasswordHash($password);
+
+<p>&#x2F;&#x2F; 使用validatePassword对密码进行验证<br>if(Yii::$app-&gt;getSecurity()-&gt;validatePassword($password, $hash))&#123;<br>&#x2F;&#x2F; 密码正确<br>&#125;else&#123;<br>&#x2F;&#x2F; 密码错误<br>&#125;</code></pre></p>
+<h2>generateRandomKey</h2>
+<p>和<strong>generateRandomString</strong>类似，生成一个随机的串，参数为长度，默认为32位，区别在于<strong>generateRandomKey</strong>生成的不是ASCII。</p>
+<p>简单的说 <strong>generateRandomString</strong> 约等于 base64_encode(<strong>generateRandomKey</strong>)。</p>
+<h2>encryptByPassword &amp; decryptByPassword</h2>
+<p>编码和解码函数，使用一个秘钥对数据进行编码，然后通过此秘钥在对编码后的数据进行解码。</p>
+<p>例子</p>
+<pre><code class="php">$dat = Yii::$app-&gt;security-&gt;encryptByPassword("hello","3166886");
+echo Yii::$app-&gt;security-&gt;encryptByPassword($dat,"3166886");// hello</code></pre>
+<p><strong>要注意，通过上面得到的编码后的数据不是ASCII，可以通过base64_encode和base64_decode在外层包装下。</strong></p>
+<h2>encryptByKey &amp;  decryptByKey</h2>
+<p>同样是一组编码和解码函数，比通过密码的方式要快。函数声明为</p>
+<pre><code class="php">public function encryptByKey($data, $inputKey, $info = null)&#123;&#125;
+
+<p>public function decryptByKey($data, $inputKey, $info &#x3D; null)&#123;&#125;</code></pre></p>
+<p>encryptByKey &amp;  decryptByKey 存在着第三个参数，比如我们可以传递会员的ID等，这样此信息将和$inputKey一起作为加密解密的钥匙。</p>
+<h2>hkdf</h2>
+<p><strong>使用标准的 HKDF 算法从给定的输入键中导出一个键。</strong>在PHP7+使用的是hash_hkdf方法，小于PHP7使用hash_hmac方法。</p>
+<h2>pbkdf2</h2>
+<p>使用标准的 PBKDF2 算法从给定的密码导出一个密钥。该方法可以用来进行密码加密，不过yii2有更好的密码加密方案 <strong>generatePasswordHash</strong>。</p>
+<h2>hashData和validateData</h2>
+<p>有的时候为了防止内容被篡改，我们需要对数据进行一些标记，hashData和validateData就是完成这个任务的组合。</p>
+<p><strong>hashData</strong> 用来对原始数据进行<strong>加数据前缀</strong>，比如如下代码</p>
+<pre><code class="php">$result = Yii::$app-&gt;security-&gt;hashData("hello",'123456',false);
+// ac28d602c767424d0c809edebf73828bed5ce99ce1556f4df8e223faeec60eddhello</code></pre>
+<p>你看到了在hello的前面多了一组字符，这组字符会随着原始数据的不同而变化。这样我们就对数据进行了特殊的防止篡改标记，接下来是validateData上场了。</p>
+<p>注意：hashData的第三个参数代表生成的哈希值是否为原始二进制格式. 如果为<code>false</code>, 则会生成小写十六进制数字.</p>
+<p><strong>validateData</strong> 对已经加了数据前缀的数据进行检测，如下代码</p>
+<pre><code class="php">$result = Yii::$app-&gt;security-&gt;validateData("ac28d602c767424d0c809edebf73828bed5ce99ce1556f4df8e223faeec60eddhello",'123456',false);
+// hello</code></pre>
+<p>如果返回了原始的字符串则表示验证通过，否则会返回假。</p>
+<p>validateData 函数的第三个参数应该与使用  <strong>hashData()</strong> 生成数据时的值相同. 它指示数据中的散列值是否是二进制格式. 如果为<code>false</code>, 则表示散列值仅由小写十六进制数字组成. 将生成十六进制数字.</p>
+<h2>compareString</h2>
+<p>可防止时序攻击的字符串比较，用法非常简单。</p>
+<pre><code class="php">Yii::$app-&gt;security-&gt;compareString("abc",'abc');</code></pre>
+<p>结果为真则相等，否则不相等。</p>
+<p>那么什么是时序攻击那？我来举一个简单的例子。</p>
+<pre><code class="php">if($code == Yii::$app-&gt;request-&gt;get('code'))&#123;
+
+<p>&#125;</code></pre></p>
+<p>上面的比较逻辑，两个字符串是从第一位开始逐一进行比较的，发现不同就立即返回 false，那么通过计算返回的速度就知道了大概是哪一位开始不同的，这样就实现了电影中经常出现的按位破解密码的场景。</p>
+<p>而使用 compareString 比较两个字符串，无论字符串是否相等，函数的时间消耗是恒定的，这样可以有效的防止时序攻击。</p>
+<h2>maskToken &amp;&amp; unmaskToken</h2>
+<p>maskToken用于掩盖真实token且不可以压缩，同一个token最后生成了不同的随机令牌，在yii2的csrf功能上就使用了maskToken，原理并不复杂，我们看下源码。</p>
+<pre><code class="php">public function maskToken($token)&#123;
+    $mask = $this-&gt;generateRandomKey(StringHelper::byteLength($token));
+    return StringHelper::base64UrlEncode($mask . ($mask ^ $token));
+&#125;</code></pre>
+<p>而unmaskToken目的也很明确，用于得到被maskToken掩盖的token。</p>
+<p>接下来我们看一个例子代码</p>
+<pre><code class="php">$token = Yii::$app-&gt;security-&gt;maskToken("123456");
+echo Yii::$app-&gt;security-&gt;unmaskToken($token);// 结果为 123456</code></pre>
+<p>最后我们总结下</p>
+<ul>
+<li>加密/解密: encryptByKey()、decryptByKey()、 encryptByPassword() 和 decryptByPassword()；</li>
+<li>使用标准算法的密钥推导: pbkdf2() 和 hkdf();</li>
+<li>防止数据篡改: hashData() 和 validateData();</li>
+<li>密码验证: generatePasswordHash() 和 validatePassword()</li>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2023/08/08/php/%E5%87%BD%E6%95%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    函数
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2023/07/21/php/ioc/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">ioc</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+
+
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Gemini &copy; 2023 
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

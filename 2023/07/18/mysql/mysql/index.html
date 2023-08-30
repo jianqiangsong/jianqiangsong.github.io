@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>mysql | Gemini`s wiki</title>
+    
+    
+        <meta name="keywords" content="知识库" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="msyql 实现排名函数123456789101112131415161718SELECT	num,	be_help_customer_id,	row_number ( ) over ( PARTITION BY brand_id ORDER BY num DESC ) AS r FROM	(SELECT	count( * ) AS num,	mt.be_help_customer_id,	mt.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql">
+<meta property="og:url" content="http://example.com/2023/07/18/mysql/mysql/index.html">
+<meta property="og:site_name" content="Gemini&#96;s wiki">
+<meta property="og:description" content="msyql 实现排名函数123456789101112131415161718SELECT	num,	be_help_customer_id,	row_number ( ) over ( PARTITION BY brand_id ORDER BY num DESC ) AS r FROM	(SELECT	count( * ) AS num,	mt.be_help_customer_id,	mt.">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-07-18T01:06:54.000Z">
+<meta property="article:modified_time" content="2023-07-18T07:52:48.785Z">
+<meta property="article:author" content="Gemini">
+<meta property="article:tag" content="知识库">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Gemini`s wiki" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Gemini`s wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+                    <a class="main-nav-link" href="/gallery">相册</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                    <td><a class="main-nav-link" href="/gallery">相册</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            docker
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/docker/">docker笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            git
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/git/">git笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            golang
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/golang/go/">go语言</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            windows wsl
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/wsl/">wsl2使用</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/linux/">linux常用基础命令</a></li>  <li class="file"><a href="/2023/07/18/docker/linux-1/">linux笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mongodb
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            常用
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mongo/mongodb/">mongodb笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            mysql
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file active"><a href="/2023/07/18/mysql/mysql/">mysql</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            openai
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            大语言模型
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/08/16/%E5%B7%A5%E5%85%B7/openai/">openai 图片使用demo</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            php
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            hyperf
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/php/hyperf/">hyperf</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            phpstrom
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/ps/">工具</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            yii
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/19/yii/yii/">yii 请求头</a></li>  <li class="file"><a href="/2023/07/28/yii/yii2/">yii2</a></li>  <li class="file"><a href="/2023/08/28/yii/yii3/">yii3</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/20/%E5%B7%A5%E5%85%B7/link/">外链文章</a></li>  <li class="file"><a href="/2023/07/21/php/ioc/">ioc</a></li>  <li class="file"><a href="/2023/08/08/php/%E5%87%BD%E6%95%B0/">函数</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/yii/php/">php</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/python/python/">python笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            redis
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/redis/redis/">redis笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            前端
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            hexo
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/08/16/%E5%B7%A5%E5%85%B7/hexo/">博客构建同步仓库</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            vue
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF/">vue笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            生活
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            记录
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE/">装修</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2023/08/24/test/pass/">备忘录</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            面试
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            总结
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95/">面试总结</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            项目
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E6%97%A5%E5%B8%B8%E9%A1%B9%E7%9B%AE%E5%A4%87%E6%B3%A8/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">项目笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-mysql/mysql" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/mysql/">mysql</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/mysql/%E7%AC%94%E8%AE%B0/">笔记</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2023/07/18/mysql/mysql/">
+            <time datetime="2023-07-18T01:06:54.000Z" itemprop="datePublished">2023-07-18</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            mysql
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#msyql-%E5%AE%9E%E7%8E%B0%E6%8E%92%E5%90%8D%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">msyql 实现排名函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E6%89%B9%E9%87%8F%E6%9B%B4%E6%96%B0"><span class="toc-number">2.</span> <span class="toc-text">链表批量更新</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E8%A1%A8%E5%90%8D%E7%A7%B0"><span class="toc-number"></span> <span class="toc-text">批量修改表名称</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%87%E4%BB%BD%E6%95%B0%E6%8D%AE"><span class="toc-number"></span> <span class="toc-text">备份数据</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number"></span> <span class="toc-text">参考资料</span></a>
+                </div>
+            
+        
+        
+            <h5 id="msyql-实现排名函数"><a href="#msyql-实现排名函数" class="headerlink" title="msyql 实现排名函数"></a>msyql 实现排名函数</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	num,</span><br><span class="line">	be_help_customer_id,</span><br><span class="line">	<span class="built_in">row_number</span> ( ) <span class="keyword">over</span> ( <span class="keyword">PARTITION</span> <span class="keyword">BY</span> brand_id <span class="keyword">ORDER</span> <span class="keyword">BY</span> num <span class="keyword">DESC</span> ) <span class="keyword">AS</span> r </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	(</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="built_in">count</span>( <span class="operator">*</span> ) <span class="keyword">AS</span> num,</span><br><span class="line">	mt.be_help_customer_id,</span><br><span class="line">	mt.brand_id </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	`marketing_task_user_invite` <span class="keyword">AS</span> `mt`</span><br><span class="line">	<span class="keyword">INNER</span> <span class="keyword">JOIN</span> `customer_relation` <span class="keyword">AS</span> `cr` <span class="keyword">ON</span> `cr`.`relation_id` <span class="operator">=</span> `mt`.`relation_id` </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	( `mt`.`task_id` <span class="operator">=</span> <span class="string">&#x27;229&#x27;</span> <span class="keyword">AND</span> `mt`.`brand_id` <span class="operator">=</span> <span class="string">&#x27;3&#x27;</span> <span class="keyword">AND</span> `mt`.`be_help_customer_id` <span class="operator">&gt;</span> <span class="string">&#x27;0&#x27;</span> <span class="keyword">AND</span> `cr`.`status` <span class="operator">=</span> <span class="string">&#x27;1&#x27;</span> ) </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">	`be_help_customer_id` </span><br><span class="line">	) <span class="keyword">AS</span> t</span><br></pre></td></tr></table></figure>
+
+<h5 id="链表批量更新"><a href="#链表批量更新" class="headerlink" title="链表批量更新"></a>链表批量更新</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span>  orders   <span class="keyword">as</span>  o <span class="keyword">LEFT</span> <span class="keyword">JOIN</span>  orders_writeoff <span class="keyword">as</span> ow  <span class="keyword">on</span>  ow.order_id <span class="operator">=</span>  o.order_id </span><br><span class="line"><span class="keyword">set</span> ow.use_end_time <span class="operator">=</span>  <span class="number">1625673599</span></span><br><span class="line"><span class="keyword">where</span>  o.marketing_id <span class="operator">=</span> <span class="number">4350</span>  </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> admin_role <span class="keyword">set</span> rule_id <span class="operator">=</span>(<span class="keyword">SELECT</span> GROUP_CONCAT(id) <span class="keyword">from</span> admin_auth) <span class="keyword">where</span>  data_role <span class="operator">=</span><span class="number">1</span>; </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 常用日期</span></span><br><span class="line">FROM_UNIXTIME(created_at,<span class="string">&#x27;%Y-%m&#x27;</span>) months  </span><br></pre></td></tr></table></figure>
+
+
+<h2 id="批量修改表名称"><a href="#批量修改表名称" class="headerlink" title="批量修改表名称"></a>批量修改表名称</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	CONCAT(</span><br><span class="line">		<span class="string">&#x27;ALTER TABLE &#x27;</span>,</span><br><span class="line">		table_name,</span><br><span class="line">		<span class="string">&#x27; RENAME TO &#x27;</span>,</span><br><span class="line">		REPLACE (</span><br><span class="line">			table_name,</span><br><span class="line">			<span class="string">&#x27;ACT_&#x27;</span>, <span class="comment">-- 要替换的字符串</span></span><br><span class="line">			<span class="string">&#x27;CAMUNDA_ACT_&#x27;</span> <span class="comment">-- 替换为新的字符串</span></span><br><span class="line">		),</span><br><span class="line">		<span class="string">&#x27;;&#x27;</span></span><br><span class="line">	)</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	information_schema. TABLES</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	TABLE_SCHEMA <span class="operator">=</span> <span class="string">&#x27;jeecg-boot&#x27;</span> <span class="comment">-- 数据库名称</span></span><br><span class="line"><span class="keyword">AND</span> table_name <span class="keyword">LIKE</span> <span class="string">&#x27;ACT_%&#x27;</span>; <span class="comment">-- 匹配表（匹配表名以 sys_ 开头的表）</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="备份数据"><a href="#备份数据" class="headerlink" title="备份数据"></a>备份数据</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">mysqldump <span class="operator">-</span>u root <span class="operator">-</span>p   atm <span class="operator">&gt;</span> atm.sql;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> mysql.user(Host,<span class="keyword">User</span>,Password) <span class="keyword">values</span>(&quot;localhost&quot;,&quot;test&quot;,password(&quot;test&quot;));</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;test&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;test&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">all</span> privileges <span class="keyword">on</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">to</span> <span class="string">&#x27;test&#x27;</span>@<span class="string">&#x27;%&#x27;</span> identified <span class="keyword">by</span> <span class="string">&#x27;test&#x27;</span> <span class="keyword">with</span> <span class="keyword">grant</span> option;</span><br><span class="line"></span><br><span class="line">flush privileges;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SHOW</span> VARIABLES <span class="keyword">LIKE</span> <span class="string">&#x27;validate_password%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 今天</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_FORMAT(NOW(),<span class="string">&#x27;%Y-%m-%d 00:00:00&#x27;</span>) <span class="keyword">AS</span> <span class="string">&#x27;今天开始&#x27;</span>;</span><br><span class="line"><span class="keyword">SELECT</span> DATE_FORMAT(NOW(),<span class="string">&#x27;%Y-%m-%d 23:59:59&#x27;</span>) <span class="keyword">AS</span> <span class="string">&#x27;今天结束&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 昨天</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_FORMAT( DATE_SUB(CURDATE(), <span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">DAY</span>), <span class="string">&#x27;%Y-%m-%d 00:00:00&#x27;</span>) <span class="keyword">AS</span> <span class="string">&#x27;昨天开始&#x27;</span>;</span><br><span class="line"><span class="keyword">SELECT</span> DATE_FORMAT( DATE_SUB(CURDATE(), <span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">DAY</span>), <span class="string">&#x27;%Y-%m-%d 23:59:59&#x27;</span>) <span class="keyword">AS</span> <span class="string">&#x27;昨天结束&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 上周</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_FORMAT( DATE_SUB( DATE_SUB(CURDATE(), <span class="type">INTERVAL</span> WEEKDAY(CURDATE()) <span class="keyword">DAY</span>), <span class="type">INTERVAL</span> <span class="number">1</span> WEEK), <span class="string">&#x27;%Y-%m-%d 00:00:00&#x27;</span>) <span class="keyword">AS</span> <span class="string">&#x27;上周一&#x27;</span>;</span><br><span class="line"><span class="keyword">SELECT</span> DATE_FORMAT( SUBDATE(CURDATE(), WEEKDAY(CURDATE()) <span class="operator">+</span> <span class="number">1</span>), <span class="string">&#x27;%Y-%m-%d 23:59:59&#x27;</span>) <span class="keyword">AS</span> <span class="string">&#x27;上周末&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 本周</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_FORMAT( SUBDATE(CURDATE(),DATE_FORMAT(CURDATE(),<span class="string">&#x27;%w&#x27;</span>)<span class="number">-1</span>), <span class="string">&#x27;%Y-%m-%d 00:00:00&#x27;</span>) <span class="keyword">AS</span> <span class="string">&#x27;本周一&#x27;</span>;</span><br><span class="line"><span class="keyword">SELECT</span> DATE_FORMAT( SUBDATE(CURDATE(),DATE_FORMAT(CURDATE(),<span class="string">&#x27;%w&#x27;</span>)<span class="number">-7</span>), <span class="string">&#x27;%Y-%m-%d 23:59:59&#x27;</span>) <span class="keyword">AS</span> <span class="string">&#x27;本周末&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 上面的本周算法会有问题,因为mysql是按照周日为一周第一天,如果当前是周日的话,会把时间定为到下一周.</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_FORMAT( DATE_SUB(CURDATE(), <span class="type">INTERVAL</span> WEEKDAY(CURDATE()) <span class="keyword">DAY</span>), <span class="string">&#x27;%Y-%m-%d 00:00:00&#x27;</span>) <span class="keyword">AS</span> <span class="string">&#x27;本周一&#x27;</span>;</span><br><span class="line"><span class="keyword">SELECT</span> DATE_FORMAT( DATE_ADD(SUBDATE(CURDATE(), WEEKDAY(CURDATE())), <span class="type">INTERVAL</span> <span class="number">6</span> <span class="keyword">DAY</span>), <span class="string">&#x27;%Y-%m-%d 23:59:59&#x27;</span>) <span class="keyword">AS</span> <span class="string">&#x27;本周末&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 上月</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_FORMAT( DATE_SUB(CURDATE(), <span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">MONTH</span>), <span class="string">&#x27;%Y-%m-01 00:00:00&#x27;</span>) <span class="keyword">AS</span> <span class="string">&#x27;上月初&#x27;</span>;</span><br><span class="line"><span class="keyword">SELECT</span> DATE_FORMAT( LAST_DAY(DATE_SUB(CURDATE(), <span class="type">INTERVAL</span> <span class="number">1</span> <span class="keyword">MONTH</span>)), <span class="string">&#x27;%Y-%m-%d 23:59:59&#x27;</span>) <span class="keyword">AS</span> <span class="string">&#x27;上月末&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 本月</span></span><br><span class="line"><span class="keyword">SELECT</span> DATE_FORMAT( CURDATE(), <span class="string">&#x27;%Y-%m-01 00:00:00&#x27;</span>) <span class="keyword">AS</span> <span class="string">&#x27;本月初&#x27;</span>;</span><br><span class="line"><span class="keyword">SELECT</span> DATE_FORMAT( LAST_DAY(CURDATE()), <span class="string">&#x27;%Y-%m-%d 23:59:59&#x27;</span>) <span class="keyword">AS</span> <span class="string">&#x27;本月末&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">as</span> total ,</span><br><span class="line">    <span class="built_in">SUM</span>(IFNULL(ccm.customer_id <span class="operator">&gt;</span><span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>)) <span class="keyword">as</span> cusomer_count ,</span><br><span class="line">    <span class="built_in">SUM</span>(IF(ccm.uid <span class="operator">&gt;</span><span class="number">0</span> <span class="keyword">and</span> ccm.customer_id <span class="operator">=</span> <span class="number">0</span> ,<span class="number">1</span>,<span class="number">0</span>)) <span class="keyword">as</span> user_count ,</span><br><span class="line">    <span class="built_in">SUM</span>(IFNULL(ccm.type <span class="operator">=</span><span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>)) <span class="keyword">as</span> staff_count</span><br><span class="line"></span><br><span class="line">    <span class="keyword">FROM</span>  customer_crowd_member <span class="keyword">as</span> ccm </span><br><span class="line">    <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> customer_crowd <span class="keyword">as</span> cc</span><br><span class="line">    <span class="keyword">on</span> ccm.crowd_id <span class="operator">=</span>  cc.crowd_id</span><br><span class="line">    <span class="keyword">where</span>  cc.crowd_id <span class="operator">=</span>  <span class="number">318</span></span><br><span class="line"></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/scwbky/p/9558203.html">msyql原文地址</a></li>
+</ul>
+</blockquote>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2023/07/18/yii/php/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    php
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2023/07/18/mongo/mongodb/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">mongodb笔记</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+
+
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Gemini &copy; 2023 
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
