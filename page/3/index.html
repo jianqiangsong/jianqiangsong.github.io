@@ -338,7 +338,7 @@
                             &nbsp;
                             hyperf
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/php/hyperf/">hyperf</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/php/hyperf/">hyperf</a></li>  <li class="file"><a href="/2023/07/18/php/laravel/">laravel 创建Facades门面</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -440,6 +440,15 @@
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF/">vue笔记</a></li>  </ul> 
                     </li> 
                      </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            工具
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/09/27/%E5%B7%A5%E5%85%B7/linux/">linux</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -567,6 +576,193 @@
 </aside>
             
             <section id="main">
+        <article id="post-工具/git" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/git/">git</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/git/%E7%AC%94%E8%AE%B0/">笔记</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/git/" rel="tag">git</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2023/07/18/%E5%B7%A5%E5%85%B7/git/">
+            <time datetime="2023-07-18T01:07:28.000Z" itemprop="datePublished">2023-07-18</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2023/07/18/%E5%B7%A5%E5%85%B7/git/">git笔记</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><h3 id="git忽略文件权限"><a href="#git忽略文件权限" class="headerlink" title="git忽略文件权限"></a>git忽略文件权限</h3><p><code>git config --global core.filemode false</code></p>
+<h3 id="在最后一条记录，可以看到信息为：“-checkout-moving-from-master-to-develop”，表示develop分支是从master分支“移动”过去的，也就是develop分支是基于master分支拉取的"><a href="#在最后一条记录，可以看到信息为：“-checkout-moving-from-master-to-develop”，表示develop分支是从master分支“移动”过去的，也就是develop分支是基于master分支拉取的" class="headerlink" title="在最后一条记录，可以看到信息为：“ checkout: moving from master to develop”，表示develop分支是从master分支“移动”过去的，也就是develop分支是基于master分支拉取的"></a>在最后一条记录，可以看到信息为：“ checkout: moving from master to develop”，表示develop分支是从master分支“移动”过去的，也就是develop分支是基于master分支拉取的</h3><p><code>git reflog show --date=local | grep 当前分支名</code></p>
+<h4 id="一次性推送本地所有标签"><a href="#一次性推送本地所有标签" class="headerlink" title="一次性推送本地所有标签"></a>一次性推送本地所有标签</h4><p><code>git push origin --tags</code></p>
+<h4 id="git中如何合并某个指定文件"><a href="#git中如何合并某个指定文件" class="headerlink" title="git中如何合并某个指定文件"></a>git中如何合并某个指定文件</h4><p><code>分支A_bracn和B_branch，只想将A_branch分支的某个文件f.txt合并到B_branch分支上。     git checkout A_branch     git checkout --patch B_branch f.txt</code><br>第一个命令： 切换到A分支；<br>第二个命令：合并B分支上f文件到A分支上，将B分支上 f 文件追加补丁到A分支上 f文件。你可以接受或者拒绝补丁内容。</p>
+<p><code>如果只是简单的将A_branch分支的文件f.txt copy到B_branch分支上</code></p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2023/07/18/%E5%B7%A5%E5%85%B7/git/#more">查看更多</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+    
+        <article id="post-python/python" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/python/">python</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/python/%E7%AC%94%E8%AE%B0/">笔记</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2023/07/18/python/python/">
+            <time datetime="2023-07-18T01:07:18.000Z" itemprop="datePublished">2023-07-18</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2023/07/18/python/python/">python笔记</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>元祖 tulpe  (1,2,3)  </p>
+<p>list  [1,2,3,4]</p>
+<p>字典： {“age”:1,’al’:2} </p>
+<p>from sqlalchemy.dialects import mysql</p>
+<p>！！！前提不要fist() all() 实例对象</p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2023/07/18/python/python/#more">查看更多</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+    
         <article id="post-docker/docker" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         

@@ -1,3 +1,6 @@
+http://example.com/2023/07/18/mysql/mysql/
+http://example.com/2023/07/18/php/laravel/
+http://example.com/2023/09/27/%E5%B7%A5%E5%85%B7/linux/
 http://example.com/2023/07/18/mysql/mysql-1/
 http://example.com/2023/07/18/docker/linux-1/
 http://example.com/2023/07/18/%E5%B7%A5%E5%85%B7/mac/
@@ -36,7 +39,6 @@ http://example.com/2023/07/19/yii/yii/
 http://example.com/2023/07/18/mongo/mongodb/
 http://example.com/2023/07/18/%E5%B7%A5%E5%85%B7/ps/
 http://example.com/2023/07/18/docker/linux/
-http://example.com/2023/07/18/mysql/mysql/
 http://example.com/2023/07/18/python/python/
 http://example.com/2023/07/18/php/hyperf/
 http://example.com/2023/07/18/%E6%97%A5%E5%B8%B8%E9%A1%B9%E7%9B%AE%E5%A4%87%E6%B3%A8/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/
@@ -105,3 +107,4 @@ http://example.com/categories/%E7%94%9F%E6%B4%BB/%E8%AE%B0%E5%BD%95/
 http://example.com/categories/%E9%A1%B9%E7%9B%AE/%E7%AC%94%E8%AE%B0/
 http://example.com/categories/%E9%9D%A2%E8%AF%95/%E6%80%BB%E7%BB%93/
 http://example.com/categories/mac/
+http://example.com/categories/%E5%B7%A5%E5%85%B7/
