@@ -17,7 +17,7 @@
 <meta property="og:description" content="1234567891011121314151617181920212223242526272829function git_branch &amp;#123;        branch&#x3D;&quot;&#96;git branch 2&gt;&#x2F;dev&#x2F;null | grep &quot;^\*&quot; | sed -e &quot;s&#x2F;^\*\ &#x2F;&#x2F;&quot;&#96;&quot;        if [ &amp;quo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-18T01:00:46.000Z">
-<meta property="article:modified_time" content="2023-07-24T10:02:55.117Z">
+<meta property="article:modified_time" content="2023-09-21T02:19:30.922Z">
 <meta property="article:author" content="Gemini">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
@@ -268,6 +268,15 @@
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
                             &nbsp;
+                            mac
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/mac/">mac</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
                             mongodb
                         </a>
                          <ul class="unstyled" id="tree" > 
@@ -295,7 +304,7 @@
                             &nbsp;
                             笔记
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mysql/mysql/">mysql</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mysql/mysql/">mysql</a></li>  <li class="file"><a href="/2023/07/18/mysql/mysql-1/">mysql-用户-权限</a></li>  </ul> 
                     </li> 
                      </ul> 
                     </li> 
@@ -349,7 +358,7 @@
                             &nbsp;
                             yii
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/19/yii/yii/">yii 请求头</a></li>  <li class="file"><a href="/2023/07/28/yii/yii2/">yii2</a></li>  <li class="file"><a href="/2023/08/28/yii/yii3/">yii3</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/19/yii/yii/">yii 请求头</a></li>  <li class="file"><a href="/2023/07/28/yii/yii2/">yii2</a></li>  <li class="file"><a href="/2023/08/28/yii/yii3/">Yii2 行为类</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -610,24 +619,58 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">1.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%A3%E7%A1%AE%E5%88%A0%E9%99%A4k8s-pod%E5%AE%B9%E5%99%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">正确删除k8s pod容器命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8-Kubernetes-%E4%B8%AD%EF%BC%8C%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8-hostPath-%E6%9D%A5%E5%B0%86%E6%9C%AC%E5%9C%B0%E8%8A%82%E7%82%B9%E4%B8%8A%E7%9A%84%E7%9B%AE%E5%BD%95%E6%8C%82%E8%BD%BD%E5%88%B0-Pod-%E5%86%85%E3%80%82%E8%BF%99%E5%AF%B9%E4%BA%8E%E9%9C%80%E8%A6%81%E8%AE%BF%E9%97%AE%E8%8A%82%E7%82%B9%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%83%85%E5%86%B5%E9%9D%9E%E5%B8%B8%E6%9C%89%E7%94%A8%EF%BC%8C%E4%BD%86%E8%AF%B7%E6%B3%A8%E6%84%8F%E8%BF%99%E5%8F%AF%E8%83%BD%E4%BC%9A%E5%B8%A6%E6%9D%A5%E4%B8%80%E4%BA%9B%E5%AE%89%E5%85%A8%E5%92%8C%E5%8F%AF%E7%A7%BB%E6%A4%8D%E6%80%A7%E6%96%B9%E9%9D%A2%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%82"><span class="toc-number"></span> <span class="toc-text">在 Kubernetes 中，可以使用 hostPath 来将本地节点上的目录挂载到 Pod 内。这对于需要访问节点文件系统的情况非常有用，但请注意这可能会带来一些安全和可移植性方面的问题。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E4%BD%A0%E5%9C%A8-Kubernetes-%E4%B8%AD%E8%BF%90%E8%A1%8C%E7%9A%84%E5%AE%B9%E5%99%A8%E5%86%85%E9%83%A8%E6%9A%B4%E9%9C%B2%E4%BA%86%E4%B8%80%E4%B8%AA%E4%B8%B4%E6%97%B6%E7%AB%AF%E5%8F%A3%EF%BC%8C%E4%BD%A0%E9%9C%80%E8%A6%81%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95%E6%9D%A5%E4%BD%BF%E8%BF%99%E4%B8%AA%E7%AB%AF%E5%8F%A3%E5%8F%AF%E4%BB%8E%E7%89%A9%E7%90%86%E6%9C%BA%E8%AE%BF%E9%97%AE%E3%80%82%E6%9C%89%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95%E5%8F%AF%E4%BB%A5%E5%81%9A%E5%88%B0%E8%BF%99%E4%B8%80%E7%82%B9%EF%BC%8C%E4%BB%A5%E4%B8%8B%E6%98%AF%E5%85%B6%E4%B8%AD%E4%B8%80%E4%BA%9B%E9%80%89%E9%A1%B9%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">如果你在 Kubernetes 中运行的容器内部暴露了一个临时端口，你需要一种方法来使这个端口可从物理机访问。有几种方法可以做到这一点，以下是其中一些选项：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8-kubectl-port-forward"><span class="toc-number"></span> <span class="toc-text">1. 使用 kubectl port-forward</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8-NodePort-%E7%B1%BB%E5%9E%8B%E7%9A%84-Service"><span class="toc-number"></span> <span class="toc-text">2. 使用 NodePort 类型的 Service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8-LoadBalancer-%E7%B1%BB%E5%9E%8B%E7%9A%84-Service"><span class="toc-number"></span> <span class="toc-text">3. 使用 LoadBalancer 类型的 Service</span></a>
                 </div>
             
         
         
             <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> git_branch &#123;</span><br><span class="line">        branch=<span class="string">&quot;`git branch 2&gt;/dev/null | grep &quot;</span>^\*<span class="string">&quot; | sed -e &quot;</span>s/^\*\ //<span class="string">&quot;`&quot;</span></span><br><span class="line">        <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;branch&#125;</span>&quot;</span> != <span class="string">&quot;&quot;</span> ];<span class="keyword">then</span></span><br><span class="line">                <span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$&#123;branch&#125;</span>&quot;</span> = <span class="string">&quot;(no branch)&quot;</span> ];<span class="keyword">then</span></span><br><span class="line">                        branch=<span class="string">&quot;(`git rev-parse --short HEAD`...)&quot;</span></span><br><span class="line">                <span class="keyword">fi</span></span><br><span class="line">                <span class="built_in">echo</span> <span class="string">&quot; (<span class="variable">$branch</span>)&quot;</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> PS1=<span class="string">&#x27;\u \[\033[01;36m\]\W\[\033[01;32m\]$(git_branch)\[\033[00m\] \$ &#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">编辑环境变量</span><br><span class="line">~/.bashrc</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//刷新配置</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line"></span><br><span class="line"><span class="comment"># uname -a               # 查看内核/操作系统/CPU信息</span></span><br><span class="line"><span class="comment"># head -n 1 /etc/issue   # 查看操作系统版本</span></span><br><span class="line"><span class="comment"># cat /proc/cpuinfo      # 查看CPU信息</span></span><br><span class="line"><span class="comment"># hostname               # 查看计算机名</span></span><br><span class="line"><span class="comment"># lspci -tv              # 列出所有PCI设备（yum install pciutils）</span></span><br><span class="line"><span class="comment"># lsusb -tv              # 列出所有USB设备</span></span><br><span class="line"><span class="comment"># lsmod                  # 列出加载的内核模块</span></span><br><span class="line"><span class="comment"># env                    # 查看环境变量</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h4 id="正确删除k8s-pod容器命令"><a href="#正确删除k8s-pod容器命令" class="headerlink" title="正确删除k8s pod容器命令"></a>正确删除k8s pod容器命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete deployment &lt;deployment名&gt; -n &lt;namespace&gt;</span><br><span class="line"></span><br><span class="line">例如：kubectl delete deployment nginx-web -n yundoc</span><br></pre></td></tr></table></figure>
 
+<hr>
+<h3 id="在-Kubernetes-中，可以使用-hostPath-来将本地节点上的目录挂载到-Pod-内。这对于需要访问节点文件系统的情况非常有用，但请注意这可能会带来一些安全和可移植性方面的问题。"><a href="#在-Kubernetes-中，可以使用-hostPath-来将本地节点上的目录挂载到-Pod-内。这对于需要访问节点文件系统的情况非常有用，但请注意这可能会带来一些安全和可移植性方面的问题。" class="headerlink" title="在 Kubernetes 中，可以使用 hostPath 来将本地节点上的目录挂载到 Pod 内。这对于需要访问节点文件系统的情况非常有用，但请注意这可能会带来一些安全和可移植性方面的问题。"></a>在 Kubernetes 中，可以使用 <code>hostPath</code> 来将本地节点上的目录挂载到 Pod 内。这对于需要访问节点文件系统的情况非常有用，但请注意这可能会带来一些安全和可移植性方面的问题。</h3><p>以下是一个基本的示例：</p>
+<ol>
+<li><p><strong>创建一个本地目录</strong>：</p>
+<p>在你的 Kubernetes 节点上创建一个本地目录，该目录将用于存储你想要挂载到容器内的文件或数据。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /path/to/host/dir</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>创建一个 YAML 文件</strong>：</p>
+<p>创建一个 YAML 文件，例如 <code>pod-with-hostpath.yaml</code>，并定义 Pod 的配置，将 <code>hostPath</code> 用于挂载目录。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">my-pod</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">my-container</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">&lt;your-image&gt;</span></span><br><span class="line">    <span class="attr">volumeMounts:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">hostpath-volume</span></span><br><span class="line">      <span class="attr">mountPath:</span> <span class="string">/path/inside/container</span></span><br><span class="line">  <span class="attr">volumes:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">hostpath-volume</span></span><br><span class="line">    <span class="attr">hostPath:</span></span><br><span class="line">      <span class="attr">path:</span> <span class="string">/path/to/host/dir</span></span><br></pre></td></tr></table></figure>
 
+<p>请将 <code>&lt;your-image&gt;</code> 替换为你实际使用的容器镜像。</p>
+<p>在这个示例中，我们创建了一个 Pod，将本地节点上的 <code>/path/to/host/dir</code> 目录挂载到了容器内的 <code>/path/inside/container</code>。</p>
+</li>
+<li><p><strong>应用配置</strong>：</p>
+<p>使用 <code>kubectl apply -f</code> 命令来将配置文件应用到集群中：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f pod-with-hostpath.yaml</span><br></pre></td></tr></table></figure>
 
-
-
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<p>Kubernetes 将会创建 Pod，并将本地目录挂载到容器内。</p>
+</li>
+</ol>
+<p>请注意：</p>
 <ul>
-<li><a href=""></a></li>
-<li><a href=""></a></li>
+<li>使用 <code>hostPath</code> 可能会带来安全风险，因为容器可以访问节点上的任何文件。请谨慎使用并确保限制访问权限。</li>
+<li>由于 <code>hostPath</code> 使用本地节点的路径，这将会影响到 Pod 的可移植性。如果需要在不同节点之间迁移 Pod，建议考虑其他持久化存储解决方案，如 NFS、CSI 等。</li>
 </ul>
-</blockquote>
+<hr>
+<h3 id="如果你在-Kubernetes-中运行的容器内部暴露了一个临时端口，你需要一种方法来使这个端口可从物理机访问。有几种方法可以做到这一点，以下是其中一些选项："><a href="#如果你在-Kubernetes-中运行的容器内部暴露了一个临时端口，你需要一种方法来使这个端口可从物理机访问。有几种方法可以做到这一点，以下是其中一些选项：" class="headerlink" title="如果你在 Kubernetes 中运行的容器内部暴露了一个临时端口，你需要一种方法来使这个端口可从物理机访问。有几种方法可以做到这一点，以下是其中一些选项："></a>如果你在 Kubernetes 中运行的容器内部暴露了一个临时端口，你需要一种方法来使这个端口可从物理机访问。有几种方法可以做到这一点，以下是其中一些选项：</h3><h3 id="1-使用-kubectl-port-forward"><a href="#1-使用-kubectl-port-forward" class="headerlink" title="1. 使用 kubectl port-forward"></a>1. 使用 <code>kubectl port-forward</code></h3><p>你可以使用 <code>kubectl port-forward</code> 命令来将容器的端口映射到本地机器上，从而可以从物理机访问容器服务。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl port-forward &lt;pod-name&gt; &lt;local-port&gt;:&lt;container-port&gt;</span><br></pre></td></tr></table></figure>
+
+<p>例如，如果你的容器名称是 <code>my-container</code>，临时服务运行在容器的端口 <code>8080</code>，你可以运行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl port-forward my-container 8080:8080</span><br></pre></td></tr></table></figure>
+
+<p>现在你可以在物理机上使用 <code>localhost:8080</code> 访问容器服务。</p>
+<h3 id="2-使用-NodePort-类型的-Service"><a href="#2-使用-NodePort-类型的-Service" class="headerlink" title="2. 使用 NodePort 类型的 Service"></a>2. 使用 NodePort 类型的 Service</h3><p>你可以创建一个 NodePort 类型的 Service，它会将容器内的端口暴露到所有节点的相同端口上。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">my-temp-service</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">NodePort</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">my-app</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="number">8080</span>  <span class="comment"># 这里指定容器内临时服务的端口</span></span><br></pre></td></tr></table></figure>
+
+<p>然后通过 <code>kubectl apply -f my-service.yaml</code> 将配置应用到集群中。Kubernetes 将会为 Service 分配一个随机的高端口号（例如：<code>30XXX</code>），你可以使用这个端口来访问容器服务。</p>
+<h3 id="3-使用-LoadBalancer-类型的-Service"><a href="#3-使用-LoadBalancer-类型的-Service" class="headerlink" title="3. 使用 LoadBalancer 类型的 Service"></a>3. 使用 LoadBalancer 类型的 Service</h3><p>如果你的集群运行在云环境中（如 AWS、GCP、Azure 等），你可以使用 LoadBalancer 类型的 Service 来将服务暴露到公共互联网。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">my-temp-service</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">LoadBalancer</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">my-app</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">      <span class="attr">targetPort:</span> <span class="number">8080</span>  <span class="comment"># 这里指定容器内临时服务的端口</span></span><br></pre></td></tr></table></figure>
+
+<p>然后通过 <code>kubectl apply -f my-service.yaml</code> 将配置应用到集群中。Kubernetes 将会创建一个云提供商特定的负载均衡器，并将流量转发到服务的端口上。</p>
+<p>请注意，这些方法中的每一个都有适用的场景，具体取决于你的部署环境和要求。选择一个方法时，请确保你的网络配置和安全规则允许流量流向暴露的端口。</p>
 
             </div>
         
