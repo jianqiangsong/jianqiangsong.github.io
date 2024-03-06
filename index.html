@@ -365,7 +365,7 @@
                             &nbsp;
                             基础
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/20/%E5%B7%A5%E5%85%B7/link/">外链文章</a></li>  <li class="file"><a href="/2023/07/21/php/ioc/">ioc</a></li>  <li class="file"><a href="/2023/08/08/php/%E5%87%BD%E6%95%B0/">函数</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/20/%E5%B7%A5%E5%85%B7/link/">外链文章</a></li>  <li class="file"><a href="/2023/07/21/php/ioc/">IOC/DI</a></li>  <li class="file"><a href="/2023/08/08/php/%E5%87%BD%E6%95%B0/">函数</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -1343,7 +1343,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2023/07/21/php/ioc/">ioc</a>
+            <a class="article-title" href="/2023/07/21/php/ioc/">IOC/DI</a>
         </h1>
     
 
@@ -1373,11 +1373,11 @@
                 
                 
                     
-                    <p><p><code>因为大多数应用程序都是由两个或者更多的类通过彼此合作来实现业务逻辑，这使得每个对象都需要获取与其合作的对象（也就是它所依赖的对象）的引用。如果这个获取过程要靠自身实现，那么将导致代码高度耦合并且难以维护和调试</code></p>
-<p>所以才有了依赖注入的概念，依赖注入解决了以下问题：</p>
-<blockquote>
-<p>依赖之间的解耦</p>
-</blockquote>
+                    <p><h3 id="1-一句话说明依赖注入"><a href="#1-一句话说明依赖注入" class="headerlink" title="1.一句话说明依赖注入"></a>1.一句话说明依赖注入</h3><p>因为大多数应用程序都是由两个或者更多的类通过彼此合作来实现业务逻辑，这使得每个对象都需要获取与其合作的对象（也就是它所依赖的对象）的引用。如果这个获取过程要靠自身实现，那么将导致代码高度耦合并且难以维护和调试</p>
+<h3 id="2-上面俩种方法代码很清晰，但是当我们需要注入很多个依赖时，意味着又要增加很多行，会比较难以管理。"><a href="#2-上面俩种方法代码很清晰，但是当我们需要注入很多个依赖时，意味着又要增加很多行，会比较难以管理。" class="headerlink" title="2.上面俩种方法代码很清晰，但是当我们需要注入很多个依赖时，意味着又要增加很多行，会比较难以管理。"></a>2.上面俩种方法代码很清晰，但是当我们需要注入很多个依赖时，意味着又要增加很多行，会比较难以管理。</h3><p>比较好的解决办法是 建立一个class作为所有依赖关系的container，在这个class中可以存放、创建、获取、查找需要的依赖关系。先来了解一下IOC的概念</p>
+<h3 id="3-控制反转-（Inversion-Of-Control-IOC）"><a href="#3-控制反转-（Inversion-Of-Control-IOC）" class="headerlink" title="3.控制反转 （Inversion Of Control, IOC）"></a>3.控制反转 （Inversion Of Control, IOC）</h3><p>控制反转 是面向对象编程中的一种设计原则，可以用来减低计算机代码之间的耦合度。其中最常见的方式叫做 依赖注入（Dependency Injection, DI）, 还有一种叫”依赖查找”（Dependency<br>Lookup）。通过控制反转，对象在被创建的时候，由一个调控系统内所有对象的外界实体，将其所依赖的对象的引用传递给它。也可以说，依赖被注入到对象中。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ioc</span> </span>&#123;</span><br><span class="line"> <span class="keyword">protected</span> <span class="variable">$db_conn</span>;</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">make_book</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="variable">$new_book</span> = <span class="keyword">new</span> <span class="title class_">Book</span>();</span><br><span class="line"> <span class="variable">$new_book</span>-&gt;<span class="title function_ invoke__">set_db</span>(<span class="built_in">self</span>::<span class="variable">$db_conn</span>);</span><br><span class="line"> <span class="comment">//...</span></span><br><span class="line"> <span class="comment">//...</span></span><br><span class="line"> <span class="comment">//其他的依赖注入</span></span><br><span class="line"> <span class="keyword">return</span> <span class="variable">$new_book</span>;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>
                 
             
