@@ -302,7 +302,7 @@
                             &nbsp;
                             笔记
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mysql/mysql/">mysql</a></li>  <li class="file"><a href="/2023/07/18/mysql/mysql-1/">mysql-用户-权限</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mysql/mysql-1/">mysql-用户-权限</a></li>  <li class="file"><a href="/2023/07/18/mysql/mysql/">mysql</a></li>  </ul> 
                     </li> 
                      </ul> 
                     </li> 
@@ -464,7 +464,7 @@
                             &nbsp;
                             记录
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE/">装修</a></li>  <li class="file"><a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE-1/">汽车投诉车质网</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE-1/">汽车投诉车质网</a></li>  <li class="file"><a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE/">装修</a></li>  </ul> 
                     </li> 
                      <li class="file"><a href="/2023/08/24/test/pass/">备忘录</a></li>  </ul> 
                     </li> 
@@ -1226,6 +1226,91 @@
 
 
     
+        <article id="post-mysql/mysql-1" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/mysql/">mysql</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/mysql/%E7%AC%94%E8%AE%B0/">笔记</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/mysql-%E7%94%A8%E6%88%B7-%E6%9D%83%E9%99%90/" rel="tag">mysql 用户 权限</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2023/07/18/mysql/mysql-1/">
+            <time datetime="2023-07-18T01:06:54.000Z" itemprop="datePublished">2023-07-18</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2023/07/18/mysql/mysql-1/">mysql-用户-权限</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+            
+        
+        
+            <h5 id="mysql授权一个已经存在的用户所有权限"><a href="#mysql授权一个已经存在的用户所有权限" class="headerlink" title="mysql授权一个已经存在的用户所有权限"></a>mysql授权一个已经存在的用户所有权限</h5><p>docker 容器创建mysql 要登陆容器后进行授权允许所有外部ip访问</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//如果用户存在则不需要创建</span><br><span class="line"></span><br><span class="line">CREATE USER &#x27;test&#x27;@&#x27;%&#x27; IDENTIFIED BY  &#x27;test&#x27;;</span><br><span class="line"></span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;test&#x27;@&#x27;%&#x27;;</span><br><span class="line"></span><br><span class="line">FLUSH PRIVILEGES;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+    
         <article id="post-mysql/mysql" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1302,91 +1387,6 @@
             </div>   
             <div class="article-more-link">
                 <a href="/2023/07/18/mysql/mysql/#more">查看更多</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-
-
-    
-        <article id="post-mysql/mysql-1" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/mysql/">mysql</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/mysql/%E7%AC%94%E8%AE%B0/">笔记</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/mysql-%E7%94%A8%E6%88%B7-%E6%9D%83%E9%99%90/" rel="tag">mysql 用户 权限</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2023/07/18/mysql/mysql-1/">
-            <time datetime="2023-07-18T01:06:54.000Z" itemprop="datePublished">2023-07-18</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2023/07/18/mysql/mysql-1/">mysql-用户-权限</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-            
-        
-        
-            <h5 id="mysql授权一个已经存在的用户所有权限"><a href="#mysql授权一个已经存在的用户所有权限" class="headerlink" title="mysql授权一个已经存在的用户所有权限"></a>mysql授权一个已经存在的用户所有权限</h5><p>docker 容器创建mysql 要登陆容器后进行授权允许所有外部ip访问</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//如果用户存在则不需要创建</span><br><span class="line"></span><br><span class="line">CREATE USER &#x27;test&#x27;@&#x27;%&#x27; IDENTIFIED BY  &#x27;test&#x27;;</span><br><span class="line"></span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;test&#x27;@&#x27;%&#x27;;</span><br><span class="line"></span><br><span class="line">FLUSH PRIVILEGES;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
             </div>
         
         <footer class="article-footer">
