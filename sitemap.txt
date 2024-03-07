@@ -1,4 +1,3 @@
-http://example.com/2024/03/07/laravel/API/
 http://example.com/2024/03/07/laravel/Views/
 http://example.com/2024/03/07/laravel/Validation/
 http://example.com/2024/03/07/laravel/Routing/
@@ -9,8 +8,9 @@ http://example.com/2024/03/07/laravel/Log_and_Debug/
 http://example.com/2024/03/07/laravel/Factories/
 http://example.com/2024/03/07/laravel/DB_Models_and_Eloquent/
 http://example.com/2024/03/07/laravel/Collections/
-http://example.com/2024/03/07/laravel/Artisan/
 http://example.com/2024/03/07/laravel/Auth/
+http://example.com/2024/03/07/laravel/Artisan/
+http://example.com/2024/03/07/laravel/API/
 http://example.com/2023/07/21/php/ioc/
 http://example.com/2023/08/08/php/%E5%87%BD%E6%95%B0/
 http://example.com/2023/10/08/yii/yii2-admin/

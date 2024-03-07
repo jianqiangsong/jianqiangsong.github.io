@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/2024/03/07/laravel/API/</loc>
-    
-    <lastmod>2024-03-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/2024/03/07/laravel/Views/</loc>
     
     <lastmod>2024-03-07</lastmod>
@@ -101,6 +92,15 @@
   </url>
   
   <url>
+    <loc>http://example.com/2024/03/07/laravel/Auth/</loc>
+    
+    <lastmod>2024-03-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/2024/03/07/laravel/Artisan/</loc>
     
     <lastmod>2024-03-07</lastmod>
@@ -110,7 +110,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/2024/03/07/laravel/Auth/</loc>
+    <loc>http://example.com/2024/03/07/laravel/API/</loc>
     
     <lastmod>2024-03-07</lastmod>
     
