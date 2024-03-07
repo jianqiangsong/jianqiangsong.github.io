@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>数据库迁移 | Gemini`s wiki</title>
+    
+    
+        <meta name="keywords" content="laravel" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="数据库迁移⬆️ 回到顶部 ⬅️ 上一个 (模型关联) ➡️ 下一个 (视图)  无符号整型 迁移顺序 带时区的迁移字段 数据库迁移字段类型 默认时间戳 迁移状态 创建带空格的迁移 在另一列的后面创建一列 为已经存在的表生成迁移文件 执行迁移前先输出 SQL 语句 匿名迁移 给迁移添加注释 表名表字段检测  无符号整型作为迁移的外键，请使用 unsignedInteger()  类型或 intege">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库迁移">
+<meta property="og:url" content="http://example.com/2024/03/07/laravel/Migrations/index.html">
+<meta property="og:site_name" content="Gemini&#96;s wiki">
+<meta property="og:description" content="数据库迁移⬆️ 回到顶部 ⬅️ 上一个 (模型关联) ➡️ 下一个 (视图)  无符号整型 迁移顺序 带时区的迁移字段 数据库迁移字段类型 默认时间戳 迁移状态 创建带空格的迁移 在另一列的后面创建一列 为已经存在的表生成迁移文件 执行迁移前先输出 SQL 语句 匿名迁移 给迁移添加注释 表名表字段检测  无符号整型作为迁移的外键，请使用 unsignedInteger()  类型或 intege">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-07T09:34:16.874Z">
+<meta property="article:modified_time" content="2024-03-07T09:40:05.272Z">
+<meta property="article:author" content="Gemini">
+<meta property="article:tag" content="laravel">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Gemini`s wiki" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Gemini`s wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+                    <a class="main-nav-link" href="/gallery">相册</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                    <td><a class="main-nav-link" href="/gallery">相册</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            docker
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/docker/">docker笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            git
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/git/">git笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            golang
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/golang/go/">go语言</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            laravel
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2024/03/07/laravel/API/">API</a></li>  <li class="file"><a href="/2024/03/07/laravel/Artisan/">Artisan</a></li>  <li class="file"><a href="/2024/03/07/laravel/Collections/">集合</a></li>  <li class="file"><a href="/2024/03/07/laravel/Auth/">授权</a></li>  <li class="file"><a href="/2024/03/07/laravel/Mail/">邮件</a></li>  <li class="file"><a href="/2024/03/07/laravel/Log_and_Debug/">日志与调试</a></li>  <li class="file"><a href="/2024/03/07/laravel/Factories/">工厂</a></li>  <li class="file active"><a href="/2024/03/07/laravel/Migrations/">数据库迁移</a></li>  <li class="file"><a href="/2024/03/07/laravel/DB_Models_and_Eloquent/">数据库模型与 Eloquent</a></li>  <li class="file"><a href="/2024/03/07/laravel/Routing/">route</a></li>  <li class="file"><a href="/2024/03/07/laravel/Other/">other其他</a></li>  <li class="file"><a href="/2024/03/07/laravel/Views/">view</a></li>  <li class="file"><a href="/2024/03/07/laravel/Validation/">validate</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            windows wsl
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/wsl/">wsl2使用</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/linux/">linux常用基础命令</a></li>  <li class="file"><a href="/2023/07/18/docker/linux-1/">linux笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mac
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/mac/">mac</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mongodb
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            常用
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mongo/mongodb/">mongodb笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mysql
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mysql/mysql/">mysql</a></li>  <li class="file"><a href="/2023/07/18/mysql/mysql-1/">mysql-用户-权限</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            openai
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            大语言模型
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/08/16/%E5%B7%A5%E5%85%B7/openai/">openai 图片使用demo</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            php
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            hyperf
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/php/hyperf/">hyperf</a></li>  <li class="file"><a href="/2023/07/18/php/laravel/">laravel 创建Facades门面</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            phpstrom
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/ps/">工具</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            yii
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/19/yii/yii/">yii 请求头</a></li>  <li class="file"><a href="/2023/07/28/yii/yii2/">yii2</a></li>  <li class="file"><a href="/2023/08/28/yii/yii3/">Yii2 行为类</a></li>  <li class="file"><a href="/2023/10/08/yii/yii2-admin/">yii2-admin</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/20/%E5%B7%A5%E5%85%B7/link/">外链文章</a></li>  <li class="file"><a href="/2023/07/21/php/ioc/">IOC/DI</a></li>  <li class="file"><a href="/2023/08/08/php/%E5%87%BD%E6%95%B0/">函数</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/yii/php/">php</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/python/python/">python笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            redis
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/redis/redis/">redis笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            前端
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            hexo
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/08/16/%E5%B7%A5%E5%85%B7/hexo/">博客构建同步仓库</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            vue
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF/">vue笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            工具
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/09/27/%E5%B7%A5%E5%85%B7/linux/">linux</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            生活
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            记录
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE-1/">汽车投诉车质网</a></li>  <li class="file"><a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE/">装修</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2023/08/24/test/pass/">备忘录</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            面试
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            总结
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95/">面试总结</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            项目
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E6%97%A5%E5%B8%B8%E9%A1%B9%E7%9B%AE%E5%A4%87%E6%B3%A8/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">项目笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-laravel/Migrations" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/laravel/">laravel</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/laravel/" rel="tag">laravel</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2024/03/07/laravel/Migrations/">
+            <time datetime="2024-03-07T09:34:16.874Z" itemprop="datePublished">2024-03-07</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            数据库迁移
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB"><span class="toc-number">1.</span> <span class="toc-text">数据库迁移</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B4%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">无符号整型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.2.</span> <span class="toc-text">迁移顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E6%97%B6%E5%8C%BA%E7%9A%84%E8%BF%81%E7%A7%BB%E5%AD%97%E6%AE%B5"><span class="toc-number">1.3.</span> <span class="toc-text">带时区的迁移字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.4.</span> <span class="toc-text">数据库迁移字段类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%98%E8%AE%A4%E6%97%B6%E9%97%B4%E6%88%B3"><span class="toc-number">1.5.</span> <span class="toc-text">默认时间戳</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%81%E7%A7%BB%E7%8A%B6%E6%80%81"><span class="toc-number">1.6.</span> <span class="toc-text">迁移状态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%B8%A6%E7%A9%BA%E6%A0%BC%E7%9A%84%E8%BF%81%E7%A7%BB"><span class="toc-number">1.7.</span> <span class="toc-text">创建带空格的迁移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E5%8F%A6%E4%B8%80%E5%88%97%E7%9A%84%E5%90%8E%E9%9D%A2%E5%88%9B%E5%BB%BA%E4%B8%80%E5%88%97"><span class="toc-number">1.8.</span> <span class="toc-text">在另一列的后面创建一列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E8%A1%A8%E7%94%9F%E6%88%90%E8%BF%81%E7%A7%BB%E6%96%87%E4%BB%B6"><span class="toc-number">1.9.</span> <span class="toc-text">为已经存在的表生成迁移文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E8%BF%81%E7%A7%BB%E5%89%8D%E5%85%88%E8%BE%93%E5%87%BA-SQL-%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.10.</span> <span class="toc-text">执行迁移前先输出 SQL 语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E8%BF%81%E7%A7%BB"><span class="toc-number">1.11.</span> <span class="toc-text">匿名迁移</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%99%E8%BF%81%E7%A7%BB%E6%B7%BB%E5%8A%A0%E6%B3%A8%E9%87%8A"><span class="toc-number">1.12.</span> <span class="toc-text">给迁移添加注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E5%90%8D%E8%A1%A8%E5%AD%97%E6%AE%B5%E6%A3%80%E6%B5%8B"><span class="toc-number">1.13.</span> <span class="toc-text">表名表字段检测</span></a></li></ol></li></ol>
+                </div>
+            
+        
+        
+            <h2 id="数据库迁移"><a href="#数据库迁移" class="headerlink" title="数据库迁移"></a>数据库迁移</h2><p>⬆️ <a href="../README-zh.md">回到顶部</a> ⬅️ <a href="./Models_Relations.md">上一个 (模型关联)</a> ➡️ <a href="./Views.md">下一个 (视图)</a></p>
+<ol>
+<li><a href="#%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B4%E5%9E%8B">无符号整型</a></li>
+<li><a href="#%E8%BF%81%E7%A7%BB%E9%A1%BA%E5%BA%8F">迁移顺序</a></li>
+<li><a href="#%E5%B8%A6%E6%97%B6%E5%8C%BA%E7%9A%84%E8%BF%81%E7%A7%BB%E5%AD%97%E6%AE%B5">带时区的迁移字段</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%81%E7%A7%BB%E5%AD%97%E6%AE%B5%E7%B1%BB%E5%9E%8B">数据库迁移字段类型</a></li>
+<li><a href="#%E9%BB%98%E8%AE%A4%E6%97%B6%E9%97%B4%E6%88%B3">默认时间戳</a></li>
+<li><a href="#%E8%BF%81%E7%A7%BB%E7%8A%B6%E6%80%81">迁移状态</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E5%B8%A6%E7%A9%BA%E6%A0%BC%E7%9A%84%E8%BF%81%E7%A7%BB">创建带空格的迁移</a></li>
+<li><a href="#%E5%9C%A8%E5%8F%A6%E4%B8%80%E5%88%97%E7%9A%84%E5%90%8E%E9%9D%A2%E5%88%9B%E5%BB%BA%E4%B8%80%E5%88%97">在另一列的后面创建一列</a></li>
+<li><a href="#%E4%B8%BA%E5%B7%B2%E7%BB%8F%E5%AD%98%E5%9C%A8%E7%9A%84%E8%A1%A8%E7%94%9F%E6%88%90%E8%BF%81%E7%A7%BB%E6%96%87%E4%BB%B6">为已经存在的表生成迁移文件</a></li>
+<li><a href="#%E6%89%A7%E8%A1%8C%E8%BF%81%E7%A7%BB%E5%89%8D%E5%85%88%E8%BE%93%E5%87%BA-SQL-%E8%AF%AD%E5%8F%A5">执行迁移前先输出 SQL 语句</a></li>
+<li><a href="#%E5%8C%BF%E5%90%8D%E8%BF%81%E7%A7%BB">匿名迁移</a></li>
+<li><a href="#%E7%BB%99%E8%BF%81%E7%A7%BB%E6%B7%BB%E5%8A%A0%E6%B3%A8%E9%87%8A">给迁移添加注释</a></li>
+<li><a href="#%E8%A1%A8%E5%90%8D%E8%A1%A8%E5%AD%97%E6%AE%B5%E6%A3%80%E6%B5%8B">表名表字段检测</a></li>
+</ol>
+<h3 id="无符号整型"><a href="#无符号整型" class="headerlink" title="无符号整型"></a>无符号整型</h3><p>作为迁移的外键，请使用 <code>unsignedInteger()</code>  类型或 <code>integer()-&gt;unsigned()</code> 来替代 <code>integer()</code> ，否则你会得到 SQL 错误。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Schema</span>::<span class="title function_ invoke__">create</span>(<span class="string">&#x27;employees&#x27;</span>, function (Blueprint <span class="variable">$table</span>) &#123;</span><br><span class="line">    <span class="variable">$table</span>-&gt;<span class="title function_ invoke__">unsignedInteger</span>(<span class="string">&#x27;company_id&#x27;</span>);</span><br><span class="line">    <span class="variable">$table</span>-&gt;<span class="title function_ invoke__">foreign</span>(<span class="string">&#x27;company_id&#x27;</span>)-&gt;<span class="title function_ invoke__">references</span>(<span class="string">&#x27;id&#x27;</span>)-&gt;<span class="title function_ invoke__">on</span>(<span class="string">&#x27;companies&#x27;</span>);</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>同样，你可以用 <code>unsignedBigInteger()</code> 如果外键对应的是 <code>bigInteger()</code> 类型。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Schema</span>::<span class="title function_ invoke__">create</span>(<span class="string">&#x27;employees&#x27;</span>, function (Blueprint <span class="variable">$table</span>) &#123;</span><br><span class="line">    <span class="variable">$table</span>-&gt;<span class="title function_ invoke__">unsignedBigInteger</span>(<span class="string">&#x27;company_id&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="迁移顺序"><a href="#迁移顺序" class="headerlink" title="迁移顺序"></a>迁移顺序</h3><p>如果你想改变数据库迁移的顺序，只需要将文件按时间戳记命名， 就像 <code>2018_08_04_070443_create_posts_table.php</code> 改为 <code>2018_07_04_070443_create_posts_table.php</code> (从 <code>2018_08_04</code> 改成了 <code>2018_07_04</code>).</p>
+<p>迁移是以字母顺序执行。</p>
+<h3 id="带时区的迁移字段"><a href="#带时区的迁移字段" class="headerlink" title="带时区的迁移字段"></a>带时区的迁移字段</h3><p>你知不知道在迁移中不止有 <code>timestamps()</code> 还有带时区的 <code>timestampsTz()</code> 。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Schema</span>::<span class="title function_ invoke__">create</span>(<span class="string">&#x27;employees&#x27;</span>, function (Blueprint <span class="variable">$table</span>) &#123;</span><br><span class="line">    <span class="variable">$table</span>-&gt;<span class="title function_ invoke__">increments</span>(<span class="string">&#x27;id&#x27;</span>);</span><br><span class="line">    <span class="variable">$table</span>-&gt;<span class="keyword">string</span>(<span class="string">&#x27;name&#x27;</span>);</span><br><span class="line">    <span class="variable">$table</span>-&gt;<span class="keyword">string</span>(<span class="string">&#x27;email&#x27;</span>);</span><br><span class="line">    <span class="variable">$table</span>-&gt;<span class="title function_ invoke__">timestampsTz</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>同样，还有这么些列 <code>dateTimeTz()</code> ，<code> timeTz()</code> ， <code>timestampTz()</code> ， <code>softDeletesTz()</code>。</p>
+<h3 id="数据库迁移字段类型"><a href="#数据库迁移字段类型" class="headerlink" title="数据库迁移字段类型"></a>数据库迁移字段类型</h3><p>迁移中有一些有趣的字段类型，下面是一些示例。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$table</span>-&gt;<span class="title function_ invoke__">geometry</span>(<span class="string">&#x27;positions&#x27;</span>);</span><br><span class="line"><span class="variable">$table</span>-&gt;<span class="title function_ invoke__">ipAddress</span>(<span class="string">&#x27;visitor&#x27;</span>);</span><br><span class="line"><span class="variable">$table</span>-&gt;<span class="title function_ invoke__">macAddress</span>(<span class="string">&#x27;device&#x27;</span>);</span><br><span class="line"><span class="variable">$table</span>-&gt;<span class="title function_ invoke__">point</span>(<span class="string">&#x27;position&#x27;</span>);</span><br><span class="line"><span class="variable">$table</span>-&gt;<span class="title function_ invoke__">uuid</span>(<span class="string">&#x27;id&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在 <a target="_blank" rel="noopener" href="https://laravel.com/docs/master/migrations#creating-columns">官方文档</a> 中你可以找到全部的字段类型列表.</p>
+<h3 id="默认时间戳"><a href="#默认时间戳" class="headerlink" title="默认时间戳"></a>默认时间戳</h3><p>当创建迁移文件时，你可以使用带<br><code>useCurrent()</code> 和 <code>useCurrentOnUpdate()</code> 可选项的 <code>timestamp()</code> 类型，这将会设置使相应字段以 <code>CURRENT_TIMESTAMP</code> 作为默认值。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$table</span>-&gt;<span class="title function_ invoke__">timestamp</span>(<span class="string">&#x27;created_at&#x27;</span>)-&gt;<span class="title function_ invoke__">useCurrent</span>();</span><br><span class="line"><span class="variable">$table</span>-&gt;<span class="title function_ invoke__">timestamp</span>(<span class="string">&#x27;updated_at&#x27;</span>)-&gt;<span class="title function_ invoke__">useCurrentOnUpdate</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="迁移状态"><a href="#迁移状态" class="headerlink" title="迁移状态"></a>迁移状态</h3><p>如果你想知道迁移是不是已经运行过了，不需要查看 “migrations” 表，你可以运行 <code>php artisan migrate:status</code> 命令来查看。</p>
+<p>结果示例:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+------+------------------------------------------------+-------+</span><br><span class="line">| Ran? | Migration                                      | Batch |</span><br><span class="line">+------+------------------------------------------------+-------+</span><br><span class="line">| Yes  | 2014_10_12_000000_create_users_table           | 1     |</span><br><span class="line">| Yes  | 2014_10_12_100000_create_password_resets_table | 1     |</span><br><span class="line">| No   | 2019_08_19_000000_create_failed_jobs_table     |       |</span><br><span class="line">+------+------------------------------------------------+-------+</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建带空格的迁移"><a href="#创建带空格的迁移" class="headerlink" title="创建带空格的迁移"></a>创建带空格的迁移</h3><p>当你打入 <code>make:migration</code> 命令，你不 “必须” 在不同部分间使用下划线 _ 进行分隔，比如 <code>create_transactions_table</code> 。你可以把名字用引号引起来并把下划线换成空格。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This works</span></span><br><span class="line">php artisan make:migration create_transactions_table</span><br><span class="line"></span><br><span class="line"><span class="comment">// But this works too</span></span><br><span class="line">php artisan make:migration <span class="string">&quot;create transactions table&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Source: <a target="_blank" rel="noopener" href="https://twitter.com/stephenoldham/status/1353647972991578120">Steve O on Twitter</a></p>
+<h3 id="在另一列的后面创建一列"><a href="#在另一列的后面创建一列" class="headerlink" title="在另一列的后面创建一列"></a>在另一列的后面创建一列</h3><p>注意： 仅 MySQL 可用<br>如果你要在已经存在的表里增加一个新列，这个列不 “必须” 成为最后一列，你可以指定这个列创建在哪个列的后面</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Schema</span>::<span class="title function_ invoke__">table</span>(<span class="string">&#x27;users&#x27;</span>, function (Blueprint <span class="variable">$table</span>) &#123;</span><br><span class="line">    <span class="variable">$table</span>-&gt;<span class="keyword">string</span>(<span class="string">&#x27;phone&#x27;</span>)-&gt;<span class="title function_ invoke__">after</span>(<span class="string">&#x27;email&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>如果你要在已经存在的表里增加一个新列，这个列不 “必须” 成为最后一列，你也可以指定这个列创建在哪个列的前面：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Schema</span>::<span class="title function_ invoke__">table</span>(<span class="string">&#x27;users&#x27;</span>, function (Blueprint <span class="variable">$table</span>) &#123;</span><br><span class="line">    <span class="variable">$table</span>-&gt;<span class="keyword">string</span>(<span class="string">&#x27;phone&#x27;</span>)-&gt;<span class="title function_ invoke__">before</span>(<span class="string">&#x27;created_at&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>如果你让创建的列排在表中的第一个，那么可以使用 <code>first</code> 方法。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Schema</span>::<span class="title function_ invoke__">table</span>(<span class="string">&#x27;users&#x27;</span>, function (Blueprint <span class="variable">$table</span>) &#123;</span><br><span class="line">    <span class="variable">$table</span>-&gt;<span class="keyword">string</span>(<span class="string">&#x27;uuid&#x27;</span>)-&gt;<span class="title function_ invoke__">first</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="为已经存在的表生成迁移文件"><a href="#为已经存在的表生成迁移文件" class="headerlink" title="为已经存在的表生成迁移文件"></a>为已经存在的表生成迁移文件</h3><p>如果你要为已经存的表生成迁移文件，而且你想让 Lavarel 来为你生成 Schema::table ()  代码，那么，在命令后面加入  “_in_xxxxx_table” 或”_to_xxxxx_table”，或者指明 “–table” 参数。<br><code>php artisan make:migration change_fields_products_table</code> generates empty class</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ChangeFieldsProductsTable</span> <span class="keyword">extends</span> <span class="title">Migration</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">up</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是，加入 <code>in_xxxxx_table</code> <code>php artisan make:migration change_fields_in_products_table</code> 生成了填好了 <code>Schemma::table()</code> 的类。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ChangeFieldsProductsTable</span> <span class="keyword">extends</span> <span class="title">Migration</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">up</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="title class_">Schema</span>::<span class="title function_ invoke__">table</span>(<span class="string">&#x27;products&#x27;</span>, function (Blueprint <span class="variable">$table</span>) &#123;</span><br><span class="line">            <span class="comment">//</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同样，你可以指明 <code>--table</code> 参数 <code>php artisan make:migration whatever_you_want --table=products</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WhateverYouWant</span> <span class="keyword">extends</span> <span class="title">Migration</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">up</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="title class_">Schema</span>::<span class="title function_ invoke__">table</span>(<span class="string">&#x27;products&#x27;</span>, function (Blueprint <span class="variable">$table</span>) &#123;</span><br><span class="line">            <span class="comment">//</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="执行迁移前先输出-SQL-语句"><a href="#执行迁移前先输出-SQL-语句" class="headerlink" title="执行迁移前先输出 SQL 语句"></a>执行迁移前先输出 SQL 语句</h3><p>当输入 migrate –pretend 命令，你可以得到将在终端中执行的 SQL 查询。如果有需要的话调试 SQL 的方法，这是个很有趣的方法。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Artisan command</span></span><br><span class="line">php artisan migrate --pretend</span><br></pre></td></tr></table></figure>
+
+<p> <a target="_blank" rel="noopener" href="https://github.com/zarpelon">@zarpelon</a> 提供</p>
+<h3 id="匿名迁移"><a href="#匿名迁移" class="headerlink" title="匿名迁移"></a>匿名迁移</h3><p><code>Laravel</code>团队发布了<code>Laravel 8.37</code>版本 支持匿名迁移，解决了迁移命名冲突的问题。</p>
+<p>这个问题的核心是 如果多个迁移有相同的类名 当尝试重新创建数据库时可能会导致问题</p>
+<p>以下是一个来自 <code>pr </code>的例子</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Migrations</span>\<span class="title">Migration</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Schema</span>\<span class="title">Blueprint</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Facades</span>\<span class="title">Schema</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="keyword">new</span> <span class="class"><span class="keyword">class</span> <span class="keyword">extends</span> <span class="title">Migration</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">up</span>(<span class="params"></span></span></span><br><span class="line"><span class="params"><span class="function">    &#123;</span></span></span><br><span class="line"><span class="params"><span class="function">        <span class="title class_">Schema</span>::table(<span class="params"><span class="string">&#x27;people&#x27;</span>, function (<span class="params">Blueprint <span class="variable">$table</span></span>) &#123;</span></span></span></span><br><span class="line"><span class="params"><span class="params"><span class="function">            <span class="variable">$table</span>-&gt;<span class="keyword">string</span>(<span class="params"><span class="string">&#x27;first_name&#x27;</span></span>)-&gt;nullable(<span class="params"></span>);</span></span></span></span><br><span class="line"><span class="params"><span class="params"><span class="function">        &#125;</span>);</span></span></span><br><span class="line"><span class="params"><span class="function">    &#125;</span></span></span><br><span class="line"><span class="params"><span class="function"></span></span></span><br><span class="line"><span class="params"><span class="function">    <span class="keyword">public</span> function down(<span class="params"></span>)</span></span></span><br><span class="line"><span class="params"><span class="function">    &#123;</span></span></span><br><span class="line"><span class="params"><span class="function">        <span class="title class_">Schema</span>::table(<span class="params"><span class="string">&#x27;people&#x27;</span>, function (<span class="params">Blueprint <span class="variable">$table</span></span>) &#123;</span></span></span></span><br><span class="line"><span class="params"><span class="params"><span class="function">            <span class="variable">$table</span>-&gt;dropColumn(<span class="params"><span class="string">&#x27;first_name&#x27;</span></span>);</span></span></span></span><br><span class="line"><span class="params"><span class="params"><span class="function">        &#125;</span>);</span></span></span><br><span class="line"><span class="params"><span class="function">    &#125;</span></span></span><br><span class="line"><span class="params"><span class="function">&#125;;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/nicksdot/status/1432340806275198978">@nicksdot</a>提供</p>
+<h3 id="给迁移添加注释"><a href="#给迁移添加注释" class="headerlink" title="给迁移添加注释"></a>给迁移添加注释</h3><p>在迁移中你可以给字段添加 <code>comment</code> 提供有用的信息。</p>
+<p>如果数据库被其他开发者管理,他们在任何操作之前可以看这些表结构的注释。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$table</span>-&gt;<span class="title function_ invoke__">unsignedInteger</span>(<span class="string">&#x27;interval&#x27;</span>)</span><br><span class="line">    -&gt;<span class="title function_ invoke__">index</span>()</span><br><span class="line">    -&gt;<span class="title function_ invoke__">comment</span>(<span class="string">&#x27;This column is used for indexing.&#x27;</span>)   </span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/Zubairmohsin33/status/1442345998790107137">@Zubairmohsin33</a>提供</p>
+<h3 id="表名表字段检测"><a href="#表名表字段检测" class="headerlink" title="表名表字段检测"></a>表名表字段检测</h3><p>你可以使用 <code>hasTable</code> 和 <code>hasColumn</code> 方法检测表或字段是否存在。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="title class_">Schema</span>::<span class="title function_ invoke__">hasTable</span>(<span class="string">&#x27;users&#x27;</span>)) &#123;</span><br><span class="line">    <span class="comment">// The &quot;users&quot; table exists...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (<span class="title class_">Schema</span>::<span class="title function_ invoke__">hasColumn</span>(<span class="string">&#x27;users&#x27;</span>, <span class="string">&#x27;email&#x27;</span>)) &#123;</span><br><span class="line">    <span class="comment">// The &quot;users&quot; table exists and has an &quot;email&quot; column...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <a target="_blank" rel="noopener" href="https://github.com/dipeshsukhia">@dipeshsukhia</a>提供</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2024/03/07/laravel/Factories/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    工厂
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2024/03/07/laravel/DB_Models_and_Eloquent/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">数据库模型与 Eloquent</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+
+
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Gemini &copy; 2024 
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

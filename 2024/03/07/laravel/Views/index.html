@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>view | Gemini`s wiki</title>
+    
+    
+        <meta name="keywords" content="laravel" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="视图⬆️ 回到顶部 ⬅️ 上一个 (数据库迁移) ➡️ 下一个 (路由)  foreach 语句中的 $loop 变量 视图是否存在 错误代码视图页面 脱离控制器的视图 Blade @auth 指令 Blade 视图中的二级 $loop 变量 创建你自己的 Blade 指令 视图指令IncludeIf IncludeWhen IncludeFirst 使用Laravel Blade-X 变量绑定节">
+<meta property="og:type" content="article">
+<meta property="og:title" content="view">
+<meta property="og:url" content="http://example.com/2024/03/07/laravel/Views/index.html">
+<meta property="og:site_name" content="Gemini&#96;s wiki">
+<meta property="og:description" content="视图⬆️ 回到顶部 ⬅️ 上一个 (数据库迁移) ➡️ 下一个 (路由)  foreach 语句中的 $loop 变量 视图是否存在 错误代码视图页面 脱离控制器的视图 Blade @auth 指令 Blade 视图中的二级 $loop 变量 创建你自己的 Blade 指令 视图指令IncludeIf IncludeWhen IncludeFirst 使用Laravel Blade-X 变量绑定节">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-07T09:34:16.875Z">
+<meta property="article:modified_time" content="2024-03-07T09:40:18.927Z">
+<meta property="article:author" content="Gemini">
+<meta property="article:tag" content="laravel">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Gemini`s wiki" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Gemini`s wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+                    <a class="main-nav-link" href="/gallery">相册</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                    <td><a class="main-nav-link" href="/gallery">相册</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            docker
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/docker/">docker笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            git
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/git/">git笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            golang
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/golang/go/">go语言</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            laravel
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2024/03/07/laravel/API/">API</a></li>  <li class="file"><a href="/2024/03/07/laravel/Artisan/">Artisan</a></li>  <li class="file"><a href="/2024/03/07/laravel/Collections/">集合</a></li>  <li class="file"><a href="/2024/03/07/laravel/Auth/">授权</a></li>  <li class="file"><a href="/2024/03/07/laravel/Mail/">邮件</a></li>  <li class="file"><a href="/2024/03/07/laravel/Log_and_Debug/">日志与调试</a></li>  <li class="file"><a href="/2024/03/07/laravel/Factories/">工厂</a></li>  <li class="file"><a href="/2024/03/07/laravel/Migrations/">数据库迁移</a></li>  <li class="file"><a href="/2024/03/07/laravel/DB_Models_and_Eloquent/">数据库模型与 Eloquent</a></li>  <li class="file"><a href="/2024/03/07/laravel/Routing/">route</a></li>  <li class="file"><a href="/2024/03/07/laravel/Other/">other其他</a></li>  <li class="file active"><a href="/2024/03/07/laravel/Views/">view</a></li>  <li class="file"><a href="/2024/03/07/laravel/Validation/">validate</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            windows wsl
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/wsl/">wsl2使用</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/linux/">linux常用基础命令</a></li>  <li class="file"><a href="/2023/07/18/docker/linux-1/">linux笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mac
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/mac/">mac</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mongodb
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            常用
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mongo/mongodb/">mongodb笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mysql
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mysql/mysql/">mysql</a></li>  <li class="file"><a href="/2023/07/18/mysql/mysql-1/">mysql-用户-权限</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            openai
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            大语言模型
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/08/16/%E5%B7%A5%E5%85%B7/openai/">openai 图片使用demo</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            php
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            hyperf
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/php/hyperf/">hyperf</a></li>  <li class="file"><a href="/2023/07/18/php/laravel/">laravel 创建Facades门面</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            phpstrom
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/ps/">工具</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            yii
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/19/yii/yii/">yii 请求头</a></li>  <li class="file"><a href="/2023/07/28/yii/yii2/">yii2</a></li>  <li class="file"><a href="/2023/08/28/yii/yii3/">Yii2 行为类</a></li>  <li class="file"><a href="/2023/10/08/yii/yii2-admin/">yii2-admin</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/20/%E5%B7%A5%E5%85%B7/link/">外链文章</a></li>  <li class="file"><a href="/2023/07/21/php/ioc/">IOC/DI</a></li>  <li class="file"><a href="/2023/08/08/php/%E5%87%BD%E6%95%B0/">函数</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/yii/php/">php</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/python/python/">python笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            redis
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/redis/redis/">redis笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            前端
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            hexo
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/08/16/%E5%B7%A5%E5%85%B7/hexo/">博客构建同步仓库</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            vue
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF/">vue笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            工具
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/09/27/%E5%B7%A5%E5%85%B7/linux/">linux</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            生活
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            记录
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE-1/">汽车投诉车质网</a></li>  <li class="file"><a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE/">装修</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2023/08/24/test/pass/">备忘录</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            面试
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            总结
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95/">面试总结</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            项目
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E6%97%A5%E5%B8%B8%E9%A1%B9%E7%9B%AE%E5%A4%87%E6%B3%A8/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">项目笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-laravel/Views" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/laravel/">laravel</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/laravel/" rel="tag">laravel</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2024/03/07/laravel/Views/">
+            <time datetime="2024-03-07T09:34:16.875Z" itemprop="datePublished">2024-03-07</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            view
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE"><span class="toc-number">1.</span> <span class="toc-text">视图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#foreach-%E8%AF%AD%E5%8F%A5%E4%B8%AD%E7%9A%84-loop-%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.</span> <span class="toc-text">foreach 语句中的 $loop 变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8"><span class="toc-number">1.2.</span> <span class="toc-text">视图是否存在</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81%E8%A7%86%E5%9B%BE%E9%A1%B5%E9%9D%A2"><span class="toc-number">1.3.</span> <span class="toc-text">错误代码视图页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%84%B1%E7%A6%BB%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%A7%86%E5%9B%BE"><span class="toc-number">1.4.</span> <span class="toc-text">脱离控制器的视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Blade-auth-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.5.</span> <span class="toc-text">Blade @auth 指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Blade-%E8%A7%86%E5%9B%BE%E4%B8%AD%E7%9A%84%E4%BA%8C%E7%BA%A7-loop-%E5%8F%98%E9%87%8F"><span class="toc-number">1.6.</span> <span class="toc-text">Blade 视图中的二级 $loop 变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84-Blade-%E6%8C%87%E4%BB%A4"><span class="toc-number">1.7.</span> <span class="toc-text">创建你自己的 Blade 指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E5%9B%BE%E6%8C%87%E4%BB%A4IncludeIf-IncludeWhen-IncludeFirst"><span class="toc-number">1.8.</span> <span class="toc-text">视图指令IncludeIf IncludeWhen IncludeFirst</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Laravel-Blade-X-%E5%8F%98%E9%87%8F%E7%BB%91%E5%AE%9A%E8%8A%82%E7%9C%81%E6%9B%B4%E5%A4%9A%E7%A9%BA%E9%97%B4"><span class="toc-number">1.9.</span> <span class="toc-text">使用Laravel Blade-X 变量绑定节省更多空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Blade-%E7%BB%84%E4%BB%B6%E5%B1%9E%E6%80%A7"><span class="toc-number">1.10.</span> <span class="toc-text">Blade 组件属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Blade%E7%B1%BB%E5%9E%8B%E6%8F%90%E7%A4%BA"><span class="toc-number">1.11.</span> <span class="toc-text">Blade类型提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E8%AF%AD%E6%B3%95%E6%8F%90%E7%A4%BA"><span class="toc-number">1.12.</span> <span class="toc-text">组件语法提示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E9%AB%98%E4%BA%AE%E5%AF%BC%E8%88%AA%E9%93%BE%E6%8E%A5"><span class="toc-number">1.13.</span> <span class="toc-text">自动高亮导航链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8C%96%E5%BE%AA%E7%8E%AF"><span class="toc-number">1.14.</span> <span class="toc-text">简化循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E7%90%86blade%E8%A7%86%E5%9B%BE%E7%9A%84%E7%AE%80%E5%8D%95%E6%96%B9%E6%B3%95"><span class="toc-number">1.15.</span> <span class="toc-text">整理blade视图的简单方法</span></a></li></ol></li></ol>
+                </div>
+            
+        
+        
+            <h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><p>⬆️ <a href="../README-zh.md">回到顶部</a> ⬅️ <a href="./Migrations.md">上一个 (数据库迁移)</a> ➡️ <a href="./Routing.md">下一个 (路由)</a></p>
+<ol>
+<li><a href="#foreach-%E8%AF%AD%E5%8F%A5%E4%B8%AD%E7%9A%84-$loop-%E5%8F%98%E9%87%8F">foreach 语句中的 $loop 变量</a></li>
+<li><a href="#%E8%A7%86%E5%9B%BE%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8">视图是否存在</a></li>
+<li><a href="#%E9%94%99%E8%AF%AF%E4%BB%A3%E7%A0%81%E8%A7%86%E5%9B%BE%E9%A1%B5%E9%9D%A2">错误代码视图页面</a></li>
+<li><a href="#%E8%84%B1%E7%A6%BB%E6%8E%A7%E5%88%B6%E5%99%A8%E7%9A%84%E8%A7%86%E5%9B%BE">脱离控制器的视图</a></li>
+<li><a href="#Blade-@auth-%E6%8C%87%E4%BB%A4">Blade @auth 指令</a></li>
+<li><a href="#Blade-%E8%A7%86%E5%9B%BE%E4%B8%AD%E7%9A%84%E4%BA%8C%E7%BA%A7-$loop-%E5%8F%98%E9%87%8F">Blade 视图中的二级 $loop 变量</a></li>
+<li><a href="#%E5%88%9B%E5%BB%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84-Blade-%E6%8C%87%E4%BB%A4">创建你自己的 Blade 指令</a></li>
+<li><a href="#%E8%A7%86%E5%9B%BE%E6%8C%87%E4%BB%A4IncludeIf-IncludeWhen-IncludeFirst">视图指令IncludeIf IncludeWhen IncludeFirst</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8Laravel-Blade-X-%E5%8F%98%E9%87%8F%E7%BB%91%E5%AE%9A%E8%8A%82%E7%9C%81%E6%9B%B4%E5%A4%9A%E7%A9%BA%E9%97%B4">使用Laravel Blade-X 变量绑定节省更多空间</a></li>
+<li><a href="#Blade-%E7%BB%84%E4%BB%B6%E5%B1%9E%E6%80%A7">Blade 组件属性</a></li>
+<li><a href="#Blade%E7%B1%BB%E5%9E%8B%E6%8F%90%E7%A4%BA">Blade类型提示</a></li>
+<li><a href="#%E7%BB%84%E4%BB%B6%E8%AF%AD%E6%B3%95%E6%8F%90%E7%A4%BA">组件语法提示</a></li>
+<li><a href="#%E8%87%AA%E5%8A%A8%E9%AB%98%E4%BA%AE%E5%AF%BC%E8%88%AA%E9%93%BE%E6%8E%A5">自动高亮导航链接</a></li>
+<li><a href="#%E7%AE%80%E5%8C%96%E5%BE%AA%E7%8E%AF">简化循环</a></li>
+<li><a href="#%E6%95%B4%E7%90%86blade%E8%A7%86%E5%9B%BE%E7%9A%84%E7%AE%80%E5%8D%95%E6%96%B9%E6%B3%95">整理blade视图的简单方法</a></li>
+</ol>
+<h3 id="foreach-语句中的-loop-变量"><a href="#foreach-语句中的-loop-变量" class="headerlink" title="foreach 语句中的 $loop 变量"></a>foreach 语句中的 $loop 变量</h3><p>在 <code>foreach</code> 循环中，使用 <code>$loop</code> 变量来查看当前是否是第一次 &#x2F; 最后一次循环。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@foreach ($users as $user)</span><br><span class="line">     @if ($loop-&gt;first)</span><br><span class="line">        This is the first iteration.</span><br><span class="line">     @endif</span><br><span class="line"></span><br><span class="line">     @if ($loop-&gt;last)</span><br><span class="line">        This is the last iteration.</span><br><span class="line">     @endif</span><br><span class="line"></span><br><span class="line">     &lt;p&gt;This is user &#123;&#123; $user-&gt;id &#125;&#125;&lt;/p&gt;</span><br><span class="line">@endforeach</span><br></pre></td></tr></table></figure>
+
+<p>同样也有诸如 <code>$loop-&gt;iteration</code> 或 <code>$loop-&gt;count</code> 等属性。可以在 <a target="_blank" rel="noopener" href="https://laravel.com/docs/master/blade#the-loop-variable">官方文档</a>中查看更多相关内容。</p>
+<h3 id="视图是否存在"><a href="#视图是否存在" class="headerlink" title="视图是否存在"></a>视图是否存在</h3><p>你可以在视图实际加载之前确认该视图文件是否存在。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="title function_ invoke__">view</span>()-&gt;<span class="title function_ invoke__">exists</span>(<span class="string">&#x27;custom.page&#x27;</span>)) &#123;</span><br><span class="line"> <span class="comment">// Load the view</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>你甚至可以使用一个数组来加载视图，这样只有第一个视图文件确实存在的视图会被加载。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="title function_ invoke__">view</span>()-&gt;<span class="title function_ invoke__">first</span>([<span class="string">&#x27;custom.dashboard&#x27;</span>, <span class="string">&#x27;dashboard&#x27;</span>], <span class="variable">$data</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="错误代码视图页面"><a href="#错误代码视图页面" class="headerlink" title="错误代码视图页面"></a>错误代码视图页面</h3><p>如果你想为一些特殊的 HTTP 返回码建立特定的错误页面，比如 <code>500</code> —— 只需要使用该码值创建视图文件，比如  <code>resources/views/errors/500.blade.php</code> ，或者是 <code>403.blade.php</code> 等等，这些视图会在对应的错误码出现时自动被加载。</p>
+<h3 id="脱离控制器的视图"><a href="#脱离控制器的视图" class="headerlink" title="脱离控制器的视图"></a>脱离控制器的视图</h3><p>如果你想让一个路由仅仅显示某个视图，不需要创建控制器，只需要使用 Route::view() 方法即可。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Instead of this</span></span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;about&#x27;</span>, <span class="string">&#x27;TextsController@about&#x27;</span>);</span><br><span class="line"><span class="comment">// And this</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TextsController</span> <span class="keyword">extends</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">about</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">view</span>(<span class="string">&#x27;texts.about&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Do this</span></span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">view</span>(<span class="string">&#x27;about&#x27;</span>, <span class="string">&#x27;texts.about&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Blade-auth-指令"><a href="#Blade-auth-指令" class="headerlink" title="Blade @auth 指令"></a>Blade @auth 指令</h3><p>不需要使用 if 来检查用户是否登录，使用 @auth 指令即可。</p>
+<p>比较典型的方式是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@if(auth()-&gt;user())</span><br><span class="line">    // The user is authenticated.</span><br><span class="line">@endif</span><br></pre></td></tr></table></figure>
+
+<p>更短的用法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@auth</span><br><span class="line">    // The user is authenticated.</span><br><span class="line">@endauth</span><br></pre></td></tr></table></figure>
+
+<p>与 @auth 相对的是 @guest 指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@guest</span><br><span class="line">    // The user is not authenticated.</span><br><span class="line">@endguest</span><br></pre></td></tr></table></figure>
+
+<h3 id="Blade-视图中的二级-loop-变量"><a href="#Blade-视图中的二级-loop-变量" class="headerlink" title="Blade 视图中的二级 $loop 变量"></a>Blade 视图中的二级 $loop 变量</h3><p>你甚至可以在 <code>Blade</code> 视图的二级 <code>foreach</code> 循环中使用 <code>$loop</code> 变量来表示外层的循环变量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@foreach ($users as $user)</span><br><span class="line">    @foreach ($user-&gt;posts as $post)</span><br><span class="line">        @if ($loop-&gt;parent-&gt;first)</span><br><span class="line">            This is first iteration of the parent loop.</span><br><span class="line">        @endif</span><br><span class="line">    @endforeach</span><br><span class="line">@endforeach</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建你自己的-Blade-指令"><a href="#创建你自己的-Blade-指令" class="headerlink" title="创建你自己的 Blade 指令"></a>创建你自己的 Blade 指令</h3><p>你只需要在 <code>app/Providers/AppServiceProvider.php</code> 中添加你自己的方法。举个例子，如果你需要将 <code>&lt;br&gt;</code> 标签替换为换行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;textarea&gt;@br2nl($post-&gt;post_text)&lt;/textarea&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后将这个指令添加到 <code>AppServiceProvider</code> 的 <code>boot()</code> 方法中：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">boot</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="title class_">Blade</span>::<span class="title function_ invoke__">directive</span>(<span class="string">&#x27;br2nl&#x27;</span>, function (<span class="variable">$string</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&lt;?php echo preg_replace(&#x27;/\&lt;br(\s*)?\/?\&gt;/i&#x27;, \&quot;\n\&quot;, <span class="subst">$string</span>); ?&gt;&quot;</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="视图指令IncludeIf-IncludeWhen-IncludeFirst"><a href="#视图指令IncludeIf-IncludeWhen-IncludeFirst" class="headerlink" title="视图指令IncludeIf IncludeWhen IncludeFirst"></a>视图指令IncludeIf IncludeWhen IncludeFirst</h3><p>如果你不确定 Blade 文件是否存在，你可以使用这些条件指令。<br>仅当 Blade 文件存在时载入 header：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@includeIf(&#x27;partials.header&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>仅当用户的 role_id &#x3D;&#x3D; 1 的时候载入 header：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@includeWhen(auth()-&gt;user()-&gt;role_id == 1, &#x27;partials.header&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>尝试加载 adminlte.header ，如果不存在，则加载 default.header：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@includeFirst(&#x27;adminlte.header&#x27;, &#x27;default.header&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用Laravel-Blade-X-变量绑定节省更多空间"><a href="#使用Laravel-Blade-X-变量绑定节省更多空间" class="headerlink" title="使用Laravel Blade-X 变量绑定节省更多空间"></a>使用Laravel Blade-X 变量绑定节省更多空间</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Using include, the old way</span></span><br><span class="line">@<span class="keyword">include</span>(<span class="string">&quot;components.post&quot;</span>, [<span class="string">&quot;title&quot;</span> =&gt; <span class="variable">$post</span>-&gt;title])</span><br><span class="line"></span><br><span class="line"><span class="comment">// Using Blade-X</span></span><br><span class="line">&lt;x-post link=<span class="string">&quot;&#123;&#123; <span class="subst">$post</span>-&gt;title &#125;&#125;&quot;</span> /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Using Blade-X variable binding</span></span><br><span class="line">&lt;x-post :link=<span class="string">&quot;<span class="subst">$post</span>-&gt;title&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/anwar_nairi/status/1442441888787795970">@anwar_nairi</a>提供</p>
+<h3 id="Blade-组件属性"><a href="#Blade-组件属性" class="headerlink" title="Blade 组件属性"></a>Blade 组件属性</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// button.blade.php</span></span><br><span class="line">@<span class="title function_ invoke__">props</span>([<span class="string">&#x27;rounded&#x27;</span> =&gt; <span class="literal">false</span>])</span><br><span class="line"></span><br><span class="line">&lt;button &#123;&#123; <span class="variable">$attributes</span>-&gt;<span class="class"><span class="keyword">class</span>([</span></span><br><span class="line"><span class="class">    &#x27;<span class="title">bg</span>-<span class="title">red</span>-100 <span class="title">text</span>-<span class="title">red</span>-800&#x27;,</span></span><br><span class="line"><span class="class">    &#x27;<span class="title">rounded</span>&#x27; =&gt; $<span class="title">rounded</span></span></span><br><span class="line"><span class="class">    ]) &#125;&#125;&gt;</span></span><br><span class="line"><span class="class">    </span>&#123;&#123; <span class="variable">$slot</span> &#125;&#125;</span><br><span class="line">&lt;/button&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// view.blade.php</span></span><br><span class="line"><span class="comment">// Non-rounded:</span></span><br><span class="line">&lt;x-button&gt;Submit&lt;/x-button&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Rounded:</span></span><br><span class="line">&lt;x-button rounded&gt;Submit&lt;/x-button&gt;</span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/godismyjudge95/status/1448825909167931396">@godismyjudge95</a>提供</p>
+<h3 id="Blade类型提示"><a href="#Blade类型提示" class="headerlink" title="Blade类型提示"></a>Blade类型提示</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@php</span><br><span class="line">    <span class="comment">/* <span class="doctag">@var</span> App\Models\User $user */</span></span><br><span class="line">@endphp</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    <span class="comment">// your ide will typehint the property for you </span></span><br><span class="line">    &#123;&#123;<span class="variable">$user</span>-&gt;email&#125;&#125;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/freekmurze/status/1455466663927746560">@freekmurze</a>提供</p>
+<h3 id="组件语法提示"><a href="#组件语法提示" class="headerlink" title="组件语法提示"></a>组件语法提示</h3><p>在组件参数之前传入 <code>:</code> 你可以直接传入变量而不需要使用 <code>&#123;&#123;&#125;&#125;</code>表达式</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;x-navbar title=<span class="string">&quot;&#123;&#123; <span class="subst">$title</span> &#125;&#125;&quot;</span>/&gt;</span><br><span class="line"><span class="comment">// you can do instead</span></span><br><span class="line">&lt;x-navbar :title=<span class="string">&quot;<span class="subst">$title</span>&quot;</span>/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/sky_0xs/status/1457056634363072520">@sky_0xs</a>提供</p>
+<h3 id="自动高亮导航链接"><a href="#自动高亮导航链接" class="headerlink" title="自动高亮导航链接"></a>自动高亮导航链接</h3><p>当精确的URL匹配或传递路径或路由名称模式时，自动突出显示导航链接</p>
+<p>带有请求和CSS类助手的 <code>blade</code> 组件使显示活动&#x2F;非活动状态变得非常简单。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NavLink</span> <span class="keyword">extends</span> <span class="title">Component</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"><span class="variable">$href</span>, <span class="variable">$active</span> = <span class="literal">null</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;href = <span class="variable">$href</span>;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;active = <span class="variable">$active</span> ?? <span class="variable">$href</span>;        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>): <span class="title">View</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$classes</span> = [<span class="string">&#x27;font-medium&#x27;</span>, <span class="string">&#x27;py-2&#x27;</span>, <span class="string">&#x27;text-primary&#x27;</span> =&gt; <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">isActive</span>()];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">view</span>(<span class="string">&#x27;components.nav-link&#x27;</span>, [</span><br><span class="line">            <span class="string">&#x27;class&#x27;</span> =&gt; <span class="title class_">Arr</span>::<span class="title function_ invoke__">toCssClasses</span>(<span class="variable">$classes</span>);</span><br><span class="line">        ]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">isActive</span>(<span class="params"></span>): <span class="title">bool</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_ invoke__">is_bool</span>(<span class="variable">$this</span>-&gt;active)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;active;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_ invoke__">request</span>()-&gt;<span class="title function_ invoke__">is</span>(<span class="variable">$this</span>-&gt;active)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_ invoke__">request</span>()-&gt;<span class="title function_ invoke__">fullUrlIs</span>(<span class="variable">$this</span>-&gt;active)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">request</span>()-&gt;<span class="title function_ invoke__">routeIs</span>(<span class="variable">$this</span>-&gt;active);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;&#123;&#123; $href &#125;&#125;&quot; &#123;&#123; $attributes-&gt;class($class) &#125;&#125;&gt;</span><br><span class="line">    &#123;&#123; $slot &#125;&#125;</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;x-nav-link :href=&quot;route(&#x27;projects.index&#x27;)&quot;&gt;Projects&lt;/x-nav-link&gt;</span><br><span class="line">&lt;x-nav-link :href=&quot;route(&#x27;projects.index&#x27;)&quot; active=&quot;projects.*&quot;&gt;Projects&lt;/x-nav-link&gt;</span><br><span class="line">&lt;x-nav-link :href=&quot;route(&#x27;projects.index&#x27;)&quot; active=&quot;projects/*&quot;&gt;Projects&lt;/x-nav-link&gt;</span><br><span class="line">&lt;x-nav-link :href=&quot;route(&#x27;projects.index&#x27;)&quot; :active=&quot;$tab = &#x27;projects&#x27;&quot;&gt;Projects&lt;/x-nav-link&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://twitter.com/mpskovvang/status/1459646197635944455">@mpskovvang</a>提供</p>
+<h3 id="简化循环"><a href="#简化循环" class="headerlink" title="简化循环"></a>简化循环</h3><p>你知道Blade<code>@each</code>指令可以帮助清理模板中的循环吗？</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// good</span><br><span class="line">@foreach($item in $items)</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &lt;p&gt;Name: &#123;&#123; $item-&gt;name &#125;&#125;</span><br><span class="line">        &lt;p&gt;Price: &#123;&#123; $item-&gt;price &#125;&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">@endforeach</span><br><span class="line">// better (HTML extracted into partial)</span><br><span class="line">@each(&#x27;partials.item&#x27;, $items, &#x27;item&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://twitter.com/kirschbaum_dev/status/1463205294914297861">@kirschbaum_dev</a>提供</p>
+<h3 id="整理blade视图的简单方法"><a href="#整理blade视图的简单方法" class="headerlink" title="整理blade视图的简单方法"></a>整理blade视图的简单方法</h3><p>整理刀片视图的简单方法<br></p>
+<p>使用<code>forelse·，而不是嵌套在</code>if<code>语句中的</code>foreach&#96;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- if/loop combination --&gt;</span><br><span class="line">@if ($orders-&gt;count())</span><br><span class="line">    @foreach($orders as $order)</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &#123;&#123; $order-&gt;id &#125;&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    @endforeach</span><br><span class="line">@else</span><br><span class="line">    &lt;p&gt;You haven&#x27;t placed any orders yet.&lt;/p&gt;</span><br><span class="line">@endif</span><br><span class="line">&lt;!-- Forelse alternative --&gt;</span><br><span class="line">@forelse($orders as $order)</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &#123;&#123; $order-&gt;id &#125;&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">@empty</span><br><span class="line">    &lt;p&gt;You haven&#x27;t placed any orders yet.&lt;/p&gt;</span><br><span class="line">@endforelse</span><br></pre></td></tr></table></figure>
+
+<p>由 [@alexjgarrett]提供</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2024/03/07/laravel/Other/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    other其他
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2024/03/07/laravel/Validation/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">validate</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+
+
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Gemini &copy; 2024 
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

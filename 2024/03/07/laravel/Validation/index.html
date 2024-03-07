@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>validate | Gemini`s wiki</title>
+    
+    
+        <meta name="keywords" content="laravel" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="验证⬆️ 回到顶部 ⬅️ 上一个 (路由) ➡️ 下一个 (集合)  图片验证 自定义验证错误的信息 用now或yesterday来验证日期 具有某些条件的验证规则 更改默认验证消息 预验证 第一次验证错误时停止 不使用validate或者FormRequest就抛出422 规则取决于其他条件 使用属性设置首次验证失败时停止 unique规则在软删除全局作用域中无效 sometimes方法允许你定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="validate">
+<meta property="og:url" content="http://example.com/2024/03/07/laravel/Validation/index.html">
+<meta property="og:site_name" content="Gemini&#96;s wiki">
+<meta property="og:description" content="验证⬆️ 回到顶部 ⬅️ 上一个 (路由) ➡️ 下一个 (集合)  图片验证 自定义验证错误的信息 用now或yesterday来验证日期 具有某些条件的验证规则 更改默认验证消息 预验证 第一次验证错误时停止 不使用validate或者FormRequest就抛出422 规则取决于其他条件 使用属性设置首次验证失败时停止 unique规则在软删除全局作用域中无效 sometimes方法允许你定">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-07T09:34:16.875Z">
+<meta property="article:modified_time" content="2024-03-07T09:40:15.662Z">
+<meta property="article:author" content="Gemini">
+<meta property="article:tag" content="laravel">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Gemini`s wiki" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Gemini`s wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+                    <a class="main-nav-link" href="/gallery">相册</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                    <td><a class="main-nav-link" href="/gallery">相册</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            docker
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/docker/">docker笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            git
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/git/">git笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            golang
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/golang/go/">go语言</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            laravel
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2024/03/07/laravel/API/">API</a></li>  <li class="file"><a href="/2024/03/07/laravel/Artisan/">Artisan</a></li>  <li class="file"><a href="/2024/03/07/laravel/Collections/">集合</a></li>  <li class="file"><a href="/2024/03/07/laravel/Auth/">授权</a></li>  <li class="file"><a href="/2024/03/07/laravel/Mail/">邮件</a></li>  <li class="file"><a href="/2024/03/07/laravel/Log_and_Debug/">日志与调试</a></li>  <li class="file"><a href="/2024/03/07/laravel/Factories/">工厂</a></li>  <li class="file"><a href="/2024/03/07/laravel/Migrations/">数据库迁移</a></li>  <li class="file"><a href="/2024/03/07/laravel/DB_Models_and_Eloquent/">数据库模型与 Eloquent</a></li>  <li class="file"><a href="/2024/03/07/laravel/Routing/">route</a></li>  <li class="file"><a href="/2024/03/07/laravel/Other/">other其他</a></li>  <li class="file"><a href="/2024/03/07/laravel/Views/">view</a></li>  <li class="file active"><a href="/2024/03/07/laravel/Validation/">validate</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            windows wsl
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/wsl/">wsl2使用</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/linux/">linux常用基础命令</a></li>  <li class="file"><a href="/2023/07/18/docker/linux-1/">linux笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mac
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/mac/">mac</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mongodb
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            常用
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mongo/mongodb/">mongodb笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mysql
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mysql/mysql/">mysql</a></li>  <li class="file"><a href="/2023/07/18/mysql/mysql-1/">mysql-用户-权限</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            openai
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            大语言模型
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/08/16/%E5%B7%A5%E5%85%B7/openai/">openai 图片使用demo</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            php
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            hyperf
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/php/hyperf/">hyperf</a></li>  <li class="file"><a href="/2023/07/18/php/laravel/">laravel 创建Facades门面</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            phpstrom
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/ps/">工具</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            yii
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/19/yii/yii/">yii 请求头</a></li>  <li class="file"><a href="/2023/07/28/yii/yii2/">yii2</a></li>  <li class="file"><a href="/2023/08/28/yii/yii3/">Yii2 行为类</a></li>  <li class="file"><a href="/2023/10/08/yii/yii2-admin/">yii2-admin</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/20/%E5%B7%A5%E5%85%B7/link/">外链文章</a></li>  <li class="file"><a href="/2023/07/21/php/ioc/">IOC/DI</a></li>  <li class="file"><a href="/2023/08/08/php/%E5%87%BD%E6%95%B0/">函数</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/yii/php/">php</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/python/python/">python笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            redis
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/redis/redis/">redis笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            前端
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            hexo
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/08/16/%E5%B7%A5%E5%85%B7/hexo/">博客构建同步仓库</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            vue
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF/">vue笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            工具
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/09/27/%E5%B7%A5%E5%85%B7/linux/">linux</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            生活
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            记录
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE-1/">汽车投诉车质网</a></li>  <li class="file"><a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE/">装修</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2023/08/24/test/pass/">备忘录</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            面试
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            总结
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95/">面试总结</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            项目
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E6%97%A5%E5%B8%B8%E9%A1%B9%E7%9B%AE%E5%A4%87%E6%B3%A8/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">项目笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-laravel/Validation" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/laravel/">laravel</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/laravel/" rel="tag">laravel</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2024/03/07/laravel/Validation/">
+            <time datetime="2024-03-07T09:34:16.875Z" itemprop="datePublished">2024-03-07</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            validate
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81"><span class="toc-number">1.</span> <span class="toc-text">验证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E9%AA%8C%E8%AF%81"><span class="toc-number">1.1.</span> <span class="toc-text">图片验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%AA%8C%E8%AF%81%E9%94%99%E8%AF%AF%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="toc-number">1.2.</span> <span class="toc-text">自定义验证错误的信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8now%E6%88%96yesterday%E6%9D%A5%E9%AA%8C%E8%AF%81%E6%97%A5%E6%9C%9F"><span class="toc-number">1.3.</span> <span class="toc-text">用now或yesterday来验证日期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E6%9C%89%E6%9F%90%E4%BA%9B%E6%9D%A1%E4%BB%B6%E7%9A%84%E9%AA%8C%E8%AF%81%E8%A7%84%E5%88%99"><span class="toc-number">1.4.</span> <span class="toc-text">具有某些条件的验证规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9%E9%BB%98%E8%AE%A4%E9%AA%8C%E8%AF%81%E6%B6%88%E6%81%AF"><span class="toc-number">1.5.</span> <span class="toc-text">更改默认验证消息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E9%AA%8C%E8%AF%81"><span class="toc-number">1.6.</span> <span class="toc-text">预验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%AA%8C%E8%AF%81%E9%94%99%E8%AF%AF%E6%97%B6%E5%81%9C%E6%AD%A2"><span class="toc-number">1.7.</span> <span class="toc-text">第一次验证错误时停止</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E4%BD%BF%E7%94%A8validate%E6%88%96%E8%80%85FormRequest%E5%B0%B1%E6%8A%9B%E5%87%BA422"><span class="toc-number">1.8.</span> <span class="toc-text">不使用validate或者FormRequest就抛出422</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E5%88%99%E5%8F%96%E5%86%B3%E4%BA%8E%E5%85%B6%E4%BB%96%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.9.</span> <span class="toc-text">规则取决于其他条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%B1%9E%E6%80%A7%E8%AE%BE%E7%BD%AE%E9%A6%96%E6%AC%A1%E9%AA%8C%E8%AF%81%E5%A4%B1%E8%B4%A5%E6%97%B6%E5%81%9C%E6%AD%A2"><span class="toc-number">1.10.</span> <span class="toc-text">使用属性设置首次验证失败时停止</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#unique%E8%A7%84%E5%88%99%E5%9C%A8%E8%BD%AF%E5%88%A0%E9%99%A4%E5%85%A8%E5%B1%80%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%AD%E6%97%A0%E6%95%88"><span class="toc-number">1.11.</span> <span class="toc-text">unique规则在软删除全局作用域中无效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sometimes%E6%96%B9%E6%B3%95%E5%85%81%E8%AE%B8%E4%BD%A0%E5%AE%9A%E4%B9%89%E9%AA%8C%E8%AF%81%E5%99%A8%E5%9C%A8%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%A2%AB%E5%BA%94%E7%94%A8"><span class="toc-number">1.12.</span> <span class="toc-text">sometimes方法允许你定义验证器在什么时候被应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E9%AA%8C%E8%AF%81"><span class="toc-number">1.13.</span> <span class="toc-text">数组元素验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E4%BA%A4%E8%87%AA%E5%AE%9A%E4%B9%89%E9%AA%8C%E8%AF%81%E8%A7%84%E5%88%99"><span class="toc-number">1.14.</span> <span class="toc-text">提交自定义验证规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Password%E7%9A%84defaults%E6%96%B9%E6%B3%95"><span class="toc-number">1.15.</span> <span class="toc-text">Password的defaults方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E9%87%8D%E5%AE%9A%E5%90%91%E8%AF%B7%E6%B1%82"><span class="toc-number">1.16.</span> <span class="toc-text">表单验证重定向请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mac%E9%AA%8C%E8%AF%81%E8%A7%84%E5%88%99"><span class="toc-number">1.17.</span> <span class="toc-text">Mac验证规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E9%A1%B6%E7%BA%A7%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1"><span class="toc-number">1.18.</span> <span class="toc-text">验证顶级域名邮箱</span></a></li></ol></li></ol>
+                </div>
+            
+        
+        
+            <h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>⬆️ <a href="../README-zh.md">回到顶部</a> ⬅️ <a href="./Routing.md">上一个 (路由)</a> ➡️ <a href="./Collections.md">下一个 (集合)</a></p>
+<ol>
+<li><a href="#%E5%9B%BE%E7%89%87%E9%AA%8C%E8%AF%81">图片验证</a></li>
+<li><a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%AA%8C%E8%AF%81%E9%94%99%E8%AF%AF%E7%9A%84%E4%BF%A1%E6%81%AF">自定义验证错误的信息</a></li>
+<li><a href="#%E7%94%A8now%E6%88%96yesterday%E6%9D%A5%E9%AA%8C%E8%AF%81%E6%97%A5%E6%9C%9F">用now或yesterday来验证日期</a></li>
+<li><a href="#%E5%85%B7%E6%9C%89%E6%9F%90%E4%BA%9B%E6%9D%A1%E4%BB%B6%E7%9A%84%E9%AA%8C%E8%AF%81%E8%A7%84%E5%88%99">具有某些条件的验证规则</a></li>
+<li><a href="#%E6%9B%B4%E6%94%B9%E9%BB%98%E8%AE%A4%E9%AA%8C%E8%AF%81%E6%B6%88%E6%81%AF">更改默认验证消息</a></li>
+<li><a href="#%E9%A2%84%E9%AA%8C%E8%AF%81">预验证</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%AA%8C%E8%AF%81%E9%94%99%E8%AF%AF%E6%97%B6%E5%81%9C%E6%AD%A2">第一次验证错误时停止</a></li>
+<li><a href="#%E4%B8%8D%E4%BD%BF%E7%94%A8validate%E6%88%96%E8%80%85FormRequest%E5%B0%B1%E6%8A%9B%E5%87%BA422">不使用validate或者FormRequest就抛出422</a></li>
+<li><a href="#%E8%A7%84%E5%88%99%E5%8F%96%E5%86%B3%E4%BA%8E%E5%85%B6%E4%BB%96%E6%9D%A1%E4%BB%B6">规则取决于其他条件</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%B1%9E%E6%80%A7%E8%AE%BE%E7%BD%AE%E9%A6%96%E6%AC%A1%E9%AA%8C%E8%AF%81%E5%A4%B1%E8%B4%A5%E6%97%B6%E5%81%9C%E6%AD%A2">使用属性设置首次验证失败时停止</a></li>
+<li><a href="#unique%E8%A7%84%E5%88%99%E5%9C%A8%E8%BD%AF%E5%88%A0%E9%99%A4%E5%85%A8%E5%B1%80%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%B8%AD%E6%97%A0%E6%95%88">unique规则在软删除全局作用域中无效</a></li>
+<li><a href="#sometimes%E6%96%B9%E6%B3%95%E5%85%81%E8%AE%B8%E4%BD%A0%E5%AE%9A%E4%B9%89%E9%AA%8C%E8%AF%81%E5%99%A8%E5%9C%A8%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%A2%AB%E5%BA%94%E7%94%A8">sometimes方法允许你定义验证器在什么时候被应用</a></li>
+<li><a href="#%E6%8F%90%E4%BA%A4%E8%87%AA%E5%AE%9A%E4%B9%89%E9%AA%8C%E8%AF%81%E8%A7%84%E5%88%99">提交自定义验证规则</a></li>
+<li><a href="#%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E9%AA%8C%E8%AF%81">数组元素验证</a></li>
+<li><a href="#Password%E7%9A%84defaults%E6%96%B9%E6%B3%95">Password的defaults方法</a></li>
+<li><a href="#%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81%E9%87%8D%E5%AE%9A%E5%90%91%E8%AF%B7%E6%B1%82">表单验证重定向请求</a></li>
+<li><a href="#Mac%E9%AA%8C%E8%AF%81%E8%A7%84%E5%88%99">Mac验证规则</a></li>
+<li><a href="#%E9%AA%8C%E8%AF%81%E9%A1%B6%E7%BA%A7%E5%9F%9F%E5%90%8D%E9%82%AE%E7%AE%B1">验证顶级域名邮箱</a></li>
+</ol>
+<h3 id="图片验证"><a href="#图片验证" class="headerlink" title="图片验证"></a>图片验证</h3><p>在验证上传的图片时，可以指定所需的尺寸</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">&#x27;photo&#x27;</span> =&gt; <span class="string">&#x27;dimensions:max_width=4096,max_height=4096&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义验证错误的信息"><a href="#自定义验证错误的信息" class="headerlink" title="自定义验证错误的信息"></a>自定义验证错误的信息</h3><p>只需在 <code>resources/lang/xx/validation.php</code> 文件创建适当的数组结构，就可以定义定每个 字段、规则和语言的验证错误消息。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;custom&#x27;</span> =&gt; [</span><br><span class="line">     <span class="string">&#x27;email&#x27;</span> =&gt; [</span><br><span class="line">        <span class="string">&#x27;required&#x27;</span> =&gt; <span class="string">&#x27;We need to know your e-mail address!&#x27;</span>,</span><br><span class="line">     ],</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+
+<h3 id="用now或yesterday来验证日期"><a href="#用now或yesterday来验证日期" class="headerlink" title="用now或yesterday来验证日期"></a>用now或yesterday来验证日期</h3><p>您可以使用 <code>before/after</code> 的规则验证日期，并将各种字符串作为参数传递，比如: <code>tomorrow</code>, <code>now</code>, <code>yesterday</code>。例如: <code>&#39;start_date&#39; =&gt; &#39;after:now&#39;</code>。它在底层下使用 <code>strtotime ()</code>。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$rules</span> = [</span><br><span class="line">    <span class="string">&#x27;start_date&#x27;</span> =&gt; <span class="string">&#x27;after:tomorrow&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;end_date&#x27;</span> =&gt; <span class="string">&#x27;after:start_date&#x27;</span></span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<h3 id="具有某些条件的验证规则"><a href="#具有某些条件的验证规则" class="headerlink" title="具有某些条件的验证规则"></a>具有某些条件的验证规则</h3><p>如果验证规则依赖于某些条件，则可以通过将 <code>withValidator()</code> 添加到 <code>FormRequest</code> 类中来修改规则，并在那里指定自定义逻辑。例如，如果您只想为某些用户角色添加验证规则。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Validation</span>\<span class="title">Validator</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StoreBlogCategoryRequest</span> <span class="keyword">extends</span> <span class="title">FormRequest</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">withValidator</span>(<span class="params">Validator <span class="variable">$validator</span></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_ invoke__">auth</span>()-&gt;<span class="title function_ invoke__">user</span>()-&gt;is_admin) &#123;</span><br><span class="line">            <span class="variable">$validator</span>-&gt;<span class="title function_ invoke__">addRules</span>([<span class="string">&#x27;some_secret_password&#x27;</span> =&gt; <span class="string">&#x27;required&#x27;</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="更改默认验证消息"><a href="#更改默认验证消息" class="headerlink" title="更改默认验证消息"></a>更改默认验证消息</h3><p>如果要更改特定字段和特定验证规则的默认验证错误消息，只需将 <code>messages()</code> 方法添加到<code>FormRequest</code>类中。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StoreUserRequest</span> <span class="keyword">extends</span> <span class="title">FormRequest</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">rules</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [<span class="string">&#x27;name&#x27;</span> =&gt; <span class="string">&#x27;required&#x27;</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">messages</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [<span class="string">&#x27;name.required&#x27;</span> =&gt; <span class="string">&#x27;User name should be real name&#x27;</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="预验证"><a href="#预验证" class="headerlink" title="预验证"></a>预验证</h3><p>如果你想在默认的<code>Laravel</code>验证之前修改某个字段，或者，换句话说，“准备” 那个字段， <code>FormRequest </code>类中有一个方法 <code>prepareForValidation () </code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">prepareForValidation</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">merge</span>([</span><br><span class="line">        <span class="string">&#x27;slug&#x27;</span> =&gt; <span class="title class_">Illuminate\Support\Str</span>::<span class="title function_ invoke__">slug</span>(<span class="variable">$this</span>-&gt;slug),</span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第一次验证错误时停止"><a href="#第一次验证错误时停止" class="headerlink" title="第一次验证错误时停止"></a>第一次验证错误时停止</h3><p>默认情况下，将在列表中返回 Laravel 验证错误，检查所有验证规则。但是如果你想要在第一个错误之后停止这个过程，使用验证规则叫做 bail:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$request</span>-&gt;<span class="title function_ invoke__">validate</span>([</span><br><span class="line">    <span class="string">&#x27;title&#x27;</span> =&gt; <span class="string">&#x27;bail|required|unique:posts|max:255&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;body&#x27;</span> =&gt; <span class="string">&#x27;required&#x27;</span>,</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+
+<p>如果你需要停止首次错误验证，可以设置<code>FormRequest</code> 类中<code>$stopOnFirstFailure</code>为<code>true</code>:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="variable">$stopOnFirstFailure</span> = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="不使用validate或者FormRequest就抛出422"><a href="#不使用validate或者FormRequest就抛出422" class="headerlink" title="不使用validate或者FormRequest就抛出422"></a>不使用validate或者FormRequest就抛出422</h3><p>如果您不使用 <code>validate()</code> 或 <code>Form Request</code>，但仍然需要使用相同的 <code>422</code> 状态码和错误结构抛出错误，那么可以手动抛出 <code>throw ValidationException::withMessages()</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (! <span class="variable">$user</span> || ! <span class="title class_">Hash</span>::<span class="title function_ invoke__">check</span>(<span class="variable">$request</span>-&gt;password, <span class="variable">$user</span>-&gt;password)) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="title class_">ValidationException</span>::<span class="title function_ invoke__">withMessages</span>([</span><br><span class="line">        <span class="string">&#x27;email&#x27;</span> =&gt; [<span class="string">&#x27;The provided credentials are incorrect.&#x27;</span>],</span><br><span class="line">    ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="规则取决于其他条件"><a href="#规则取决于其他条件" class="headerlink" title="规则取决于其他条件"></a>规则取决于其他条件</h3><p>如果您的规则是动态的并且依赖于其他条件，那么您可以动态地创建该规则数组</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">store</span>(<span class="params">Request <span class="variable">$request</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$validationArray</span> = [</span><br><span class="line">        <span class="string">&#x27;title&#x27;</span> =&gt; <span class="string">&#x27;required&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;company&#x27;</span> =&gt; <span class="string">&#x27;required&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;logo&#x27;</span> =&gt; <span class="string">&#x27;file|max:2048&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;location&#x27;</span> =&gt; <span class="string">&#x27;required&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;apply_link&#x27;</span> =&gt; <span class="string">&#x27;required|url&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;content&#x27;</span> =&gt; <span class="string">&#x27;required&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;payment_method_id&#x27;</span> =&gt; <span class="string">&#x27;required&#x27;</span></span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!<span class="title class_">Auth</span>::<span class="title function_ invoke__">check</span>()) &#123;</span><br><span class="line">        <span class="variable">$validationArray</span> = <span class="title function_ invoke__">array_merge</span>(<span class="variable">$validationArray</span>, [</span><br><span class="line">            <span class="string">&#x27;email&#x27;</span> =&gt; <span class="string">&#x27;required|email|unique:users&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;password&#x27;</span> =&gt; <span class="string">&#x27;required|confirmed|min:5&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;name&#x27;</span> =&gt; <span class="string">&#x27;required&#x27;</span></span><br><span class="line">        ]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用属性设置首次验证失败时停止"><a href="#使用属性设置首次验证失败时停止" class="headerlink" title="使用属性设置首次验证失败时停止"></a>使用属性设置首次验证失败时停止</h3><p>在<code>request</code>类中使用这个属性设置首次验证失败时停止。</p>
+<p>注意 这个跟 <code>Bail</code>规则不一样 只在单个规则失败时就停止</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* Indicated if the validator should stop</span></span><br><span class="line"><span class="comment"> * the entire validation once a single</span></span><br><span class="line"><span class="comment"> * rule failure has occurred.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">protected</span> <span class="variable">$stopOnFirstFailure</span> = <span class="literal">true</span>;</span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/Sala7JR/status/1436172331198603270">@Sala7JR</a>提供</p>
+<h3 id="unique规则在软删除全局作用域中无效"><a href="#unique规则在软删除全局作用域中无效" class="headerlink" title="unique规则在软删除全局作用域中无效"></a>unique规则在软删除全局作用域中无效</h3><p><code>Rule::unique</code> 默认不在软删除的全局范围内。但是<code>使用</code>withoutTrashed&#96; 时可用。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Rule</span>::<span class="title function_ invoke__">unique</span>(<span class="string">&#x27;users&#x27;</span>, <span class="string">&#x27;email&#x27;</span>)-&gt;<span class="title function_ invoke__">withoutTrashed</span>();</span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/Zubairmohsin33/status/1438490197956702209">@Zubairmohsin33</a>提供</p>
+<h3 id="sometimes方法允许你定义验证器在什么时候被应用"><a href="#sometimes方法允许你定义验证器在什么时候被应用" class="headerlink" title="sometimes方法允许你定义验证器在什么时候被应用"></a>sometimes方法允许你定义验证器在什么时候被应用</h3><p><code>Validator::sometimes</code> 方法允许你定义验证器在什么时候被应用，基于提供的输入。<br>这个片段展示了如果购买的物品数量不够，如何禁止使用优惠券。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$data</span> = [</span><br><span class="line">    <span class="string">&#x27;coupon&#x27;</span> =&gt; <span class="string">&#x27;PIZZA_PARTY&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;items&#x27;</span> =&gt; [</span><br><span class="line">        [</span><br><span class="line">            <span class="string">&#x27;id&#x27;</span> =&gt; <span class="number">1</span>,</span><br><span class="line">            <span class="string">&#x27;quantity&#x27;</span> =&gt; <span class="number">2</span></span><br><span class="line">        ],</span><br><span class="line">        [</span><br><span class="line">            <span class="string">&#x27;id&#x27;</span> =&gt; <span class="number">2</span>,</span><br><span class="line">            <span class="string">&#x27;quantity&#x27;</span> =&gt; <span class="number">2</span>,</span><br><span class="line">        ],</span><br><span class="line">    ],</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="variable">$validator</span> = <span class="title class_">Validator</span>::<span class="title function_ invoke__">make</span>(<span class="variable">$data</span>, [</span><br><span class="line">    <span class="string">&#x27;coupon&#x27;</span> =&gt; <span class="string">&#x27;exists:coupons,name&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;items&#x27;</span> =&gt; <span class="string">&#x27;required|array&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;items.*.id&#x27;</span> =&gt; <span class="string">&#x27;required|int&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;items.*.quantity&#x27;</span> =&gt; <span class="string">&#x27;required|int&#x27;</span>,</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="variable">$validator</span>-&gt;<span class="title function_ invoke__">sometimes</span>(<span class="string">&#x27;coupon&#x27;</span>, <span class="string">&#x27;prohibited&#x27;</span>, function (Fluent <span class="variable">$data</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">collect</span>(<span class="variable">$data</span>-&gt;items)-&gt;<span class="title function_ invoke__">sum</span>(<span class="string">&#x27;quantity&#x27;</span>) &lt; <span class="number">5</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// throws a ValidationException as the quantity provided is not enough</span></span><br><span class="line"><span class="variable">$validator</span>-&gt;<span class="title function_ invoke__">validate</span>();</span><br></pre></td></tr></table></figure>
+
+<p>Tip given by <a target="_blank" rel="noopener" href="https://twitter.com/cerbero90/status/1440226037972013056">@cerbero90</a></p>
+<h3 id="数组元素验证"><a href="#数组元素验证" class="headerlink" title="数组元素验证"></a>数组元素验证</h3><p>如果你想要验证提交的数组元素，使用带<code>*</code>号的点符号。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// say you have this array</span></span><br><span class="line"><span class="comment">// array in request &#x27;user_info&#x27;</span></span><br><span class="line"><span class="variable">$request</span>-&gt;<span class="title function_ invoke__">validated</span>()-&gt;user_info = [</span><br><span class="line">    [</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span> =&gt; <span class="string">&#x27;Qasim&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;age&#x27;</span> =&gt; <span class="number">26</span>,</span><br><span class="line">    ],</span><br><span class="line">    [</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span> =&gt; <span class="string">&#x27;Ahmed&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;age&#x27;</span> =&gt; <span class="number">23</span>,</span><br><span class="line">    ],</span><br><span class="line">];</span><br><span class="line"><span class="comment">// Rule</span></span><br><span class="line"><span class="variable">$rules</span> = [</span><br><span class="line">    <span class="string">&#x27;user_info.*.name&#x27;</span> =&gt; [<span class="string">&#x27;required&#x27;</span>, <span class="string">&#x27;alpha&#x27;</span>],</span><br><span class="line">    <span class="string">&#x27;user_info.*.age&#x27;</span> =&gt; [<span class="string">&#x27;required&#x27;</span>, <span class="string">&#x27;numeric&#x27;</span>],</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>由<a target="_blank" rel="noopener" href="https://github.com/HydroMoon">HydroMoon</a>提供</p>
+<h3 id="提交自定义验证规则"><a href="#提交自定义验证规则" class="headerlink" title="提交自定义验证规则"></a>提交自定义验证规则</h3><p>感谢<code>Rule::when</code> 我们可以指定提交验证规则。</p>
+<p>下面例子我们可以验证用户是否真的可以对文章点赞。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Validation</span>\<span class="title">Rule</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">rules</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [</span><br><span class="line">        <span class="string">&#x27;vote&#x27;</span> =&gt; <span class="title class_">Rule</span>::<span class="title function_ invoke__">when</span>(<span class="variable">$user</span>-&gt;<span class="title function_ invoke__">can</span>(<span class="string">&#x27;vote&#x27;</span>, <span class="variable">$post</span>), <span class="string">&#x27;required|int|between:1,5&#x27;</span>),</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/cerbero90/status/1434426076198014976">@cerbero90</a>提供</p>
+<h3 id="Password的defaults方法"><a href="#Password的defaults方法" class="headerlink" title="Password的defaults方法"></a>Password的defaults方法</h3><p>使用<code>Password::defaults</code>方法验证用户提供的密码时，可以强制执行特定规则。它包括要求字母、数字、符号等的选项。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AppServiceProvider</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">boot</span>(<span class="params"></span>): <span class="title">void</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="title class_">Password</span>::<span class="title function_ invoke__">defaults</span>(function () &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title class_">Password</span>::<span class="title function_ invoke__">min</span>(<span class="number">12</span>)</span><br><span class="line">                -&gt;<span class="title function_ invoke__">letters</span>()</span><br><span class="line">                -&gt;<span class="title function_ invoke__">numbers</span>()</span><br><span class="line">                -&gt;<span class="title function_ invoke__">symbols</span>()</span><br><span class="line">                -&gt;<span class="title function_ invoke__">mixedCase</span>()</span><br><span class="line">                -&gt;<span class="title function_ invoke__">uncompromised</span>();</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_ invoke__">request</span>()-&gt;<span class="title function_ invoke__">validate</span>([</span><br><span class="line">    [<span class="string">&#x27;password&#x27;</span> =&gt; [<span class="string">&#x27;required&#x27;</span>, <span class="title class_">Password</span>::<span class="title function_ invoke__">defaults</span>()]]</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<p> <a target="_blank" rel="noopener" href="https://twitter.com/mattkingshott/status/1463190613260603395">@mattkingshott</a>提供</p>
+<h3 id="表单验证重定向请求"><a href="#表单验证重定向请求" class="headerlink" title="表单验证重定向请求"></a>表单验证重定向请求</h3><p>使用表单请求进行验证时，默认情况下，验证错误将重定向回上一页，但您可以覆盖它<br></p>
+<p>只需定义<code>$redirect</code>或<code>redirectRoute</code>的属性即可</p>
+<p><a target="_blank" rel="noopener" href="https://laravel.com/docs/8.x/validation#customizing-the-redirect-location">Link to docs</a></p>
+<h3 id="Mac验证规则"><a href="#Mac验证规则" class="headerlink" title="Mac验证规则"></a>Mac验证规则</h3><p><code>Laravel 8.77</code>添加了新的<code>mac_address</code>规则</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$trans</span> = <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">getIlluminateArrayTranslator</span>();</span><br><span class="line"><span class="variable">$validator</span> = <span class="keyword">new</span> <span class="title class_">Validator</span>(<span class="variable">$trans</span>, [<span class="string">&#x27;mac&#x27;</span> =&gt; <span class="string">&#x27;01-23-45-67-89-ab&#x27;</span>], [<span class="string">&#x27;mac&#x27;</span> =&gt; <span class="string">&#x27;mac_address&#x27;</span>]);</span><br><span class="line"><span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">assertTrue</span>(<span class="variable">$validator</span>-&gt;<span class="title function_ invoke__">passes</span>());</span><br></pre></td></tr></table></figure>
+
+<p> [@Teacoders] 提供</p>
+<h3 id="验证顶级域名邮箱"><a href="#验证顶级域名邮箱" class="headerlink" title="验证顶级域名邮箱"></a>验证顶级域名邮箱</h3><p><code>email</code>验证规则将接受一个非顶级域名邮箱 (例子:<code>taylor@laravel</code>, <code>povilas@ldaily</code>)</p>
+<p>但是你如果想确保邮箱必须有一个顶级域名 (例子:<code>taylor@laravel.com</code>, <code>povilas@ldaily.com</code>) 使用<code>email:filter</code>规则</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">    <span class="string">&#x27;email&#x27;</span> =&gt; <span class="string">&#x27;required|email&#x27;</span>, <span class="comment">// before</span></span><br><span class="line">    <span class="string">&#x27;email&#x27;</span> =&gt; <span class="string">&#x27;required|email:filter&#x27;</span>, <span class="comment">// after</span></span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+
+<p> <a target="_blank" rel="noopener" href="https://laracasts.com/discuss/channels/general-discussion/laravel-58-override-email-validation-use-57-rules?replyId=645613">@Chris1904</a>提供</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2024/03/07/laravel/Views/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    view
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2024/03/07/laravel/Mail/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">邮件</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+
+
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Gemini &copy; 2024 
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

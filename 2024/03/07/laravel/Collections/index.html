@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>集合 | Gemini`s wiki</title>
+    
+    
+        <meta name="keywords" content="laravel" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="集合⬆️ 回到顶部 ⬅️ 上一个 (验证) ➡️ 下一个 (授权)  不要使用NULL过滤集合 使用自定义的回调函数对集合分组 针对行的集合方法 对分页集合求和 分页组件中的唯一标识 高阶集合方法 Higher order collection message  不要使用NULL过滤集合你可以在 Eloquent 中使用 NULL 过滤，但是你不能用 NULL 过滤 集合 - 你应该换成空字符串过">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集合">
+<meta property="og:url" content="http://example.com/2024/03/07/laravel/Collections/index.html">
+<meta property="og:site_name" content="Gemini&#96;s wiki">
+<meta property="og:description" content="集合⬆️ 回到顶部 ⬅️ 上一个 (验证) ➡️ 下一个 (授权)  不要使用NULL过滤集合 使用自定义的回调函数对集合分组 针对行的集合方法 对分页集合求和 分页组件中的唯一标识 高阶集合方法 Higher order collection message  不要使用NULL过滤集合你可以在 Eloquent 中使用 NULL 过滤，但是你不能用 NULL 过滤 集合 - 你应该换成空字符串过">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-07T09:34:16.873Z">
+<meta property="article:modified_time" content="2024-03-07T09:39:51.798Z">
+<meta property="article:author" content="Gemini">
+<meta property="article:tag" content="laravel">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Gemini`s wiki" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Gemini`s wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+                    <a class="main-nav-link" href="/gallery">相册</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                    <td><a class="main-nav-link" href="/gallery">相册</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            docker
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/docker/">docker笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            git
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/git/">git笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            golang
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/golang/go/">go语言</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            laravel
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2024/03/07/laravel/API/">API</a></li>  <li class="file"><a href="/2024/03/07/laravel/Artisan/">Artisan</a></li>  <li class="file active"><a href="/2024/03/07/laravel/Collections/">集合</a></li>  <li class="file"><a href="/2024/03/07/laravel/Auth/">授权</a></li>  <li class="file"><a href="/2024/03/07/laravel/Mail/">邮件</a></li>  <li class="file"><a href="/2024/03/07/laravel/Log_and_Debug/">日志与调试</a></li>  <li class="file"><a href="/2024/03/07/laravel/Factories/">工厂</a></li>  <li class="file"><a href="/2024/03/07/laravel/Migrations/">数据库迁移</a></li>  <li class="file"><a href="/2024/03/07/laravel/DB_Models_and_Eloquent/">数据库模型与 Eloquent</a></li>  <li class="file"><a href="/2024/03/07/laravel/Routing/">route</a></li>  <li class="file"><a href="/2024/03/07/laravel/Other/">other其他</a></li>  <li class="file"><a href="/2024/03/07/laravel/Views/">view</a></li>  <li class="file"><a href="/2024/03/07/laravel/Validation/">validate</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            windows wsl
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/wsl/">wsl2使用</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/linux/">linux常用基础命令</a></li>  <li class="file"><a href="/2023/07/18/docker/linux-1/">linux笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mac
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/mac/">mac</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mongodb
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            常用
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mongo/mongodb/">mongodb笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mysql
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mysql/mysql/">mysql</a></li>  <li class="file"><a href="/2023/07/18/mysql/mysql-1/">mysql-用户-权限</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            openai
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            大语言模型
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/08/16/%E5%B7%A5%E5%85%B7/openai/">openai 图片使用demo</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            php
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            hyperf
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/php/hyperf/">hyperf</a></li>  <li class="file"><a href="/2023/07/18/php/laravel/">laravel 创建Facades门面</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            phpstrom
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/ps/">工具</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            yii
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/19/yii/yii/">yii 请求头</a></li>  <li class="file"><a href="/2023/07/28/yii/yii2/">yii2</a></li>  <li class="file"><a href="/2023/08/28/yii/yii3/">Yii2 行为类</a></li>  <li class="file"><a href="/2023/10/08/yii/yii2-admin/">yii2-admin</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/20/%E5%B7%A5%E5%85%B7/link/">外链文章</a></li>  <li class="file"><a href="/2023/07/21/php/ioc/">IOC/DI</a></li>  <li class="file"><a href="/2023/08/08/php/%E5%87%BD%E6%95%B0/">函数</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/yii/php/">php</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/python/python/">python笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            redis
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/redis/redis/">redis笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            前端
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            hexo
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/08/16/%E5%B7%A5%E5%85%B7/hexo/">博客构建同步仓库</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            vue
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF/">vue笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            工具
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/09/27/%E5%B7%A5%E5%85%B7/linux/">linux</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            生活
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            记录
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE-1/">汽车投诉车质网</a></li>  <li class="file"><a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE/">装修</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2023/08/24/test/pass/">备忘录</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            面试
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            总结
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95/">面试总结</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            项目
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E6%97%A5%E5%B8%B8%E9%A1%B9%E7%9B%AE%E5%A4%87%E6%B3%A8/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">项目笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-laravel/Collections" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/laravel/">laravel</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/laravel/" rel="tag">laravel</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2024/03/07/laravel/Collections/">
+            <time datetime="2024-03-07T09:34:16.873Z" itemprop="datePublished">2024-03-07</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            集合
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E5%90%88"><span class="toc-number">1.</span> <span class="toc-text">集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8NULL%E8%BF%87%E6%BB%A4%E9%9B%86%E5%90%88"><span class="toc-number">1.1.</span> <span class="toc-text">不要使用NULL过滤集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E5%AF%B9%E9%9B%86%E5%90%88%E5%88%86%E7%BB%84"><span class="toc-number">1.2.</span> <span class="toc-text">使用自定义的回调函数对集合分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%92%88%E5%AF%B9%E8%A1%8C%E7%9A%84%E9%9B%86%E5%90%88%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.</span> <span class="toc-text">针对行的集合方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E5%88%86%E9%A1%B5%E9%9B%86%E5%90%88%E6%B1%82%E5%92%8C"><span class="toc-number">1.4.</span> <span class="toc-text">对分页集合求和</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E6%A0%87%E8%AF%86"><span class="toc-number">1.5.</span> <span class="toc-text">分页组件中的唯一标识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E9%98%B6%E9%9B%86%E5%90%88%E6%96%B9%E6%B3%95"><span class="toc-number">1.6.</span> <span class="toc-text">高阶集合方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AB%98%E9%98%B6%E9%9B%86%E5%90%88%E6%8E%92%E5%BA%8F"><span class="toc-number">1.7.</span> <span class="toc-text">高阶集合排序</span></a></li></ol></li></ol>
+                </div>
+            
+        
+        
+            <h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><p>⬆️ <a href="../README-zh.md">回到顶部</a> ⬅️ <a href="./Validation.md">上一个 (验证)</a> ➡️ <a href="./Auth.md">下一个 (授权)</a></p>
+<ol>
+<li><a href="#%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8NULL%E8%BF%87%E6%BB%A4%E9%9B%86%E5%90%88">不要使用NULL过滤集合</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E5%AF%B9%E9%9B%86%E5%90%88%E5%88%86%E7%BB%84">使用自定义的回调函数对集合分组</a></li>
+<li><a href="#%E9%92%88%E5%AF%B9%E8%A1%8C%E7%9A%84%E9%9B%86%E5%90%88%E6%96%B9%E6%B3%95">针对行的集合方法</a></li>
+<li><a href="#%E5%AF%B9%E5%88%86%E9%A1%B5%E9%9B%86%E5%90%88%E6%B1%82%E5%92%8C">对分页集合求和</a></li>
+<li><a href="#%E5%88%86%E9%A1%B5%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%94%AF%E4%B8%80%E6%A0%87%E8%AF%86">分页组件中的唯一标识</a></li>
+<li><a href="#%E9%AB%98%E9%98%B6%E9%9B%86%E5%90%88%E6%96%B9%E6%B3%95">高阶集合方法</a></li>
+<li><a href="#higher-order-collection-message">Higher order collection message</a></li>
+</ol>
+<h3 id="不要使用NULL过滤集合"><a href="#不要使用NULL过滤集合" class="headerlink" title="不要使用NULL过滤集合"></a>不要使用NULL过滤集合</h3><p>你可以在 Eloquent 中使用 <code>NULL</code> 过滤，但是你不能用 <code>NULL</code> 过滤 集合 - 你应该换成空字符串过滤，字段中已经没有 “null”。(意思是全字符串的形式的过滤不能使用 NULL，因为会被格式化为 [“field is null”, “&#x3D;”, true])</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This works</span></span><br><span class="line"><span class="variable">$messages</span> = <span class="title class_">Message</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;read_at is null&#x27;</span>)-&gt;<span class="title function_ invoke__">get</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Won’t work - will return 0 messages</span></span><br><span class="line"><span class="variable">$messages</span> = <span class="title class_">Message</span>::<span class="title function_ invoke__">all</span>();</span><br><span class="line"><span class="variable">$unread_messages</span> = <span class="variable">$messages</span>-&gt;<span class="title function_ invoke__">where</span>(<span class="string">&#x27;read_at is null&#x27;</span>)-&gt;<span class="title function_ invoke__">count</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Will work</span></span><br><span class="line"><span class="variable">$unread_messages</span> = <span class="variable">$messages</span>-&gt;<span class="title function_ invoke__">where</span>(<span class="string">&#x27;read_at&#x27;</span>, <span class="string">&#x27;&#x27;</span>)-&gt;<span class="title function_ invoke__">count</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用自定义的回调函数对集合分组"><a href="#使用自定义的回调函数对集合分组" class="headerlink" title="使用自定义的回调函数对集合分组"></a>使用自定义的回调函数对集合分组</h3><p>如果你想对结果分组，且分组字段不对应数据库中的字段，你可以提供一个回调函数来返回自定义的分组字段。<br>例如，通过用户的注册日分组，代码如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$users</span> = <span class="title class_">User</span>::<span class="title function_ invoke__">all</span>()-&gt;<span class="title function_ invoke__">groupBy</span>(function(<span class="variable">$item</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$item</span>-&gt;created_at-&gt;<span class="title function_ invoke__">format</span>(<span class="string">&#x27;Y-m-d&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>注意：这个方法是在 <code>Collection </code>类上的，所以将会在数据库的返回结果上执行。(意思不会在数据库 sql 层面分组)</p>
+<h3 id="针对行的集合方法"><a href="#针对行的集合方法" class="headerlink" title="针对行的集合方法"></a>针对行的集合方法</h3><p>你可以用 <code>-&gt;all(</code>) ,<code> -&gt;get()</code> 方法查询数据，然后在这个返回的集合上执行各种集合方法，执行集合操作不会每次都查询数据库。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$users</span> = <span class="title class_">User</span>::<span class="title function_ invoke__">all</span>();</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;Max ID: &#x27;</span> . <span class="variable">$users</span>-&gt;<span class="title function_ invoke__">max</span>(<span class="string">&#x27;id&#x27;</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;Average age: &#x27;</span> . <span class="variable">$users</span>-&gt;<span class="title function_ invoke__">avg</span>(<span class="string">&#x27;age&#x27;</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&#x27;Total budget: &#x27;</span> . <span class="variable">$users</span>-&gt;<span class="title function_ invoke__">sum</span>(<span class="string">&#x27;budget&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="对分页集合求和"><a href="#对分页集合求和" class="headerlink" title="对分页集合求和"></a>对分页集合求和</h3><p>如何对分页返回的结果集求和？使用相同的查询构建器，在分页查询之前执行求和操作</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// How to get sum of post_views with pagination?</span></span><br><span class="line"><span class="variable">$posts</span> = <span class="title class_">Post</span>::<span class="title function_ invoke__">paginate</span>(<span class="number">10</span>);</span><br><span class="line"><span class="comment">// This will be only for page 1, not ALL posts</span></span><br><span class="line"><span class="variable">$sum</span> = <span class="variable">$posts</span>-&gt;<span class="title function_ invoke__">sum</span>(<span class="string">&#x27;post_views&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Do this with Query Builder</span></span><br><span class="line"><span class="variable">$query</span> = <span class="title class_">Post</span>::<span class="title function_ invoke__">query</span>();</span><br><span class="line"><span class="comment">// Calculate sum</span></span><br><span class="line"><span class="variable">$sum</span> = <span class="variable">$query</span>-&gt;<span class="title function_ invoke__">sum</span>(<span class="string">&#x27;post_views&#x27;</span>);</span><br><span class="line"><span class="comment">// And then do the pagination from the same query</span></span><br><span class="line"><span class="variable">$posts</span> = <span class="variable">$query</span>-&gt;<span class="title function_ invoke__">paginate</span>(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="分页组件中的唯一标识"><a href="#分页组件中的唯一标识" class="headerlink" title="分页组件中的唯一标识"></a>分页组件中的唯一标识</h3><p>我们可以在分页组件中像序列号那样使用每趟循环中的索引 <code>index </code>，作为分页组件的唯一标识。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">&lt;th&gt;Serial&lt;/th&gt;</span><br><span class="line"> ...</span><br><span class="line"> @<span class="keyword">foreach</span> (<span class="variable">$products</span> <span class="keyword">as</span> <span class="variable">$product</span>)</span><br><span class="line"> &lt;tr&gt;</span><br><span class="line">     &lt;td&gt;&#123;&#123; <span class="variable">$loop</span>-&gt;index + <span class="variable">$product</span>-&gt;<span class="title function_ invoke__">firstItem</span>() &#125;&#125;&lt;/td&gt;</span><br><span class="line">     ...</span><br><span class="line"> @<span class="keyword">endforeach</span></span><br></pre></td></tr></table></figure>
+
+<p>这可以解决下一页（?page&#x3D;2&amp;…）索引的计数问题。</p>
+<h3 id="高阶集合方法"><a href="#高阶集合方法" class="headerlink" title="高阶集合方法"></a>高阶集合方法</h3><p>集合具有更高阶的可以链式调用的方法，例如 <code>groupBy()</code> <code>map()</code> 等，给你流畅的语法体验。下面的例子计算了一个需求单中每组产品的价格。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$offer</span> = [</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span>  =&gt; <span class="string">&#x27;offer1&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;lines&#x27;</span> =&gt; [</span><br><span class="line">            [<span class="string">&#x27;group&#x27;</span> =&gt; <span class="number">1</span>, <span class="string">&#x27;price&#x27;</span> =&gt; <span class="number">10</span>],</span><br><span class="line">            [<span class="string">&#x27;group&#x27;</span> =&gt; <span class="number">1</span>, <span class="string">&#x27;price&#x27;</span> =&gt; <span class="number">20</span>],</span><br><span class="line">            [<span class="string">&#x27;group&#x27;</span> =&gt; <span class="number">2</span>, <span class="string">&#x27;price&#x27;</span> =&gt; <span class="number">30</span>],</span><br><span class="line">            [<span class="string">&#x27;group&#x27;</span> =&gt; <span class="number">2</span>, <span class="string">&#x27;price&#x27;</span> =&gt; <span class="number">40</span>],</span><br><span class="line">            [<span class="string">&#x27;group&#x27;</span> =&gt; <span class="number">3</span>, <span class="string">&#x27;price&#x27;</span> =&gt; <span class="number">50</span>],</span><br><span class="line">            [<span class="string">&#x27;group&#x27;</span> =&gt; <span class="number">3</span>, <span class="string">&#x27;price&#x27;</span> =&gt; <span class="number">60</span>]</span><br><span class="line">        ]</span><br><span class="line">];</span><br><span class="line">                </span><br><span class="line"><span class="variable">$totalPerGroup</span> = <span class="title function_ invoke__">collect</span>(<span class="variable">$offer</span>-&gt;lines)-&gt;<span class="title function_ invoke__">groupBy</span>(<span class="string">&#x27;group&#x27;</span>)-&gt;<span class="title function_ invoke__">map</span>(fn(<span class="variable">$group</span>) =&gt; <span class="variable">$group</span>-&gt;<span class="title function_ invoke__">sum</span>(<span class="string">&#x27;price&#x27;</span>)); </span><br></pre></td></tr></table></figure>
+
+<h3 id="高阶集合排序"><a href="#高阶集合排序" class="headerlink" title="高阶集合排序"></a>高阶集合排序</h3><p>集合还支持“高阶排序”，这是对集合执行常见操作的捷径。</p>
+<p>此示例计算报价中每组产品的价格。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$offer</span> = [</span><br><span class="line">        <span class="string">&#x27;name&#x27;</span>  =&gt; <span class="string">&#x27;offer1&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;lines&#x27;</span> =&gt; [</span><br><span class="line">            [<span class="string">&#x27;group&#x27;</span> =&gt; <span class="number">1</span>, <span class="string">&#x27;price&#x27;</span> =&gt; <span class="number">10</span>],</span><br><span class="line">            [<span class="string">&#x27;group&#x27;</span> =&gt; <span class="number">1</span>, <span class="string">&#x27;price&#x27;</span> =&gt; <span class="number">20</span>],</span><br><span class="line">            [<span class="string">&#x27;group&#x27;</span> =&gt; <span class="number">2</span>, <span class="string">&#x27;price&#x27;</span> =&gt; <span class="number">30</span>],</span><br><span class="line">            [<span class="string">&#x27;group&#x27;</span> =&gt; <span class="number">2</span>, <span class="string">&#x27;price&#x27;</span> =&gt; <span class="number">40</span>],</span><br><span class="line">            [<span class="string">&#x27;group&#x27;</span> =&gt; <span class="number">3</span>, <span class="string">&#x27;price&#x27;</span> =&gt; <span class="number">50</span>],</span><br><span class="line">            [<span class="string">&#x27;group&#x27;</span> =&gt; <span class="number">3</span>, <span class="string">&#x27;price&#x27;</span> =&gt; <span class="number">60</span>]</span><br><span class="line">        ]</span><br><span class="line">];</span><br><span class="line">                </span><br><span class="line"><span class="variable">$totalPerGroup</span> = <span class="title function_ invoke__">collect</span>(<span class="variable">$offer</span>[<span class="string">&#x27;lines&#x27;</span>])-&gt;groupBy-&gt;group-&gt;map-&gt;<span class="title function_ invoke__">sum</span>(<span class="string">&#x27;price&#x27;</span>);</span><br></pre></td></tr></table></figure>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2024/03/07/laravel/Artisan/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    Artisan
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2024/03/07/laravel/Auth/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">授权</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+
+
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Gemini &copy; 2024 
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

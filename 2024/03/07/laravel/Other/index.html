@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>other其他 | Gemini`s wiki</title>
+    
+    
+        <meta name="keywords" content="laravel" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="其他⬆️ 回到顶部 ⬅️ 上一个 (API)   localhost配置 何时运行或不运行composer-update Composer检查新版本 自动大写翻译 仅含小时的Carbon 单动作控制器 重定向到特定的控制器方法 使用旧版本的Laravel 为分页链接添加参数 可重复回调函数 $request-&gt;hasAny 简单分页组件 获取数据的方法 Blade指令增加真假条件s 任务允许">
+<meta property="og:type" content="article">
+<meta property="og:title" content="other其他">
+<meta property="og:url" content="http://example.com/2024/03/07/laravel/Other/index.html">
+<meta property="og:site_name" content="Gemini&#96;s wiki">
+<meta property="og:description" content="其他⬆️ 回到顶部 ⬅️ 上一个 (API)   localhost配置 何时运行或不运行composer-update Composer检查新版本 自动大写翻译 仅含小时的Carbon 单动作控制器 重定向到特定的控制器方法 使用旧版本的Laravel 为分页链接添加参数 可重复回调函数 $request-&gt;hasAny 简单分页组件 获取数据的方法 Blade指令增加真假条件s 任务允许">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-07T09:34:16.875Z">
+<meta property="article:modified_time" content="2024-03-07T09:40:10.365Z">
+<meta property="article:author" content="Gemini">
+<meta property="article:tag" content="laravel">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Gemini`s wiki" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Gemini`s wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+                    <a class="main-nav-link" href="/gallery">相册</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                    <td><a class="main-nav-link" href="/gallery">相册</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            docker
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/docker/">docker笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            git
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/git/">git笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            golang
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/golang/go/">go语言</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            laravel
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2024/03/07/laravel/API/">API</a></li>  <li class="file"><a href="/2024/03/07/laravel/Artisan/">Artisan</a></li>  <li class="file"><a href="/2024/03/07/laravel/Collections/">集合</a></li>  <li class="file"><a href="/2024/03/07/laravel/Auth/">授权</a></li>  <li class="file"><a href="/2024/03/07/laravel/Mail/">邮件</a></li>  <li class="file"><a href="/2024/03/07/laravel/Log_and_Debug/">日志与调试</a></li>  <li class="file"><a href="/2024/03/07/laravel/Factories/">工厂</a></li>  <li class="file"><a href="/2024/03/07/laravel/Migrations/">数据库迁移</a></li>  <li class="file"><a href="/2024/03/07/laravel/DB_Models_and_Eloquent/">数据库模型与 Eloquent</a></li>  <li class="file"><a href="/2024/03/07/laravel/Routing/">route</a></li>  <li class="file active"><a href="/2024/03/07/laravel/Other/">other其他</a></li>  <li class="file"><a href="/2024/03/07/laravel/Views/">view</a></li>  <li class="file"><a href="/2024/03/07/laravel/Validation/">validate</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            windows wsl
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/wsl/">wsl2使用</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/linux/">linux常用基础命令</a></li>  <li class="file"><a href="/2023/07/18/docker/linux-1/">linux笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mac
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/mac/">mac</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mongodb
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            常用
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mongo/mongodb/">mongodb笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mysql
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mysql/mysql/">mysql</a></li>  <li class="file"><a href="/2023/07/18/mysql/mysql-1/">mysql-用户-权限</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            openai
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            大语言模型
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/08/16/%E5%B7%A5%E5%85%B7/openai/">openai 图片使用demo</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            php
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            hyperf
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/php/hyperf/">hyperf</a></li>  <li class="file"><a href="/2023/07/18/php/laravel/">laravel 创建Facades门面</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            phpstrom
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/ps/">工具</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            yii
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/19/yii/yii/">yii 请求头</a></li>  <li class="file"><a href="/2023/07/28/yii/yii2/">yii2</a></li>  <li class="file"><a href="/2023/08/28/yii/yii3/">Yii2 行为类</a></li>  <li class="file"><a href="/2023/10/08/yii/yii2-admin/">yii2-admin</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/20/%E5%B7%A5%E5%85%B7/link/">外链文章</a></li>  <li class="file"><a href="/2023/07/21/php/ioc/">IOC/DI</a></li>  <li class="file"><a href="/2023/08/08/php/%E5%87%BD%E6%95%B0/">函数</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/yii/php/">php</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/python/python/">python笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            redis
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/redis/redis/">redis笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            前端
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            hexo
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/08/16/%E5%B7%A5%E5%85%B7/hexo/">博客构建同步仓库</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            vue
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF/">vue笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            工具
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/09/27/%E5%B7%A5%E5%85%B7/linux/">linux</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            生活
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            记录
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE-1/">汽车投诉车质网</a></li>  <li class="file"><a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE/">装修</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2023/08/24/test/pass/">备忘录</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            面试
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            总结
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95/">面试总结</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            项目
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E6%97%A5%E5%B8%B8%E9%A1%B9%E7%9B%AE%E5%A4%87%E6%B3%A8/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">项目笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-laravel/Other" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/laravel/">laravel</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/laravel/" rel="tag">laravel</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2024/03/07/laravel/Other/">
+            <time datetime="2024-03-07T09:34:16.875Z" itemprop="datePublished">2024-03-07</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            other其他
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">1.</span> <span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#localhost%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.</span> <span class="toc-text">localhost配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%95%E6%97%B6%E8%BF%90%E8%A1%8C%E6%88%96%E4%B8%8D%E8%BF%90%E8%A1%8Ccomposer-update"><span class="toc-number">1.2.</span> <span class="toc-text">何时运行或不运行composer-update</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Composer%E6%A3%80%E6%9F%A5%E6%96%B0%E7%89%88%E6%9C%AC"><span class="toc-number">1.3.</span> <span class="toc-text">Composer检查新版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E5%A4%A7%E5%86%99%E7%BF%BB%E8%AF%91"><span class="toc-number">1.4.</span> <span class="toc-text">自动大写翻译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%85%E5%90%AB%E5%B0%8F%E6%97%B6%E7%9A%84Carbon"><span class="toc-number">1.5.</span> <span class="toc-text">仅含小时的Carbon</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%8A%A8%E4%BD%9C%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-number">1.6.</span> <span class="toc-text">单动作控制器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91%E5%88%B0%E7%89%B9%E5%AE%9A%E7%9A%84%E6%8E%A7%E5%88%B6%E5%99%A8%E6%96%B9%E6%B3%95"><span class="toc-number">1.7.</span> <span class="toc-text">重定向到特定的控制器方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%97%A7%E7%89%88%E6%9C%AC%E7%9A%84Laravel"><span class="toc-number">1.8.</span> <span class="toc-text">使用旧版本的Laravel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E5%88%86%E9%A1%B5%E9%93%BE%E6%8E%A5%E6%B7%BB%E5%8A%A0%E5%8F%82%E6%95%B0"><span class="toc-number">1.9.</span> <span class="toc-text">为分页链接添加参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%87%8D%E5%A4%8D%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="toc-number">1.10.</span> <span class="toc-text">可重复回调函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#request-hasAny"><span class="toc-number">1.11.</span> <span class="toc-text">$request-&gt;hasAny</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%88%86%E9%A1%B5%E7%BB%84%E4%BB%B6"><span class="toc-number">1.12.</span> <span class="toc-text">简单分页组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.13.</span> <span class="toc-text">获取数据的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Blade%E6%8C%87%E4%BB%A4%E5%A2%9E%E5%8A%A0%E7%9C%9F%E5%81%87%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.14.</span> <span class="toc-text">Blade指令增加真假条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E5%85%81%E8%AE%B8%E8%84%B1%E7%A6%BB%E9%98%9F%E5%88%97"><span class="toc-number">1.15.</span> <span class="toc-text">任务允许脱离队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E5%B7%A5%E5%8E%82%E7%B1%BB%E6%88%96seeders%E5%A4%96%E9%83%A8%E4%BD%BF%E7%94%A8Faker"><span class="toc-number">1.16.</span> <span class="toc-text">在工厂类或seeders外部使用Faker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E4%BB%A5%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C%E7%9A%84%E4%BA%8B%E6%83%85"><span class="toc-number">1.17.</span> <span class="toc-text">可以定时执行的事情</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E7%B4%A2Laravel%E6%96%87%E6%A1%A3"><span class="toc-number">1.18.</span> <span class="toc-text">检索Laravel文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%87%E6%BB%A4route-list"><span class="toc-number">1.19.</span> <span class="toc-text">过滤route-list</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89Blade%E6%8C%87%E4%BB%A4"><span class="toc-number">1.20.</span> <span class="toc-text">自定义Blade指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Artisan%E5%91%BD%E4%BB%A4%E5%B8%AE%E5%8A%A9"><span class="toc-number">1.21.</span> <span class="toc-text">Artisan命令帮助</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%93%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95%E6%97%B6%E7%A6%81%E7%94%A8%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="toc-number">1.22.</span> <span class="toc-text">当运行测试时禁用懒加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E4%B8%A4%E4%B8%AA%E5%BE%88%E5%A5%BD%E7%94%A8%E7%9A%84%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0%E4%BC%9A%E5%B8%A6%E6%9D%A5%E9%AD%94%E6%B3%95%E6%95%88%E6%9E%9C"><span class="toc-number">1.23.</span> <span class="toc-text">使用两个很好用的辅助函数会带来魔法效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="toc-number">1.24.</span> <span class="toc-text">请求参数的默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E8%B7%AF%E7%94%B1%E4%B8%AD%E7%9B%B4%E6%8E%A5%E4%BC%A0%E5%85%A5%E4%B8%AD%E9%97%B4%E4%BB%B6%E8%80%8C%E4%B8%8D%E6%98%AF%E6%B3%A8%E5%86%8C%E5%AE%83"><span class="toc-number">1.25.</span> <span class="toc-text">在路由中直接传入中间件而不是注册它</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E6%95%B0%E7%BB%84%E8%BD%AC%E5%8C%96%E6%88%90css%E7%B1%BB"><span class="toc-number">1.26.</span> <span class="toc-text">将数组转化成css类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Laravel-Cashier%E4%B8%AD%E7%9A%84upcomingInvoice%E6%96%B9%E6%B3%95"><span class="toc-number">1.27.</span> <span class="toc-text">Laravel-Cashier中的upcomingInvoice方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#request-exists%E4%B8%8Ehas"><span class="toc-number">1.28.</span> <span class="toc-text">$request-&gt;exists与has</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E5%B8%A6%E5%8F%98%E9%87%8F%E8%A7%86%E5%9B%BE%E7%9A%84%E5%A4%9A%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="toc-number">1.29.</span> <span class="toc-text">返回带变量视图的多种方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E5%BA%A6%E6%A0%87%E5%87%86shell%E5%91%BD%E4%BB%A4"><span class="toc-number">1.30.</span> <span class="toc-text">调度标准shell命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E9%9C%80SSL%E9%AA%8C%E8%AF%81%E7%9A%84HTTP%E8%AF%B7%E6%B1%82"><span class="toc-number">1.31.</span> <span class="toc-text">无需SSL验证的HTTP请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AA%E7%BB%8F%E9%AA%8C%E8%AF%81%E7%9A%84HTTP%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%B7%E6%B1%82"><span class="toc-number">1.32.</span> <span class="toc-text">未经验证的HTTP客户端请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E6%96%AD%E8%A8%80%E4%BB%BB%E4%BD%95%E5%86%85%E5%AE%B9%E7%9A%84%E6%B5%8B%E8%AF%95"><span class="toc-number">1.33.</span> <span class="toc-text">不断言任何内容的测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Str%E7%9A%84mask%E6%96%B9%E6%B3%95"><span class="toc-number">1.34.</span> <span class="toc-text">Str的mask方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A9%E5%B1%95Laravel%E7%B1%BB"><span class="toc-number">1.35.</span> <span class="toc-text">扩展Laravel类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Can%E7%89%B9%E6%80%A7"><span class="toc-number">1.36.</span> <span class="toc-text">Can特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%B4%E6%97%B6%E4%B8%8B%E8%BD%BDurl"><span class="toc-number">1.37.</span> <span class="toc-text">临时下载url</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E6%B7%B1%E5%BA%A6%E5%B5%8C%E5%A5%97%E6%95%B0%E7%BB%84"><span class="toc-number">1.38.</span> <span class="toc-text">处理深度嵌套数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%82%E5%B8%B8%E7%9A%84%E5%91%88%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-number">1.39.</span> <span class="toc-text">自定义异常的呈现方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tap%E5%8A%A9%E6%89%8B%E5%87%BD%E6%95%B0"><span class="toc-number">1.40.</span> <span class="toc-text">tap助手函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E7%BD%AE%E6%89%80%E6%9C%89%E5%89%A9%E4%BD%99%E7%9A%84%E6%97%B6%E9%97%B4%E5%8D%95%E4%BD%8D"><span class="toc-number">1.41.</span> <span class="toc-text">重置所有剩余的时间单位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%86%85%E6%A0%B8%E4%B8%AD%E7%9A%84%E8%AE%A1%E5%88%92%E5%91%BD%E4%BB%A4%E9%97%AE%E9%A2%98%E5%8F%AF%E4%BB%A5%E8%87%AA%E5%8A%A8%E9%80%9A%E8%BF%87%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81%E5%85%B6%E8%BE%93%E5%87%BA"><span class="toc-number">1.42.</span> <span class="toc-text">控制台内核中的计划命令问题可以自动通过电子邮件发送其输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8GET%E5%8F%82%E6%95%B0%E6%9E%84%E9%80%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AD%9B%E9%80%89%E6%9F%A5%E8%AF%A2%E6%97%B6%E8%A6%81%E5%B0%8F%E5%BF%83"><span class="toc-number">1.43.</span> <span class="toc-text">使用GET参数构造自定义筛选查询时要小心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%85%E7%90%86%E4%BD%A0%E8%87%83%E8%82%BF%E7%9A%84%E8%B7%AF%E7%94%B1%E6%96%87%E4%BB%B6"><span class="toc-number">1.44.</span> <span class="toc-text">清理你臃肿的路由文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%82%AE%E4%BB%B6%E6%97%A5%E5%BF%97%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.45.</span> <span class="toc-text">自定义邮件日志存储位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#markdown%E7%AE%80%E5%8D%95%E5%88%9B%E5%BB%BA"><span class="toc-number">1.46.</span> <span class="toc-text">markdown简单创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%99%E4%B8%AD%E9%97%B4%E4%BB%B6%E4%BC%A0%E5%8F%82%E6%95%B0"><span class="toc-number">1.47.</span> <span class="toc-text">给中间件传参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%B9%B6%E5%88%A0%E9%99%A4session"><span class="toc-number">1.48.</span> <span class="toc-text">获取并删除session</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#request%E7%9A%84date%E6%96%B9%E6%B3%95"><span class="toc-number">1.49.</span> <span class="toc-text">request的date方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%88%86%E9%A1%B5%E6%97%B6%E8%AF%B7%E4%BD%BF%E7%94%A8through%E8%80%8C%E4%B8%8D%E6%98%AFmap"><span class="toc-number">1.50.</span> <span class="toc-text">使用分页时请使用through而不是map</span></a></li></ol></li></ol>
+                </div>
+            
+        
+        
+            <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>⬆️ <a href="../README-zh.md">回到顶部</a> ⬅️ <a href="./API.md">上一个 (API)</a> </p>
+<ol>
+<li><a href="#localhost%E9%85%8D%E7%BD%AE">localhost配置</a></li>
+<li><a href="#%E4%BD%95%E6%97%B6%E8%BF%90%E8%A1%8C%E6%88%96%E4%B8%8D%E8%BF%90%E8%A1%8Ccomposer-update">何时运行或不运行composer-update</a></li>
+<li><a href="#Composer%E6%A3%80%E6%9F%A5%E6%96%B0%E7%89%88%E6%9C%AC">Composer检查新版本</a></li>
+<li><a href="#%E8%87%AA%E5%8A%A8%E5%A4%A7%E5%86%99%E7%BF%BB%E8%AF%91">自动大写翻译</a></li>
+<li><a href="#%E4%BB%85%E5%90%AB%E5%B0%8F%E6%97%B6%E7%9A%84Carbon">仅含小时的Carbon</a></li>
+<li><a href="#%E5%8D%95%E5%8A%A8%E4%BD%9C%E6%8E%A7%E5%88%B6%E5%99%A8">单动作控制器</a></li>
+<li><a href="#%E9%87%8D%E5%AE%9A%E5%90%91%E5%88%B0%E7%89%B9%E5%AE%9A%E7%9A%84%E6%8E%A7%E5%88%B6%E5%99%A8%E6%96%B9%E6%B3%95">重定向到特定的控制器方法</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%97%A7%E7%89%88%E6%9C%AC%E7%9A%84Laravel">使用旧版本的Laravel</a></li>
+<li><a href="#%E4%B8%BA%E5%88%86%E9%A1%B5%E9%93%BE%E6%8E%A5%E6%B7%BB%E5%8A%A0%E5%8F%82%E6%95%B0">为分页链接添加参数</a></li>
+<li><a href="#%E5%8F%AF%E9%87%8D%E5%A4%8D%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0">可重复回调函数</a></li>
+<li><a href="#$request-%3EhasAny">$request-&gt;hasAny</a></li>
+<li><a href="#%E7%AE%80%E5%8D%95%E5%88%86%E9%A1%B5%E7%BB%84%E4%BB%B6">简单分页组件</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E6%B3%95">获取数据的方法</a></li>
+<li><a href="#Blade%E6%8C%87%E4%BB%A4%E5%A2%9E%E5%8A%A0%E7%9C%9F%E5%81%87%E6%9D%A1%E4%BB%B6">Blade指令增加真假条件s</a></li>
+<li><a href="#%E4%BB%BB%E5%8A%A1%E5%85%81%E8%AE%B8%E8%84%B1%E7%A6%BB%E9%98%9F%E5%88%97">任务允许脱离队列</a></li>
+<li><a href="#%E5%9C%A8%E5%B7%A5%E5%8E%82%E7%B1%BB%E6%88%96seeders%E5%A4%96%E9%83%A8%E4%BD%BF%E7%94%A8Faker">在工厂类或seeders外部使用Faker</a></li>
+<li><a href="#%E5%8F%AF%E4%BB%A5%E5%AE%9A%E6%97%B6%E6%89%A7%E8%A1%8C%E7%9A%84%E4%BA%8B%E6%83%85">可以定时执行的事情</a></li>
+<li><a href="#%E6%A3%80%E7%B4%A2Laravel%E6%96%87%E6%A1%A3">检索Laravel文档</a></li>
+<li><a href="#%E8%BF%87%E6%BB%A4route-list">过滤route-list</a></li>
+<li><a href="#%E8%87%AA%E5%AE%9A%E4%B9%89Blade%E6%8C%87%E4%BB%A4">自定义Blade指令</a></li>
+<li><a href="#Artisan%E5%91%BD%E4%BB%A4%E5%B8%AE%E5%8A%A9">Artisan命令帮助</a></li>
+<li><a href="#%E5%BD%93%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95%E6%97%B6%E7%A6%81%E7%94%A8%E6%87%92%E5%8A%A0%E8%BD%BD">当运行测试时禁用懒加载</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E4%B8%A4%E4%B8%AA%E5%BE%88%E5%A5%BD%E7%94%A8%E7%9A%84%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0%E4%BC%9A%E5%B8%A6%E6%9D%A5%E9%AD%94%E6%B3%95%E6%95%88%E6%9E%9C">使用两个很好用的辅助函数会带来魔法效果</a></li>
+<li><a href="#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E7%9A%84%E9%BB%98%E8%AE%A4%E5%80%BC">请求参数的默认值</a></li>
+<li><a href="#%E5%9C%A8%E8%B7%AF%E7%94%B1%E4%B8%AD%E7%9B%B4%E6%8E%A5%E4%BC%A0%E5%85%A5%E4%B8%AD%E9%97%B4%E4%BB%B6%E8%80%8C%E4%B8%8D%E6%98%AF%E6%B3%A8%E5%86%8C%E5%AE%83">在路由中直接传入中间件而不是注册它</a></li>
+<li><a href="#%E5%B0%86%E6%95%B0%E7%BB%84%E8%BD%AC%E5%8C%96%E6%88%90css%E7%B1%BB">将数组转化成css类</a></li>
+<li><a href="#Laravel-Cashier%E4%B8%AD%E7%9A%84upcomingInvoice%E6%96%B9%E6%B3%95">Laravel-Cashier中的upcomingInvoice方法</a></li>
+<li><a href="#$request-%3Eexists%E4%B8%8Ehas">$request-&gt;exists与has</a></li>
+<li><a href="#%E8%BF%94%E5%9B%9E%E5%B8%A6%E5%8F%98%E9%87%8F%E8%A7%86%E5%9B%BE%E7%9A%84%E5%A4%9A%E7%A7%8D%E6%96%B9%E6%B3%95">返回带变量视图的多种方法</a></li>
+<li><a href="#%E8%B0%83%E5%BA%A6%E6%A0%87%E5%87%86shell%E5%91%BD%E4%BB%A4">调度标准shell命令</a></li>
+<li><a href="#%E6%97%A0%E9%9C%80SSL%E9%AA%8C%E8%AF%81%E7%9A%84HTTP%E8%AF%B7%E6%B1%82">无需SSL验证的HTTP请求</a></li>
+<li><a href="#%E4%B8%8D%E6%96%AD%E8%A8%80%E4%BB%BB%E4%BD%95%E5%86%85%E5%AE%B9%E7%9A%84%E6%B5%8B%E8%AF%95">不断言任何内容的测试</a></li>
+<li><a href="#Str%E7%9A%84mask%E6%96%B9%E6%B3%95">Str的mask方法</a></li>
+<li><a href="#%E6%89%A9%E5%B1%95Laravel%E7%B1%BB">扩展Laravel类</a></li>
+<li><a href="#Can%E7%89%B9%E6%80%A7">Can特性</a></li>
+<li><a href="#%E4%B8%B4%E6%97%B6%E4%B8%8B%E8%BD%BDurl">临时下载url</a></li>
+<li><a href="#%E5%A4%84%E7%90%86%E6%B7%B1%E5%BA%A6%E5%B5%8C%E5%A5%97%E6%95%B0%E7%BB%84">处理深度嵌套数组</a></li>
+<li><a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%82%E5%B8%B8%E7%9A%84%E5%91%88%E7%8E%B0%E6%96%B9%E5%BC%8F">自定义异常的呈现方式</a></li>
+<li><a href="#tap%E5%8A%A9%E6%89%8B%E5%87%BD%E6%95%B0">tap助手函数</a></li>
+<li><a href="#%E9%87%8D%E7%BD%AE%E6%89%80%E6%9C%89%E5%89%A9%E4%BD%99%E7%9A%84%E6%97%B6%E9%97%B4%E5%8D%95%E4%BD%8D">重置所有剩余的时间单位</a></li>
+<li><a href="#%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%86%85%E6%A0%B8%E4%B8%AD%E7%9A%84%E8%AE%A1%E5%88%92%E5%91%BD%E4%BB%A4%E9%97%AE%E9%A2%98%E5%8F%AF%E4%BB%A5%E8%87%AA%E5%8A%A8%E9%80%9A%E8%BF%87%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81%E5%85%B6%E8%BE%93%E5%87%BA">控制台内核中的计划命令问题可以自动通过电子邮件发送其输出</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8GET%E5%8F%82%E6%95%B0%E6%9E%84%E9%80%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E7%AD%9B%E9%80%89%E6%9F%A5%E8%AF%A2%E6%97%B6%E8%A6%81%E5%B0%8F%E5%BF%83">使用GET参数构造自定义筛选查询时要小心</a></li>
+<li><a href="#%E6%B8%85%E7%90%86%E4%BD%A0%E8%87%83%E8%82%BF%E7%9A%84%E8%B7%AF%E7%94%B1%E6%96%87%E4%BB%B6">清理你臃肿的路由文件</a></li>
+<li><a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%82%AE%E4%BB%B6%E6%97%A5%E5%BF%97%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE">自定义邮件日志存储位置</a></li>
+<li><a href="#markdown%E7%AE%80%E5%8D%95%E5%88%9B%E5%BB%BA">markdown简单创建</a></li>
+<li><a href="#%E7%BB%99%E4%B8%AD%E9%97%B4%E4%BB%B6%E4%BC%A0%E5%8F%82%E6%95%B0">给中间件传参数</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%B9%B6%E5%88%A0%E9%99%A4session">获取并删除session</a></li>
+<li><a href="#request%E7%9A%84date%E6%96%B9%E6%B3%95">request的date方法</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%88%86%E9%A1%B5%E6%97%B6%E8%AF%B7%E4%BD%BF%E7%94%A8through%E8%80%8C%E4%B8%8D%E6%98%AFmap">使用分页时请使用through而不是map</a></li>
+<li><a href="#%E5%AE%9A%E4%B9%89%E8%AE%BF%E9%97%AE%E5%99%A8%E4%B8%8E%E4%BF%AE%E6%94%B9%E5%99%A8%E7%9A%84%E6%96%B0%E6%96%B9%E6%B3%95">定义访问器与修改器的新方法</a></li>
+</ol>
+<h3 id="localhost配置"><a href="#localhost配置" class="headerlink" title="localhost配置"></a>localhost配置</h3><p>不要忘记将 <code>.env</code> 文件中的 <code>app_url</code> 从 <code>http://localhost</code> 中改为真实的 <code>URL</code>，因为它将是你的电子邮件通知和任何其他链接的基础。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">APP_NAME=Laravel</span><br><span class="line">APP_ENV=local</span><br><span class="line">APP_KEY=base64:9PHz3TL5C4YrdV6Gg/Xkkmx9btaE93j7rQTUZWm2MqU=</span><br><span class="line">APP_DEBUG=true</span><br><span class="line">APP_URL=http://localhost</span><br></pre></td></tr></table></figure>
+
+<h3 id="何时运行或不运行composer-update"><a href="#何时运行或不运行composer-update" class="headerlink" title="何时运行或不运行composer-update"></a>何时运行或不运行composer-update</h3><p>与<code>Laravel</code>不是很相关，但是… 永远不要在生产服务器上运行 <code>composer update</code> ，它很慢，会 “破坏” 存储库。始终在你电脑上本地运行 <code>composer update</code> ，将新的 <code>composer.lock</code> 提交到存储库，然后再在生产服务器运行 <code>composer install</code>。</p>
+<h3 id="Composer检查新版本"><a href="#Composer检查新版本" class="headerlink" title="Composer检查新版本"></a>Composer检查新版本</h3><p>如果你想找出 <code>composer.json</code> 包中已经发布的较新版本，直接运行 <code>composer outdated</code>。你会得到一个包含所有信息的完整列表，如下所示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">phpdocumentor/type-resolver 0.4.0 0.7.1</span><br><span class="line">phpunit/php-code-coverage   6.1.4 7.0.3 Library that provides collection, processing, and rende...</span><br><span class="line">phpunit/phpunit             7.5.9 8.1.3 The PHP Unit Testing framework.</span><br><span class="line">ralouphie/getallheaders     2.0.5 3.0.3 A polyfill for getallheaders.</span><br><span class="line">sebastian/global-state      2.0.0 3.0.0 Snapshotting of global state</span><br></pre></td></tr></table></figure>
+
+<h3 id="自动大写翻译"><a href="#自动大写翻译" class="headerlink" title="自动大写翻译"></a>自动大写翻译</h3><p>在翻译文件中<code>（resources/lang）</code>，你不仅可以指定变量为<code>:variable</code> ，也可以指定大写为<code>:VARIABLE</code> 或 <code>:Variable</code>，然后你传递的值也会自动大写。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// resources/lang/en/messages.php</span></span><br><span class="line"><span class="string">&#x27;welcome&#x27;</span> =&gt; <span class="string">&#x27;Welcome, :Name&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Result: &quot;Welcome, Taylor&quot;</span></span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">__</span>(<span class="string">&#x27;messages.welcome&#x27;</span>, [<span class="string">&#x27;name&#x27;</span> =&gt; <span class="string">&#x27;taylor&#x27;</span>]);</span><br></pre></td></tr></table></figure>
+
+<h3 id="仅含小时的Carbon"><a href="#仅含小时的Carbon" class="headerlink" title="仅含小时的Carbon"></a>仅含小时的Carbon</h3><p>如果你想有当前日期不包含秒或者分钟，用<code>Carbon</code>的方法比如：<code>setSeconds(0)</code> 或者  <code>setMinutes(0)</code>。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2020-04-20 08:12:34</span></span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">now</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2020-04-20 08:12:00</span></span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">now</span>()-&gt;<span class="title function_ invoke__">setSeconds</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2020-04-20 08:00:00</span></span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">now</span>()-&gt;<span class="title function_ invoke__">setSeconds</span>(<span class="number">0</span>)-&gt;<span class="title function_ invoke__">setMinutes</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Another way - even shorter</span></span><br><span class="line"><span class="keyword">echo</span> <span class="title function_ invoke__">now</span>()-&gt;<span class="title function_ invoke__">startOfHour</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="单动作控制器"><a href="#单动作控制器" class="headerlink" title="单动作控制器"></a>单动作控制器</h3><p>如果你想创建一个只有一个动作的控制器，你可以使用 __invoke() 方法创建「可调用（invokable）」控制器。<br>路由：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;user/&#123;id&#125;&#x27;</span>, <span class="string">&#x27;ShowProfile&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Artisan 命令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:controller ShowProfile --invokable</span><br></pre></td></tr></table></figure>
+
+<p>控制器 </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShowProfile</span> <span class="keyword">extends</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__invoke</span>(<span class="params"><span class="variable">$id</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">view</span>(<span class="string">&#x27;user.profile&#x27;</span>, [</span><br><span class="line">            <span class="string">&#x27;user&#x27;</span> =&gt; <span class="title class_">User</span>::<span class="title function_ invoke__">findOrFail</span>(<span class="variable">$id</span>)</span><br><span class="line">        ]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="重定向到特定的控制器方法"><a href="#重定向到特定的控制器方法" class="headerlink" title="重定向到特定的控制器方法"></a>重定向到特定的控制器方法</h3><p>你不仅可以 <code>redirect()</code> 到 <code>URL</code> 或特定的路由，而且可以跳转到一个特定的控制器里的特定方法，甚至向其传递参数。像这样：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="title function_ invoke__">redirect</span>()-&gt;<span class="title function_ invoke__">action</span>(<span class="string">&#x27;SomeController@method&#x27;</span>, [<span class="string">&#x27;param&#x27;</span> =&gt; <span class="variable">$value</span>]);</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用旧版本的Laravel"><a href="#使用旧版本的Laravel" class="headerlink" title="使用旧版本的Laravel"></a>使用旧版本的Laravel</h3><p>如果你想用旧版本而非新版本的 <code>Laravel</code>，使用这个命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer create-project --prefer-dist laravel/laravel project <span class="string">&quot;7.*&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>将 <code>7.*</code> 更改为任何你想要的版本。</p>
+<h3 id="为分页链接添加参数"><a href="#为分页链接添加参数" class="headerlink" title="为分页链接添加参数"></a>为分页链接添加参数</h3><p>在默认的分页链接中，你可以传递其他参数，保留原始的查询字符串，甚至指向一个特定的 <code>#xxxxx</code> 锚点。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; $users-&gt;appends([&#x27;sort&#x27; =&gt; &#x27;votes&#x27;])-&gt;links() &#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&#123; $users-&gt;withQueryString()-&gt;links() &#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&#123; $users-&gt;fragment(&#x27;foo&#x27;)-&gt;links() &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="可重复回调函数"><a href="#可重复回调函数" class="headerlink" title="可重复回调函数"></a>可重复回调函数</h3><p>如果你又一个需要多次重复调用的回调函数，你可以将其声明在一个变量中，然后反复使用它。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$userCondition</span> = <span class="function"><span class="keyword">function</span> (<span class="params"><span class="variable">$query</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable">$query</span>-&gt;<span class="title function_ invoke__">where</span>(<span class="string">&#x27;user_id&#x27;</span>, <span class="title function_ invoke__">auth</span>()-&gt;<span class="title function_ invoke__">id</span>());</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Get articles that have comments from this user</span></span><br><span class="line"><span class="comment">// And return only those comments from this user</span></span><br><span class="line"><span class="variable">$articles</span> = <span class="title class_">Article</span>::<span class="title function_ invoke__">with</span>([<span class="string">&#x27;comments&#x27;</span> =&gt; <span class="variable">$userCondition</span>])</span><br><span class="line">    -&gt;<span class="title function_ invoke__">whereHas</span>(<span class="string">&#x27;comments&#x27;</span>, <span class="variable">$userCondition</span>)</span><br><span class="line">    -&gt;<span class="title function_ invoke__">get</span>();</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="request-hasAny"><a href="#request-hasAny" class="headerlink" title="$request-&gt;hasAny"></a>$request-&gt;hasAny</h3><p>你不仅可以使用 <code>$request-&gt;has()</code> 方法来查看一个参数，而且可以使用 <code>$request-&gt;hasAny()</code> 来查看传入的多个参数。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">store</span>(<span class="params">Request <span class="variable">$request</span></span>) </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$request</span>-&gt;<span class="title function_ invoke__">hasAny</span>([<span class="string">&#x27;api_key&#x27;</span>, <span class="string">&#x27;token&#x27;</span>])) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;We have API key passed&#x27;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&#x27;No authorization parameter&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="简单分页组件"><a href="#简单分页组件" class="headerlink" title="简单分页组件"></a>简单分页组件</h3><p>在分页组件中，如果你只需要「上一页 &#x2F; 下一页」的链接，而不是需要所有页码，也因此可以使用更少的数据库查询，你只需要将 <code>simplePaginate() </code>更改为<code> paginate()</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Instead of </span></span><br><span class="line"><span class="variable">$users</span> = <span class="title class_">User</span>::<span class="title function_ invoke__">paginate</span>(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// You can do this</span></span><br><span class="line"><span class="variable">$users</span> = <span class="title class_">User</span>::<span class="title function_ invoke__">simplePaginate</span>(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取数据的方法"><a href="#获取数据的方法" class="headerlink" title="获取数据的方法"></a>获取数据的方法</h3><p>如果你有一个具有复杂数据结构的数组，例如带对象嵌套的数组，你可以使用 <code>data_get() </code>助手函数配合通配符和「点」符号，来从嵌套数组或对象中检索值。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// We have an array</span></span><br><span class="line">[ </span><br><span class="line">  <span class="number">0</span> =&gt; </span><br><span class="line">	[<span class="string">&#x27;user_id&#x27;</span> =&gt;<span class="string">&#x27;some user id&#x27;</span>, <span class="string">&#x27;created_at&#x27;</span> =&gt; <span class="string">&#x27;some timestamp&#x27;</span>, <span class="string">&#x27;product&#x27;</span> =&gt; &#123;<span class="keyword">object</span> Product&#125;, etc], </span><br><span class="line">  <span class="number">1</span> =&gt;  </span><br><span class="line">  	[<span class="string">&#x27;user_id&#x27;</span> =&gt;<span class="string">&#x27;some user id&#x27;</span>, <span class="string">&#x27;created_at&#x27;</span> =&gt; <span class="string">&#x27;some timestamp&#x27;</span>, <span class="string">&#x27;product&#x27;</span> =&gt; &#123;<span class="keyword">object</span> Product&#125;, etc],  </span><br><span class="line">  <span class="number">2</span> =&gt;  etc</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">// Now we want to get all products ids. We can do like this:</span></span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">data_get</span>(<span class="variable">$yourArray</span>,  <span class="string">&#x27;*.product.id&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Now we have all products ids [1, 2, 3, 4, 5, etc...]</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Blade指令增加真假条件"><a href="#Blade指令增加真假条件" class="headerlink" title="Blade指令增加真假条件"></a>Blade指令增加真假条件</h3><p><code>Laravel 8.51</code> 新增 <code>@class</code> 指令，用于添加控制 CSS 类的真 &#x2F; 假条件。可以在 <a target="_blank" rel="noopener" href="https://laravel.com/docs/8.x/blade#conditional-classes">文档</a> <br>中了解更多<br>之前: </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span>=&quot;@<span class="title">if</span> ($<span class="title">active</span>) <span class="title">underline</span> @<span class="title">endif</span>&quot;&gt;`</span></span><br></pre></td></tr></table></figure>
+
+<p>现在:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div @<span class="class"><span class="keyword">class</span>([&#x27;<span class="title">underline</span>&#x27; =&gt; $<span class="title">active</span>])&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@php</span><br><span class="line">    <span class="variable">$isActive</span> = <span class="literal">false</span>;</span><br><span class="line">    <span class="variable">$hasError</span> = <span class="literal">true</span>;</span><br><span class="line">@endphp</span><br><span class="line"></span><br><span class="line">&lt;span @<span class="class"><span class="keyword">class</span>([</span></span><br><span class="line"><span class="class">    &#x27;<span class="title">p</span>-4&#x27;,</span></span><br><span class="line"><span class="class">    &#x27;<span class="title">font</span>-<span class="title">bold</span>&#x27; =&gt; $<span class="title">isActive</span>,</span></span><br><span class="line"><span class="class">    &#x27;<span class="title">text</span>-<span class="title">gray</span>-500&#x27; =&gt; ! $<span class="title">isActive</span>,</span></span><br><span class="line"><span class="class">    &#x27;<span class="title">bg</span>-<span class="title">red</span>&#x27; =&gt; $<span class="title">hasError</span>,</span></span><br><span class="line"><span class="class">])&gt;&lt;/<span class="title">span</span>&gt;</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">&lt;<span class="title">span</span> <span class="title">class</span>=&quot;<span class="title">p</span>-4 <span class="title">text</span>-<span class="title">gray</span>-500 <span class="title">bg</span>-<span class="title">red</span>&quot;&gt;&lt;/<span class="title">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/Teacoders/status/1445417511546023938">@Teacoders</a>提供</p>
+<h3 id="任务允许脱离队列"><a href="#任务允许脱离队列" class="headerlink" title="任务允许脱离队列"></a>任务允许脱离队列</h3><p>在文档中，任务是在<code>队列</code>章节进行讨论的，但是你可以脱离队列来使用<code>job</code>，就像传统的委托任务的类一样。只需在控制器中调用 <code>$this-&gt;dispatchNow()</code> 即可。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">approve</span>(<span class="params">Article <span class="variable">$article</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">dispatchNow</span>(<span class="keyword">new</span> <span class="title class_">ApproveArticle</span>(<span class="variable">$article</span>));</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="在工厂类或seeders外部使用Faker"><a href="#在工厂类或seeders外部使用Faker" class="headerlink" title="在工厂类或seeders外部使用Faker"></a>在工厂类或seeders外部使用Faker</h3><p>如果你想要生成一些假数据，你可以在模型工厂或 Seeds 中，甚至任何类的外部使用 Faker。</p>
+<p>注意：要在生产模式 <code>production</code> 中使用它的话，你需要在 <code>composer.json</code> 中，将 faker 从 “require-dev” 移动到 “require” 中。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Faker</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WhateverController</span> <span class="keyword">extends</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">whatever_method</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$faker</span> = <span class="title class_">Faker\Factory</span>::<span class="title function_ invoke__">create</span>();</span><br><span class="line">        <span class="variable">$address</span> = <span class="variable">$faker</span>-&gt;streetAddress;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="可以定时执行的事情"><a href="#可以定时执行的事情" class="headerlink" title="可以定时执行的事情"></a>可以定时执行的事情</h3><p>你可以让一些事情以每小时、每天，或是其他时间模式执行。</p>
+<p>你可以安排 <code>artisan</code> 命令、作业类、可调用类、回调函数、甚至是 <code>shell</code> 脚本去定时执行。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">Jobs</span>\<span class="title">Heartbeat</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$schedule</span>-&gt;<span class="title function_ invoke__">job</span>(<span class="keyword">new</span> <span class="title class_">Heartbeat</span>)-&gt;<span class="title function_ invoke__">everyFiveMinutes</span>();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$schedule</span>-&gt;<span class="title function_ invoke__">exec</span>(<span class="string">&#x27;node /home/forge/script.js&#x27;</span>)-&gt;<span class="title function_ invoke__">daily</span>();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">Console</span>\<span class="title">Commands</span>\<span class="title">SendEmailsCommand</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$schedule</span>-&gt;<span class="title function_ invoke__">command</span>(<span class="string">&#x27;emails:send Taylor --force&#x27;</span>)-&gt;<span class="title function_ invoke__">daily</span>();</span><br><span class="line"></span><br><span class="line"><span class="variable">$schedule</span>-&gt;<span class="title function_ invoke__">command</span>(<span class="title class_">SendEmailsCommand</span>::<span class="variable language_">class</span>, [<span class="string">&#x27;Taylor&#x27;</span>, <span class="string">&#x27;--force&#x27;</span>])-&gt;<span class="title function_ invoke__">daily</span>();</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">schedule</span>(<span class="params">Schedule <span class="variable">$schedule</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$schedule</span>-&gt;<span class="title function_ invoke__">call</span>(function () &#123;</span><br><span class="line">        DB::<span class="title function_ invoke__">table</span>(<span class="string">&#x27;recent_users&#x27;</span>)-&gt;<span class="title function_ invoke__">delete</span>();</span><br><span class="line">    &#125;)-&gt;<span class="title function_ invoke__">daily</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="检索Laravel文档"><a href="#检索Laravel文档" class="headerlink" title="检索Laravel文档"></a>检索Laravel文档</h3><p>如果你想使用一些关键词来检索 <code>Laravel</code> 文档，默认情况下只会给出 5 个结果。或许还能给出更多结果。</p>
+<p>如果你想要看全部的结果，你可以前往 <code>Laravel</code> 文档 的<code> Github</code> <a target="_blank" rel="noopener" href="https://github.com/laravel/docs">仓库</a> 直接搜索。</p>
+<h3 id="过滤route-list"><a href="#过滤route-list" class="headerlink" title="过滤route-list"></a>过滤route-list</h3><p>Laravel 8.34 新增： <code>php artisan route:list</code> 获得了新的参数 <code>--except-path</code>，你可以把一些你不想看见的路由过滤掉。</p>
+<p> <a target="_blank" rel="noopener" href="https://github.com/laravel/framework/pull/36619">原始PR</a></p>
+<h3 id="自定义Blade指令"><a href="#自定义Blade指令" class="headerlink" title="自定义Blade指令"></a>自定义Blade指令</h3><p>如果你在不同的 <code>Blade</code> 文件中格式化数据，可以尝试创建自己的 <code>Blade</code> 指令。<br>下面这一段是来自 <code>Laravel Cashier</code> 包的例子：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;require&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;laravel/cashier&quot;</span>: <span class="string">&quot;^12.9&quot;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">boot</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="title class_">Blade</span>::<span class="title function_ invoke__">directive</span>(<span class="string">&#x27;money&#x27;</span>, function (<span class="variable">$expression</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&lt;?php echo Laravel\Cashier\Cashier::formatAmount(<span class="subst">$expression</span>, config(&#x27;cashier.currency&#x27;)); ?&gt;&quot;</span>;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt;Price: @<span class="title function_ invoke__">money</span>(<span class="variable">$book</span>-&gt;price)&lt;/div&gt;</span><br><span class="line">@<span class="keyword">if</span>(<span class="variable">$book</span>-&gt;discount_price)</span><br><span class="line">    &lt;div&gt;Discounted price: @<span class="title function_ invoke__">money</span>(<span class="variable">$book</span>-&gt;dicount_price)&lt;/div&gt;</span><br><span class="line">@<span class="keyword">endif</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Artisan命令帮助"><a href="#Artisan命令帮助" class="headerlink" title="Artisan命令帮助"></a>Artisan命令帮助</h3><p>如果您不确定某些 Artisan 命令的参数，或者您想知道可用的参数，只需键入 <code>php artisan help [command]</code>。</p>
+<h3 id="当运行测试时禁用懒加载"><a href="#当运行测试时禁用懒加载" class="headerlink" title="当运行测试时禁用懒加载"></a>当运行测试时禁用懒加载</h3><p>当运行测试时如果你想排除掉懒加载 你可以禁用掉懒加载</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Model</span>::<span class="title function_ invoke__">preventLazyLoading</span>(!<span class="variable">$this</span>-&gt;app-&gt;<span class="title function_ invoke__">isProduction</span>() &amp;&amp; !<span class="variable">$this</span>-&gt;app-&gt;<span class="title function_ invoke__">runningUnitTests</span>());</span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/djgeisi/status/1435538167290073090">@djgeisi</a>提供</p>
+<h3 id="使用两个很好用的辅助函数会带来魔法效果"><a href="#使用两个很好用的辅助函数会带来魔法效果" class="headerlink" title="使用两个很好用的辅助函数会带来魔法效果"></a>使用两个很好用的辅助函数会带来魔法效果</h3><p>在这个例子中 服务将会被调用并重试。如果仍然失败 将会被报告。但是请求不会失败。(rescue)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">rescue</span>(function () &#123;</span><br><span class="line">    <span class="title function_ invoke__">retry</span>(<span class="number">5</span>, function () &#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;service-&gt;<span class="title function_ invoke__">callSomething</span>();</span><br><span class="line">    &#125;, <span class="number">200</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/JuanDMeGon/status/1435466660467683328">@JuanDMeGon</a>提供</p>
+<h3 id="请求参数的默认值"><a href="#请求参数的默认值" class="headerlink" title="请求参数的默认值"></a>请求参数的默认值</h3><p>以下是我们检测我们使用的<code>per_page</code>值是否存在 否则我们用默认值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Isteand of this</span></span><br><span class="line"><span class="variable">$perPage</span> = <span class="title function_ invoke__">request</span>()-&gt;per_page ? <span class="title function_ invoke__">request</span>()-&gt;per_page : <span class="number">20</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// You can do this</span></span><br><span class="line"><span class="variable">$perPage</span> = <span class="title function_ invoke__">request</span>(<span class="string">&#x27;per_page&#x27;</span>, <span class="number">20</span>);</span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/devThaer/status/1437521022631165957">@devThaer</a>提供</p>
+<h3 id="在路由中直接传入中间件而不是注册它"><a href="#在路由中直接传入中间件而不是注册它" class="headerlink" title="在路由中直接传入中间件而不是注册它"></a>在路由中直接传入中间件而不是注册它</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;posts&#x27;</span>, <span class="title class_">PostController</span>::<span class="variable language_">class</span>)</span><br><span class="line">    -&gt;<span class="title function_ invoke__">middleware</span>([<span class="string">&#x27;auth&#x27;</span>, <span class="title class_">CustomMiddleware</span>::<span class="variable language_">class</span>])</span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/sky_0xs/status/1438258486815690766">@sky_0xs</a>提供</p>
+<h3 id="将数组转化成css类"><a href="#将数组转化成css类" class="headerlink" title="将数组转化成css类"></a>将数组转化成css类</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Arr</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$array</span> = [<span class="string">&#x27;p-4&#x27;</span>, <span class="string">&#x27;font-bold&#x27;</span> =&gt; <span class="variable">$isActive</span>, <span class="string">&#x27;bg-red&#x27;</span> =&gt; <span class="variable">$hasError</span>];</span><br><span class="line"></span><br><span class="line"><span class="variable">$isActive</span> = <span class="literal">false</span>;</span><br><span class="line"><span class="variable">$hasError</span> = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$classes</span> = <span class="title class_">Arr</span>::<span class="title function_ invoke__">toCssClasses</span>(<span class="variable">$array</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * &#x27;p-4 bg-red&#x27;</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/dietsedev/status/1438550428833271808">@dietsedev</a>提供</p>
+<h3 id="Laravel-Cashier中的upcomingInvoice方法"><a href="#Laravel-Cashier中的upcomingInvoice方法" class="headerlink" title="Laravel-Cashier中的upcomingInvoice方法"></a>Laravel-Cashier中的upcomingInvoice方法</h3><p>您可以显示客户将在下一个计费周期支付的金额。<br></p>
+<p>在<code>Laravel Cashier（Stripe）</code>中有一个“upcomingInvoice”方法来获取即将到来的发票详细信息。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;/profile/invoices&#x27;</span>, function (Request <span class="variable">$request</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">view</span>(<span class="string">&#x27;/profile/invoices&#x27;</span>, [</span><br><span class="line">        <span class="string">&#x27;upcomingInvoice&#x27;</span> =&gt; <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()-&gt;<span class="title function_ invoke__">upcomingInvoice</span>(),</span><br><span class="line">        <span class="string">&#x27;invoices&#x27;</span> =&gt; <span class="variable">$request</span>-<span class="title function_ invoke__">user</span>()-&gt;<span class="title function_ invoke__">invoices</span>(),</span><br><span class="line">    ]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/oliverds_/status/1439997820228890626">@oliverds_</a>提供</p>
+<h3 id="request-exists与has"><a href="#request-exists与has" class="headerlink" title="$request-&gt;exists与has"></a>$request-&gt;exists与has</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://example.com?popular</span></span><br><span class="line"><span class="variable">$request</span>-&gt;<span class="title function_ invoke__">exists</span>(<span class="string">&#x27;popular&#x27;</span>) <span class="comment">// true</span></span><br><span class="line"><span class="variable">$request</span>-&gt;<span class="title function_ invoke__">has</span>(<span class="string">&#x27;popular&#x27;</span>) <span class="comment">// false </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// https://example.com?popular=foo</span></span><br><span class="line"><span class="variable">$request</span>-&gt;<span class="title function_ invoke__">exists</span>(<span class="string">&#x27;popular&#x27;</span>) <span class="comment">// true</span></span><br><span class="line"><span class="variable">$request</span>-&gt;<span class="title function_ invoke__">has</span>(<span class="string">&#x27;popular&#x27;</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/coderahuljat/status/1442191143244951552">@coderahuljat</a>提供</p>
+<h3 id="返回带变量视图的多种方法"><a href="#返回带变量视图的多种方法" class="headerlink" title="返回带变量视图的多种方法"></a>返回带变量视图的多种方法</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// First way -&gt;with()</span></span><br><span class="line"><span class="keyword">return</span> <span class="title function_ invoke__">view</span>(<span class="string">&#x27;index&#x27;</span>)</span><br><span class="line">    -&gt;<span class="title function_ invoke__">with</span>(<span class="string">&#x27;projects&#x27;</span>, <span class="variable">$projects</span>)</span><br><span class="line">    -&gt;<span class="title function_ invoke__">with</span>(<span class="string">&#x27;tasks&#x27;</span>, <span class="variable">$tasks</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Second way - as an array</span></span><br><span class="line"><span class="keyword">return</span> <span class="title function_ invoke__">view</span>(<span class="string">&#x27;index&#x27;</span>, [</span><br><span class="line">        <span class="string">&#x27;projects&#x27;</span> =&gt; <span class="variable">$projects</span>,</span><br><span class="line">        <span class="string">&#x27;tasks&#x27;</span> =&gt; <span class="variable">$tasks</span></span><br><span class="line">    ]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Third way - the same as second, but with variable</span></span><br><span class="line"><span class="variable">$data</span> = [</span><br><span class="line">    <span class="string">&#x27;projects&#x27;</span> =&gt; <span class="variable">$projects</span>,</span><br><span class="line">    <span class="string">&#x27;tasks&#x27;</span> =&gt; <span class="variable">$tasks</span></span><br><span class="line">];</span><br><span class="line"><span class="keyword">return</span> <span class="title function_ invoke__">view</span>(<span class="string">&#x27;index&#x27;</span>, <span class="variable">$data</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Fourth way - the shortest - compact()</span></span><br><span class="line"><span class="keyword">return</span> <span class="title function_ invoke__">view</span>(<span class="string">&#x27;index&#x27;</span>, <span class="title function_ invoke__">compact</span>(<span class="string">&#x27;projects&#x27;</span>, <span class="string">&#x27;tasks&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+<h3 id="调度标准shell命令"><a href="#调度标准shell命令" class="headerlink" title="调度标准shell命令"></a>调度标准shell命令</h3><p>我们可以使用<code>scheduled  command</code>调度标准shell命令</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app/Console/Kernel.php</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Kernel</span> <span class="keyword">extends</span> <span class="title">ConsoleKernel</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">shedule</span>(<span class="params">Schedule <span class="variable">$shedule</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$shedule</span>-&gt;<span class="title function_ invoke__">exec</span>(<span class="string">&#x27;node /home/forge/script.js&#x27;</span>)-&gt;<span class="title function_ invoke__">daily</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由y <a target="_blank" rel="noopener" href="https://twitter.com/anwar_nairi/status/1448985254794915845">@anwar_nairi</a>提供</p>
+<h3 id="无需SSL验证的HTTP请求"><a href="#无需SSL验证的HTTP请求" class="headerlink" title="无需SSL验证的HTTP请求"></a>无需SSL验证的HTTP请求</h3><p>有时候你可能会在本地发送一个无需<code>SSL</code>验证的<code>HTTP</code>请求 可以如下这么干:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="title class_">Http</span>::<span class="title function_ invoke__">withoutVerifying</span>()-&gt;<span class="title function_ invoke__">post</span>(<span class="string">&#x27;https://example.com&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>如果想设置一些选项 可以使用 <code>withOptions</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="title class_">Http</span>::<span class="title function_ invoke__">withOptions</span>([</span><br><span class="line">    <span class="string">&#x27;verify&#x27;</span> =&gt; <span class="literal">false</span>,</span><br><span class="line">    <span class="string">&#x27;allow_redirects&#x27;</span> =&gt; <span class="literal">true</span></span><br><span class="line">])-&gt;<span class="title function_ invoke__">post</span>(<span class="string">&#x27;https://example.com&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://github.com/raditzfarhan">@raditzfarhan</a>提供</p>
+<h3 id="未经验证的HTTP客户端请求"><a href="#未经验证的HTTP客户端请求" class="headerlink" title="未经验证的HTTP客户端请求"></a>未经验证的HTTP客户端请求</h3><p>有时，您可能希望在本地环境中发送HTTP请求而不验证SSL，您可以这样做：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="title class_">Http</span>::<span class="title function_ invoke__">withoutVerifying</span>()-&gt;<span class="title function_ invoke__">post</span>(<span class="string">&#x27;https://example.com&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>如果要设置多个选项，可以使用<code>withOptions</code>。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="title class_">Http</span>::<span class="title function_ invoke__">withOptions</span>([</span><br><span class="line">    <span class="string">&#x27;verify&#x27;</span> =&gt; <span class="literal">false</span>,</span><br><span class="line">    <span class="string">&#x27;allow_redirects&#x27;</span> =&gt; <span class="literal">true</span></span><br><span class="line">])-&gt;<span class="title function_ invoke__">post</span>(<span class="string">&#x27;https://example.com&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Tip given by <a target="_blank" rel="noopener" href="https://github.com/raditzfarhan">@raditzfarhan</a></p>
+<h3 id="不断言任何内容的测试"><a href="#不断言任何内容的测试" class="headerlink" title="不断言任何内容的测试"></a>不断言任何内容的测试</h3><p>不断言任何内容的测试，只需启动一些可能引发或不引发异常的内容</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MigrationsTest</span> <span class="keyword">extends</span> <span class="title">TestCase</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">test_successful_foreign_key_in_migrations</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// We just test if the migrations succeeds or throws an exception</span></span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">expectNotToPerformAssertions</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Str的mask方法"><a href="#Str的mask方法" class="headerlink" title="Str的mask方法"></a>Str的mask方法</h3><p>Laravel 8.69发布了“Str:：mask（）”方法，该方法使用重复字符屏蔽字符串的一部分.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PasswordResetLinkController</span> <span class="keyword">extends</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sendResetLinkResponse</span>(<span class="params">Request <span class="variable">$request</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$userEmail</span> = <span class="title class_">User</span>::<span class="title function_ invoke__">where</span>(<span class="string">&#x27;email&#x27;</span>, <span class="variable">$request</span>-&gt;email)-&gt;<span class="title function_ invoke__">value</span>(<span class="string">&#x27;email&#x27;</span>); <span class="comment">// username@domain.com</span></span><br><span class="line">        </span><br><span class="line">        <span class="variable">$maskedEmail</span> = <span class="title class_">Str</span>::<span class="title function_ invoke__">mask</span>(<span class="variable">$userEmail</span>, <span class="string">&#x27;*&#x27;</span>, <span class="number">4</span>); <span class="comment">// user***************</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">// If needed, you provide a negative number as the third argument to the mask method,</span></span><br><span class="line">        <span class="comment">// which will instruct the method to begin masking at the given distance from the end of the string</span></span><br><span class="line">        </span><br><span class="line">        <span class="variable">$maskedEmail</span> = <span class="title class_">Str</span>::<span class="title function_ invoke__">mask</span>(<span class="variable">$userEmail</span>, <span class="string">&#x27;*&#x27;</span>, -<span class="number">16</span>, <span class="number">6</span>); <span class="comment">// use******domain.com</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://twitter.com/Teacoders/status/1457029765634744322">@Teacoders</a></p>
+<h3 id="扩展Laravel类"><a href="#扩展Laravel类" class="headerlink" title="扩展Laravel类"></a>扩展Laravel类</h3><p>在许多内置的<code>Laravel</code>类上有一个名为<code>macro</code>的方法。例如，集合、Str、Arr、请求、缓存、文件等<br></p>
+<p>您可以在这些类上定义自己的方法，如下所示：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Str</span>::<span class="title function_ invoke__">macro</span>(<span class="string">&#x27;lowerSnake&#x27;</span>, function (<span class="keyword">string</span> <span class="variable">$str</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Str</span>::<span class="title function_ invoke__">lower</span>(<span class="title class_">Str</span>::<span class="title function_ invoke__">snake</span>(<span class="variable">$str</span>));</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// Will return: &quot;my-string&quot;</span></span><br><span class="line"><span class="title class_">Str</span>::<span class="title function_ invoke__">lowerSnake</span>(<span class="string">&#x27;MyString&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Tip given by <a target="_blank" rel="noopener" href="https://twitter.com/mmartin_joo/status/1457635252466298885">@mmartin_joo</a></p>
+<h3 id="Can特性"><a href="#Can特性" class="headerlink" title="Can特性"></a>Can特性</h3><p>Laravel <code>v8.70</code>中, 你可以链式调用<code>can()</code> 方法替代 <code>middleware(&#39;can:..&#39;)</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// instead of</span></span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;users/&#123;user&#125;/edit&#x27;</span>, function (User <span class="variable">$user</span>) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;)-&gt;<span class="title function_ invoke__">middleware</span>(<span class="string">&#x27;can:edit,user&#x27;</span>);</span><br><span class="line"><span class="comment">// you can do this</span></span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;users/&#123;user&#125;/edit&#x27;</span>, function (User <span class="variable">$user</span>) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;)-&gt;<span class="title function_ invoke__">can</span>(<span class="string">&#x27;edit&#x27;</span> <span class="string">&#x27;user&#x27;</span>);</span><br><span class="line"><span class="comment">// PS: you must write UserPolicy to be able to do this in both cases</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://twitter.com/sky_0xs/status/1458179766192853001">@sky_0xs</a></p>
+<h3 id="临时下载url"><a href="#临时下载url" class="headerlink" title="临时下载url"></a>临时下载url</h3><p>您可以使用云存储资源的临时下载URL来防止不必要的访问。例如，当一个用户想要下载一个文件时，我们重定向到一个s3资源，但是URL在5秒内过期。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">download</span>(<span class="params">File <span class="variable">$file</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// Initiate file download by redirecting to a temporary s3 URL that expires in 5 seconds</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">redirect</span>()-&gt;<span class="title function_ invoke__">to</span>(</span><br><span class="line">        <span class="title class_">Storage</span>::<span class="title function_ invoke__">disk</span>(<span class="string">&#x27;s3&#x27;</span>)-&gt;<span class="title function_ invoke__">temporaryUrl</span>(<span class="variable">$file</span>-&gt;name, <span class="title function_ invoke__">now</span>()-&gt;<span class="title function_ invoke__">addSeconds</span>(<span class="number">5</span>))</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://twitter.com/Philo01/status/1458791323889197064">@Philo01</a></p>
+<h3 id="处理深度嵌套数组"><a href="#处理深度嵌套数组" class="headerlink" title="处理深度嵌套数组"></a>处理深度嵌套数组</h3><p>处理深度嵌套数组可能会导致缺少键&#x2F;值异常。幸运的是，Laravel的data_get（）助手使这一点很容易避免。它还支持深度嵌套的对象<br></p>
+<p>深度嵌套的数组可能缺少所需的属性，这是一场噩梦<br></p>
+<p>在下面的示例中，如果缺少’request’，’user’或’name’，则会出现错误。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$value</span> = <span class="variable">$payload</span>[<span class="string">&#x27;request&#x27;</span>][<span class="string">&#x27;user&#x27;</span>][<span class="string">&#x27;name&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<p>Instead, use the <code>data_get()</code> helper to access a deeply-nested array item using dot notation.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$value</span> = <span class="title function_ invoke__">data_get</span>(<span class="variable">$payload</span>, <span class="string">&#x27;request.user.name&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>We can also avoid any errors caused by missing properties by supplying a default value.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$value</span> = <span class="title function_ invoke__">data_get</span>(<span class="variable">$payload</span>, <span class="string">&#x27;request.user.name&#x27;</span>, <span class="string">&#x27;John&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://twitter.com/mattkingshott/status/1460970984568094722">@mattkingshott</a></p>
+<h3 id="自定义异常的呈现方式"><a href="#自定义异常的呈现方式" class="headerlink" title="自定义异常的呈现方式"></a>自定义异常的呈现方式</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseException</span> <span class="keyword">extends</span> <span class="title">Exception</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params">Request <span class="variable">$request</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$request</span>-&gt;<span class="title function_ invoke__">expectsJson</span>()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">json</span>([</span><br><span class="line">                <span class="string">&#x27;meta&#x27;</span> =&gt; [</span><br><span class="line">                    <span class="string">&#x27;valid&#x27;</span>   =&gt; <span class="literal">false</span>,</span><br><span class="line">                    <span class="string">&#x27;status&#x27;</span>  =&gt; <span class="built_in">static</span>::<span class="variable constant_">ID</span>,</span><br><span class="line">                    <span class="string">&#x27;message&#x27;</span> =&gt; <span class="variable">$this</span>-&gt;<span class="title function_ invoke__">getMessage</span>(),</span><br><span class="line">                ],</span><br><span class="line">            ], <span class="variable">$this</span>-&gt;<span class="title function_ invoke__">getCode</span>());</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">response</span>()-&gt;<span class="title function_ invoke__">view</span>(<span class="string">&#x27;errors.&#x27;</span> . <span class="variable">$this</span>-&gt;<span class="title function_ invoke__">getCode</span>(), [<span class="string">&#x27;exception&#x27;</span> =&gt; <span class="variable">$this</span>], <span class="variable">$this</span>-&gt;<span class="title function_ invoke__">getCode</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LicenseExpiredException</span> <span class="keyword">extends</span> <span class="title">BaseException</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> <span class="variable constant_">ID</span> = <span class="string">&#x27;EXPIRED&#x27;</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$code</span> = <span class="number">401</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$message</span> = <span class="string">&#x27;Given license has expired.&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://twitter.com/Philo01/status/1461331239240192003/">@Philo01</a></p>
+<h3 id="tap助手函数"><a href="#tap助手函数" class="headerlink" title="tap助手函数"></a>tap助手函数</h3><p><code>tap</code>助手是在对对象调用方法后删除单独的<code>return</code>语句的好方法。使事物变得美好和干净.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// without tap</span></span><br><span class="line"><span class="variable">$user</span>-&gt;<span class="title function_ invoke__">update</span>([<span class="string">&#x27;name&#x27;</span> =&gt; <span class="string">&#x27;John Doe&#x27;</span>]);</span><br><span class="line"><span class="keyword">return</span> <span class="variable">$user</span>;</span><br><span class="line"><span class="comment">// with tap()</span></span><br><span class="line"><span class="keyword">return</span> <span class="title function_ invoke__">tap</span>(<span class="variable">$user</span>)-&gt;<span class="title function_ invoke__">update</span>([<span class="string">&#x27;name&#x27;</span> =&gt; <span class="string">&#x27;John Doe&#x27;</span>]);</span><br></pre></td></tr></table></figure>
+
+<p>Tip given by <a target="_blank" rel="noopener" href="https://twitter.com/mattkingshott/status/1462058149314183171">@mattkingshott</a></p>
+<h3 id="重置所有剩余的时间单位"><a href="#重置所有剩余的时间单位" class="headerlink" title="重置所有剩余的时间单位"></a>重置所有剩余的时间单位</h3><p>您可以在<code>DateTime::createFromFormat</code>方法中插入感叹号以重置所有剩余的时间单位</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2021-10-12 21:48:07.0</span></span><br><span class="line"><span class="title class_">DateTime</span>::<span class="title function_ invoke__">createFromFormat</span>(<span class="string">&#x27;Y-m-d&#x27;</span>, <span class="string">&#x27;2021-10-12&#x27;</span>);</span><br><span class="line"><span class="comment">// 2021-10-12 00:00:00.0</span></span><br><span class="line"><span class="title class_">DateTime</span>::<span class="title function_ invoke__">createFromFormat</span>(<span class="string">&#x27;!Y-m-d&#x27;</span>, <span class="string">&#x27;2021-10-12&#x27;</span>);</span><br><span class="line"><span class="number">2021</span>-<span class="number">10</span>-<span class="number">12</span> <span class="number">21</span>:<span class="number">00</span>:<span class="number">00.0</span></span><br><span class="line"><span class="title class_">DateTime</span>::<span class="title function_ invoke__">createFromFormat</span>(<span class="string">&#x27;!Y-m-d H&#x27;</span>, <span class="string">&#x27;2021-10-12&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Tip given by <a target="_blank" rel="noopener" href="https://twitter.com/SteveTheBauman/status/1448045021006082054">@SteveTheBauman</a></p>
+<h3 id="控制台内核中的计划命令问题可以自动通过电子邮件发送其输出"><a href="#控制台内核中的计划命令问题可以自动通过电子邮件发送其输出" class="headerlink" title="控制台内核中的计划命令问题可以自动通过电子邮件发送其输出"></a>控制台内核中的计划命令问题可以自动通过电子邮件发送其输出</h3><p>您知道吗，如果出现问题，您在控制台内核中调度的任何命令都可以自动通过电子邮件发送其输出</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$schedule</span></span><br><span class="line">    -&gt;<span class="title function_ invoke__">command</span>(<span class="title class_">PruneOrganizationsCOmmand</span>::<span class="variable language_">class</span>)</span><br><span class="line">    -&gt;<span class="title function_ invoke__">hourly</span>()</span><br><span class="line">    -&gt;<span class="title function_ invoke__">emailOutputOnFailure</span>(<span class="title function_ invoke__">config</span>(<span class="string">&#x27;mail.support&#x27;</span>));</span><br></pre></td></tr></table></figure>
+
+<p> <a target="_blank" rel="noopener" href="https://twitter.com/mattkingshott/status/1463160409905455104">@mattkingshott</a></p>
+<h3 id="使用GET参数构造自定义筛选查询时要小心"><a href="#使用GET参数构造自定义筛选查询时要小心" class="headerlink" title="使用GET参数构造自定义筛选查询时要小心"></a>使用GET参数构造自定义筛选查询时要小心</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="title function_ invoke__">request</span>()-&gt;<span class="title function_ invoke__">has</span>(<span class="string">&#x27;since&#x27;</span>)) &#123;</span><br><span class="line">    <span class="comment">// example.org/?since=</span></span><br><span class="line">    <span class="comment">// fails with illegal operator and value combination</span></span><br><span class="line">    <span class="variable">$query</span>-&gt;<span class="title function_ invoke__">whereDate</span>(<span class="string">&#x27;created_at&#x27;</span>, <span class="string">&#x27;&lt;=&#x27;</span>, <span class="title function_ invoke__">request</span>(<span class="string">&#x27;since&#x27;</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (<span class="title function_ invoke__">request</span>()-&gt;<span class="title function_ invoke__">input</span>(<span class="string">&#x27;name&#x27;</span>)) &#123;</span><br><span class="line">    <span class="comment">// example.org/?name=0</span></span><br><span class="line">    <span class="comment">// fails to apply query filter because evaluates to false</span></span><br><span class="line">    <span class="variable">$query</span>-&gt;<span class="title function_ invoke__">where</span>(<span class="string">&#x27;name&#x27;</span>, <span class="title function_ invoke__">request</span>(<span class="string">&#x27;name&#x27;</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (<span class="title function_ invoke__">request</span>()-&gt;<span class="title function_ invoke__">filled</span>(<span class="string">&#x27;key&#x27;</span>)) &#123;</span><br><span class="line">    <span class="comment">// correct way to check if get parameter has value</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://twitter.com/mc0de/status/1465209203472146434">@mc0de</a></p>
+<h3 id="清理你臃肿的路由文件"><a href="#清理你臃肿的路由文件" class="headerlink" title="清理你臃肿的路由文件"></a>清理你臃肿的路由文件</h3><p>清掉臃肿的路由文件，并将其拆分以保持组织有序</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RouteServiceProvider</span> <span class="keyword">extends</span> <span class="title">ServiceProvider</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">boot</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">routes</span>(function () &#123;</span><br><span class="line">            <span class="title class_">Route</span>::<span class="title function_ invoke__">prefix</span>(<span class="string">&#x27;api/v1&#x27;</span>)</span><br><span class="line">                -&gt;<span class="title function_ invoke__">middleware</span>(<span class="string">&#x27;api&#x27;</span>)</span><br><span class="line">                -&gt;<span class="title function_ invoke__">namespace</span>(<span class="variable">$this</span>-&gt;namespace)</span><br><span class="line">                -&gt;<span class="title function_ invoke__">group</span>(<span class="title function_ invoke__">base_path</span>(<span class="string">&#x27;routes/api.php&#x27;</span>));</span><br><span class="line">                </span><br><span class="line">            <span class="title class_">Route</span>::<span class="title function_ invoke__">prefix</span>(<span class="string">&#x27;webhooks&#x27;</span>)</span><br><span class="line">                -&gt;<span class="title function_ invoke__">namespace</span>(<span class="variable">$this</span>-&gt;namespace)</span><br><span class="line">                -&gt;<span class="title function_ invoke__">group</span>(<span class="title function_ invoke__">base_path</span>(<span class="string">&#x27;routes/webhooks.php&#x27;</span>));</span><br><span class="line">    </span><br><span class="line">            <span class="title class_">Route</span>::<span class="title function_ invoke__">middleware</span>(<span class="string">&#x27;web&#x27;</span>)</span><br><span class="line">                -&gt;<span class="title function_ invoke__">namespace</span>(<span class="variable">$this</span>-&gt;namespace)</span><br><span class="line">                -&gt;<span class="title function_ invoke__">group</span>(<span class="title function_ invoke__">base_path</span>(<span class="string">&#x27;routes/web.php&#x27;</span>));</span><br><span class="line">                </span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">$this</span>-&gt;app-&gt;<span class="title function_ invoke__">environment</span>(<span class="string">&#x27;local&#x27;</span>)) &#123;</span><br><span class="line">                <span class="title class_">Route</span>::<span class="title function_ invoke__">middleware</span>(<span class="string">&#x27;web&#x27;</span>)</span><br><span class="line">                    -&gt;<span class="title function_ invoke__">namespace</span>(<span class="variable">$this</span>-&gt;namespace)</span><br><span class="line">                    -&gt;<span class="title function_ invoke__">group</span>(<span class="title function_ invoke__">base_path</span>(<span class="string">&#x27;routes/local.php&#x27;</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://twitter.com/Philo01/status/1466068376330153984">@Philo01</a></p>
+<h3 id="自定义邮件日志存储位置"><a href="#自定义邮件日志存储位置" class="headerlink" title="自定义邮件日志存储位置"></a>自定义邮件日志存储位置</h3><p>你可以自定义日志存储位置.</p>
+<p>通过设置环境变量如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MAIL_MAILER=log</span><br><span class="line">MAIL_LOG_CHANNEL=mail</span><br></pre></td></tr></table></figure>
+
+<p>也可以设置日志渠道</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;mail&#x27;</span> =&gt; [</span><br><span class="line">    <span class="string">&#x27;driver&#x27;</span> =&gt; <span class="string">&#x27;single&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;path&#x27;</span> =&gt; <span class="title function_ invoke__">storage_path</span>(<span class="string">&#x27;logs/mails.log&#x27;</span>),</span><br><span class="line">    <span class="string">&#x27;level&#x27;</span> =&gt; <span class="title function_ invoke__">env</span>(<span class="string">&#x27;LOG_LEVEL&#x27;</span>, <span class="string">&#x27;debug&#x27;</span>),</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://twitter.com/mmartin_joo/status/1466362508571131904">@mmartin_joo</a></p>
+<h3 id="markdown简单创建"><a href="#markdown简单创建" class="headerlink" title="markdown简单创建"></a>markdown简单创建</h3><p>Laravel提供了一个接口来转换HTML中的即时标记，而无需安装新的composer软件包。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$html</span> = <span class="title class_">Str</span>::<span class="title function_ invoke__">markdown</span>(<span class="string">&#x27;# Changelogfy&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Output:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;Changelogfy&lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://twitter.com/paulocastellano/status/1467478502400315394">@paulocastellano</a></p>
+<h3 id="给中间件传参数"><a href="#给中间件传参数" class="headerlink" title="给中间件传参数"></a>给中间件传参数</h3><p>您可以通过在值后面附加“:”向中间件传递特定路由的参数。例如，我使用一个中间件基于路由实施不同的身份验证方法。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;...&#x27;</span>)-&gt;<span class="title function_ invoke__">middleware</span>(<span class="string">&#x27;auth.license&#x27;</span>);</span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;...&#x27;</span>)-&gt;<span class="title function_ invoke__">middleware</span>(<span class="string">&#x27;auth.license:bearer&#x27;</span>);</span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;...&#x27;</span>)-&gt;<span class="title function_ invoke__">middleware</span>(<span class="string">&#x27;auth.license:basic&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">VerifyLicense</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span>  <span class="title">handle</span>(<span class="params">Request <span class="variable">$request</span>, <span class="built_in">Closure</span> <span class="variable">$next</span>, <span class="variable">$type</span> = <span class="literal">null</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$licenseKey</span>  = <span class="keyword">match</span> (<span class="variable">$type</span>) &#123;</span><br><span class="line">            <span class="string">&#x27;basic&#x27;</span>  =&gt; <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">getPassword</span>(),</span><br><span class="line">            <span class="string">&#x27;bearer&#x27;</span> =&gt; <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">bearerToken</span>(),</span><br><span class="line">            <span class="keyword">default</span>  =&gt; <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">get</span>(<span class="string">&#x27;key&#x27;</span>)</span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Verify license and return response based on the authentication type</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <a target="_blank" rel="noopener" href="https://twitter.com/Philo01/status/1471864630486179840">@Philo01</a></p>
+<h3 id="获取并删除session"><a href="#获取并删除session" class="headerlink" title="获取并删除session"></a>获取并删除session</h3><p>如果您需要从Laravel会话中获取一些东西，并立即忘记它，考虑使用<code>Session()-&gt;pull(value)</code>。它为您完成了这两个步骤。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Before</span></span><br><span class="line"><span class="variable">$path</span> = <span class="title function_ invoke__">session</span>()-&gt;<span class="title function_ invoke__">get</span>(<span class="string">&#x27;before-github-redirect&#x27;</span>, <span class="string">&#x27;/components&#x27;</span>);</span><br><span class="line"><span class="title function_ invoke__">session</span>()-&gt;<span class="title function_ invoke__">forget</span>(<span class="string">&#x27;before-github-redirect&#x27;</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="title function_ invoke__">redirect</span>(<span class="variable">$path</span>);</span><br><span class="line"><span class="comment">// After</span></span><br><span class="line"><span class="keyword">return</span> <span class="title function_ invoke__">redirect</span>(<span class="title function_ invoke__">session</span>()-&gt;<span class="title function_ invoke__">pull</span>(<span class="string">&#x27;before-github-redirect&#x27;</span>, <span class="string">&#x27;/components&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+<p> <a target="_blank" rel="noopener" href="https://twitter.com/jasonlbeggs/status/1471905631619715077">@jasonlbeggs</a>提供</p>
+<h3 id="request的date方法"><a href="#request的date方法" class="headerlink" title="request的date方法"></a>request的date方法</h3><p>Laravel v8.77: <code>$request-&gt;date()</code> 方法</p>
+<p>现在您不需要手动调用Carbon，您可以执行以下操作：<code>$post-&gt;publish_at=$request-&gt;date（&#39;publish_at&#39;）-&gt;&gt;addHour()-&gt;startOfHour()</code><br><a target="_blank" rel="noopener" href="https://github.com/laravel/framework/pull/39945">Link to full pr</a> by <a target="_blank" rel="noopener" href="https://twitter.com/DarkGhostHunter">@DarkGhostHunter</a></p>
+<h3 id="使用分页时请使用through而不是map"><a href="#使用分页时请使用through而不是map" class="headerlink" title="使用分页时请使用through而不是map"></a>使用分页时请使用through而不是map</h3><p>当您想要映射分页数据并只返回字段的子集时，请使用<code>through</code>而不是<code>map</code>。<code>map</code>会打断分页对象并更改其标识。而，<code>through</code>作用于分页数据本身</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Don&#x27;t: Mapping paginated data</span></span><br><span class="line"><span class="variable">$employees</span> = <span class="title class_">Employee</span>::<span class="title function_ invoke__">paginate</span>(<span class="number">10</span>)-&gt;<span class="title function_ invoke__">map</span>(fn (<span class="variable">$employee</span>) =&gt; [</span><br><span class="line">    <span class="string">&#x27;id&#x27;</span> =&gt; <span class="variable">$employee</span>-&gt;id,</span><br><span class="line">    <span class="string">&#x27;name&#x27;</span> =&gt; <span class="variable">$employee</span>-&gt;name</span><br><span class="line">])</span><br><span class="line"><span class="comment">// Do: Mapping paginated data</span></span><br><span class="line"><span class="variable">$employees</span> = <span class="title class_">Employee</span>::<span class="title function_ invoke__">paginate</span>(<span class="number">10</span>)-&gt;<span class="title function_ invoke__">through</span>(fn (<span class="variable">$employee</span>) =&gt; [</span><br><span class="line">    <span class="string">&#x27;id&#x27;</span> =&gt; <span class="variable">$employee</span>-&gt;id,</span><br><span class="line">    <span class="string">&#x27;name&#x27;</span> =&gt; <span class="variable">$employee</span>-&gt;name</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<p> <a target="_blank" rel="noopener" href="https://twitter.com/bhaidar/status/1475073910383120399">@bhaidar</a></p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2024/03/07/laravel/Routing/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    route
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2024/03/07/laravel/Views/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">view</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+
+
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Gemini &copy; 2024 
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>route | Gemini`s wiki</title>
+    
+    
+        <meta name="keywords" content="laravel" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="路由⬆️ 回到顶部 ⬅️ 上一个 (视图) ➡️ 下一个 (验证)  分组中的分组 通配符子域名 Auth::routes调用之后是什么 路由模型绑定-你可以定义一个Key 快速从路由导航到控制器 备选路由-当没有匹配到任何路由时 使用正则进行路由参数验证 限流-全局配置与按用户配置 路由中的URL参数 按文件为路由分类 翻译资源中的动词 自定义资源路由名称 可读性更强的路由列表 预加载 本地化资">
+<meta property="og:type" content="article">
+<meta property="og:title" content="route">
+<meta property="og:url" content="http://example.com/2024/03/07/laravel/Routing/index.html">
+<meta property="og:site_name" content="Gemini&#96;s wiki">
+<meta property="og:description" content="路由⬆️ 回到顶部 ⬅️ 上一个 (视图) ➡️ 下一个 (验证)  分组中的分组 通配符子域名 Auth::routes调用之后是什么 路由模型绑定-你可以定义一个Key 快速从路由导航到控制器 备选路由-当没有匹配到任何路由时 使用正则进行路由参数验证 限流-全局配置与按用户配置 路由中的URL参数 按文件为路由分类 翻译资源中的动词 自定义资源路由名称 可读性更强的路由列表 预加载 本地化资">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-03-07T09:34:16.875Z">
+<meta property="article:modified_time" content="2024-03-07T09:40:12.870Z">
+<meta property="article:author" content="Gemini">
+<meta property="article:tag" content="laravel">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Gemini`s wiki" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Gemini`s wiki</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+                    <a class="main-nav-link" href="/gallery">相册</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                    <td><a class="main-nav-link" href="/gallery">相册</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            docker
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/docker/">docker笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            git
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/git/">git笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            golang
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/golang/go/">go语言</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            laravel
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2024/03/07/laravel/API/">API</a></li>  <li class="file"><a href="/2024/03/07/laravel/Artisan/">Artisan</a></li>  <li class="file"><a href="/2024/03/07/laravel/Collections/">集合</a></li>  <li class="file"><a href="/2024/03/07/laravel/Auth/">授权</a></li>  <li class="file"><a href="/2024/03/07/laravel/Mail/">邮件</a></li>  <li class="file"><a href="/2024/03/07/laravel/Log_and_Debug/">日志与调试</a></li>  <li class="file"><a href="/2024/03/07/laravel/Factories/">工厂</a></li>  <li class="file"><a href="/2024/03/07/laravel/Migrations/">数据库迁移</a></li>  <li class="file"><a href="/2024/03/07/laravel/DB_Models_and_Eloquent/">数据库模型与 Eloquent</a></li>  <li class="file active"><a href="/2024/03/07/laravel/Routing/">route</a></li>  <li class="file"><a href="/2024/03/07/laravel/Other/">other其他</a></li>  <li class="file"><a href="/2024/03/07/laravel/Views/">view</a></li>  <li class="file"><a href="/2024/03/07/laravel/Validation/">validate</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            linux
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            windows wsl
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/wsl/">wsl2使用</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/linux/">linux常用基础命令</a></li>  <li class="file"><a href="/2023/07/18/docker/linux-1/">linux笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mac
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/mac/">mac</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mongodb
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            常用
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mongo/mongodb/">mongodb笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            mysql
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mysql/mysql/">mysql</a></li>  <li class="file"><a href="/2023/07/18/mysql/mysql-1/">mysql-用户-权限</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            openai
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            大语言模型
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/08/16/%E5%B7%A5%E5%85%B7/openai/">openai 图片使用demo</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            php
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            hyperf
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/php/hyperf/">hyperf</a></li>  <li class="file"><a href="/2023/07/18/php/laravel/">laravel 创建Facades门面</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            phpstrom
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/ps/">工具</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            yii
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/19/yii/yii/">yii 请求头</a></li>  <li class="file"><a href="/2023/07/28/yii/yii2/">yii2</a></li>  <li class="file"><a href="/2023/08/28/yii/yii3/">Yii2 行为类</a></li>  <li class="file"><a href="/2023/10/08/yii/yii2-admin/">yii2-admin</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            基础
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/20/%E5%B7%A5%E5%85%B7/link/">外链文章</a></li>  <li class="file"><a href="/2023/07/21/php/ioc/">IOC/DI</a></li>  <li class="file"><a href="/2023/08/08/php/%E5%87%BD%E6%95%B0/">函数</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/yii/php/">php</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            python
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/python/python/">python笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            redis
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/redis/redis/">redis笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            前端
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            hexo
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/08/16/%E5%B7%A5%E5%85%B7/hexo/">博客构建同步仓库</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            vue
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF/">vue笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            工具
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/09/27/%E5%B7%A5%E5%85%B7/linux/">linux</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            生活
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            记录
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE-1/">汽车投诉车质网</a></li>  <li class="file"><a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE/">装修</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2023/08/24/test/pass/">备忘录</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            面试
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            总结
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E9%9D%A2%E8%AF%95/%E9%9D%A2%E8%AF%95/">面试总结</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            项目
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            笔记
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E6%97%A5%E5%B8%B8%E9%A1%B9%E7%9B%AE%E5%A4%87%E6%B3%A8/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/">项目笔记</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-laravel/Routing" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/laravel/">laravel</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/laravel/" rel="tag">laravel</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2024/03/07/laravel/Routing/">
+            <time datetime="2024-03-07T09:34:16.875Z" itemprop="datePublished">2024-03-07</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            route
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1"><span class="toc-number">1.</span> <span class="toc-text">路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E4%B8%AD%E7%9A%84%E5%88%86%E7%BB%84"><span class="toc-number">1.1.</span> <span class="toc-text">分组中的分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E9%85%8D%E7%AC%A6%E5%AD%90%E5%9F%9F%E5%90%8D"><span class="toc-number">1.2.</span> <span class="toc-text">通配符子域名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#routes%E8%B0%83%E7%94%A8%E4%B9%8B%E5%90%8E%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.3.</span> <span class="toc-text">routes调用之后是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%9E%8B%E7%BB%91%E5%AE%9A-%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AAKey"><span class="toc-number">1.4.</span> <span class="toc-text">路由模型绑定-你可以定义一个Key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E4%BB%8E%E8%B7%AF%E7%94%B1%E5%AF%BC%E8%88%AA%E5%88%B0%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-number">1.5.</span> <span class="toc-text">快速从路由导航到控制器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%87%E9%80%89%E8%B7%AF%E7%94%B1-%E5%BD%93%E6%B2%A1%E6%9C%89%E5%8C%B9%E9%85%8D%E5%88%B0%E4%BB%BB%E4%BD%95%E8%B7%AF%E7%94%B1%E6%97%B6"><span class="toc-number">1.6.</span> <span class="toc-text">备选路由-当没有匹配到任何路由时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%AD%A3%E5%88%99%E8%BF%9B%E8%A1%8C%E8%B7%AF%E7%94%B1%E5%8F%82%E6%95%B0%E9%AA%8C%E8%AF%81"><span class="toc-number">1.7.</span> <span class="toc-text">使用正则进行路由参数验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%90%E6%B5%81-%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%8C%89%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE"><span class="toc-number">1.8.</span> <span class="toc-text">限流-全局配置与按用户配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E4%B8%AD%E7%9A%84URL%E5%8F%82%E6%95%B0"><span class="toc-number">1.9.</span> <span class="toc-text">路由中的URL参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E6%96%87%E4%BB%B6%E4%B8%BA%E8%B7%AF%E7%94%B1%E5%88%86%E7%B1%BB"><span class="toc-number">1.10.</span> <span class="toc-text">按文件为路由分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BF%BB%E8%AF%91%E8%B5%84%E6%BA%90%E4%B8%AD%E7%9A%84%E5%8A%A8%E8%AF%8D"><span class="toc-number">1.11.</span> <span class="toc-text">翻译资源中的动词</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E8%B7%AF%E7%94%B1%E5%90%8D%E7%A7%B0"><span class="toc-number">1.12.</span> <span class="toc-text">自定义资源路由名称</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E8%AF%BB%E6%80%A7%E6%9B%B4%E5%BC%BA%E7%9A%84%E8%B7%AF%E7%94%B1%E5%88%97%E8%A1%A8"><span class="toc-number">1.13.</span> <span class="toc-text">可读性更强的路由列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%84%E5%8A%A0%E8%BD%BD"><span class="toc-number">1.14.</span> <span class="toc-text">预加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%8C%96%E8%B5%84%E6%BA%90URI"><span class="toc-number">1.15.</span> <span class="toc-text">本地化资源URI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E6%8E%A7%E5%88%B6%E5%99%A8%E5%91%BD%E5%90%8D"><span class="toc-number">1.16.</span> <span class="toc-text">资源控制器命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E7%AE%80%E5%8D%95%E5%9C%B0%E9%AB%98%E4%BA%AE%E4%BD%A0%E7%9A%84%E5%AF%BC%E8%88%AA%E6%A0%8F"><span class="toc-number">1.17.</span> <span class="toc-text">更简单地高亮你的导航栏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8route%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0%E7%94%9F%E6%88%90%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="toc-number">1.18.</span> <span class="toc-text">使用route辅助函数生成绝对路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BD%A0%E7%9A%84%E6%AF%8F%E4%B8%AA%E6%A8%A1%E5%9E%8B%E9%87%8D%E5%86%99%E8%B7%AF%E7%94%B1%E7%BB%91%E5%AE%9A%E8%A7%A3%E6%9E%90%E5%99%A8"><span class="toc-number">1.19.</span> <span class="toc-text">为你的每个模型重写路由绑定解析器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E4%BD%A0%E9%9C%80%E8%A6%81%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1URL%E4%BD%86%E6%98%AF%E4%BD%A0%E6%83%B3%E8%AE%A9%E4%BB%96%E4%BB%AC%E6%9B%B4%E5%AE%89%E5%85%A8"><span class="toc-number">1.20.</span> <span class="toc-text">如果你需要一个公共URL但是你想让他们更安全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E4%B8%AD%E9%97%B4%E4%BB%B6%E4%B8%AD%E4%BD%BF%E7%94%A8Gate"><span class="toc-number">1.21.</span> <span class="toc-text">在中间件中使用Gate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E8%B7%AF%E7%94%B1-%E4%BD%BF%E7%94%A8%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0"><span class="toc-number">1.22.</span> <span class="toc-text">简单路由-使用箭头函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E8%A7%86%E5%9B%BE"><span class="toc-number">1.23.</span> <span class="toc-text">路由视图</span></a></li></ol></li></ol>
+                </div>
+            
+        
+        
+            <h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><p>⬆️ <a href="../README-zh.md">回到顶部</a> ⬅️ <a href="./Views.md">上一个 (视图)</a> ➡️ <a href="./Validation.md">下一个 (验证)</a></p>
+<ol>
+<li><a href="#%E5%88%86%E7%BB%84%E4%B8%AD%E7%9A%84%E5%88%86%E7%BB%84">分组中的分组</a></li>
+<li><a href="#%E9%80%9A%E9%85%8D%E7%AC%A6%E5%AD%90%E5%9F%9F%E5%90%8D">通配符子域名</a></li>
+<li><a href="#routes%E8%B0%83%E7%94%A8%E4%B9%8B%E5%90%8E%E6%98%AF%E4%BB%80%E4%B9%88">Auth::routes调用之后是什么</a></li>
+<li><a href="#%E8%B7%AF%E7%94%B1%E6%A8%A1%E5%9E%8B%E7%BB%91%E5%AE%9A-%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AAKey">路由模型绑定-你可以定义一个Key</a></li>
+<li><a href="#%E5%BF%AB%E9%80%9F%E4%BB%8E%E8%B7%AF%E7%94%B1%E5%AF%BC%E8%88%AA%E5%88%B0%E6%8E%A7%E5%88%B6%E5%99%A8">快速从路由导航到控制器</a></li>
+<li><a href="#%E5%A4%87%E9%80%89%E8%B7%AF%E7%94%B1-%E5%BD%93%E6%B2%A1%E6%9C%89%E5%8C%B9%E9%85%8D%E5%88%B0%E4%BB%BB%E4%BD%95%E8%B7%AF%E7%94%B1%E6%97%B6">备选路由-当没有匹配到任何路由时</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E6%AD%A3%E5%88%99%E8%BF%9B%E8%A1%8C%E8%B7%AF%E7%94%B1%E5%8F%82%E6%95%B0%E9%AA%8C%E8%AF%81">使用正则进行路由参数验证</a></li>
+<li><a href="#%E9%99%90%E6%B5%81-%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%8C%89%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE">限流-全局配置与按用户配置</a></li>
+<li><a href="#%E8%B7%AF%E7%94%B1%E4%B8%AD%E7%9A%84URL%E5%8F%82%E6%95%B0">路由中的URL参数</a></li>
+<li><a href="#%E6%8C%89%E6%96%87%E4%BB%B6%E4%B8%BA%E8%B7%AF%E7%94%B1%E5%88%86%E7%B1%BB">按文件为路由分类</a></li>
+<li><a href="#%E7%BF%BB%E8%AF%91%E8%B5%84%E6%BA%90%E4%B8%AD%E7%9A%84%E5%8A%A8%E8%AF%8D">翻译资源中的动词</a></li>
+<li><a href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B5%84%E6%BA%90%E8%B7%AF%E7%94%B1%E5%90%8D%E7%A7%B0">自定义资源路由名称</a></li>
+<li><a href="#%E5%8F%AF%E8%AF%BB%E6%80%A7%E6%9B%B4%E5%BC%BA%E7%9A%84%E8%B7%AF%E7%94%B1%E5%88%97%E8%A1%A8">可读性更强的路由列表</a></li>
+<li><a href="#%E9%A2%84%E5%8A%A0%E8%BD%BD">预加载</a></li>
+<li><a href="#%E6%9C%AC%E5%9C%B0%E5%8C%96%E8%B5%84%E6%BA%90URI">本地化资源URI</a></li>
+<li><a href="#%E8%B5%84%E6%BA%90%E6%8E%A7%E5%88%B6%E5%99%A8%E5%91%BD%E5%90%8D">资源控制器命名</a></li>
+<li><a href="#%E6%9B%B4%E7%AE%80%E5%8D%95%E5%9C%B0%E9%AB%98%E4%BA%AE%E4%BD%A0%E7%9A%84%E5%AF%BC%E8%88%AA%E6%A0%8F">更简单地高亮你的导航栏</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8route()%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0%E7%94%9F%E6%88%90%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84">使用route()辅助函数生成绝对路径</a></li>
+<li><a href="#%E4%B8%BA%E4%BD%A0%E7%9A%84%E6%AF%8F%E4%B8%AA%E6%A8%A1%E5%9E%8B%E9%87%8D%E5%86%99%E8%B7%AF%E7%94%B1%E7%BB%91%E5%AE%9A%E8%A7%A3%E6%9E%90%E5%99%A8">为你的每个模型重写路由绑定解析器</a></li>
+<li><a href="#%E5%A6%82%E6%9E%9C%E4%BD%A0%E9%9C%80%E8%A6%81%E4%B8%80%E4%B8%AA%E5%85%AC%E5%85%B1URL%E4%BD%86%E6%98%AF%E4%BD%A0%E6%83%B3%E8%AE%A9%E4%BB%96%E4%BB%AC%E6%9B%B4%E5%AE%89%E5%85%A8">如果你需要一个公共URL但是你想让他们更安全</a></li>
+<li><a href="#%E5%9C%A8%E4%B8%AD%E9%97%B4%E4%BB%B6%E4%B8%AD%E4%BD%BF%E7%94%A8Gate">在中间件中使用Gate</a></li>
+<li><a href="#%E7%AE%80%E5%8D%95%E8%B7%AF%E7%94%B1-%E4%BD%BF%E7%94%A8%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0">简单路由-使用箭头函数</a></li>
+<li><a href="#%E8%B7%AF%E7%94%B1%E8%A7%86%E5%9B%BE">路由视图</a></li>
+</ol>
+<h3 id="分组中的分组"><a href="#分组中的分组" class="headerlink" title="分组中的分组"></a>分组中的分组</h3><p>在路由中，你可以在分组中创建分组，来实现仅仅为父分组中的某些路由分配中间件。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">group</span>([<span class="string">&#x27;prefix&#x27;</span> =&gt; <span class="string">&#x27;account&#x27;</span>, <span class="string">&#x27;as&#x27;</span> =&gt; <span class="string">&#x27;account.&#x27;</span>], function() &#123;</span><br><span class="line">    <span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;login&#x27;</span>, <span class="string">&#x27;AccountController@login&#x27;</span>);</span><br><span class="line">    <span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;register&#x27;</span>, <span class="string">&#x27;AccountController@register&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="title class_">Route</span>::<span class="title function_ invoke__">group</span>([<span class="string">&#x27;middleware&#x27;</span> =&gt; <span class="string">&#x27;auth&#x27;</span>], function() &#123;</span><br><span class="line">        <span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;edit&#x27;</span>, <span class="string">&#x27;AccountController@edit&#x27;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="通配符子域名"><a href="#通配符子域名" class="headerlink" title="通配符子域名"></a>通配符子域名</h3><p>你可以在分组中定义变量，来创建动态子域名分组，然后将这个变量传递给每一个子路由。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">domain</span>(<span class="string">&#x27;&#123;username&#125;.workspace.com&#x27;</span>)-&gt;<span class="title function_ invoke__">group</span>(function () &#123;</span><br><span class="line">    <span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;user/&#123;id&#125;&#x27;</span>, function (<span class="variable">$username</span>, <span class="variable">$id</span>) &#123;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="routes调用之后是什么"><a href="#routes调用之后是什么" class="headerlink" title="routes调用之后是什么"></a>routes调用之后是什么</h3><p>若你使用 <a target="_blank" rel="noopener" href="https://github.com/laravel/ui">Laravel UI package</a>, 你可能想知道<code>Auth::routes()</code>定义之后真正的路由是什么?</p>
+<p>查看 <code>/vendor/laravel/ui/src/AuthRouteMethods.php</code>.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">auth</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"><span class="variable">$options</span> = []</span>) </span>&#123;</span><br><span class="line">        <span class="comment">// Authentication Routes...</span></span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">get</span>(<span class="string">&#x27;login&#x27;</span>, <span class="string">&#x27;Auth\LoginController@showLoginForm&#x27;</span>)-&gt;<span class="title function_ invoke__">name</span>(<span class="string">&#x27;login&#x27;</span>);</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">post</span>(<span class="string">&#x27;login&#x27;</span>, <span class="string">&#x27;Auth\LoginController@login&#x27;</span>);</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">post</span>(<span class="string">&#x27;logout&#x27;</span>, <span class="string">&#x27;Auth\LoginController@logout&#x27;</span>)-&gt;<span class="title function_ invoke__">name</span>(<span class="string">&#x27;logout&#x27;</span>);</span><br><span class="line">        <span class="comment">// Registration Routes...</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$options</span>[<span class="string">&#x27;register&#x27;</span>] ?? <span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">get</span>(<span class="string">&#x27;register&#x27;</span>, <span class="string">&#x27;Auth\RegisterController@showRegistrationForm&#x27;</span>)-&gt;<span class="title function_ invoke__">name</span>(<span class="string">&#x27;register&#x27;</span>);</span><br><span class="line">            <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">post</span>(<span class="string">&#x27;register&#x27;</span>, <span class="string">&#x27;Auth\RegisterController@register&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// Password Reset Routes...</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$options</span>[<span class="string">&#x27;reset&#x27;</span>] ?? <span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">resetPassword</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// Password Confirmation Routes...</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$options</span>[<span class="string">&#x27;confirm&#x27;</span>] ?? <span class="title function_ invoke__">class_exists</span>(<span class="variable">$this</span>-&gt;<span class="title function_ invoke__">prependGroupNamespace</span>(<span class="string">&#x27;Auth\ConfirmPasswordController&#x27;</span>))) &#123;</span><br><span class="line">            <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">confirmPassword</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// Email Verification Routes...</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$options</span>[<span class="string">&#x27;verify&#x27;</span>] ?? <span class="literal">false</span>) &#123;</span><br><span class="line">            <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">emailVerification</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>默认调用:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Auth</span>::<span class="title function_ invoke__">routes</span>(); <span class="comment">// no parameters</span></span><br></pre></td></tr></table></figure>
+
+<p>但是你可以提供参数来启用或禁用真正的路由</p>
+<p>But you can provide parameters to enable o disable certain routes:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Auth</span>::<span class="title function_ invoke__">routes</span>([</span><br><span class="line">    <span class="string">&#x27;login&#x27;</span>    =&gt; <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&#x27;logout&#x27;</span>   =&gt; <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&#x27;register&#x27;</span> =&gt; <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&#x27;reset&#x27;</span>    =&gt; <span class="literal">true</span>,  // <span class="keyword">for</span> resetting passwords</span><br><span class="line">    <span class="string">&#x27;confirm&#x27;</span>  =&gt; <span class="literal">false</span>, // <span class="keyword">for</span> additional password confirmations</span><br><span class="line">    <span class="string">&#x27;verify&#x27;</span>   =&gt; <span class="literal">false</span>, // <span class="keyword">for</span> email verification</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://github.com/LaravelDaily/laravel-tips/pull/57">suggestion</a> by <a target="_blank" rel="noopener" href="https://github.com/MimisK13">MimisK13</a>提供</p>
+<h3 id="路由模型绑定-你可以定义一个Key"><a href="#路由模型绑定-你可以定义一个Key" class="headerlink" title="路由模型绑定-你可以定义一个Key"></a>路由模型绑定-你可以定义一个Key</h3><p>你可以像 <code>Route::get(&#39;api/users/&#123;user&#125;&#39;, function (App\User $user) &#123; … &#125;</code> 这样来进行路由模型绑定，但不仅仅是 ID 字段，如果你想让 {user} 是 username，你可以把它放在模型中：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getRouteKeyName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;username&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="快速从路由导航到控制器"><a href="#快速从路由导航到控制器" class="headerlink" title="快速从路由导航到控制器"></a>快速从路由导航到控制器</h3><p>在 <code>Laravel 8</code> 之前，这件事情是可选的。在 <code>Laravel 8</code> 中这将成为路由的标准语法</p>
+<p>不用这么写:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;page&#x27;</span>, <span class="string">&#x27;PageController@action&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>你可以将控制器标识为 <code>class</code> 类名:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;page&#x27;</span>, [<span class="title class_">\App\Http\Controllers\PageController</span>::<span class="variable language_">class</span>, <span class="string">&#x27;action&#x27;</span>]);</span><br></pre></td></tr></table></figure>
+
+<p>这样，你就可以在 <code>PhpStorm</code>中点击 <code>PageController</code> 来跳转到控制器定义，而不是手动去搜索它</p>
+<p>或者你想要让路由的定义更简洁，你可以在路由文件的开始提前引入控制器的类。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">Http</span>\<span class="title">Controllers</span>\<span class="title">PageController</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Then:</span></span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;page&#x27;</span>, [<span class="title class_">PageController</span>::<span class="variable language_">class</span>, <span class="string">&#x27;action&#x27;</span>]);</span><br></pre></td></tr></table></figure>
+
+<h3 id="备选路由-当没有匹配到任何路由时"><a href="#备选路由-当没有匹配到任何路由时" class="headerlink" title="备选路由-当没有匹配到任何路由时"></a>备选路由-当没有匹配到任何路由时</h3><p>如果你想为未找到的路由指定其它逻辑，而不是直接显示 404 页面，你可以在路由文件的最后为其创建一个特殊的路由。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">group</span>([<span class="string">&#x27;middleware&#x27;</span> =&gt; [<span class="string">&#x27;auth&#x27;</span>], <span class="string">&#x27;prefix&#x27;</span> =&gt; <span class="string">&#x27;admin&#x27;</span>, <span class="string">&#x27;as&#x27;</span> =&gt; <span class="string">&#x27;admin.&#x27;</span>], function () &#123;</span><br><span class="line">    <span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;/home&#x27;</span>, <span class="string">&#x27;HomeController@index&#x27;</span>);</span><br><span class="line">    <span class="title class_">Route</span>::<span class="title function_ invoke__">resource</span>(<span class="string">&#x27;tasks&#x27;</span>, <span class="string">&#x27;Admin\TasksController&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Some more routes....</span></span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">fallback</span>(function() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hm, why did you land here somehow?&#x27;</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="使用正则进行路由参数验证"><a href="#使用正则进行路由参数验证" class="headerlink" title="使用正则进行路由参数验证"></a>使用正则进行路由参数验证</h3><p>我们可以在路由中使用 <code>where</code>参数 来直接验证参数。一个典型的例子是，当使用语言区域的参数来作为路由前缀时，像是 <code>fr/blog</code> 和 <code>en/article/333</code> 等，这时我们如何来确保这两个首字母没有被用在其他语言呢？</p>
+<p><code>routes/web.php</code>:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">group</span>([</span><br><span class="line">    <span class="string">&#x27;prefix&#x27;</span> =&gt; <span class="string">&#x27;&#123;locale&#125;&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;where&#x27;</span> =&gt; [<span class="string">&#x27;locale&#x27;</span> =&gt; <span class="string">&#x27;[a-zA-Z]&#123;2&#125;&#x27;</span>]</span><br><span class="line">], function () &#123;</span><br><span class="line">    <span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="string">&#x27;HomeController@index&#x27;</span>);</span><br><span class="line">    <span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;article/&#123;id&#125;&#x27;</span>, <span class="string">&#x27;ArticleController@show&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="限流-全局配置与按用户配置"><a href="#限流-全局配置与按用户配置" class="headerlink" title="限流-全局配置与按用户配置"></a>限流-全局配置与按用户配置</h3><p>你可以使用 <code>throttle:60,1</code> 来限制一些 URL 在每分钟内最多被访问 60 次。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">middleware</span>(<span class="string">&#x27;auth:api&#x27;</span>, <span class="string">&#x27;throttle:60,1&#x27;</span>)-&gt;<span class="title function_ invoke__">group</span>(function () &#123;</span><br><span class="line">    <span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;/user&#x27;</span>, function () &#123;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>另外，你也可以为公开请求和登录用户分别配置：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// maximum of 10 requests for guests, 60 for authenticated users</span></span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">middleware</span>(<span class="string">&#x27;throttle:10|60,1&#x27;</span>)-&gt;<span class="title function_ invoke__">group</span>(function () &#123;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>此外，你也可以使用数据库字段 <code>users.rate_limit</code> 为一些特殊用户设定此值。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">middleware</span>(<span class="string">&#x27;auth:api&#x27;</span>, <span class="string">&#x27;throttle:rate_limit,1&#x27;</span>)-&gt;<span class="title function_ invoke__">group</span>(function () &#123;</span><br><span class="line">    <span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;/user&#x27;</span>, function () &#123;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="路由中的URL参数"><a href="#路由中的URL参数" class="headerlink" title="路由中的URL参数"></a>路由中的URL参数</h3><p>如果你在路由中使用数组传入了其它参数，这些键 &#x2F; 值将会自动配对并且带入 <code>URL</code> 查询参数中。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;user/&#123;id&#125;/profile&#x27;</span>, function (<span class="variable">$id</span>) &#123;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">&#125;)-&gt;<span class="title function_ invoke__">name</span>(<span class="string">&#x27;profile&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$url</span> = <span class="title function_ invoke__">route</span>(<span class="string">&#x27;profile&#x27;</span>, [<span class="string">&#x27;id&#x27;</span> =&gt; <span class="number">1</span>, <span class="string">&#x27;photos&#x27;</span> =&gt; <span class="string">&#x27;yes&#x27;</span>]); <span class="comment">// Result: /user/1/profile?photos=yes</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="按文件为路由分类"><a href="#按文件为路由分类" class="headerlink" title="按文件为路由分类"></a>按文件为路由分类</h3><p>如果你有一组与某些功能相关的路由，你可以将它们放在一个特殊的文件 <code>routes/XXXXX.php</code> 中，然后在 <code>routes/web.php</code> 中使用 include 引入它。&#96;</p>
+<p>Taylor Otwell 在  <a target="_blank" rel="noopener" href="https://github.com/laravel/breeze/blob/1.x/stubs/routes/web.php">Laravel Breeze</a> 中的例子：<br><code>routes/auth.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;/&#x27;</span>, function () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">view</span>(<span class="string">&#x27;welcome&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;/dashboard&#x27;</span>, function () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">view</span>(<span class="string">&#x27;dashboard&#x27;</span>);</span><br><span class="line">&#125;)-&gt;<span class="title function_ invoke__">middleware</span>([<span class="string">&#x27;auth&#x27;</span>])-&gt;<span class="title function_ invoke__">name</span>(<span class="string">&#x27;dashboard&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">&#x27;/auth.php&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>然后，在 <code>routes/auth.php</code> 中:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">Http</span>\<span class="title">Controllers</span>\<span class="title">Auth</span>\<span class="title">AuthenticatedSessionController</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">Http</span>\<span class="title">Controllers</span>\<span class="title">Auth</span>\<span class="title">RegisteredUserController</span>;</span><br><span class="line"><span class="comment">// ... more controllers</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Facades</span>\<span class="title">Route</span>;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;/register&#x27;</span>, [<span class="title class_">RegisteredUserController</span>::<span class="variable language_">class</span>, <span class="string">&#x27;create&#x27;</span>])</span><br><span class="line">                -&gt;<span class="title function_ invoke__">middleware</span>(<span class="string">&#x27;guest&#x27;</span>)</span><br><span class="line">                -&gt;<span class="title function_ invoke__">name</span>(<span class="string">&#x27;register&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">post</span>(<span class="string">&#x27;/register&#x27;</span>, [<span class="title class_">RegisteredUserController</span>::<span class="variable language_">class</span>, <span class="string">&#x27;store&#x27;</span>])</span><br><span class="line">                -&gt;<span class="title function_ invoke__">middleware</span>(<span class="string">&#x27;guest&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ... A dozen more routes</span></span><br></pre></td></tr></table></figure>
+
+<p>但是，你应该只在路由都各自具有相同的前缀 &#x2F; 中间件配置时使用 <code>include()</code> 来引入路由，否则，更好的选择是将他们分类在 <code>app/Providers/RouteServiceProvider</code> 中。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">boot</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">configureRateLimiting</span>();</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">$this</span>-&gt;<span class="title function_ invoke__">routes</span>(function () &#123;</span><br><span class="line">        <span class="title class_">Route</span>::<span class="title function_ invoke__">prefix</span>(<span class="string">&#x27;api&#x27;</span>)</span><br><span class="line">            -&gt;<span class="title function_ invoke__">middleware</span>(<span class="string">&#x27;api&#x27;</span>)</span><br><span class="line">            -&gt;<span class="title function_ invoke__">namespace</span>(<span class="variable">$this</span>-&gt;namespace)</span><br><span class="line">            -&gt;<span class="title function_ invoke__">group</span>(<span class="title function_ invoke__">base_path</span>(<span class="string">&#x27;routes/api.php&#x27;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="title class_">Route</span>::<span class="title function_ invoke__">middleware</span>(<span class="string">&#x27;web&#x27;</span>)</span><br><span class="line">            -&gt;<span class="title function_ invoke__">namespace</span>(<span class="variable">$this</span>-&gt;namespace)</span><br><span class="line">            -&gt;<span class="title function_ invoke__">group</span>(<span class="title function_ invoke__">base_path</span>(<span class="string">&#x27;routes/web.php&#x27;</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ... Your routes file listed next here</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="翻译资源中的动词"><a href="#翻译资源中的动词" class="headerlink" title="翻译资源中的动词"></a>翻译资源中的动词</h3><p>当你使用了资源控制器，但希望变更 <code>URL</code> 谓词以适应非英语语言环境下的 <code>SEO</code> ，以在路由中用 <code>/crear</code> 替换 <code>/create</code>，你可以使用 <code>App\Providers\RouteServiceProvider 中的 Route::resourceVerbs()</code> 配置。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">boot</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="title class_">Route</span>::<span class="title function_ invoke__">resourceVerbs</span>([</span><br><span class="line">        <span class="string">&#x27;create&#x27;</span> =&gt; <span class="string">&#x27;crear&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;edit&#x27;</span> =&gt; <span class="string">&#x27;editar&#x27;</span>,</span><br><span class="line">    ]);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义资源路由名称"><a href="#自定义资源路由名称" class="headerlink" title="自定义资源路由名称"></a>自定义资源路由名称</h3><p>当使用资源路由时，你可以在 <code>routes/web.php</code> 中指定 <code>-&gt;names() 参数</code>，这样一来，在整个 Laravel 项目中，浏览器中的 URL 前缀和路由名称前缀可能会不同。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">resource</span>(<span class="string">&#x27;p&#x27;</span>, <span class="title class_">ProductController</span>::<span class="variable language_">class</span>)-&gt;<span class="title function_ invoke__">names</span>(<span class="string">&#x27;products&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>这行代码将会生成像 <code>/p</code>, <code>/p/&#123;id&#125;</code>, <code>/p/&#123;id&#125;/edit</code> 这样的路由，但是你可以在代码中使用<code> route(&#39;products.index&#39;)</code>, <code>route(&#39;products.create&#39;)</code> 等方式来调用它们。</p>
+<h3 id="可读性更强的路由列表"><a href="#可读性更强的路由列表" class="headerlink" title="可读性更强的路由列表"></a>可读性更强的路由列表</h3><p>你有没有运行过 <code>php artisan route:list</code> ，然后发现这个列表又长，可读性又很差。<br>另一个方法是：<br><code>php artisan route:list --compact</code><br>这样只会输出 3 列，而非 6 列：只展示方法名、 URI 和方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">+----------+---------------------------------+-------------------------------------------------------------------------+</span><br><span class="line">| Method   | URI                             | Action                                                                  |</span><br><span class="line">+----------+---------------------------------+-------------------------------------------------------------------------+</span><br><span class="line">| GET|HEAD | /                               | Closure                                                                 |</span><br><span class="line">| GET|HEAD | api/user                        | Closure                                                                 |</span><br><span class="line">| POST     | confirm-password                | App\Http\Controllers\Auth\ConfirmablePasswordController@store           |</span><br><span class="line">| GET|HEAD | confirm-password                | App\Http\Controllers\Auth\ConfirmablePasswordController@show            |</span><br><span class="line">| GET|HEAD | dashboard                       | Closure                                                                 |</span><br><span class="line">| POST     | email/verification-notification | App\Http\Controllers\Auth\EmailVerificationNotificationController@store |</span><br><span class="line">| POST     | forgot-password                 | App\Http\Controllers\Auth\PasswordResetLinkController@store             |</span><br><span class="line">| GET|HEAD | forgot-password                 | App\Http\Controllers\Auth\PasswordResetLinkController@create            |</span><br><span class="line">| POST     | login                           | App\Http\Controllers\Auth\AuthenticatedSessionController@store          |</span><br><span class="line">| GET|HEAD | login                           | App\Http\Controllers\Auth\AuthenticatedSessionController@create         |</span><br><span class="line">| POST     | logout                          | App\Http\Controllers\Auth\AuthenticatedSessionController@destroy        |</span><br><span class="line">| POST     | register                        | App\Http\Controllers\Auth\RegisteredUserController@store                |</span><br><span class="line">| GET|HEAD | register                        | App\Http\Controllers\Auth\RegisteredUserController@create               |</span><br><span class="line">| POST     | reset-password                  | App\Http\Controllers\Auth\NewPasswordController@store                   |</span><br><span class="line">| GET|HEAD | reset-password/&#123;token&#125;          | App\Http\Controllers\Auth\NewPasswordController@create                  |</span><br><span class="line">| GET|HEAD | verify-email                    | App\Http\Controllers\Auth\EmailVerificationPromptController@__invoke    |</span><br><span class="line">| GET|HEAD | verify-email/&#123;id&#125;/&#123;hash&#125;        | App\Http\Controllers\Auth\VerifyEmailController@__invoke                |</span><br><span class="line">+----------+---------------------------------+-------------------------------------------------------------------------+</span><br></pre></td></tr></table></figure>
+
+<p>你还可以特别地指定所需要的列：</p>
+<p><code>php artisan route:list --columns=Method,URI,Name</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">+----------+---------------------------------+---------------------+</span><br><span class="line">| Method   | URI                             | Name                |</span><br><span class="line">+----------+---------------------------------+---------------------+</span><br><span class="line">| GET|HEAD | /                               |                     |</span><br><span class="line">| GET|HEAD | api/user                        |                     |</span><br><span class="line">| POST     | confirm-password                |                     |</span><br><span class="line">| GET|HEAD | confirm-password                | password.confirm    |</span><br><span class="line">| GET|HEAD | dashboard                       | dashboard           |</span><br><span class="line">| POST     | email/verification-notification | verification.send   |</span><br><span class="line">| POST     | forgot-password                 | password.email      |</span><br><span class="line">| GET|HEAD | forgot-password                 | password.request    |</span><br><span class="line">| POST     | login                           |                     |</span><br><span class="line">| GET|HEAD | login                           | login               |</span><br><span class="line">| POST     | logout                          | logout              |</span><br><span class="line">| POST     | register                        |                     |</span><br><span class="line">| GET|HEAD | register                        | register            |</span><br><span class="line">| POST     | reset-password                  | password.update     |</span><br><span class="line">| GET|HEAD | reset-password/&#123;token&#125;          | password.reset      |</span><br><span class="line">| GET|HEAD | verify-email                    | verification.notice |</span><br><span class="line">| GET|HEAD | verify-email/&#123;id&#125;/&#123;hash&#125;        | verification.verify |</span><br><span class="line">+----------+---------------------------------+---------------------+</span><br></pre></td></tr></table></figure>
+
+<h3 id="预加载"><a href="#预加载" class="headerlink" title="预加载"></a>预加载</h3><p>如果你使用了路由模型绑定，并且你认为不会在绑定关系中使用预加载，请你再想一想。<br>所以当你用了这样的路由模型绑定:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params">Product <span class="variable">$product</span></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是你有一个从属关系，这时候就不能使用 <code>$product-&gt;with(&#39;category&#39;)</code> 预加载了吗？<br>你当然可以，使用 <code>-&gt;load()</code> 来加载关系</p>
+<p>But you have a belongsTo relationship, and cannot use $product-&gt;with(‘category’) eager loading?<br><br>You actually can! Load the relationship with <code>-&gt;load()</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params">Product <span class="variable">$product</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable">$product</span>-&gt;<span class="title function_ invoke__">load</span>(<span class="string">&#x27;category&#x27;</span>);</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="本地化资源URI"><a href="#本地化资源URI" class="headerlink" title="本地化资源URI"></a>本地化资源URI</h3><p>如果你使用了资源控制器，但是想要将 URL 谓词变为非英语形式的，比如你想要西班牙语的 <code>/crear</code> 而不是 <code>/create</code> ，你可以使用 <code>Route::resourceVerbs()</code> 方法来配置。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">boot</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="title class_">Route</span>::<span class="title function_ invoke__">resourceVerbs</span>([</span><br><span class="line">        <span class="string">&#x27;create&#x27;</span> =&gt; <span class="string">&#x27;crear&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;edit&#x27;</span> =&gt; <span class="string">&#x27;editar&#x27;</span>,</span><br><span class="line">    ]);</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="资源控制器命名"><a href="#资源控制器命名" class="headerlink" title="资源控制器命名"></a>资源控制器命名</h3><p>在资源控制器中，你可以在 <code>routes/web.php</code> 中指定 <code>-&gt;names()</code> 参数，这样 <code>URL</code> 前缀与路由前缀可能会不同<br>.<br>这样会生成诸如  <code>/p</code>, <code>/p/&#123;id&#125;</code>, <code>/p/&#123;id&#125;/edit</code> 等等，但是你可以这样调用它们：</p>
+<p><code>route(&#39;products.index)</code><br><code>route(&#39;products.create)</code><br>等等</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">resource</span>(<span class="string">&#x27;p&#x27;</span>, <span class="title class_">\App\Http\Controllers\ProductController</span>::<span class="variable language_">class</span>)-&gt;<span class="title function_ invoke__">names</span>(<span class="string">&#x27;products&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="更简单地高亮你的导航栏"><a href="#更简单地高亮你的导航栏" class="headerlink" title="更简单地高亮你的导航栏"></a>更简单地高亮你的导航栏</h3><p>使用<code>Route::is(&#39;route-name&#39;)</code>来更简单的高亮你的导航栏</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> @<span class="attr">if</span>(<span class="attr">Route::is</span>(&#x27;<span class="attr">home</span>&#x27;)) <span class="attr">class</span>=<span class="string">&quot;active&quot;</span> @<span class="attr">endif</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/&quot;</span>&gt;</span>Home<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> @<span class="attr">if</span>(<span class="attr">Route::is</span>(&#x27;<span class="attr">contact-us</span>&#x27;)) <span class="attr">class</span>=<span class="string">&quot;active&quot;</span> @<span class="attr">endif</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/contact-us&quot;</span>&gt;</span>Contact us<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/anwar_nairi/status/1443893957507747849">@anwar_nairi</a>提供</p>
+<h3 id="使用route辅助函数生成绝对路径"><a href="#使用route辅助函数生成绝对路径" class="headerlink" title="使用route辅助函数生成绝对路径"></a>使用route辅助函数生成绝对路径</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">route</span>(<span class="string">&#x27;page.show&#x27;</span>, <span class="variable">$page</span>-&gt;id);</span><br><span class="line"><span class="comment">// http://laravel.test/pages/1</span></span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">route</span>(<span class="string">&#x27;page.show&#x27;</span>, <span class="variable">$page</span>-&gt;id, <span class="literal">false</span>);</span><br><span class="line"><span class="comment">// /pages/1</span></span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/oliverds_/status/1445796035742240770">@oliverds_</a>提供</p>
+<h3 id="为你的每个模型重写路由绑定解析器"><a href="#为你的每个模型重写路由绑定解析器" class="headerlink" title="为你的每个模型重写路由绑定解析器"></a>为你的每个模型重写路由绑定解析器</h3><p>你可以为你的所有模型重写路由绑定解析器。在这个例子里，我们没有对<code>URL</code> 中的 <code>@</code> 符号做任何处理，所以 用&#96;&#96;resolveRouteBinding<code> </code>我可以移除<code>@</code>符号 然后解析模型</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Route</span></span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;&#123;product:slug&#125;&#x27;</span>, <span class="title class_">Controller</span>::<span class="variable language_">class</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Request</span></span><br><span class="line">https:<span class="comment">//nodejs.pub/@unlock/hello-world</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Product Model</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">resolveRouteBinding</span>(<span class="params"><span class="variable">$value</span>, <span class="variable">$field</span> = <span class="literal">null</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="variable">$value</span> = <span class="title function_ invoke__">str_replace</span>(<span class="string">&#x27;@&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="variable">$value</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">parent</span>::<span class="title function_ invoke__">resolveRouteBinding</span>(<span class="variable">$value</span>, <span class="variable">$field</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/Philo01/status/1447539300397195269">@Philo01</a>提供</p>
+<h3 id="如果你需要一个公共URL但是你想让他们更安全"><a href="#如果你需要一个公共URL但是你想让他们更安全" class="headerlink" title="如果你需要一个公共URL但是你想让他们更安全"></a>如果你需要一个公共URL但是你想让他们更安全</h3><p>如果你需要一个公共URL但是你想让他们更安全，使用 <code> Laravel signed URL</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AccountController</span> <span class="keyword">extends</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">destroy</span>(<span class="params">Request <span class="variable">$request</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable">$confirmDeleteUrl</span> = URL::<span class="title function_ invoke__">signedRoute</span>(<span class="string">&#x27;confirm-destroy&#x27;</span>, [</span><br><span class="line">            <span class="variable">$user</span> =&gt; <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">user</span>()</span><br><span class="line">        ]);</span><br><span class="line">        <span class="comment">// Send link by email...</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">confirmDestroy</span>(<span class="params">Request <span class="variable">$request</span>, User <span class="variable">$user</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (! <span class="variable">$request</span>-&gt;<span class="title function_ invoke__">hasValidSignature</span>()) &#123;</span><br><span class="line">            <span class="title function_ invoke__">abort</span>(<span class="number">403</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// User confirmed by clikcing on the email</span></span><br><span class="line">        <span class="variable">$user</span>-&gt;<span class="title function_ invoke__">delete</span>();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="title function_ invoke__">redirect</span>()-&gt;<span class="title function_ invoke__">route</span>(<span class="string">&#x27;home&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由 <a target="_blank" rel="noopener" href="https://twitter.com/anwar_nairi/status/1448239591467589633">@anwar_nairi</a>提供</p>
+<h3 id="在中间件中使用Gate"><a href="#在中间件中使用Gate" class="headerlink" title="在中间件中使用Gate"></a>在中间件中使用Gate</h3><p>你可以在中间件中使用在 <code>App\Providers\AuthServiceProvider</code>设置的<code>Gate</code> </p>
+<p>怎么做呢?你可以在路由中添加<code>can:</code>和必要<code>gate</code>的名字</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">put</span>(<span class="string">&#x27;/post/&#123;post&#125;&#x27;</span>, function (Post <span class="variable">$post</span>) &#123;</span><br><span class="line">    <span class="comment">// The current user may update the post...</span></span><br><span class="line">&#125;)-&gt;<span class="title function_ invoke__">middleware</span>(<span class="string">&#x27;can:update,post&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="简单路由-使用箭头函数"><a href="#简单路由-使用箭头函数" class="headerlink" title="简单路由-使用箭头函数"></a>简单路由-使用箭头函数</h3><p>在路由中你可以使用PHP的箭头函数 而不需要用匿名函数。</p>
+<p>要做到这一点 你可以使用 <code>fn() =&gt;</code> 这样看起来更简单。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Instead of</span></span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;/example&#x27;</span>, function () &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">User</span>::<span class="title function_ invoke__">all</span>();</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// You can</span></span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;/example&#x27;</span>, fn () =&gt; <span class="title class_">User</span>::<span class="title function_ invoke__">all</span>());</span><br></pre></td></tr></table></figure>
+
+<h3 id="路由视图"><a href="#路由视图" class="headerlink" title="路由视图"></a>路由视图</h3><p>使用<code>Route::view($uri , $bladePage)</code>直接返回view 而不需要控制器方法</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//this will return home.blade.php view</span></span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">view</span>(<span class="string">&#x27;/home&#x27;</span>, <span class="string">&#x27;home&#x27;</span>);</span><br></pre></td></tr></table></figure>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+    
+        <a href="/2024/03/07/laravel/Other/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">other其他</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+
+
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Gemini &copy; 2024 
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>
