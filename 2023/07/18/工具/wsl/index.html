@@ -215,7 +215,7 @@
                             &nbsp;
                             笔记
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/git/">git笔记</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/git/">git笔记</a></li>  <li class="file"><a href="/2024/04/17/%E5%B7%A5%E5%85%B7/git-tips/">git 常用笔记</a></li>  </ul> 
                     </li> 
                      </ul> 
                     </li> 
@@ -244,7 +244,7 @@
                             &nbsp;
                             laravel
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2024/03/07/laravel/API/">API</a></li>  <li class="file"><a href="/2024/03/07/laravel/Artisan/">Artisan</a></li>  <li class="file"><a href="/2024/03/07/laravel/Collections/">集合</a></li>  <li class="file"><a href="/2024/03/07/laravel/Auth/">授权</a></li>  <li class="file"><a href="/2024/03/07/laravel/Mail/">邮件</a></li>  <li class="file"><a href="/2024/03/07/laravel/Log_and_Debug/">日志与调试</a></li>  <li class="file"><a href="/2024/03/07/laravel/Factories/">工厂</a></li>  <li class="file"><a href="/2024/03/07/laravel/Migrations/">数据库迁移</a></li>  <li class="file"><a href="/2024/03/07/laravel/DB_Models_and_Eloquent/">数据库模型与 Eloquent</a></li>  <li class="file"><a href="/2024/03/07/laravel/Routing/">route</a></li>  <li class="file"><a href="/2024/03/07/laravel/Other/">other其他</a></li>  <li class="file"><a href="/2024/03/07/laravel/Views/">view</a></li>  <li class="file"><a href="/2024/03/07/laravel/Validation/">validate</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2024/03/07/laravel/Auth/">授权</a></li>  <li class="file"><a href="/2024/03/07/laravel/Artisan/">Artisan</a></li>  <li class="file"><a href="/2024/03/07/laravel/Collections/">集合</a></li>  <li class="file"><a href="/2024/03/07/laravel/API/">API</a></li>  <li class="file"><a href="/2024/03/07/laravel/DB_Models_and_Eloquent/">数据库模型与 Eloquent</a></li>  <li class="file"><a href="/2024/03/07/laravel/Factories/">工厂</a></li>  <li class="file"><a href="/2024/03/07/laravel/Mail/">邮件</a></li>  <li class="file"><a href="/2024/03/07/laravel/Migrations/">数据库迁移</a></li>  <li class="file"><a href="/2024/03/07/laravel/Log_and_Debug/">日志与调试</a></li>  <li class="file"><a href="/2024/03/07/laravel/Other/">other其他</a></li>  <li class="file"><a href="/2024/03/07/laravel/Views/">view</a></li>  <li class="file"><a href="/2024/03/07/laravel/Routing/">route</a></li>  <li class="file"><a href="/2024/03/07/laravel/Validation/">validate</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory open">
@@ -350,7 +350,7 @@
                             &nbsp;
                             hyperf
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/php/hyperf/">hyperf</a></li>  <li class="file"><a href="/2023/07/18/php/laravel/">laravel 创建Facades门面</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/php/laravel/">laravel 创建Facades门面</a></li>  <li class="file"><a href="/2023/07/18/php/hyperf/">hyperf</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -644,7 +644,7 @@
         
         
             <p><strong>设置默认启动</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> ubuntu config --default-user root</span><br><span class="line"></span><br><span class="line"> add-apt-repository  &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&quot;</span><br><span class="line"></span><br><span class="line"> service ssh --full-restart</span><br><span class="line"></span><br><span class="line">端口转发</span><br><span class="line">iex &quot;netsh interface portproxy add v4tov4 listenport=12000 listenaddress= 192.168.19.117 connectport=8888 connectaddress=127.0.0.1&quot;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">git config --global core.autocrlf false</span><br></pre></td></tr></table></figure>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs smali"> ubuntu config --default-user root<br><br><span class="hljs-built_in"> add-apt-repository </span> <span class="hljs-string">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&quot;</span><br><br> service ssh --full-restart<br><br>端口转发<br>iex <span class="hljs-string">&quot;netsh interface portproxy add v4tov4 listenport=12000 listenaddress= 192.168.19.117 connectport=8888 connectaddress=127.0.0.1&quot;</span>;<br><br><br>git config --global core.autocrlf false<br></code></pre></td></tr></table></figure>
 
 
 
@@ -659,19 +659,19 @@
     
 <nav id="article-nav">
     
-        <a href="/2023/07/18/%E5%B7%A5%E5%85%B7/mac/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2023/07/18/php/hyperf/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">上一篇</strong>
             <div class="article-nav-title">
                 
-                    mac
+                    hyperf
                 
             </div>
         </a>
     
     
-        <a href="/2023/07/18/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2023/07/18/%E5%B7%A5%E5%85%B7/mac/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">vue笔记</div>
+            <div class="article-nav-title">mac</div>
         </a>
     
 </nav>

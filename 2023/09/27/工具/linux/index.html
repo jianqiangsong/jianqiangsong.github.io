@@ -214,7 +214,7 @@
                             &nbsp;
                             笔记
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/git/">git笔记</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/%E5%B7%A5%E5%85%B7/git/">git笔记</a></li>  <li class="file"><a href="/2024/04/17/%E5%B7%A5%E5%85%B7/git-tips/">git 常用笔记</a></li>  </ul> 
                     </li> 
                      </ul> 
                     </li> 
@@ -243,7 +243,7 @@
                             &nbsp;
                             laravel
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2024/03/07/laravel/API/">API</a></li>  <li class="file"><a href="/2024/03/07/laravel/Artisan/">Artisan</a></li>  <li class="file"><a href="/2024/03/07/laravel/Collections/">集合</a></li>  <li class="file"><a href="/2024/03/07/laravel/Auth/">授权</a></li>  <li class="file"><a href="/2024/03/07/laravel/Mail/">邮件</a></li>  <li class="file"><a href="/2024/03/07/laravel/Log_and_Debug/">日志与调试</a></li>  <li class="file"><a href="/2024/03/07/laravel/Factories/">工厂</a></li>  <li class="file"><a href="/2024/03/07/laravel/Migrations/">数据库迁移</a></li>  <li class="file"><a href="/2024/03/07/laravel/DB_Models_and_Eloquent/">数据库模型与 Eloquent</a></li>  <li class="file"><a href="/2024/03/07/laravel/Routing/">route</a></li>  <li class="file"><a href="/2024/03/07/laravel/Other/">other其他</a></li>  <li class="file"><a href="/2024/03/07/laravel/Views/">view</a></li>  <li class="file"><a href="/2024/03/07/laravel/Validation/">validate</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2024/03/07/laravel/Auth/">授权</a></li>  <li class="file"><a href="/2024/03/07/laravel/Artisan/">Artisan</a></li>  <li class="file"><a href="/2024/03/07/laravel/Collections/">集合</a></li>  <li class="file"><a href="/2024/03/07/laravel/API/">API</a></li>  <li class="file"><a href="/2024/03/07/laravel/DB_Models_and_Eloquent/">数据库模型与 Eloquent</a></li>  <li class="file"><a href="/2024/03/07/laravel/Factories/">工厂</a></li>  <li class="file"><a href="/2024/03/07/laravel/Mail/">邮件</a></li>  <li class="file"><a href="/2024/03/07/laravel/Migrations/">数据库迁移</a></li>  <li class="file"><a href="/2024/03/07/laravel/Log_and_Debug/">日志与调试</a></li>  <li class="file"><a href="/2024/03/07/laravel/Other/">other其他</a></li>  <li class="file"><a href="/2024/03/07/laravel/Views/">view</a></li>  <li class="file"><a href="/2024/03/07/laravel/Routing/">route</a></li>  <li class="file"><a href="/2024/03/07/laravel/Validation/">validate</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -349,7 +349,7 @@
                             &nbsp;
                             hyperf
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/php/hyperf/">hyperf</a></li>  <li class="file"><a href="/2023/07/18/php/laravel/">laravel 创建Facades门面</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/php/laravel/">laravel 创建Facades门面</a></li>  <li class="file"><a href="/2023/07/18/php/hyperf/">hyperf</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -638,7 +638,7 @@
         
         
             <p>你可以使用 <code>grep</code> 命令来查询文件中的关键内容，并结合 <code>head</code> 和 <code>tail</code> 命令来显示前后的行数。以下是具体的命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">&#x27;关键词&#x27;</span> 文件名 | <span class="built_in">head</span> -n 100 &amp;&amp; grep <span class="string">&#x27;关键词&#x27;</span> 文件名 | <span class="built_in">tail</span> -n 100</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">grep <span class="string">&#x27;MY20230923090G4T03&#x27;</span> sjq_org_c23-pro238.log | <span class="built_in">head</span> -n 100 &amp;&amp; grep <span class="string">&#x27;MY20230923090G4T03&#x27;</span> sjq_org_c23-pro238.log | <span class="built_in">tail</span> -n 100</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep <span class="hljs-string">&#x27;关键词&#x27;</span> 文件名 | <span class="hljs-built_in">head</span> -n 100 &amp;&amp; grep <span class="hljs-string">&#x27;关键词&#x27;</span> 文件名 | <span class="hljs-built_in">tail</span> -n 100<br><br><br>grep <span class="hljs-string">&#x27;MY20230923090G4T03&#x27;</span> sjq_org_c23-pro238.log | <span class="hljs-built_in">head</span> -n 100 &amp;&amp; grep <span class="hljs-string">&#x27;MY20230923090G4T03&#x27;</span> sjq_org_c23-pro238.log | <span class="hljs-built_in">tail</span> -n 100<br><br></code></pre></td></tr></table></figure>
 
 <p>解释：</p>
 <ul>
@@ -647,7 +647,7 @@
 <li><code>tail -n 100</code> 会显示最后100行。</li>
 </ul>
 <p>如果你想在一个命令中实现，可以使用 <code>awk</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">&#x27;/MY20230923090G4T03/&#123;a=NR+100&#125; a&amp;&amp;NR&lt;=a&#x27;</span> sjq_org_c23-pro238.log</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;/MY20230923090G4T03/&#123;a=NR+100&#125; a&amp;&amp;NR&lt;=a&#x27;</span> sjq_org_c23-pro238.log<br></code></pre></td></tr></table></figure>
 
 <p>这个命令会在文件中查找包含关键词的行，并显示每个匹配行的前后100行。</p>
 
