@@ -1,3 +1,4 @@
+http://example.com/2024/07/12/docker/es/
 http://example.com/2024/04/17/%E5%B7%A5%E5%85%B7/git-tips/
 http://example.com/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE/
 http://example.com/2024/03/07/laravel/Views/

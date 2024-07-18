@@ -196,7 +196,7 @@
                         </a>
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/docker/">docker笔记</a></li>  </ul> 
                     </li> 
-                     </ul> 
+                     <li class="file"><a href="/2024/07/12/docker/es/">es</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -585,6 +585,87 @@
 </aside>
             
             <section id="main">
+        <article id="post-工具/openai" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/openai/">openai</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/openai/%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B/">大语言模型</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/openai/" rel="tag">openai</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2023/08/16/%E5%B7%A5%E5%85%B7/openai/">
+            <time datetime="2023-08-16T00:44:03.000Z" itemprop="datePublished">2023-08-16</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2023/08/16/%E5%B7%A5%E5%85%B7/openai/">openai 图片使用demo</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+            
+        
+        
+            <p><code>openiakey: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</code></p>
+<p><code>生成图片，使用代理访问的openai</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs curl">curl https://api.openai-proxy.com/v1/images/generations \<br> -H &quot;Content-Type: application/json&quot; \<br> -H &quot;Authorization: Bearer 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&quot; \<br> -d &#x27;&#123;<br>   &quot;prompt&quot;: &quot;生成一张小王八的照片&quot;,<br>   &quot;n&quot;: 2,<br>   &quot;size&quot;: &quot;256x256&quot;<br> &#125;&#x27;<br></code></pre></td></tr></table></figure>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+    
         <article id="post-php/函数" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1384,102 +1465,6 @@
             </div>   
             <div class="article-more-link">
                 <a href="/2023/07/18/%E6%97%A5%E5%B8%B8%E9%A1%B9%E7%9B%AE%E5%A4%87%E6%B3%A8/%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0/#more">查看更多</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-
-
-    
-        <article id="post-工具/ps" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/php/">php</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/php/phpstrom/">phpstrom</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/phpstorm/" rel="tag">phpstorm</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2023/07/18/%E5%B7%A5%E5%85%B7/ps/">
-            <time datetime="2023-07-18T06:14:55.000Z" itemprop="datePublished">2023-07-18</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2023/07/18/%E5%B7%A5%E5%85%B7/ps/">工具</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><h5 id="vscode-快捷键"><a href="#vscode-快捷键" class="headerlink" title="vscode 快捷键"></a>vscode 快捷键</h5><p><code>选中一段文字，按shift+alt+i，可以在每行末尾出现光标 批量编辑</code></p>
-<h5 id="phpstrom"><a href="#phpstrom" class="headerlink" title="phpstrom"></a>phpstrom</h5><p><code>一直按Alt+J</code></p>
-<h5 id="apipost-全局设置参数"><a href="#apipost-全局设置参数" class="headerlink" title="apipost 全局设置参数"></a>apipost 全局设置参数</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs javascript">&#123;&#123;token&#125;&#125;<br>&#123;&#123;auth-key&#125;&#125;<br>apt.<span class="hljs-property">variables</span>.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;token&#x27;</span>,response.<span class="hljs-property">json</span>.<span class="hljs-property">data</span>.<span class="hljs-property">token</span>);<br>apt.<span class="hljs-property">variables</span>.<span class="hljs-title function_">set</span>(<span class="hljs-string">&#x27;auth-key&#x27;</span>,response.<span class="hljs-property">json</span>.<span class="hljs-property">data</span>.<span class="hljs-property">auth_key</span>);<br></code></pre></td></tr></table></figure>
-
-
-<p>
-                
-            
-        
-        
-            </div>   
-            <div class="article-more-link">
-                <a href="/2023/07/18/%E5%B7%A5%E5%85%B7/ps/#more">查看更多</a>
             </div>
         
         <footer class="article-footer">
