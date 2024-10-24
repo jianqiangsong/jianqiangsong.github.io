@@ -407,6 +407,32 @@
   </entry>
   
   <entry>
+    <title>户外露营装备</title>
+    <link href="http://example.com/2023/09/28/%E7%94%9F%E6%B4%BB/%E6%88%B7%E5%A4%96%E8%A3%85%E5%A4%87-1/"/>
+    <id>http://example.com/2023/09/28/%E7%94%9F%E6%B4%BB/%E6%88%B7%E5%A4%96%E8%A3%85%E5%A4%87-1/</id>
+    <published>2023-09-28T03:45:12.399Z</published>
+    <updated>2024-10-24T01:29:16.499Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="露营装备必须清单"><a href="#露营装备必须清单" class="headerlink" title="露营装备必须清单"></a>露营装备必须清单</h1><h2 id="1-个人必须装备清单"><a href="#1-个人必须装备清单" class="headerlink" title="1.个人必须装备清单"></a>1.个人必须装备清单</h2><table><thead><tr><th>物品名称</th><th align="right">价格(元)</th><th align="center">数量</th></tr></thead><tbody><tr><td>冷山ul1帐篷</td><td align="right">451.10</td><td align="center">1</td></tr><tr><td>迪卡龙睡袋</td><td align="right">99.90</td><td align="center">1</td></tr><tr><td>艾王背包60L</td><td align="right">259.43</td><td align="center">1</td></tr><tr><td>牧高笛防潮垫</td><td align="right">54.25</td><td align="center">1</td></tr><tr><td>罗马仕充电宝2w毫安</td><td align="right">109.00</td><td align="center">1</td></tr><tr><td>8L折叠水桶</td><td align="right">7.07</td><td align="center">1</td></tr><tr><td>小野人头灯</td><td align="right">29.60</td><td align="center">1</td></tr><tr><td>鲨鱼户外照明灯</td><td align="right">25.90</td><td align="center">1</td></tr><tr><td>露营个人餐具三件套</td><td align="right">8.50</td><td align="center">1</td></tr></tbody></table><p>累计金额：1044.75元</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla</summary>
+      
+    
+    
+    
+    <category term="生活" scheme="http://example.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    <category term="记录" scheme="http://example.com/categories/%E7%94%9F%E6%B4%BB/%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="生活" scheme="http://example.com/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
+  
+  <entry>
     <title>linux</title>
     <link href="http://example.com/2023/09/27/%E5%B7%A5%E5%85%B7/linux/"/>
     <id>http://example.com/2023/09/27/%E5%B7%A5%E5%85%B7/linux/</id>
@@ -477,32 +503,6 @@
     
     
     <category term="备忘录" scheme="http://example.com/tags/%E5%A4%87%E5%BF%98%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>博客构建同步仓库</title>
-    <link href="http://example.com/2023/08/16/%E5%B7%A5%E5%85%B7/hexo/"/>
-    <id>http://example.com/2023/08/16/%E5%B7%A5%E5%85%B7/hexo/</id>
-    <published>2023-08-16T00:53:39.000Z</published>
-    <updated>2023-08-16T00:58:23.819Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><code>使用国内访问源快速 vercel静态托管</code></p><hr><p>1.仓库地址<a href="https://vercel.com/jianqiangsong/blog">https://vercel.com/jianqiangsong/blog</a></p><hr><p>2.访问地址<a href="https://blog-jianqiangsong.vercel.app/">同步博客地址 https://blog-jianqiangsong.vercel.app</a></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;/assets/css/APlayer.min.css&quot;&gt;&lt;script src=&quot;/assets/js/APlayer.min.js&quot; cla</summary>
-      
-    
-    
-    
-    <category term="前端" scheme="http://example.com/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="hexo" scheme="http://example.com/categories/%E5%89%8D%E7%AB%AF/hexo/"/>
-    
-    
-    <category term="博客构建" scheme="http://example.com/tags/%E5%8D%9A%E5%AE%A2%E6%9E%84%E5%BB%BA/"/>
     
   </entry>
   
