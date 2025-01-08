@@ -196,7 +196,7 @@
                         </a>
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/docker/">docker笔记</a></li>  </ul> 
                     </li> 
-                     <li class="file"><a href="/2024/07/12/docker/es/">es</a></li>  </ul> 
+                     <li class="file"><a href="/2024/07/12/docker/es/">ES-docker安装部署</a></li>  <li class="file"><a href="/2024/07/18/docker/es-1/">es注意要点</a></li>  <li class="file"><a href="/2024/11/11/docker/yii2-es/">yii2-es包多条件查询</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -241,7 +241,7 @@
                             &nbsp;
                             laravel
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2024/03/07/laravel/Auth/">授权</a></li>  <li class="file"><a href="/2024/03/07/laravel/Artisan/">Artisan</a></li>  <li class="file"><a href="/2024/03/07/laravel/Collections/">集合</a></li>  <li class="file"><a href="/2024/03/07/laravel/API/">API</a></li>  <li class="file"><a href="/2024/03/07/laravel/DB_Models_and_Eloquent/">数据库模型与 Eloquent</a></li>  <li class="file"><a href="/2024/03/07/laravel/Factories/">工厂</a></li>  <li class="file"><a href="/2024/03/07/laravel/Mail/">邮件</a></li>  <li class="file"><a href="/2024/03/07/laravel/Migrations/">数据库迁移</a></li>  <li class="file"><a href="/2024/03/07/laravel/Log_and_Debug/">日志与调试</a></li>  <li class="file"><a href="/2024/03/07/laravel/Other/">other其他</a></li>  <li class="file"><a href="/2024/03/07/laravel/Views/">view</a></li>  <li class="file"><a href="/2024/03/07/laravel/Routing/">route</a></li>  <li class="file"><a href="/2024/03/07/laravel/Validation/">validate</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2024/03/07/laravel/Auth/">授权</a></li>  <li class="file"><a href="/2024/03/07/laravel/Artisan/">命令行工具</a></li>  <li class="file"><a href="/2024/03/07/laravel/Collections/">集合</a></li>  <li class="file"><a href="/2024/03/07/laravel/API/">api响应</a></li>  <li class="file"><a href="/2024/03/07/laravel/DB_Models_and_Eloquent/">数据库模型</a></li>  <li class="file"><a href="/2024/03/07/laravel/Factories/">工厂</a></li>  <li class="file"><a href="/2024/03/07/laravel/Mail/">邮件</a></li>  <li class="file"><a href="/2024/03/07/laravel/Migrations/">数据库迁移</a></li>  <li class="file"><a href="/2024/03/07/laravel/Log_and_Debug/">日志与调试</a></li>  <li class="file"><a href="/2024/03/07/laravel/Other/">其他</a></li>  <li class="file"><a href="/2024/03/07/laravel/Views/">视图</a></li>  <li class="file"><a href="/2024/03/07/laravel/Routing/">路由</a></li>  <li class="file"><a href="/2024/03/07/laravel/Validation/">验证器</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -428,6 +428,15 @@
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
                             &nbsp;
+                            test
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2025/01/08/test/1/">测试</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
                             前端
                         </a>
                          <ul class="unstyled" id="tree" > 
@@ -585,6 +594,270 @@
 </aside>
             
             <section id="main">
+        <article id="post-工具/linux" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+    </div>
+
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2023/09/27/%E5%B7%A5%E5%85%B7/linux/">
+            <time datetime="2023-09-27T06:24:55.000Z" itemprop="datePublished">2023-09-27</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2023/09/27/%E5%B7%A5%E5%85%B7/linux/">linux</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>你可以使用 <code>grep</code> 命令来查询文件中的关键内容，并结合 <code>head</code> 和 <code>tail</code> 命令来显示前后的行数。以下是具体的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">grep <span class="hljs-string">&#x27;关键词&#x27;</span> 文件名 | <span class="hljs-built_in">head</span> -n 100 &amp;&amp; grep <span class="hljs-string">&#x27;关键词&#x27;</span> 文件名 | <span class="hljs-built_in">tail</span> -n 100<br><br><br>grep <span class="hljs-string">&#x27;MY20230923090G4T03&#x27;</span> sjq_org_c23-pro238.log | <span class="hljs-built_in">head</span> -n 100 &amp;&amp; grep <span class="hljs-string">&#x27;MY20230923090G4T03&#x27;</span> sjq_org_c23-pro238.log | <span class="hljs-built_in">tail</span> -n 100<br><br></code></pre></td></tr></table></figure>
+
+<p>解释：</p>
+<ul>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2023/09/27/%E5%B7%A5%E5%85%B7/linux/#more">查看更多</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+    
+        <article id="post-yii/yii3" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/php/">php</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/php/yii/">yii</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/php/" rel="tag">php</a>, <a class="tag-link-link" href="/tags/yii/" rel="tag">yii</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2023/08/28/yii/yii3/">
+            <time datetime="2023-08-28T08:00:04.000Z" itemprop="datePublished">2023-08-28</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2023/08/28/yii/yii3/">Yii2 行为类</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><h3 id="yii2-Behavior-行为的使用，代码示例"><a href="#yii2-Behavior-行为的使用，代码示例" class="headerlink" title="yii2 Behavior 行为的使用，代码示例"></a>yii2 Behavior 行为的使用，代码示例</h3><p>1.定义一个类继承行为基础类<br>2.实现event方法触发事件重写</p>
+<p>如下是扩展模型Model的类方法 进行程序的解耦设计</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title class_">app</span>\<span class="hljs-title class_">common</span>\<span class="hljs-title class_">behaviors</span>;<br><br><span class="hljs-keyword">use</span> <span class="hljs-title">yii</span>\<span class="hljs-title">base</span>\<span class="hljs-title">Behavior</span>;<br><span class="hljs-keyword">use</span> <span class="hljs-title">yii</span>\<span class="hljs-title">db</span>\<span class="hljs-title">BaseActiveRecord</span>;<br><span class="hljs-keyword">use</span> <span class="hljs-title">yii</span>\<span class="hljs-title">web</span>\<span class="hljs-title">UploadedFile</span>;<br><br><span class="hljs-comment">/***</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * 行为事件 测试类</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@package</span> app\common\behaviors</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@class</span> AttachmentsBehavior</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2023-08-30</span><br><span class="hljs-comment"> */</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AttachmentsBehavior</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Behavior</span></span><br><span class="hljs-class"></span>&#123;<br><br>    <span class="hljs-keyword">private</span> <span class="hljs-variable">$_files</span>;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 需要上传的文件属性</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@var</span> string</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$uploadFiles</span> = <span class="hljs-string">&#x27;uploadfiles&#x27;</span>;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 已经上传了的文件属性</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@var</span> string</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$uploadedFiles</span> = <span class="hljs-string">&#x27;uploadedfiles&#x27;</span>;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 保存路径</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@var</span> string</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$savePath</span> = <span class="hljs-string">&#x27;@common/upload&#x27;</span>;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 访问路径</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@var</span> string</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$saveUrl</span> = <span class="hljs-string">&#x27;@common/uploads&#x27;</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">events</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> [<br>            <span class="hljs-title class_">BaseActiveRecord</span>::<span class="hljs-variable constant_">EVENT_BEFORE_VALIDATE</span> =&gt; <span class="hljs-string">&#x27;beforeValidate&#x27;</span>,<br>            <span class="hljs-title class_">BaseActiveRecord</span>::<span class="hljs-variable constant_">EVENT_AFTER_VALIDATE</span> =&gt; <span class="hljs-string">&#x27;beforeValidate1&#x27;</span>,<br>            <span class="hljs-title class_">BaseActiveRecord</span>::<span class="hljs-variable constant_">EVENT_AFTER_INSERT</span> =&gt; <span class="hljs-string">&#x27;afterSave&#x27;</span>,<br>            <span class="hljs-title class_">BaseActiveRecord</span>::<span class="hljs-variable constant_">EVENT_AFTER_UPDATE</span> =&gt; <span class="hljs-string">&#x27;afterSave&#x27;</span>,<br>            <span class="hljs-title class_">BaseActiveRecord</span>::<span class="hljs-variable constant_">EVENT_BEFORE_DELETE</span> =&gt; <span class="hljs-string">&#x27;beforeDelete&#x27;</span>,<br>        ];<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * This method is invoked before validation starts.</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">beforeValidate1</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-variable language_">$this</span>-&gt;_files = <span class="hljs-title class_">UploadedFile</span>::<span class="hljs-title function_ invoke__">getInstances</span>(<span class="hljs-variable">$this</span>-&gt;owner, <span class="hljs-variable">$this</span>-&gt;uploadFiles);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回拥有者的唯一Id</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> string</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getIdentityId</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;owner-&gt;<span class="hljs-title function_ invoke__">className</span>() . <span class="hljs-string">&#x27;.&#x27;</span> . <span class="hljs-variable language_">$this</span>-&gt;owner-&gt;id;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 明确拥有者与附件的关系</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> mixed</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAttachments</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">$this</span>-&gt;owner-&gt;<span class="hljs-title function_ invoke__">hasMany</span>(<span class="hljs-title class_">Attachments</span>::<span class="hljs-title function_ invoke__">className</span>(), [<span class="hljs-string">&#x27;ownerId&#x27;</span> =&gt; <span class="hljs-string">&#x27;identityId&#x27;</span>]);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 在主模型保存后挨个保存附件</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">afterSave</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">foreach</span> (<span class="hljs-variable language_">$this</span>-&gt;_files <span class="hljs-keyword">as</span> <span class="hljs-variable">$file</span>) &#123;<br>            <span class="hljs-variable">$model</span> = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Attachments</span>();<br>            <span class="hljs-variable">$model</span>-&gt;fileName = <span class="hljs-variable">$file</span>-&gt;name;<br>            <span class="hljs-variable">$model</span>-&gt;url = <span class="hljs-title function_ invoke__">date</span>(<span class="hljs-string">&#x27;Ymd&#x27;</span>) . <span class="hljs-title class_">\Yii</span>::<span class="hljs-variable">$app</span>-&gt;<span class="hljs-title function_ invoke__">getSecurity</span>()-&gt;<span class="hljs-title function_ invoke__">generateRandomString</span>(<span class="hljs-number">8</span>) . <span class="hljs-string">&#x27;.&#x27;</span> . <span class="hljs-variable">$file</span>-&gt;extension;<br>            <span class="hljs-variable">$model</span>-&gt;ownerId = <span class="hljs-variable language_">$this</span>-&gt;owner-&gt;identityId;<br>            <span class="hljs-variable">$model</span>-&gt;savePath = <span class="hljs-title class_">\Yii</span>::<span class="hljs-title function_ invoke__">getAlias</span>(<span class="hljs-variable">$this</span>-&gt;savePath);<br>            <span class="hljs-variable">$file</span>-&gt;<span class="hljs-title function_ invoke__">saveAs</span>(<span class="hljs-title class_">\Yii</span>::<span class="hljs-title function_ invoke__">getAlias</span>(<span class="hljs-variable">$this</span>-&gt;savePath) . DIRECTORY_SEPARATOR . <span class="hljs-variable">$model</span>-&gt;url);<br>            <span class="hljs-variable">$model</span>-&gt;<span class="hljs-title function_ invoke__">save</span>();<br>        &#125;<br><br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 在主模型删除之前删除所有附件</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> bool</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">beforeDelete</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">foreach</span> (<span class="hljs-variable language_">$this</span>-&gt;owner-&gt;&#123;<span class="hljs-variable language_">$this</span>-&gt;uploadedFiles&#125; <span class="hljs-keyword">as</span> <span class="hljs-variable">$file</span>) &#123;<br>            <span class="hljs-variable">$file</span>-&gt;<span class="hljs-title function_ invoke__">delete</span>();<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> $url</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> string</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@date</span> 2023-08-30</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFilesUrl</span>(<span class="hljs-params"><span class="hljs-variable">$url</span></span>)</span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-title class_">\Yii</span>::<span class="hljs-title function_ invoke__">getAlias</span>(<span class="hljs-variable">$this</span>-&gt;saveUrl) . DIRECTORY_SEPARATOR . <span class="hljs-variable">$url</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2023/08/28/yii/yii3/#more">查看更多</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+    
+        <article id="post-test/pass" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E5%A4%87%E5%BF%98%E5%BD%95/" rel="tag">备忘录</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2023/08/24/test/pass/">
+            <time datetime="2023-08-24T01:24:14.000Z" itemprop="datePublished">2023-08-24</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2023/08/24/test/pass/">备忘录</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+            
+        
+        
+            <p>备份记录<br><code>oopdingtalk.com &#39;Jinx525617 #123&#39;</code></p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+    
         <article id="post-工具/hexo" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1224,277 +1497,8 @@
 
 
     
-        <article id="post-生活/装修" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E7%94%9F%E6%B4%BB/%E8%AE%B0%E5%BD%95/">记录</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE/">
-            <time datetime="2023-07-18T07:49:03.277Z" itemprop="datePublished">2023-07-18</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE/">火车方案</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-            
-        
-        
-            <h3 id="深圳-赤壁回家方案："><a href="#深圳-赤壁回家方案：" class="headerlink" title="深圳-赤壁回家方案："></a>深圳-赤壁回家方案：</h3><p>周五6点下班走，离公司最近火车站</p>
-<h3 id="深圳东站-东莞东站"><a href="#深圳东站-东莞东站" class="headerlink" title="深圳东站-东莞东站"></a><code>深圳东站-东莞东站</code></h3><h4 id="K1020-18-55-19-36-坐票-¥26-5"><a href="#K1020-18-55-19-36-坐票-¥26-5" class="headerlink" title="K1020 18:55 - 19:36  坐票(¥26.5) "></a><code>K1020 18:55 - 19:36  坐票(¥26.5) </code></h4><h4 id="K642-19-24-20-02-坐票-¥26-5"><a href="#K642-19-24-20-02-坐票-¥26-5" class="headerlink" title="K642 19:24 - 20:02 坐票(¥26.5)"></a><code>K642 19:24 - 20:02 坐票(¥26.5)</code></h4><h3 id="东莞东站-赤壁站-仅有一趟车"><a href="#东莞东站-赤壁站-仅有一趟车" class="headerlink" title="东莞东站-赤壁站 仅有一趟车"></a><code>东莞东站-赤壁站 仅有一趟车</code></h3><h4 id="K437-21-10-09-38-卧铺-¥248-5"><a href="#K437-21-10-09-38-卧铺-¥248-5" class="headerlink" title="K437 21:10-09:38  卧铺(¥248.5)"></a><code>K437 21:10-09:38  卧铺(¥248.5)</code></h4><h3 id="赤壁-深圳回家方案："><a href="#赤壁-深圳回家方案：" class="headerlink" title="赤壁-深圳回家方案："></a>赤壁-深圳回家方案：</h3><h4 id="T95-19-42-07-25-卧铺-¥238-5"><a href="#T95-19-42-07-25-卧铺-¥238-5" class="headerlink" title="T95 19:42 - 07:25 卧铺(¥238.5)"></a><code>T95 19:42 - 07:25 卧铺(¥238.5)</code></h4>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-
-
-    
-        <article id="post-生活/装修-1" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E7%94%9F%E6%B4%BB/%E8%AE%B0%E5%BD%95/">记录</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE-1/">
-            <time datetime="2023-07-18T07:49:03.000Z" itemprop="datePublished">2023-07-18</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE-1/">汽车投诉车质网</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><p>尊敬的车质网：</p>
-<p>我是一名拥有一辆XXX型号汽车的车主，我对我所购买的这辆车的质量和性能感到非常担忧和失望。在我购买这辆车之后，不久便发现了严重的方向盘问题，这让我非常担忧。</p>
-<p>首先，我要反映的问题是方向盘过重。在驾驶过程中，我发现方向盘异常沉重，特别是在低速行驶和停车时。这使得操控变得异常困难，严重影响了驾驶安全性。在繁忙的交通中，我不得不付出更大的力气来转动方向盘，这不仅令我疲惫不堪，也增加了驾驶的风险。我相信这绝非正常状况，也严重违反了一辆车的基本行驶标准。</p>
-<p>其次，与方向盘过重问题密切相关的是转向困难。由于方向盘异常沉重，我在转弯时遇到了严重的困难。在紧急情况下，我甚至无法迅速地正确转向，这极大地威胁了我的行车安全。我曾多次感到惊恐和无助，因为我无法准确地控制我的车辆，这让我非常担忧。</p>
-<p>我购买这辆车的初衷是希望拥有一辆安全可靠的交通工具，但现在我却因为方向盘重、转向困难的严重问题感到十分失望和焦虑。我认为这绝不是一辆符合基本质量标准的汽车，我对这样的产品质量感到极为失望。</p>
-<p>
-                
-            
-        
-        
-            </div>   
-            <div class="article-more-link">
-                <a href="/2023/07/18/%E7%94%9F%E6%B4%BB/%E8%A3%85%E4%BF%AE-1/#more">查看更多</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-
-
-    
-        <article id="post-golang/go" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/golang/">golang</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/golang/%E5%9F%BA%E7%A1%80/">基础</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/go/" rel="tag">go</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2023/07/18/golang/go/">
-            <time datetime="2023-07-18T06:32:25.000Z" itemprop="datePublished">2023-07-18</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2023/07/18/golang/go/">go语言</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p>
-
-	<div class="row">
-    <embed src="/pdf/Go并发模型之GMP.pdf" width="100%" height="550" type="application/pdf">
-	</div>
-<p>
-                
-            
-        
-        
-            </div>   
-            <div class="article-more-link">
-                <a href="/2023/07/18/golang/go/#more">查看更多</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-
-
-    
         <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+        <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
         </nav>
     
 </section>
@@ -1502,7 +1506,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            Gemini &copy; 2024 
+            Gemini &copy; 2025 
         </div>
     </div>
 </footer>

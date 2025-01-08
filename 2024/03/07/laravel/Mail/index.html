@@ -17,7 +17,7 @@
 <meta property="og:description" content="邮件 测试邮件存入laravel.log 预览邮件 不使用Mailables预览邮件 Laravel 通知中的默认邮件主题 向任何人发送通知  测试邮件存入laravel.log如果你想在你的应用中测试邮件内容但是无法或不愿意设置类似 Mailgun 的东西，使用 .env 参数 MAIL_DRIVER&#x3D;log 然后所有的邮件都会被保存到 storage&#x2F;logs&#x2F;laravel.log 文件，而">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-03-07T09:34:16.874Z">
-<meta property="article:modified_time" content="2024-03-07T10:02:23.266Z">
+<meta property="article:modified_time" content="2025-01-08T08:48:58.002Z">
 <meta property="article:author" content="Gemini">
 <meta property="article:tag" content="laravel">
 <meta name="twitter:card" content="summary">
@@ -198,7 +198,7 @@
                         </a>
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/docker/docker/">docker笔记</a></li>  </ul> 
                     </li> 
-                     <li class="file"><a href="/2024/07/12/docker/es/">es</a></li>  </ul> 
+                     <li class="file"><a href="/2024/07/12/docker/es/">ES-docker安装部署</a></li>  <li class="file"><a href="/2024/07/18/docker/es-1/">es注意要点</a></li>  <li class="file"><a href="/2024/11/11/docker/yii2-es/">yii2-es包多条件查询</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -243,7 +243,7 @@
                             &nbsp;
                             laravel
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2024/03/07/laravel/Auth/">授权</a></li>  <li class="file"><a href="/2024/03/07/laravel/Artisan/">Artisan</a></li>  <li class="file"><a href="/2024/03/07/laravel/Collections/">集合</a></li>  <li class="file"><a href="/2024/03/07/laravel/API/">API</a></li>  <li class="file"><a href="/2024/03/07/laravel/DB_Models_and_Eloquent/">数据库模型与 Eloquent</a></li>  <li class="file"><a href="/2024/03/07/laravel/Factories/">工厂</a></li>  <li class="file active"><a href="/2024/03/07/laravel/Mail/">邮件</a></li>  <li class="file"><a href="/2024/03/07/laravel/Migrations/">数据库迁移</a></li>  <li class="file"><a href="/2024/03/07/laravel/Log_and_Debug/">日志与调试</a></li>  <li class="file"><a href="/2024/03/07/laravel/Other/">other其他</a></li>  <li class="file"><a href="/2024/03/07/laravel/Views/">view</a></li>  <li class="file"><a href="/2024/03/07/laravel/Routing/">route</a></li>  <li class="file"><a href="/2024/03/07/laravel/Validation/">validate</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2024/03/07/laravel/Auth/">授权</a></li>  <li class="file"><a href="/2024/03/07/laravel/Artisan/">命令行工具</a></li>  <li class="file"><a href="/2024/03/07/laravel/Collections/">集合</a></li>  <li class="file"><a href="/2024/03/07/laravel/API/">api响应</a></li>  <li class="file"><a href="/2024/03/07/laravel/DB_Models_and_Eloquent/">数据库模型</a></li>  <li class="file"><a href="/2024/03/07/laravel/Factories/">工厂</a></li>  <li class="file active"><a href="/2024/03/07/laravel/Mail/">邮件</a></li>  <li class="file"><a href="/2024/03/07/laravel/Migrations/">数据库迁移</a></li>  <li class="file"><a href="/2024/03/07/laravel/Log_and_Debug/">日志与调试</a></li>  <li class="file"><a href="/2024/03/07/laravel/Other/">其他</a></li>  <li class="file"><a href="/2024/03/07/laravel/Views/">视图</a></li>  <li class="file"><a href="/2024/03/07/laravel/Routing/">路由</a></li>  <li class="file"><a href="/2024/03/07/laravel/Validation/">验证器</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -424,6 +424,15 @@
                          <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/redis/redis/">redis笔记</a></li>  </ul> 
                     </li> 
                      </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            test
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2025/01/08/test/1/">测试</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -651,19 +660,19 @@
 </ol>
 <h3 id="测试邮件存入laravel-log"><a href="#测试邮件存入laravel-log" class="headerlink" title="测试邮件存入laravel.log"></a>测试邮件存入laravel.log</h3><p>如果你想在你的应用中测试邮件内容但是无法或不愿意设置类似 <code>Mailgun</code> 的东西，使用 <code>.env</code> 参数 <code>MAIL_DRIVER=log</code> 然后所有的邮件都会被保存到 <code>storage/logs/laravel.log</code> 文件，而不是真实的发送。</p>
 <h3 id="预览邮件"><a href="#预览邮件" class="headerlink" title="预览邮件"></a>预览邮件</h3><p>如果你使用 <code>Mailables</code> 发送邮件，您可以在浏览器中预览结果，而无需发送。返回一个 Mailables 作为路由结果:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-title class_">Route</span>::<span class="hljs-title function_ invoke__">get</span>(<span class="hljs-string">&#x27;/mailable&#x27;</span>, function () &#123;<br>    <span class="hljs-variable">$invoice</span> = <span class="hljs-title class_">App\Invoice</span>::<span class="hljs-title function_ invoke__">find</span>(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">App\Mail\InvoicePaid</span>(<span class="hljs-variable">$invoice</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;/mailable&#x27;</span>, function () &#123;</span><br><span class="line">    <span class="variable">$invoice</span> = <span class="title class_">App\Invoice</span>::<span class="title function_ invoke__">find</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">App\Mail\InvoicePaid</span>(<span class="variable">$invoice</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <h3 id="不使用Mailables预览邮件"><a href="#不使用Mailables预览邮件" class="headerlink" title="不使用Mailables预览邮件"></a>不使用Mailables预览邮件</h3><p>不使用Mailables你也可以预览你的邮件。举个例子，当你创建通知的时候你可以指定你的邮件通知中可能用到的markdown文件。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Notifications</span>\<span class="hljs-title">Messages</span>\<span class="hljs-title">MailMessage</span>;<br><span class="hljs-title class_">Route</span>::<span class="hljs-title function_ invoke__">get</span>(<span class="hljs-string">&#x27;/mailable&#x27;</span>, function () &#123;<br>    <span class="hljs-variable">$invoice</span> = <span class="hljs-title class_">App\Invoice</span>::<span class="hljs-title function_ invoke__">find</span>(<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">return</span> (<span class="hljs-keyword">new</span> <span class="hljs-title class_">MailMessage</span>)-&gt;<span class="hljs-title function_ invoke__">markdown</span>(<span class="hljs-string">&#x27;emails.invoice-paid&#x27;</span>, <span class="hljs-title function_ invoke__">compact</span>(<span class="hljs-string">&#x27;invoice&#x27;</span>));<br>&#125;);<br></code></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Notifications</span>\<span class="title">Messages</span>\<span class="title">MailMessage</span>;</span><br><span class="line"><span class="title class_">Route</span>::<span class="title function_ invoke__">get</span>(<span class="string">&#x27;/mailable&#x27;</span>, function () &#123;</span><br><span class="line">    <span class="variable">$invoice</span> = <span class="title class_">App\Invoice</span>::<span class="title function_ invoke__">find</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">new</span> <span class="title class_">MailMessage</span>)-&gt;<span class="title function_ invoke__">markdown</span>(<span class="string">&#x27;emails.invoice-paid&#x27;</span>, <span class="title function_ invoke__">compact</span>(<span class="string">&#x27;invoice&#x27;</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>你也可以使用&#96;&#96;MailMessage<code> </code>对象提供的<code>view</code>方法和其他方法。</p>
 <p>由 <a target="_blank" rel="noopener" href="https://github.com/raditzfarhan">@raditzfarhan</a>提供</p>
 <h3 id="Laravel-通知中的默认邮件主题"><a href="#Laravel-通知中的默认邮件主题" class="headerlink" title="Laravel 通知中的默认邮件主题"></a>Laravel 通知中的默认邮件主题</h3><p>如果您发送 <code>Laravel</code> 通知，并且没有在 <code>toMail()</code> 中指定主题，默认主题是您的通知类名，驼峰命名进入控制器。<br>那么，你可以：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRegistrationEmail</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Notification</span> </span>&#123;<br>    <span class="hljs-comment">//</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserRegistrationEmail</span> <span class="keyword">extends</span> <span class="title">Notification</span> </span>&#123;</span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>然后您将收到一封主题为<code> 用户注册的电子邮件</code> 的电子邮件。</p>
 <h3 id="向任何人发送通知"><a href="#向任何人发送通知" class="headerlink" title="向任何人发送通知"></a>向任何人发送通知</h3><p>你不仅可以发送 <code>Laravel</code> 通知 给特定的用户 <code>$user-&gt;notify()</code>，而且可以发送给你想发给的任何人，通过 <code>Notification::route()</code> ，所谓的 “按需” 通知：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-title class_">Notification</span>::<span class="hljs-title function_ invoke__">route</span>(<span class="hljs-string">&#x27;mail&#x27;</span>, <span class="hljs-string">&#x27;taylor@example.com&#x27;</span>)<br>        -&gt;<span class="hljs-title function_ invoke__">route</span>(<span class="hljs-string">&#x27;nexmo&#x27;</span>, <span class="hljs-string">&#x27;5555555555&#x27;</span>)<br>        -&gt;<span class="hljs-title function_ invoke__">route</span>(<span class="hljs-string">&#x27;slack&#x27;</span>, <span class="hljs-string">&#x27;https://hooks.slack.com/services/...&#x27;</span>)<br>        -&gt;<span class="hljs-title function_ invoke__">notify</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">InvoicePaid</span>(<span class="hljs-variable">$invoice</span>));<br></code></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title class_">Notification</span>::<span class="title function_ invoke__">route</span>(<span class="string">&#x27;mail&#x27;</span>, <span class="string">&#x27;taylor@example.com&#x27;</span>)</span><br><span class="line">        -&gt;<span class="title function_ invoke__">route</span>(<span class="string">&#x27;nexmo&#x27;</span>, <span class="string">&#x27;5555555555&#x27;</span>)</span><br><span class="line">        -&gt;<span class="title function_ invoke__">route</span>(<span class="string">&#x27;slack&#x27;</span>, <span class="string">&#x27;https://hooks.slack.com/services/...&#x27;</span>)</span><br><span class="line">        -&gt;<span class="title function_ invoke__">notify</span>(<span class="keyword">new</span> <span class="title class_">InvoicePaid</span>(<span class="variable">$invoice</span>));</span><br></pre></td></tr></table></figure>
 
 
             </div>
@@ -715,7 +724,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            Gemini &copy; 2024 
+            Gemini &copy; 2025 
         </div>
     </div>
 </footer>
