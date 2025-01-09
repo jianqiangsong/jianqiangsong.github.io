@@ -241,7 +241,7 @@
                             &nbsp;
                             laravel
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2024/03/07/laravel/Auth/">授权</a></li>  <li class="file"><a href="/2024/03/07/laravel/Artisan/">命令行工具</a></li>  <li class="file"><a href="/2024/03/07/laravel/Collections/">集合</a></li>  <li class="file"><a href="/2024/03/07/laravel/API/">api响应</a></li>  <li class="file"><a href="/2024/03/07/laravel/DB_Models_and_Eloquent/">数据库模型</a></li>  <li class="file"><a href="/2024/03/07/laravel/Factories/">工厂</a></li>  <li class="file"><a href="/2024/03/07/laravel/Mail/">邮件</a></li>  <li class="file"><a href="/2024/03/07/laravel/Migrations/">数据库迁移</a></li>  <li class="file"><a href="/2024/03/07/laravel/Log_and_Debug/">日志与调试</a></li>  <li class="file"><a href="/2024/03/07/laravel/Other/">其他</a></li>  <li class="file"><a href="/2024/03/07/laravel/Views/">视图</a></li>  <li class="file"><a href="/2024/03/07/laravel/Routing/">路由</a></li>  <li class="file"><a href="/2024/03/07/laravel/Validation/">验证器</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2024/03/07/laravel/API/">api响应</a></li>  <li class="file"><a href="/2024/03/07/laravel/Artisan/">命令行工具</a></li>  <li class="file"><a href="/2024/03/07/laravel/Auth/">授权</a></li>  <li class="file"><a href="/2024/03/07/laravel/Collections/">集合</a></li>  <li class="file"><a href="/2024/03/07/laravel/DB_Models_and_Eloquent/">数据库模型</a></li>  <li class="file"><a href="/2024/03/07/laravel/Factories/">工厂</a></li>  <li class="file"><a href="/2024/03/07/laravel/Log_and_Debug/">日志与调试</a></li>  <li class="file"><a href="/2024/03/07/laravel/Migrations/">数据库迁移</a></li>  <li class="file"><a href="/2024/03/07/laravel/Mail/">邮件</a></li>  <li class="file"><a href="/2024/03/07/laravel/Routing/">路由</a></li>  <li class="file"><a href="/2024/03/07/laravel/Other/">其他</a></li>  <li class="file"><a href="/2024/03/07/laravel/Validation/">验证器</a></li>  <li class="file"><a href="/2024/03/07/laravel/Views/">视图</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -311,7 +311,7 @@
                             &nbsp;
                             笔记
                         </a>
-                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mysql/mysql/">mysql</a></li>  <li class="file"><a href="/2023/07/18/mysql/mysql-1/">mysql-用户-权限</a></li>  <li class="file"><a href="/2023/07/18/mysql/mysql-2/">mysql排序字段</a></li>  </ul> 
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2023/07/18/mysql/mysql-2/">mysql排序字段</a></li>  <li class="file"><a href="/2023/07/18/mysql/mysql-1/">mysql-用户-权限</a></li>  <li class="file"><a href="/2023/07/18/mysql/mysql/">mysql</a></li>  </ul> 
                     </li> 
                      </ul> 
                     </li> 
@@ -1153,7 +1153,7 @@
 
 
     
-        <article id="post-mysql/mysql" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-mysql/mysql-2" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -1167,10 +1167,15 @@
     </div>
 
                         
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/mysql-%E6%8E%92%E5%BA%8F/" rel="tag">mysql 排序</a>
+    </div>
+
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2023/07/18/mysql/mysql/">
+        <a href="/2023/07/18/mysql/mysql-2/">
             <time datetime="2023-07-18T01:06:54.000Z" itemprop="datePublished">2023-07-18</time>
         </a>
     </div>
@@ -1186,7 +1191,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2023/07/18/mysql/mysql/">mysql</a>
+            <a class="article-title" href="/2023/07/18/mysql/mysql-2/">mysql排序字段</a>
         </h1>
     
 
@@ -1216,11 +1221,11 @@
                 
                 
                     
-                    <p><h5 id="msyql-实现排名函数"><a href="#msyql-实现排名函数" class="headerlink" title="msyql 实现排名函数"></a>msyql 实现排名函数</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span><br>	num,<br>	be_help_customer_id,<br>	<span class="hljs-built_in">row_number</span> ( ) <span class="hljs-keyword">over</span> ( <span class="hljs-keyword">PARTITION</span> <span class="hljs-keyword">BY</span> brand_id <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> num <span class="hljs-keyword">DESC</span> ) <span class="hljs-keyword">AS</span> r <br><span class="hljs-keyword">FROM</span><br>	(<br><span class="hljs-keyword">SELECT</span><br>	<span class="hljs-built_in">count</span>( <span class="hljs-operator">*</span> ) <span class="hljs-keyword">AS</span> num,<br>	mt.be_help_customer_id,<br>	mt.brand_id <br><span class="hljs-keyword">FROM</span><br>	`marketing_task_user_invite` <span class="hljs-keyword">AS</span> `mt`<br>	<span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> `customer_relation` <span class="hljs-keyword">AS</span> `cr` <span class="hljs-keyword">ON</span> `cr`.`relation_id` <span class="hljs-operator">=</span> `mt`.`relation_id` <br><span class="hljs-keyword">WHERE</span><br>	( `mt`.`task_id` <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;229&#x27;</span> <span class="hljs-keyword">AND</span> `mt`.`brand_id` <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;3&#x27;</span> <span class="hljs-keyword">AND</span> `mt`.`be_help_customer_id` <span class="hljs-operator">&gt;</span> <span class="hljs-string">&#x27;0&#x27;</span> <span class="hljs-keyword">AND</span> `cr`.`status` <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;1&#x27;</span> ) <br><span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span><br>	`be_help_customer_id` <br>	) <span class="hljs-keyword">AS</span> t<br></code></pre></td></tr></table></figure>
+                    <p><h3 id="场景需要某条数据排在最前面"><a href="#场景需要某条数据排在最前面" class="headerlink" title="场景需要某条数据排在最前面"></a>场景需要某条数据排在最前面</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># <span class="number">1.</span>按 age值 <span class="number">25</span> <span class="number">15</span> 的顺序排序,值相同则按修改时间排序</span><br><span class="line"><span class="keyword">select</span>  <span class="operator">*</span> <span class="keyword">from</span> <span class="keyword">user</span> t <span class="keyword">ORDER</span> <span class="keyword">BY</span> FIELD(t.age,<span class="number">25</span>,<span class="number">15</span>) <span class="keyword">asc</span>,t.age <span class="keyword">asc</span>;</span><br><span class="line"></span><br><span class="line"># <span class="number">2.</span>将 age<span class="operator">=</span> <span class="number">15</span> 的记录排在最后,其余的记录按修改时间排序</span><br><span class="line"><span class="keyword">select</span>  <span class="operator">*</span> <span class="keyword">from</span> <span class="keyword">user</span> t <span class="keyword">ORDER</span> <span class="keyword">BY</span> FIELD(t.age,<span class="number">15</span>) <span class="keyword">asc</span>,t.age <span class="keyword">asc</span>;</span><br><span class="line"></span><br><span class="line"># <span class="number">3.</span>将age<span class="operator">=</span> <span class="number">15</span> 的记录排在最前面,其余的记录按修改时间排序</span><br><span class="line"><span class="keyword">select</span>  <span class="operator">*</span> <span class="keyword">from</span> <span class="keyword">user</span> t <span class="keyword">ORDER</span> <span class="keyword">BY</span> FIELD(t.age,<span class="number">15</span>) <span class="keyword">desc</span>,t.age <span class="keyword">asc</span>;</span><br></pre></td></tr></table></figure>
 
-<h5 id="链表批量更新"><a href="#链表批量更新" class="headerlink" title="链表批量更新"></a>链表批量更新</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">UPDATE</span>  orders   <span class="hljs-keyword">as</span>  o <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span>  orders_writeoff <span class="hljs-keyword">as</span> ow  <span class="hljs-keyword">on</span>  ow.order_id <span class="hljs-operator">=</span>  o.order_id <br><span class="hljs-keyword">set</span> ow.use_end_time <span class="hljs-operator">=</span>  <span class="hljs-number">1625673599</span><br><span class="hljs-keyword">where</span>  o.marketing_id <span class="hljs-operator">=</span> <span class="hljs-number">4350</span>  <br></code></pre></td></tr></table></figure>
+<h3 id="mysql5-7-之后full-group查询非分组字段列的解决方案"><a href="#mysql5-7-之后full-group查询非分组字段列的解决方案" class="headerlink" title="mysql5.7 之后full group查询非分组字段列的解决方案"></a>mysql5.7 之后full group查询非分组字段列的解决方案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># any_value() 函数 但是需要注意取值的名称是否唯一</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">UPDATE</span> admin_role <span class="hljs-keyword">set</span> rule_id <span class="hljs-operator">=</span>(<span class="hljs-keyword">SELECT</span> GROUP_CONCAT(id) <span class="hljs-keyword">from</span> admin_auth) <span class="hljs-keyword">where</span>  data_role <span class="hljs-operator">=</span><span class="hljs-number">1</span>; <br></code></pre></td></tr></table></figure>
+
 <p>
                 
             
@@ -1228,7 +1233,7 @@
         
             </div>   
             <div class="article-more-link">
-                <a href="/2023/07/18/mysql/mysql/#more">查看更多</a>
+                <a href="/2023/07/18/mysql/mysql-2/#more">查看更多</a>
             </div>
         
         <footer class="article-footer">
@@ -1311,7 +1316,7 @@
         
         
             <h5 id="mysql授权一个已经存在的用户所有权限"><a href="#mysql授权一个已经存在的用户所有权限" class="headerlink" title="mysql授权一个已经存在的用户所有权限"></a>mysql授权一个已经存在的用户所有权限</h5><p>docker 容器创建mysql 要登陆容器后进行授权允许所有外部ip访问</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">//如果用户存在则不需要创建<br><br><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">&#x27;test&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span> IDENTIFIED <span class="hljs-keyword">BY</span>  <span class="hljs-string">&#x27;test&#x27;</span>;<br><br><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">ALL</span> <span class="hljs-keyword">PRIVILEGES</span> <span class="hljs-keyword">ON</span> *.* <span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;test&#x27;</span>@<span class="hljs-string">&#x27;%&#x27;</span>;<br><br>FLUSH <span class="hljs-keyword">PRIVILEGES</span>;<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//如果用户存在则不需要创建</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> <span class="string">&#x27;test&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED <span class="keyword">BY</span>  <span class="string">&#x27;test&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">PRIVILEGES</span> <span class="keyword">ON</span> *.* <span class="keyword">TO</span> <span class="string">&#x27;test&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br><span class="line"></span><br><span class="line">FLUSH <span class="keyword">PRIVILEGES</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
             </div>
@@ -1329,7 +1334,7 @@
 
 
     
-        <article id="post-mysql/mysql-2" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-mysql/mysql" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -1343,15 +1348,10 @@
     </div>
 
                         
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link-link" href="/tags/mysql-%E6%8E%92%E5%BA%8F/" rel="tag">mysql 排序</a>
-    </div>
-
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2023/07/18/mysql/mysql-2/">
+        <a href="/2023/07/18/mysql/mysql/">
             <time datetime="2023-07-18T01:06:54.000Z" itemprop="datePublished">2023-07-18</time>
         </a>
     </div>
@@ -1367,7 +1367,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2023/07/18/mysql/mysql-2/">mysql排序字段</a>
+            <a class="article-title" href="/2023/07/18/mysql/mysql/">mysql</a>
         </h1>
     
 
@@ -1397,11 +1397,11 @@
                 
                 
                     
-                    <p><h3 id="场景需要某条数据排在最前面"><a href="#场景需要某条数据排在最前面" class="headerlink" title="场景需要某条数据排在最前面"></a>场景需要某条数据排在最前面</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># <span class="number">1.</span>按 age值 <span class="number">25</span> <span class="number">15</span> 的顺序排序,值相同则按修改时间排序</span><br><span class="line"><span class="keyword">select</span>  <span class="operator">*</span> <span class="keyword">from</span> <span class="keyword">user</span> t <span class="keyword">ORDER</span> <span class="keyword">BY</span> FIELD(t.age,<span class="number">25</span>,<span class="number">15</span>) <span class="keyword">asc</span>,t.age <span class="keyword">asc</span>;</span><br><span class="line"></span><br><span class="line"># <span class="number">2.</span>将 age<span class="operator">=</span> <span class="number">15</span> 的记录排在最后,其余的记录按修改时间排序</span><br><span class="line"><span class="keyword">select</span>  <span class="operator">*</span> <span class="keyword">from</span> <span class="keyword">user</span> t <span class="keyword">ORDER</span> <span class="keyword">BY</span> FIELD(t.age,<span class="number">15</span>) <span class="keyword">asc</span>,t.age <span class="keyword">asc</span>;</span><br><span class="line"></span><br><span class="line"># <span class="number">3.</span>将age<span class="operator">=</span> <span class="number">15</span> 的记录排在最前面,其余的记录按修改时间排序</span><br><span class="line"><span class="keyword">select</span>  <span class="operator">*</span> <span class="keyword">from</span> <span class="keyword">user</span> t <span class="keyword">ORDER</span> <span class="keyword">BY</span> FIELD(t.age,<span class="number">15</span>) <span class="keyword">desc</span>,t.age <span class="keyword">asc</span>;</span><br></pre></td></tr></table></figure>
+                    <p><h5 id="msyql-实现排名函数"><a href="#msyql-实现排名函数" class="headerlink" title="msyql 实现排名函数"></a>msyql 实现排名函数</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	num,</span><br><span class="line">	be_help_customer_id,</span><br><span class="line">	<span class="built_in">row_number</span> ( ) <span class="keyword">over</span> ( <span class="keyword">PARTITION</span> <span class="keyword">BY</span> brand_id <span class="keyword">ORDER</span> <span class="keyword">BY</span> num <span class="keyword">DESC</span> ) <span class="keyword">AS</span> r </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	(</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="built_in">count</span>( <span class="operator">*</span> ) <span class="keyword">AS</span> num,</span><br><span class="line">	mt.be_help_customer_id,</span><br><span class="line">	mt.brand_id </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	`marketing_task_user_invite` <span class="keyword">AS</span> `mt`</span><br><span class="line">	<span class="keyword">INNER</span> <span class="keyword">JOIN</span> `customer_relation` <span class="keyword">AS</span> `cr` <span class="keyword">ON</span> `cr`.`relation_id` <span class="operator">=</span> `mt`.`relation_id` </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	( `mt`.`task_id` <span class="operator">=</span> <span class="string">&#x27;229&#x27;</span> <span class="keyword">AND</span> `mt`.`brand_id` <span class="operator">=</span> <span class="string">&#x27;3&#x27;</span> <span class="keyword">AND</span> `mt`.`be_help_customer_id` <span class="operator">&gt;</span> <span class="string">&#x27;0&#x27;</span> <span class="keyword">AND</span> `cr`.`status` <span class="operator">=</span> <span class="string">&#x27;1&#x27;</span> ) </span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span></span><br><span class="line">	`be_help_customer_id` </span><br><span class="line">	) <span class="keyword">AS</span> t</span><br></pre></td></tr></table></figure>
 
-<h3 id="mysql5-7-之后full-group查询非分组字段列的解决方案"><a href="#mysql5-7-之后full-group查询非分组字段列的解决方案" class="headerlink" title="mysql5.7 之后full group查询非分组字段列的解决方案"></a>mysql5.7 之后full group查询非分组字段列的解决方案</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># any_value() 函数 但是需要注意取值的名称是否唯一</span><br></pre></td></tr></table></figure>
+<h5 id="链表批量更新"><a href="#链表批量更新" class="headerlink" title="链表批量更新"></a>链表批量更新</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span>  orders   <span class="keyword">as</span>  o <span class="keyword">LEFT</span> <span class="keyword">JOIN</span>  orders_writeoff <span class="keyword">as</span> ow  <span class="keyword">on</span>  ow.order_id <span class="operator">=</span>  o.order_id </span><br><span class="line"><span class="keyword">set</span> ow.use_end_time <span class="operator">=</span>  <span class="number">1625673599</span></span><br><span class="line"><span class="keyword">where</span>  o.marketing_id <span class="operator">=</span> <span class="number">4350</span>  </span><br></pre></td></tr></table></figure>
 
-
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> admin_role <span class="keyword">set</span> rule_id <span class="operator">=</span>(<span class="keyword">SELECT</span> GROUP_CONCAT(id) <span class="keyword">from</span> admin_auth) <span class="keyword">where</span>  data_role <span class="operator">=</span><span class="number">1</span>; </span><br></pre></td></tr></table></figure>
 <p>
                 
             
@@ -1409,7 +1409,7 @@
         
             </div>   
             <div class="article-more-link">
-                <a href="/2023/07/18/mysql/mysql-2/#more">查看更多</a>
+                <a href="/2023/07/18/mysql/mysql/#more">查看更多</a>
             </div>
         
         <footer class="article-footer">
